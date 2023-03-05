@@ -5,12 +5,7 @@ import Register from "../pages/Register";
 import Server from "../pages/Server";
 import ProtectAuth from "../components/organisms/ProtectAuth";
 import ProtectPage from "../components/organisms/ProtectHome";
-import ServerSetting from "../pages/ServerSetting";
-import UserSetting from "../pages/UserSetting";
-import CreateServer from "@pages/CreateServer";
 import NotFound from "@pages/NotFound";
-import Home from "src/video-broadcast/home";
-import BroadHome from "src/video-broadcast";
 
 const Router = () => {
   return (
@@ -23,8 +18,6 @@ const Router = () => {
           </ProtectPage>
         }
       />
-      <Route path="/Home" element={<Home />} />
-      <Route path="/broadcast/:view" element={<BroadHome />} />
 
       <Route
         path="/login"
@@ -60,26 +53,20 @@ const Router = () => {
         }
       />
 
-      {/* 테스트 용으로 만들어 둔거. */}
-      <Route path="/ServerSetting" element={<ServerSetting />} />
-      <Route path="/UserSetting" element={<UserSetting />} />
-      <Route path="/CreateServer" element={<CreateServer />} />
-      {/* <Route path="/:serverId/" element={<Server />} /> */}
-
       <Route
         path="/:serverId"
         element={
-          // <ProtectPage>
-          <Server />
-          // </ProtectPage>
+          <ProtectPage>
+            <Server />
+          </ProtectPage>
         }
       />
       <Route
         path="/:serverId/:channelId"
         element={
-          // <ProtectPage>
-          <Server />
-          // </ProtectPage>
+          <ProtectPage>
+            <Server />
+          </ProtectPage>
         }
       />
 
