@@ -1,8 +1,8 @@
+import communityApi from "@api/community";
 import { useQuery } from "@tanstack/react-query";
-import serverApi from "@api/server";
 
 const useGetCategoryList = ({ communityId }: any) => {
-  return useQuery(["category", { communityId }], serverApi.getChannel);
+  return useQuery(["category", { communityId }], communityApi.getCategoryList);
 };
 
 export default useGetCategoryList;

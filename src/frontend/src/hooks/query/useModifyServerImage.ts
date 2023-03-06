@@ -1,8 +1,8 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import serverApi from "@api/server";
+import communityApi from "@api/community";
+import { useMutation } from "@tanstack/react-query";
 
 const useModifyServerImage = () => {
-  return useMutation(serverApi.modifyImage);
+  return useMutation(communityApi.modifyImage);
 };
 
 export default useModifyServerImage;

@@ -5,49 +5,49 @@ import styled from "styled-components";
 import ServerInput from "../molecules/Input/ServerInput";
 import ServerLogoUpload from "../molecules/Button/ServerLogoUpload";
 import { useState } from "react";
-import userSettingApi from "@api/userSetting";
 import { useMutation } from "@tanstack/react-query";
-import { Button } from "@mui/material";
-import serverApi from "@api/server";
 import { useUserStore } from "@store/useUserStore";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useInput from "@hooks/common/useInput";
 import useModifyServerImage from "@hooks/query/useModifyServerImage";
 import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
+import communityApi from "@api/community";
 
 const SeverSettingDefault = () => {
-  // const [formData, setFormData] = useState<FormData>();
   let formData = new FormData();
-  const { data: res, mutate: modifyImage } = useModifyServerImage();
-  const [img, setImg] = useState();
   const { serverId: communityId } = useParams();
   const { userInfo } = useUserStore();
-  const { data: resp, mutate: update } = useMutation(serverApi.update);
+
+  const [img, setImg] = useState();
   const [name, changeName] = useInput();
-  const onChangeName = () => {
-    console.log(name);
-    update({ communityName: name, communityId, userId: userInfo.id });
-  };
-  const navigate = useNavigate();
+
+  const { mutate: modifyImage } = useModifyServerImage();
+  const { mutate: updateCommunityName } = useMutation(communityApi.update);
   const { mutate: deleteCommunity } = useDeleteCommunity();
+
+  const onChangeName = () => {
+    updateCommunityName({
+      communityName: name,
+      communityId,
+      userId: userInfo.id,
+    });
+  };
+
   const DeleteServer = () => {
     if (!communityId) return;
+
     deleteCommunity({ communityId, userId: userInfo.id });
-    console.log(resp);
     window.location.replace("/@me");
   };
+
   const changeImage = () => {
-    console.log(communityId, userInfo.id);
-    console.log(typeof communityId);
-    console.log(typeof userInfo.id);
-    if (!communityId) return;
+    if (!communityId || !img) return;
+
     formData.append("communityId", communityId);
     formData.append("userId", JSON.stringify(userInfo.id));
-    if (!img) return;
     formData.append("img", img);
-    console.log("img", img);
+
     modifyImage({ formData });
-    console.log("res", res);
   };
   return (
     <SettingWrapper>
