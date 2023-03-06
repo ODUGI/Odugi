@@ -1,12 +1,9 @@
 import styled from "styled-components";
-import MainDirectBody from "./MainDirectBody";
-import MainVoiceRoomBody from "./MainVoiceRoomBody";
 
 const Tab3ServerBody = () => {
   return (
     <Tab3ServerBodyContainer>
       {/* <MainDirectBody /> */}
-      <MainVoiceRoomBody/>
     </Tab3ServerBodyContainer>
   );
 };
