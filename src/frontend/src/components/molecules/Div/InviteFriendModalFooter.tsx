@@ -1,6 +1,6 @@
 import Text from "@components/atoms/Text/Text";
 import styled from "styled-components";
-import InviteServerInput from "../Input/InviteServerInput";
+import InviteCommunityInput from "../Input/InviteCommunityInput";
 
 const InviteFriendModalFooter = () => {
   return (
@@ -12,7 +12,7 @@ const InviteFriendModalFooter = () => {
         fontWeight="bold"
         mb={8}
       />
-      <InviteServerInput url="https://discord.gg/e3AZaGPM" />
+      <InviteCommunityInput url="https://discord.gg/e3AZaGPM" />
       <Text
         text="초대 링크가 7일 후 만료돼요."
         fontSize="xs"

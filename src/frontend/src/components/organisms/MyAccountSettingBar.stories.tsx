@@ -1,10 +1,10 @@
-import ServerSettingBar from "./MyAccountSettingBar";
+import CommunitySettingBar from "./MyAccountSettingBar";
 
 export default {
   title: "Organisms/MyAccountSettingBar",
-  component: ServerSettingBar,
+  component: CommunitySettingBar,
 };
 
 export const AccountSetting = () => {
-  return <ServerSettingBar />;
+  return <CommunitySettingBar />;
 };

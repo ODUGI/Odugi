@@ -1,9 +1,9 @@
 import Text from "@components/atoms/Text/Text";
-import ServerLogoUpload from "../Button/ServerLogoUpload";
+import CommunityLogoUpload from "../Button/CommunityLogoUpload";
 
 const LogoSet = () => {
   <>
-    <ServerLogoUpload />
+    <CommunityLogoUpload />
     <Text text="최소 크기 128*128 이상" />
   </>;
 };

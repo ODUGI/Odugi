@@ -33,9 +33,9 @@ export type BackgroundColorType =
   | "random-green"
   | "voice-hangup"
   | "alert"
-  | "server-input"
-  | "server-footer"
-  | "server-subtitle"
+  | "community-input"
+  | "community-footer"
+  | "community-subtitle"
   | "black";
 
 export type ColorType =
@@ -63,7 +63,7 @@ export type ColorType =
   | "invite-success"
   | "invite-danger"
   | "black"
-  | "server-subtitle";
+  | "community-subtitle";
 
 export type BorderColorType =
   | "trans"
@@ -109,9 +109,9 @@ const theme: DefaultTheme = {
     "random-green": "#3DA45C",
     "voice-hangup": "#ED4245",
     alert: "#e4ac56",
-    "server-input": "#E3E5E8",
-    "server-footer": "#F2F3F5",
-    "server-subtitle": "#4F5660",
+    "community-input": "#E3E5E8",
+    "community-footer": "#F2F3F5",
+    "community-subtitle": "#4F5660",
     black: "#000",
   },
   color: {
@@ -132,7 +132,7 @@ const theme: DefaultTheme = {
     inactive: "#96989D",
     "hangup-log": "#96989D",
     "setting-header": "#96989D",
-    "server-subtitle": "#4F5660",
+    "community-subtitle": "#4F5660",
     "tab1-plus": "#3BA55D",
     "voice-modal": "#18191C",
     red: "#ED4245",

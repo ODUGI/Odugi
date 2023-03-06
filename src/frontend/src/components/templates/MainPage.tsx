@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import MainBody from "../organisms/MainBody";
-import ServerList from "../organisms/ServerList";
+import CommunityList from "../organisms/CommunityList";
 import Tab2MainBody from "../organisms/Tab2MainBody";
 import Tab2Footer from "../organisms/Tab2Footer";
 import Tab2MainHeader from "../organisms/Tab2MainHeader";
@@ -18,7 +18,7 @@ const MainPage = () => {
 
   return (
     <>
-      <ServerList />
+      <CommunityList />
       <Tab2Container>
         <Tab2MainHeader />
         <Tab2MainBody />

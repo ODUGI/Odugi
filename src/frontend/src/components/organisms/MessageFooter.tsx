@@ -16,17 +16,16 @@ const MessageFooter = ({
   setMessage,
   addChatMessage,
 }: MessageFooterProps) => {
-  const { serverId } = useParams();
+  const { communityId } = useParams();
   const [showUploadModal, setShowUploadModal] = useState(false);
   const { sendTo } = useSendToStore();
 
   const onChange = (v: string) => {
-    // enter 누르면 onClick처리
     setMessage(v);
   };
 
   return (
-    <MessageFooterContainer isServer={!!serverId}>
+    <MessageFooterContainer isCommunity={!!communityId}>
       <MessageBox
         value={message}
         onChange={onChange}
@@ -39,11 +38,11 @@ const MessageFooter = ({
   );
 };
 
-const MessageFooterContainer = styled.div<{ isServer: boolean }>`
+const MessageFooterContainer = styled.div<{ isCommunity: boolean }>`
   position: relative;
   background-color: ${({ theme }) => theme.backgroundColor.tab3};
-  width: ${({ isServer }) =>
-    isServer ? "calc(100vw - 19.6875rem)" : "calc(100vw - 41.875rem)"};
+  width: ${({ isCommunity }) =>
+    isCommunity ? "calc(100vw - 19.6875rem)" : "calc(100vw - 41.875rem)"};
   position: absolute;
   bottom: 0;
   padding: 0 1rem 1.5rem 1rem;

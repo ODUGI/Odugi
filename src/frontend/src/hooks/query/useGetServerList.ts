@@ -1,12 +1,12 @@
+import communityApi from "@api/community";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import serverSettingApi from "@api/server";
 
-const useGetServerList = ({ userId }: any) => {
+const useGetCommunityList = ({ userId }: any) => {
   const [list, setList] = useState([]);
   const { data: res } = useQuery(
-    ["ServerList", { userId }],
-    serverSettingApi.getList
+    ["CommunityList", { userId }],
+    communityApi.getList
   );
 
   useEffect(() => {
@@ -34,4 +34,4 @@ const useGetServerList = ({ userId }: any) => {
   return { list };
 };
 
-export default useGetServerList;
+export default useGetCommunityList;

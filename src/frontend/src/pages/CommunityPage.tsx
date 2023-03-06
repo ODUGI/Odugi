@@ -1,49 +1,49 @@
 import styled from "styled-components";
-import CommunitySettingBar from "../components/organisms/MyAccountSettingBar";
-import UserProfile from "../components/organisms/UserProfile";
-import MyAccount from "../components/organisms/MyAccount";
-import useUserSetStore, { UserSettingType } from "../store/useUserSetStore";
+import CommunitySettingBar from "../components/organisms/CommunitySettingBar";
+import CommunitySettingMember from "../components/organisms/CommunitySettingMember";
+import CommunitySettingDefault from "../components/organisms/CommunitySettingDefault";
+import CommunitySettingInvite from "../components/organisms/CommunitySettingInvite";
 import BackgroundModal from "@components/organisms/BackgroundModal";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
+import useCommunityStore, { SettingStatusType } from "@store/useCommunityStore";
 import useModalStore from "@store/useModalStore";
-const userComponent = {
-  "내 계정": MyAccount,
-  프로필: UserProfile,
-  알림: UserProfile,
+
+const communityComponent = {
+  일반: CommunitySettingDefault,
+  멤버: CommunitySettingMember,
+  초대: CommunitySettingInvite,
 };
 
-const getStatus = (status: UserSettingType) => {
-  const Component = userComponent[status];
+const getStatus = (status: SettingStatusType) => {
+  const Component = communityComponent[status];
   return <Component />;
 };
 
-const UserSetting = () => {
-  const { userStatus } = useUserSetStore();
-  const { setUserSettingModal } = useModalStore();
+const CommunityPage = () => {
+  const { settingStatus } = useCommunityStore();
+  const { setCommunitySettingModal } = useModalStore();
 
   return (
     <BackgroundModal
       width={800}
       p={0}
-      onClick={() => setUserSettingModal(false)}
+      onClick={() => setCommunitySettingModal(false)}
     >
       <SettingBox>
         <Side>
           <CommunitySettingBar />
         </Side>
         <Container>
-          <CancelIconWrapper onClick={() => setUserSettingModal(false)}>
+          <CancelIconWrapper onClick={() => setCommunitySettingModal(false)}>
             <CancelIcon />
           </CancelIconWrapper>
-          {/* <UserProfile /> */}
-          {getStatus(userStatus)}
+          {/* <SeverSettingMember /> */}
+          {getStatus(settingStatus)}
         </Container>
       </SettingBox>
     </BackgroundModal>
   );
 };
-
-export default UserSetting;
 
 const CancelIconWrapper = styled.div`
   font-size: 5rem;
@@ -61,8 +61,6 @@ const SettingBox = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -72,6 +70,7 @@ const SettingBox = styled.div`
   flex-direction: row;
   background-color: ${({ theme }) => theme.backgroundColor["voice-icon"]};
 `;
+
 const Container = styled.div`
   position: relative;
   display: flex;
@@ -84,3 +83,5 @@ const Side = styled.div`
   flex: 1 1 auto;
   justify-content: flex-end;
 `;
+
+export default CommunityPage;

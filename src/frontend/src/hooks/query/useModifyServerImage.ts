@@ -1,8 +1,8 @@
 import communityApi from "@api/community";
 import { useMutation } from "@tanstack/react-query";
 
-const useModifyServerImage = () => {
+const useModifyCommunityImage = () => {
   return useMutation(communityApi.modifyImage);
 };
 
-export default useModifyServerImage;
+export default useModifyCommunityImage;

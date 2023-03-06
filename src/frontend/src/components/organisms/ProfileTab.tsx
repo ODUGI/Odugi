@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import ServerProfile from "./ServerProfile";
+import CommunityProfile from "./CommunityProfile";
 import UserProfilePage from "./UserProfilePage";
 import Text from "@components/atoms/Text/Text";
 
@@ -12,7 +12,7 @@ export const Tab = () => {
 
   // const menuArr = [
   //   { name: "사용자 프로필", content: <UserProfilePage /> },
-  //   { name: "서버 프로필", content: <ServerProfile /> },
+  //   { name: "서버 프로필", content: <CommunityProfile /> },
   // ];
 
   // const selectMenuHandler = (index: number) => {
@@ -59,7 +59,7 @@ export const Tab = () => {
         mb={16}
         fontWeight="bold"
       />
-      <ServerProfile />
+      <CommunityProfile />
     </>
   );
 };

@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Main from "../pages/Main";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Server from "../pages/Server";
+import Community from "../pages/Community";
 import ProtectAuth from "../components/organisms/ProtectAuth";
 import ProtectPage from "../components/organisms/ProtectHome";
 import NotFound from "@pages/NotFound";
@@ -45,7 +45,7 @@ const Router = () => {
         }
       />
       <Route
-        path="/@me/:channelId"
+        path="/@me/:categoryId"
         element={
           <ProtectPage>
             <Main />
@@ -54,18 +54,18 @@ const Router = () => {
       />
 
       <Route
-        path="/:serverId"
+        path="/:communityId"
         element={
           <ProtectPage>
-            <Server />
+            <Community />
           </ProtectPage>
         }
       />
       <Route
-        path="/:serverId/:channelId"
+        path="/:communityId/:categoryId"
         element={
           <ProtectPage>
-            <Server />
+            <Community />
           </ProtectPage>
         }
       />

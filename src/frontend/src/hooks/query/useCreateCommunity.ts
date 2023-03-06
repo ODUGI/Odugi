@@ -1,8 +1,8 @@
+import communityApi from "@api/community";
 import { useMutation } from "@tanstack/react-query";
-import serverSettingApi from "@api/server";
 
 const useCreateCommunity = () => {
-  return useMutation(serverSettingApi.create);
+  return useMutation(communityApi.create);
 };
 
 export default useCreateCommunity;

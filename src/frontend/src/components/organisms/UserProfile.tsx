@@ -5,13 +5,13 @@ import SettingWrapper from "./SettingWrapper";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 import DefaultButton from "@components/atoms/Button/DefaultButton";
-import ServerLogoUpload from "@components/molecules/Button/ServerLogoUpload";
+import CommunityLogoUpload from "@components/molecules/Button/CommunityLogoUpload";
 
 const NameChange = () => {
   return (
     <>
       <TopWrapper>
-        <ServerLogoUpload />
+        <CommunityLogoUpload />
       </TopWrapper>
       <Bottom>
         <DefaultButton text="완료" onClick={() => console.log(1)} />

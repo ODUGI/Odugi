@@ -1,7 +1,7 @@
 import CreateDirectMessageModalDiv from "./CreateDirectMessageModal";
 
 export default {
-  title: "Organisms/Server",
+  title: "Organisms/Community",
   component: CreateDirectMessageModalDiv,
 };
 

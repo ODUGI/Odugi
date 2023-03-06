@@ -9,7 +9,7 @@ import { COOKIE_KEY } from "@configs/cookie";
 import { cookies } from "src/App";
 import useLogout from "@hooks/query/useLogout";
 
-const ServerSettingBar = () => {
+const MyAccountSettingBar = () => {
   const navigate = useNavigate();
   const { resetUser } = useUserStore();
   const { mutate: logoutUser } = useLogout();
@@ -61,7 +61,6 @@ const ServerSettingBar = () => {
             onClick={() => console.log(1)}
           />
         </li> */}
-
         <Divider
           sx={{ borderColor: "#96989D93", opacity: 0.5, mr: 1, mt: 1, mb: 1 }}
         />
@@ -77,7 +76,7 @@ const ServerSettingBar = () => {
   );
 };
 
-export default ServerSettingBar;
+export default MyAccountSettingBar;
 
 const BarContainer = styled.div`
   width: 12rem;

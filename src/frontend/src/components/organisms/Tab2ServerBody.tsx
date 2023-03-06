@@ -1,5 +1,5 @@
-import ServerLabel from "../molecules/Div/ServerLabel";
-import ServerRoomButton from "../molecules/Div/ServerRoomButton";
+import CommunityLabel from "../molecules/Div/CommunityLabel";
+import CommunityRoomButton from "../molecules/Div/CommunityRoomButton";
 import { useNavigate, useParams } from "react-router-dom";
 import useGetCategoryList from "@hooks/query/useGetCategoryList";
 import UserChannelOnBox from "@components/molecules/Div/UserChannelOnBox";
@@ -19,17 +19,17 @@ interface RoomType {
   channel_name: string;
 }
 
-const Tab2ServerBody = () => {
+const Tab2CommunityBody = () => {
   const navigate = useNavigate();
-  const { serverId, channelId } = useParams();
+  const { communityId, categoryId } = useParams();
   const { data: res, isSuccess } = useGetCategoryList({
-    communityId: serverId,
+    communityId,
   });
   const { userInfo } = useUserStore();
   const { data: friendList } = useGetFriendList(userInfo.email);
 
   const data = res?.data?.data;
-  if (!serverId || !isSuccess) return <></>;
+  if (!communityId || !isSuccess) return <></>;
 
   const List = JSON.parse(JSON.stringify(data[0])).split("},");
   const List2 = JSON.parse(JSON.stringify(data[1])).split("},");
@@ -55,7 +55,7 @@ const Tab2ServerBody = () => {
     }
   }
 
-  if (!channelId) {
+  if (!categoryId) {
     let id;
     for (let i = 0; i < roomList.length; i++) {
       if (roomList[i]["type"] === 2) {
@@ -63,31 +63,31 @@ const Tab2ServerBody = () => {
         break;
       }
     }
-    navigate(`/${serverId}/${id}`);
+    navigate(`/${categoryId}/${id}`);
   }
 
   return (
     <div>
       {categoryList.map((category: any) => (
         <>
-          <ServerLabel text={category["category_name"]} />
+          <CommunityLabel text={category["category_name"]} />
           {roomList
             .filter((room) => room["category_id"] === category["category_id"])
             .map((room) => (
               <>
-                <ServerRoomButton
+                <CommunityRoomButton
                   type={room["type"] === 1 ? "voice" : "chat"}
                   text={room["channel_name"]}
-                  serverId={serverId}
-                  channelId={room["channel_id"]}
+                  communityId={communityId}
+                  categoryId={room["category_id"]}
                 />
-                {room["channel_id"] === Number(channelId) && (
+                {room["category_id"] === Number(categoryId) && (
                   <UserChannelOnBox />
                 )}
                 {friendList.map((friend: FriendType) => (
                   <UserFriendChannelOnBox
                     friend={friend}
-                    channelId={room["channel_id"]}
+                    categoryId={room["category_id"]}
                   />
                 ))}
               </>
@@ -98,4 +98,4 @@ const Tab2ServerBody = () => {
   );
 };
 
-export default Tab2ServerBody;
+export default Tab2CommunityBody;
