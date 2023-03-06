@@ -1,53 +1,44 @@
 import styled from "styled-components";
 import ServerSettingBar from "../components/organisms/ServerSettingBar";
 import ServerSettingMember from "../components/organisms/ServerSettingMember";
-import useServerSetStore, {
-  ServerSettingType,
-} from "../store/useServerSetStore";
 import ServerSettingDefault from "../components/organisms/ServerSettingDefault";
 import ServerSettingInvite from "../components/organisms/ServerSettingInvite";
 import BackgroundModal from "@components/organisms/BackgroundModal";
-import useServerSettingModalStore from "@store/useServerSettingModalStore";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
-import { useUserStore } from "@store/useUserStore";
+import useCommunityStore, { SettingStatusType } from "@store/useCommunityStore";
+import useModalStore from "@store/useModalStore";
 
-const serverComponent = {
+const communityComponent = {
   일반: ServerSettingDefault,
   멤버: ServerSettingMember,
   초대: ServerSettingInvite,
 };
 
-const getStatus = (status: ServerSettingType) => {
-  const Component = serverComponent[status];
+const getStatus = (status: SettingStatusType) => {
+  const Component = communityComponent[status];
   return <Component />;
 };
 
 const ServerSetting = () => {
-  const { setStatus, setSettingStatus } = useServerSetStore(
-    ({ setStatus, setSettingStatus }) => ({
-      setStatus,
-      setSettingStatus,
-    })
-  );
+  const { settingStatus } = useCommunityStore();
+  const { setCommunitySettingModal } = useModalStore();
 
-  const { setServerSettingModal } = useServerSettingModalStore();
   return (
     <BackgroundModal
       width={800}
       p={0}
-      onClick={() => setServerSettingModal(false)}
+      onClick={() => setCommunitySettingModal(false)}
     >
       <SettingBox>
         <Side>
           <ServerSettingBar />
         </Side>
         <Container>
-          <CancelIconWrapper onClick={() => setServerSettingModal(false)}>
+          <CancelIconWrapper onClick={() => setCommunitySettingModal(false)}>
             <CancelIcon />
           </CancelIconWrapper>
-          {/* <SeverSettingMember />
-           */}
-          {getStatus(setStatus)}
+          {/* <SeverSettingMember /> */}
+          {getStatus(settingStatus)}
         </Container>
       </SettingBox>
     </BackgroundModal>

@@ -3,17 +3,17 @@ import EditIcon from "@components/atoms/Icons/EditIcon";
 import LogoutIcon from "@components/atoms/Icons/LogoutIcon";
 import PersonAddIcon from "@components/atoms/Icons/PersonAddIcon";
 import useModalStore from "@store/useModalStore";
-import useServerSettingModalStore from "@store/useServerSettingModalStore";
 import styled from "styled-components";
 import DarkModalButton from "../Button/DarkModalButton";
 
 const ServerModal = ({ setShowModal }: any) => {
-  const { setInviteFriendModal } = useModalStore();
-  const { setServerSettingModal } = useServerSettingModalStore();
+  const { setInviteFriendModal, setCommunitySettingModal } = useModalStore();
+
   const setModal = () => {
-    setServerSettingModal(true);
+    setCommunitySettingModal(true);
     setShowModal(false);
   };
+
   return (
     <DarkModal width={220} top={55} left={80}>
       <DarkModalButton

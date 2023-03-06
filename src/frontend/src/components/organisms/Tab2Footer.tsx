@@ -1,5 +1,4 @@
-import useUserSettingModalStore from "@store/useUserSettingModalStore";
-import { useNavigate } from "react-router-dom";
+import useModalStore from "@store/useModalStore";
 import styled from "styled-components";
 import HeadsetIcon from "../atoms/Icons/HeadsetIcon";
 import HeadsetOffIcon from "../atoms/Icons/HeadsetOffIcon";
@@ -10,7 +9,7 @@ import UserInfoButton from "../molecules/Button/UserInfoButton";
 import UserOnOffButton from "../molecules/Button/UserOnOffButton";
 
 const Tab2Footer = () => {
-  const { setUserSettingModal } = useUserSettingModalStore();
+  const { setUserSettingModal } = useModalStore();
 
   return (
     <>
@@ -35,7 +34,6 @@ const Tab2Footer = () => {
             text="사용자 설정"
             OnIcon={<SettingsIcon />}
             OffIcon={<SettingsIcon />}
-            // onClick={() => userSetting()}
             onClick={() => setUserSettingModal(true)}
           />
         </ButtonContainer>
