@@ -11,21 +11,21 @@ interface CommunityRoomButtonProps {
   type: "chat" | "voice";
   text: string;
   communityId: string;
-  categoryId: number;
+  channelId: number;
 }
 
 const CommunityRoomButton = ({
   type,
   text,
   communityId,
-  categoryId,
+  channelId,
 }: CommunityRoomButtonProps) => {
-  const { categoryId: currentCategoryId } = useParams();
+  const { channelId: currentChannelId } = useParams();
   const navigate = useNavigate();
   const { setInviteFriendModal } = useModalStore();
 
   const onClick = () => {
-    navigate(`/${communityId}/${categoryId}`);
+    navigate(`/${communityId}/${channelId}`);
   };
 
   return (
@@ -35,7 +35,7 @@ const CommunityRoomButton = ({
         onClick={() => null}
         height={34}
         color="inactive"
-        active={currentCategoryId === categoryId.toString()}
+        active={currentChannelId === channelId.toString()}
       >
         <CommunityRoomButtonContainer>
           <LeftContainer>

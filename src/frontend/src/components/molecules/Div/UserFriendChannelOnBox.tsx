@@ -3,16 +3,16 @@ import UserChannelOnBox from "./UserChannelOnBox";
 
 interface UserFriendChannelOnBoxProps {
   friend: FriendType;
-  categoryId: number;
+  channelId: number;
 }
 
 const UserFriendChannelOnBox = ({
   friend,
-  categoryId,
+  channelId,
 }: UserFriendChannelOnBoxProps) => {
-  const { data: friendCategoryId } = useGetChatFriends(friend.userId);
+  const { data: friendChannelId } = useGetChatFriends(friend.userId);
 
-  if (Number(friendCategoryId) === categoryId) {
+  if (Number(friendChannelId) === channelId) {
     return (
       <UserChannelOnBox src={friend.profileImagePath} name={friend.name} />
     );

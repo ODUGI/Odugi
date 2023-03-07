@@ -1,28 +1,28 @@
 import CommunityLabel from "../molecules/Div/CommunityLabel";
 import CommunityRoomButton from "../molecules/Div/CommunityRoomButton";
 import { useNavigate, useParams } from "react-router-dom";
-import useGetCategoryList from "@hooks/query/useGetCategoryList";
+import useGetChannelList from "@hooks/query/useGetChannelList";
 import UserChannelOnBox from "@components/molecules/Div/UserChannelOnBox";
 import { useUserStore } from "@store/useUserStore";
 import UserFriendChannelOnBox from "@components/molecules/Div/UserFriendChannelOnBox";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 
-interface CategoryType {
-  category_id: number;
-  category_name: string;
+interface ChannelType {
+  channel_id: number;
+  channel_name: string;
 }
 
 interface RoomType {
   type: number;
-  channel_id: number;
   category_id: number;
+  channel_id: number;
   channel_name: string;
 }
 
 const Tab2CommunityBody = () => {
   const navigate = useNavigate();
-  const { communityId, categoryId } = useParams();
-  const { data: res, isSuccess } = useGetCategoryList({
+  const { communityId, channelId } = useParams();
+  const { data: res, isSuccess } = useGetChannelList({
     communityId,
   });
   const { userInfo } = useUserStore();
@@ -33,15 +33,15 @@ const Tab2CommunityBody = () => {
 
   const List = JSON.parse(JSON.stringify(data[0])).split("},");
   const List2 = JSON.parse(JSON.stringify(data[1])).split("},");
-  const categoryList: CategoryType[] = [];
+  const channelList: ChannelType[] = [];
   const roomList: RoomType[] = [];
 
-  if (List.length > 0 && categoryList.length < List?.length) {
+  if (List.length > 0 && channelList.length < List?.length) {
     for (let i = 0; i < List?.length; i++) {
       if (i !== List.length - 1) {
-        categoryList.push(JSON.parse(List[i] + "}"));
+        channelList.push(JSON.parse(List[i] + "}"));
       } else {
-        categoryList.push(JSON.parse(List[i]));
+        channelList.push(JSON.parse(List[i]));
       }
     }
   }
@@ -55,7 +55,7 @@ const Tab2CommunityBody = () => {
     }
   }
 
-  if (!categoryId) {
+  if (!channelId) {
     let id;
     for (let i = 0; i < roomList.length; i++) {
       if (roomList[i]["type"] === 2) {
@@ -63,31 +63,31 @@ const Tab2CommunityBody = () => {
         break;
       }
     }
-    navigate(`/${categoryId}/${id}`);
+    navigate(`/${channelId}/${id}`);
   }
 
   return (
     <div>
-      {categoryList.map((category: any) => (
+      {channelList.map((channel: any) => (
         <>
-          <CommunityLabel text={category["category_name"]} />
+          <CommunityLabel text={channel["channel_name"]} />
           {roomList
-            .filter((room) => room["category_id"] === category["category_id"])
+            .filter((room) => room["channel_id"] === channel["channel_id"])
             .map((room) => (
               <>
                 <CommunityRoomButton
                   type={room["type"] === 1 ? "voice" : "chat"}
                   text={room["channel_name"]}
                   communityId={communityId}
-                  categoryId={room["category_id"]}
+                  channelId={room["channel_id"]}
                 />
-                {room["category_id"] === Number(categoryId) && (
+                {room["channel_id"] === Number(channelId) && (
                   <UserChannelOnBox />
                 )}
                 {friendList.map((friend: FriendType) => (
                   <UserFriendChannelOnBox
                     friend={friend}
-                    categoryId={room["category_id"]}
+                    channelId={room["channel_id"]}
                   />
                 ))}
               </>
