@@ -37,7 +37,6 @@ const CommunityPage = () => {
           <CancelIconWrapper onClick={() => setCommunitySettingModal(false)}>
             <CancelIcon />
           </CancelIconWrapper>
-          {/* <SeverSettingMember /> */}
           {getStatus(settingStatus)}
         </Container>
       </SettingBox>

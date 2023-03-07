@@ -4,7 +4,7 @@ import { Divider } from "@mui/material";
 import styled from "styled-components";
 import LogoImage from "../atoms/Div/LogoImage";
 
-const SeverSettingMember = () => {
+const CommunitySettingMember = () => {
   return (
     <SettingWrapper>
       <Text
@@ -24,7 +24,7 @@ const SeverSettingMember = () => {
   );
 };
 
-export default SeverSettingMember;
+export default CommunitySettingMember;
 
 const Member = styled.div`
   display: flex;

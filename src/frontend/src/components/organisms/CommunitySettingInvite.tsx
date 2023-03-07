@@ -6,7 +6,7 @@ import LogoImage from "../atoms/Div/LogoImage";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import IconButton from "@mui/material/IconButton";
 
-const SeverSettingInvite = () => {
+const CommunitySettingInvite = () => {
   return (
     <SettingWrapper>
       <>
@@ -63,7 +63,7 @@ const SeverSettingInvite = () => {
   );
 };
 
-export default SeverSettingInvite;
+export default CommunitySettingInvite;
 
 const Member = styled.div`
   display: flex;

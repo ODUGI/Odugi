@@ -9,11 +9,11 @@ import { useMutation } from "@tanstack/react-query";
 import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
 import useInput from "@hooks/common/useInput";
-import useModifyCommunityImage from "@hooks/query/useModifyCommunityImage";
 import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
 import communityApi from "@api/community";
+import useModifyCommunityImage from "@hooks/query/useModifyCommunityImage";
 
-const SeverSettingDefault = () => {
+const CommunitySettingDefault = () => {
   let formData = new FormData();
   const { communityId } = useParams();
   const { userInfo } = useUserStore();
@@ -96,7 +96,7 @@ const SeverSettingDefault = () => {
   );
 };
 
-export default SeverSettingDefault;
+export default CommunitySettingDefault;
 
 const ButtonWrapper = styled.div`
   width: 140px;
