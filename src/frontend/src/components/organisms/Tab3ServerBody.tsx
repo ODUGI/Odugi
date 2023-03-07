@@ -4,7 +4,6 @@ const Tab3CommunityBody = () => {
   return (
     <Tab3CommunityBodyContainer>
       {/* <MainDirectBody /> */}
-      <MainVoiceRoomBody />
     </Tab3CommunityBodyContainer>
   );
 };
