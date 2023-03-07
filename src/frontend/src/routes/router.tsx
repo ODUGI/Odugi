@@ -54,7 +54,7 @@ const Router = () => {
       />
 
       <Route
-        path="/:serverId"
+        path="/:communityId"
         element={
           <ProtectPage>
             <Server />
@@ -62,7 +62,7 @@ const Router = () => {
         }
       />
       <Route
-        path="/:serverId/:channelId"
+        path="/:communityId/:channelId"
         element={
           <ProtectPage>
             <Server />
