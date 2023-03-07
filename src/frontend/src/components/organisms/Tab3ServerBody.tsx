@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import MainDirectBody from "./MainDirectBody";
-import MainVoiceRoomBody from "./MainVoiceRoomBody";
 
 const Tab3CommunityBody = () => {
   return (

@@ -2,7 +2,7 @@ import ButtonWrapper from "@components/atoms/Button/ButtonWrapper";
 import Text from "@components/atoms/Text/Text";
 import { MouseEventHandler, ReactElement } from "react";
 import styled from "styled-components";
-import UserState32 from "./UserState32";
+import UserState from "./UserState";
 
 interface FriendBoxProps {
   name: string;
@@ -24,7 +24,7 @@ const FriendBox = ({ name, status, onClick, Buttons, src }: FriendBoxProps) => {
     <ButtonWrapper onClick={onClick}>
       <FriendDefaultBoxContainer>
         <UserContainer>
-          <UserState32 src={src} status={status} />
+          <UserState type="s" src={src} status={status} />
           <UserText>
             <Text text={name} color="white" fontWeight="bold" mb={3} />
             <Text text={statusTable[status]} fontSize="sm" color="auth-desc" />
