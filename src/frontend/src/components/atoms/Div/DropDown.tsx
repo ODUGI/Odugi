@@ -5,16 +5,16 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const DropDown = () => {
-  const [server, setServer] = useState("");
+  const [community, setCommunity] = useState("");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setServer(event.target.value as string);
+    setCommunity(event.target.value as string);
   };
 
   return (
     <StyledFormControl>
       <Select
-        value={server}
+        value={community}
         onChange={handleChange}
         sx={{ color: "white", display: "flex", flexDirection: "row" }}
       >

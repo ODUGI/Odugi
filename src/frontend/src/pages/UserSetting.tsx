@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import ServerSettingBar from "../components/organisms/MyAccountSettingBar";
+import CommunitySettingBar from "../components/organisms/MyAccountSettingBar";
 import UserProfile from "../components/organisms/UserProfile";
 import MyAccount from "../components/organisms/MyAccount";
 import useUserSetStore, { UserSettingType } from "../store/useUserSetStore";
 import BackgroundModal from "@components/organisms/BackgroundModal";
-import useUserSettingModalStore from "@store/useUserSettingModalStore";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
+import useModalStore from "@store/useModalStore";
 const userComponent = {
   "내 계정": MyAccount,
   프로필: UserProfile,
@@ -18,10 +18,9 @@ const getStatus = (status: UserSettingType) => {
 };
 
 const UserSetting = () => {
-  const { setUserSettingModal } = useUserSettingModalStore();
-  const { userStatus } = useUserSetStore(({ userStatus }) => ({
-    userStatus,
-  }));
+  const { userStatus } = useUserSetStore();
+  const { setUserSettingModal } = useModalStore();
+
   return (
     <BackgroundModal
       width={800}
@@ -30,7 +29,7 @@ const UserSetting = () => {
     >
       <SettingBox>
         <Side>
-          <ServerSettingBar />
+          <CommunitySettingBar />
         </Side>
         <Container>
           <CancelIconWrapper onClick={() => setUserSettingModal(false)}>

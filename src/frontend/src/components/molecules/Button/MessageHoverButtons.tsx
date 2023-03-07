@@ -5,9 +5,12 @@ import EditIcon from "@components/atoms/Icons/EditIcon";
 import DeleteIcon from "@components/atoms/Icons/DeleteIcon";
 
 const MessageHoverButtons = () => {
-  const { serverId } = useParams();
+  const { communityId } = useParams();
   return (
-    <MessageHoverButtonsContainer className="msg-hover" isServer={!!serverId}>
+    <MessageHoverButtonsContainer
+      className="msg-hover"
+      isCommunity={!!communityId}
+    >
       <IconWrapper>
         <EditIcon />
       </IconWrapper>
@@ -18,13 +21,13 @@ const MessageHoverButtons = () => {
   );
 };
 
-const MessageHoverButtonsContainer = styled.div<{ isServer: boolean }>`
+const MessageHoverButtonsContainer = styled.div<{ isCommunity: boolean }>`
   display: flex;
   flex-direction: row;
   position: fixed;
   z-index: 2;
   height: 2rem;
-  right: ${({ isServer }) => (isServer ? 1 : 23.125)}rem;
+  right: ${({ isCommunity }) => (isCommunity ? 1 : 23.125)}rem;
   visibility: hidden;
   margin-top: -1rem;
   border-radius: 0.25rem;

@@ -1,47 +1,47 @@
-import ServerLabel from "../molecules/Div/ServerLabel";
-import ServerRoomButton from "../molecules/Div/ServerRoomButton";
+import CommunityLabel from "../molecules/Div/CommunityLabel";
+import CommunityRoomButton from "../molecules/Div/CommunityRoomButton";
 import { useNavigate, useParams } from "react-router-dom";
-import useGetCategoryList from "@hooks/query/useGetCategoryList";
+import useGetChannelList from "@hooks/query/useGetChannelList";
 import UserChannelOnBox from "@components/molecules/Div/UserChannelOnBox";
 import { useUserStore } from "@store/useUserStore";
 import UserFriendChannelOnBox from "@components/molecules/Div/UserFriendChannelOnBox";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 
-interface CategoryType {
-  category_id: number;
-  category_name: string;
+interface ChannelType {
+  channel_id: number;
+  channel_name: string;
 }
 
 interface RoomType {
   type: number;
-  channel_id: number;
   category_id: number;
+  channel_id: number;
   channel_name: string;
 }
 
-const Tab2ServerBody = () => {
+const Tab2CommunityBody = () => {
   const navigate = useNavigate();
-  const { serverId, channelId } = useParams();
-  const { data: res, isSuccess } = useGetCategoryList({
-    communityId: serverId,
+  const { communityId, channelId } = useParams();
+  const { data: res, isSuccess } = useGetChannelList({
+    communityId,
   });
   const { userInfo } = useUserStore();
   const { data: friendList } = useGetFriendList(userInfo.email);
 
   const data = res?.data?.data;
-  if (!serverId || !isSuccess) return <></>;
+  if (!communityId || !isSuccess) return <></>;
 
   const List = JSON.parse(JSON.stringify(data[0])).split("},");
   const List2 = JSON.parse(JSON.stringify(data[1])).split("},");
-  const categoryList: CategoryType[] = [];
+  const channelList: ChannelType[] = [];
   const roomList: RoomType[] = [];
 
-  if (List.length > 0 && categoryList.length < List?.length) {
+  if (List.length > 0 && channelList.length < List?.length) {
     for (let i = 0; i < List?.length; i++) {
       if (i !== List.length - 1) {
-        categoryList.push(JSON.parse(List[i] + "}"));
+        channelList.push(JSON.parse(List[i] + "}"));
       } else {
-        categoryList.push(JSON.parse(List[i]));
+        channelList.push(JSON.parse(List[i]));
       }
     }
   }
@@ -63,22 +63,22 @@ const Tab2ServerBody = () => {
         break;
       }
     }
-    navigate(`/${serverId}/${id}`);
+    navigate(`/${channelId}/${id}`);
   }
 
   return (
     <div>
-      {categoryList.map((category: any) => (
+      {channelList.map((channel: any) => (
         <>
-          <ServerLabel text={category["category_name"]} />
+          <CommunityLabel text={channel["channel_name"]} />
           {roomList
-            .filter((room) => room["category_id"] === category["category_id"])
+            .filter((room) => room["channel_id"] === channel["channel_id"])
             .map((room) => (
               <>
-                <ServerRoomButton
+                <CommunityRoomButton
                   type={room["type"] === 1 ? "voice" : "chat"}
                   text={room["channel_name"]}
-                  serverId={serverId}
+                  communityId={communityId}
                   channelId={room["channel_id"]}
                 />
                 {room["channel_id"] === Number(channelId) && (
@@ -98,4 +98,4 @@ const Tab2ServerBody = () => {
   );
 };
 
-export default Tab2ServerBody;
+export default Tab2CommunityBody;

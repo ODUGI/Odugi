@@ -4,7 +4,7 @@ import Text from "../atoms/Text/Text";
 import LinkText from "../atoms/Text/LinkText";
 import Modal from "@components/organisms/Modal";
 import { useCallback, useState } from "react";
-import ServerLogoUpload from "@components/molecules/Button/ServerLogoUpload";
+import CommunityLogoUpload from "@components/molecules/Button/CommunityLogoUpload";
 import useModifyUserImage from "@hooks/query/useModifyUserImage";
 import { useUserStore } from "@store/useUserStore";
 
@@ -31,7 +31,7 @@ const ImageChange = ({ setOpenModal }: any) => {
   };
   return (
     <Wrapper>
-      <ServerLogoUpload setImg={setImg} />
+      <CommunityLogoUpload setImg={setImg} />
       <AvatarWrapper>
         <FieldButton text="변경하기" onClick={() => updateImage()} />
       </AvatarWrapper>

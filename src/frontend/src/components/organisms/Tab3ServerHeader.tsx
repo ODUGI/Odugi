@@ -8,13 +8,13 @@ import Text from "../atoms/Text/Text";
 import NotificationModal from "../molecules/Div/NotificationModal";
 import SearchInput from "../molecules/Input/SearchInput";
 
-const Tab3ServerHeader = () => {
+const Tab3CommunityHeader = () => {
   const chatroomName = "test";
   const [value, onChange] = useInput();
   const [showNotiModal, setShowNotiModal] = useState(false);
   return (
     <>
-      <Tab3ServerHeaderContainer>
+      <Tab3CommunityHeaderContainer>
         <HeaderLeftWrapper>
           <TagIcon />
           <Text text={chatroomName} color="white" />
@@ -28,13 +28,13 @@ const Tab3ServerHeader = () => {
             <SearchInput size="s" value={value} onChange={onChange} />
           </SearchInputWrapper>
         </HeaderRightWrapper>
-      </Tab3ServerHeaderContainer>
+      </Tab3CommunityHeaderContainer>
       <TabDivider />
     </>
   );
 };
 
-const Tab3ServerHeaderContainer = styled.div`
+const Tab3CommunityHeaderContainer = styled.div`
   position: sticky;
   top: 0;
   width: 100%;
@@ -77,4 +77,4 @@ const SearchInputWrapper = styled.div`
   width: 9rem;
 `;
 
-export default Tab3ServerHeader;
+export default Tab3CommunityHeader;

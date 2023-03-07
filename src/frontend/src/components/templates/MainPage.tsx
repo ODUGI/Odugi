@@ -1,22 +1,24 @@
 import styled from "styled-components";
 import MainBody from "../organisms/MainBody";
-import ServerList from "../organisms/ServerList";
+import CommunityList from "../organisms/CommunityList";
 import Tab2MainBody from "../organisms/Tab2MainBody";
 import Tab2Footer from "../organisms/Tab2Footer";
 import Tab2MainHeader from "../organisms/Tab2MainHeader";
 import Tab3MainHeader from "../organisms/Tab3MainHeader";
-import useUserSettingModalStore from "@store/useUserSettingModalStore";
 import UserSetting from "@pages/UserSetting";
 import { useEffect } from "react";
+import useModalStore from "@store/useModalStore";
 
 const MainPage = () => {
-  const { userSettingModal, setUserSettingModal } = useUserSettingModalStore();
+  const { userSettingModal, setUserSettingModal } = useModalStore();
+
   useEffect(() => {
     setUserSettingModal(false);
   }, []);
+
   return (
     <>
-      <ServerList />
+      <CommunityList />
       <Tab2Container>
         <Tab2MainHeader />
         <Tab2MainBody />

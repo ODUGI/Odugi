@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-const Tab3ServerBody = () => {
+const Tab3CommunityBody = () => {
   return (
-    <Tab3ServerBodyContainer>
+    <Tab3CommunityBodyContainer>
       {/* <MainDirectBody /> */}
-    </Tab3ServerBodyContainer>
+      <MainVoiceRoomBody />
+    </Tab3CommunityBodyContainer>
   );
 };
 
-const Tab3ServerBodyContainer = styled.div`
+const Tab3CommunityBodyContainer = styled.div`
   /* padding: 0 20px;
   margin-top: 4px; */
   position: relative;
@@ -19,4 +20,4 @@ const Tab3ServerBodyContainer = styled.div`
   width: 100%;
 `;
 
-export default Tab3ServerBody;
+export default Tab3CommunityBody;
