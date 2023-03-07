@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ButtonWrapper from "@components/atoms/Button/ButtonWrapper";
 import Text from "@components/atoms/Text/Text";
 import { useNavigate, useParams } from "react-router-dom";
-import UserState32 from "../Div/UserState32";
+import UserState from "../Div/UserState";
 import useSendToStore from "@store/useSendToStore";
 import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
 import useMainStore from "@store/useMainStore";
@@ -39,7 +39,7 @@ const DirectButton = ({ id, name, userId, src }: DirectButtonProps) => {
       color="inactive"
     >
       <DirectButtonContainer>
-        <UserState32 status={status?.data.data} src={src} />
+        <UserState type="s" status={status?.data.data} src={src} />
         <Text text={name} />
       </DirectButtonContainer>
     </ButtonWrapper>

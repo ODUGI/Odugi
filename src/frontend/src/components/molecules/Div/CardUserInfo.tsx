@@ -1,9 +1,8 @@
-import FieldButton from "@components/atoms/Button/fieldButton";
 import SettingButton from "@components/atoms/Button/SettingButton";
 import Text from "@components/atoms/Text/Text";
 import { useUserStore } from "@store/useUserStore";
 import styled from "styled-components";
-import UserState80 from "./UserState80";
+import UserState from "./UserState";
 
 const CardUserInfo = () => {
   const { userInfo } = useUserStore();
@@ -11,7 +10,7 @@ const CardUserInfo = () => {
   return (
     <InfoContainer>
       <Logo>
-        <UserState80 src={userInfo.profileImagePath} status="1" />
+        <UserState type="m" src={userInfo.profileImagePath} status="1" />
       </Logo>
       <NameWrapper>
         <Text
