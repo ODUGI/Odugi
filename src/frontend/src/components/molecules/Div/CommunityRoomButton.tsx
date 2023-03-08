@@ -22,10 +22,15 @@ const CommunityRoomButton = ({
 }: CommunityRoomButtonProps) => {
   const { channelId: currentChannelId } = useParams();
   const navigate = useNavigate();
-  const { setInviteFriendModal } = useModalStore();
+  const { setShowModal, setModalType } = useModalStore();
 
   const onClick = () => {
     navigate(`/${communityId}/${channelId}`);
+  };
+
+  const showInviteModal = () => {
+    setModalType("inviteFriend");
+    setShowModal(true);
   };
 
   return (
@@ -42,10 +47,7 @@ const CommunityRoomButton = ({
             {type === "chat" ? <TagIcon /> : <VolumeIcon />}
             <Text text={text} />
           </LeftContainer>
-          <div
-            className="right-icon"
-            onClick={() => setInviteFriendModal(true)}
-          >
+          <div className="right-icon" onClick={showInviteModal}>
             <PersonAddIcon />
           </div>
         </CommunityRoomButtonContainer>

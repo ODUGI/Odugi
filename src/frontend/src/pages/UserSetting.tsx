@@ -19,20 +19,20 @@ const getStatus = (status: UserSettingType) => {
 
 const UserSetting = () => {
   const { userStatus } = useUserSetStore();
-  const { setUserSettingModal } = useModalStore();
+  const { setShowModal } = useModalStore();
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
-    <BackgroundModal
-      width={800}
-      p={0}
-      onClick={() => setUserSettingModal(false)}
-    >
+    <BackgroundModal width={800} p={0} onClick={closeModal}>
       <SettingBox>
         <Side>
           <CommunitySettingBar />
         </Side>
         <Container>
-          <CancelIconWrapper onClick={() => setUserSettingModal(false)}>
+          <CancelIconWrapper onClick={closeModal}>
             <CancelIcon />
           </CancelIconWrapper>
           {/* <UserProfile /> */}

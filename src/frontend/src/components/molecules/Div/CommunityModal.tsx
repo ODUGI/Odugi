@@ -2,16 +2,16 @@ import DropdownModal from "@components/atoms/Div/DropdownModal";
 import EditIcon from "@components/atoms/Icons/EditIcon";
 import LogoutIcon from "@components/atoms/Icons/LogoutIcon";
 import PersonAddIcon from "@components/atoms/Icons/PersonAddIcon";
-import useModalStore from "@store/useModalStore";
+import useModalStore, { ModalType } from "@store/useModalStore";
 import styled from "styled-components";
 import DropdownModalButton from "../Button/DropdownModalButton";
 
-const CommunityModal = ({ setShowModal }: any) => {
-  const { setInviteFriendModal, setCommunitySettingModal } = useModalStore();
+const CommunityModal = () => {
+  const { setModalType, setShowModal } = useModalStore();
 
-  const setModal = () => {
-    setCommunitySettingModal(true);
-    setShowModal(false);
+  const setModal = (modalType: ModalType) => {
+    setModalType(modalType);
+    setShowModal(true);
   };
 
   return (
@@ -19,12 +19,12 @@ const CommunityModal = ({ setShowModal }: any) => {
       <DropdownModalButton
         text="초대하기"
         color="invite"
-        onClick={() => setInviteFriendModal(true)}
+        onClick={() => setModal("inviteFriend")}
         Icon={<PersonAddIcon />}
       />
       <DropdownModalButton
         text="서버 설정"
-        onClick={() => setModal()}
+        onClick={() => setModal("communitySetting")}
         Icon={<EditIcon />}
       />
       <Divider />

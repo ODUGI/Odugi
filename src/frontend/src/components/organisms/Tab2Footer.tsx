@@ -9,7 +9,12 @@ import UserInfoButton from "../molecules/Button/UserInfoButton";
 import UserOnOffButton from "../molecules/Button/UserOnOffButton";
 
 const Tab2Footer = () => {
-  const { setUserSettingModal } = useModalStore();
+  const { setModalType, setShowModal } = useModalStore();
+
+  const showSettingModal = () => {
+    setModalType("userSetting");
+    setShowModal(true);
+  };
 
   return (
     <>
@@ -34,7 +39,7 @@ const Tab2Footer = () => {
             text="사용자 설정"
             OnIcon={<SettingsIcon />}
             OffIcon={<SettingsIcon />}
-            onClick={() => setUserSettingModal(true)}
+            onClick={showSettingModal}
           />
         </ButtonContainer>
       </Tab2FooterContainer>

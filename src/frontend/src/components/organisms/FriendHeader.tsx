@@ -1,4 +1,5 @@
-import { useState } from "react";
+import useOutsideClick from "@hooks/common/useOutsideClick";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import FriendHeaderLeft from "../atoms/Div/FriendHeaderLeft";
 import MainTabButton from "../atoms/Div/MainTabButton";
@@ -8,6 +9,10 @@ import CreateDirectMessageModal from "./CreateDirectMessageModal";
 
 const FriendHeader = () => {
   const [showDMModal, setShowDMModal] = useState(false);
+  const modalRef = useRef<any>();
+
+  useOutsideClick(modalRef, () => setShowDMModal(false));
+
   return (
     <>
       <FriendHeaderContainer>
@@ -25,7 +30,7 @@ const FriendHeader = () => {
         </Tip>
       </FriendHeaderContainer>
       {showDMModal && (
-        <DMModalWrapper>
+        <DMModalWrapper ref={modalRef}>
           <CreateDirectMessageModal top={20} left={-440} />
         </DMModalWrapper>
       )}

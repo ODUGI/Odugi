@@ -1,12 +1,11 @@
-import { useState } from "react";
+import useModalStore from "@store/useModalStore";
 import styled from "styled-components";
 import TabDivider from "../atoms/Div/TabDivider";
 import ArrowBottomIcon from "../atoms/Icons/ArrowBottomIcon";
 import Text from "../atoms/Text/Text";
-import CommunityModal from "../molecules/Div/CommunityModal";
 
 const Tab2CommunityHeader = () => {
-  const [showModal, setShowModal] = useState(false);
+  const { showModal, setShowModal } = useModalStore();
   const communityName = "자바스크립트 스터디";
   return (
     <>
@@ -17,7 +16,6 @@ const Tab2CommunityHeader = () => {
         <Text text={communityName} color="white" />
         <ArrowBottomIcon />
       </Tab2HeaderContainer>
-      {showModal && <CommunityModal setShowModal={setShowModal} />}
       <TabDivider />
     </>
   );

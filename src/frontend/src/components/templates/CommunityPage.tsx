@@ -10,21 +10,13 @@ import Tab2CommunityHeader from "@components/organisms/Tab2ServerHeader";
 import Tab2CommunityBody from "@components/organisms/Tab2ServerBody";
 import Tab3CommunityHeader from "@components/organisms/Tab3ServerHeader";
 import Tab3CommunityBody from "@components/organisms/Tab3ServerBody";
+import CommunityModal from "@components/molecules/Div/CommunityModal";
 
 const CommunityPage = () => {
-  const {
-    inviteFriendModal,
-    userSettingModal,
-    communitySettingModal,
-    setInviteFriendModal,
-    setUserSettingModal,
-    setCommunitySettingModal,
-  } = useModalStore();
+  const { setShowModal, showModal, modalType } = useModalStore();
 
   useEffect(() => {
-    setInviteFriendModal(false);
-    setUserSettingModal(false);
-    setCommunitySettingModal(false);
+    setShowModal(false);
   }, []);
 
   return (
@@ -39,9 +31,10 @@ const CommunityPage = () => {
         <Tab3CommunityHeader />
         <Tab3CommunityBody />
       </Tab3Container>
-      {inviteFriendModal && <InviteFriendModal />}
-      {userSettingModal && <UserSetting />}
-      {communitySettingModal && <CommunitySetting />}
+      {showModal && modalType === "inviteFriend" && <InviteFriendModal />}
+      {showModal && modalType === "userSetting" && <UserSetting />}
+      {showModal && modalType === "communitySetting" && <CommunitySetting />}
+      {showModal && modalType === "community" && <CommunityModal />}
     </>
   );
 };

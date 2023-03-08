@@ -5,13 +5,10 @@ import BackgroundModal from "./BackgroundModal";
 import useModalStore from "@store/useModalStore";
 
 const InviteFriendModal = () => {
-  const { setInviteFriendModal } = useModalStore();
+  const { setShowModal } = useModalStore();
+
   return (
-    <BackgroundModal
-      width={440}
-      p={0}
-      onClick={() => setInviteFriendModal(false)}
-    >
+    <BackgroundModal width={440} p={0} onClick={() => setShowModal(false)}>
       <>
         <InviteFriendModalHeader />
         <InviteFriendModalBody />

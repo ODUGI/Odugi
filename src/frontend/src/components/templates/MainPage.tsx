@@ -5,15 +5,19 @@ import Tab2MainBody from "../organisms/Tab2MainBody";
 import Tab2Footer from "../organisms/Tab2Footer";
 import Tab2MainHeader from "../organisms/Tab2MainHeader";
 import Tab3MainHeader from "../organisms/Tab3MainHeader";
-import UserSetting from "@pages/UserSetting";
 import { useEffect } from "react";
 import useModalStore from "@store/useModalStore";
+import InviteFriendModal from "@components/organisms/InviteFriendModal";
+import UserSetting from "@pages/UserSetting";
+import CommunitySettingBar from "@components/organisms/CommunitySettingBar";
+import CommunityModal from "@components/molecules/Div/CommunityModal";
 
 const MainPage = () => {
-  const { userSettingModal, setUserSettingModal } = useModalStore();
+  const { setShowModal, showModal, modalType } = useModalStore();
+  console.log(showModal, modalType);
 
   useEffect(() => {
-    setUserSettingModal(false);
+    setShowModal(false);
   }, []);
 
   return (
@@ -28,7 +32,10 @@ const MainPage = () => {
         <Tab3MainHeader />
         <MainBody />
       </Tab3Container>
-      {userSettingModal && <UserSetting />}
+      {showModal && modalType === "inviteFriend" && <InviteFriendModal />}
+      {showModal && modalType === "userSetting" && <UserSetting />}
+      {showModal && modalType === "communitySetting" && <CommunitySettingBar />}
+      {showModal && modalType === "community" && <CommunityModal />}
     </>
   );
 };
