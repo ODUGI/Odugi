@@ -13,60 +13,60 @@ const Router = () => {
       <Route
         path={"/"}
         element={
-          <ProtectPage>
-            <Main />
-          </ProtectPage>
+          // <ProtectPage>
+          <Main />
+          // </ProtectPage>
         }
       />
 
       <Route
         path="/login"
         element={
-          <ProtectAuth>
-            <Login />
-          </ProtectAuth>
+          // <ProtectAuth>
+          <Login />
+          // </ProtectAuth>
         }
       />
       <Route
         path="/register"
         element={
-          <ProtectAuth>
-            <Register />
-          </ProtectAuth>
+          // <ProtectAuth>
+          <Register />
+          // </ProtectAuth>
         }
       />
 
       <Route
         path={"/@me"}
         element={
-          <ProtectPage>
-            <Main />
-          </ProtectPage>
+          // <ProtectPage>
+          <Main />
+          // </ProtectPage>
         }
       />
       <Route
         path="/@me/:channelId"
         element={
-          <ProtectPage>
-            <Main />
-          </ProtectPage>
+          // <ProtectPage>
+          <Main />
+          // </ProtectPage>
         }
       />
 
       <Route
         path="/:communityId"
         element={
-          <ProtectPage>
-            <Community />
-          </ProtectPage>
+          // <ProtectPage>
+          <Community />
+          // </ProtectPage>
         }
       />
       <Route
         path="/:communityId/:channelId"
         element={
-          <ProtectPage>
-            <Community />
-          </ProtectPage>
+          // <ProtectPage>
+          <Community />
+          // </ProtectPage>
         }
       />
 
