@@ -20,6 +20,15 @@ const MainPage = () => {
     setShowModal(false);
   }, []);
 
+  const modalTable = {
+    inviteFriend: <InviteFriendModal />,
+    userSetting: <UserSetting />,
+    communitySetting: <CommunitySettingBar />,
+    community: <CommunityModal />,
+  };
+
+  const Component = modalType ? modalTable[modalType] : <></>;
+
   return (
     <>
       <CommunityList />
@@ -32,10 +41,7 @@ const MainPage = () => {
         <Tab3MainHeader />
         <MainBody />
       </Tab3Container>
-      {showModal && modalType === "inviteFriend" && <InviteFriendModal />}
-      {showModal && modalType === "userSetting" && <UserSetting />}
-      {showModal && modalType === "communitySetting" && <CommunitySettingBar />}
-      {showModal && modalType === "community" && <CommunityModal />}
+      {showModal && Component}
     </>
   );
 };
