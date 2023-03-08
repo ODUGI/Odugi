@@ -2,7 +2,7 @@ import { MouseEventHandler, ReactElement } from "react";
 import styled from "styled-components";
 import { BackgroundColorType, ColorType, FontSizeType } from "@styles/theme";
 
-interface DarkModalButtonProps {
+interface DropdownModalButtonProps {
   text: string;
   onClick: MouseEventHandler<HTMLDivElement>;
   color?: ColorType;
@@ -11,14 +11,14 @@ interface DarkModalButtonProps {
   Icon?: ReactElement;
 }
 
-const DarkModalButton = ({
+const DropdownModalButton = ({
   text,
   onClick,
   color = "auth-desc",
   hoverBackgroundColor = "primary",
   fontSize = "sm",
   Icon = <></>,
-}: DarkModalButtonProps) => {
+}: DropdownModalButtonProps) => {
   return (
     <TextWrapper
       hoverBackgroundColor={hoverBackgroundColor}
@@ -61,4 +61,4 @@ const Text = styled.p<{
   font-size: ${({ theme, fontSize }) => theme.fontSize[fontSize]};
 `;
 
-export default DarkModalButton;
+export default DropdownModalButton;

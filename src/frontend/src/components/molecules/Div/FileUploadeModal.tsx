@@ -1,18 +1,18 @@
-import DarkModal from "@components/atoms/Div/DarkModal";
+import DropdownModal from "@components/atoms/Div/DropdownModal";
 import UploadIcon from "@components/atoms/Icons/UploadIcon";
 import Text from "@components/atoms/Text/Text";
 import styled from "styled-components";
 
 const FileUploadModal = () => {
   return (
-    <DarkModal width={200} top={-60}>
+    <DropdownModal width={200} top={-60}>
       <FileUploadModalWrapper>
         <UploadIconWrapper onClick={() => null}>
           <UploadIcon />
         </UploadIconWrapper>
         <Text text="파일 업로드" fontSize="sm" />
       </FileUploadModalWrapper>
-    </DarkModal>
+    </DropdownModal>
   );
 };
 

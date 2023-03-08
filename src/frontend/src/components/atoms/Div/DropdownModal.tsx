@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface DarkModalProps {
+interface DropdownModalProps {
   width: number;
   top?: number | null;
   right?: number | null;
@@ -8,7 +8,7 @@ interface DarkModalProps {
   bottom?: number | null;
 }
 
-const DarkModal = styled.div<DarkModalProps>`
+const DropdownModal = styled.div<DropdownModalProps>`
   position: absolute;
   border-radius: 4px;
   z-index: 9;
@@ -21,4 +21,4 @@ const DarkModal = styled.div<DarkModalProps>`
   ${({ bottom }) => bottom && `bottom: ${bottom}px`};
 `;
 
-export default DarkModal;
+export default DropdownModal;
