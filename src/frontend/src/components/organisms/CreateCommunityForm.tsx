@@ -9,7 +9,7 @@ import { useUserStore } from "@store/useUserStore";
 import { useState } from "react";
 import BackgroundModal from "./BackgroundModal";
 import communityApi from "@api/community";
-import CreateCommunityText from "@components/molecules/Text/CommunityServerText";
+import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
 
 const CreateCommunityForm = () => {
   const { userInfo } = useUserStore();

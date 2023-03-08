@@ -6,7 +6,7 @@ import AddIcon from "@components/atoms/Icons/AddIcon";
 import { useUserStore } from "@store/useUserStore";
 import ScrollableBox from "@components/molecules/Div/scrollableBox";
 import Ottogi from "../../assets/images/OttogiOttogi.png";
-import useGetCommunityList from "@hooks/query/useGetServerList";
+import useGetCommunityList from "@hooks/query/useGetCommunityList";
 
 const CommunityList = () => {
   const navigate = useNavigate();

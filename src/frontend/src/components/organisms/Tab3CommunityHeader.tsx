@@ -1,5 +1,6 @@
 import useInput from "@hooks/common/useInput";
-import { useState } from "react";
+import useOutsideClick from "@hooks/common/useOutsideClick";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import TabDivider from "../atoms/Div/TabDivider";
 import NotificationsIcon from "../atoms/Icons/NotificationsIcon";
@@ -12,6 +13,10 @@ const Tab3CommunityHeader = () => {
   const chatroomName = "test";
   const [value, onChange] = useInput();
   const [showNotiModal, setShowNotiModal] = useState(false);
+  const alarmRef = useRef<any>();
+
+  useOutsideClick(alarmRef, () => setShowNotiModal(false));
+
   return (
     <>
       <Tab3CommunityHeaderContainer>
@@ -23,7 +28,7 @@ const Tab3CommunityHeader = () => {
           <div onClick={() => setShowNotiModal(!showNotiModal)}>
             <NotificationsIcon />
           </div>
-          {showNotiModal && <NotificationModal />}
+          {showNotiModal && <NotificationModal alarmRef={alarmRef} />}
           <SearchInputWrapper>
             <SearchInput size="s" value={value} onChange={onChange} />
           </SearchInputWrapper>
