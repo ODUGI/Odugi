@@ -3,16 +3,18 @@ import { Divider } from "../atoms/Div/Divider.stories";
 import CommunityImage from "../atoms/Div/CommunityImage";
 import { useNavigate, useParams } from "react-router-dom";
 import AddIcon from "@components/atoms/Icons/AddIcon";
-import useGetCommunityList from "@hooks/query/useGetCommunityList";
 import { useUserStore } from "@store/useUserStore";
 import ScrollableBox from "@components/molecules/Div/scrollableBox";
 import Ottogi from "../../assets/images/OttogiOttogi.png";
+import useGetCommunityList from "@hooks/query/useGetServerList";
+
 const CommunityList = () => {
   const navigate = useNavigate();
+
   const params = useParams();
+
   const { userInfo } = useUserStore();
   const { list } = useGetCommunityList({ userId: userInfo.id });
-  console.log(list);
 
   const onMain = () => {
     navigate("/@me");

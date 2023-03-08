@@ -6,10 +6,10 @@ import styled from "styled-components";
 import InviteFriendModal from "../organisms/InviteFriendModal";
 import CommunityList from "../organisms/CommunityList";
 import Tab2Footer from "../organisms/Tab2Footer";
-import Tab2CommunityBody from "../organisms/Tab2CommunityBody";
-import Tab2CommunityHeader from "../organisms/Tab2CommunityHeader";
-import Tab3CommunityBody from "../organisms/Tab3CommunityBody";
-import Tab3CommunityHeader from "../organisms/Tab3CommunityHeader";
+import Tab2CommunityHeader from "@components/organisms/Tab2ServerHeader";
+import Tab2CommunityBody from "@components/organisms/Tab2ServerBody";
+import Tab3CommunityHeader from "@components/organisms/Tab3ServerHeader";
+import Tab3CommunityBody from "@components/organisms/Tab3ServerBody";
 
 const CommunityPage = () => {
   const {

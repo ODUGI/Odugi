@@ -1,4 +1,4 @@
-import CreateCommunityText from "./CreateCommunityText";
+import CreateCommunityText from "./CommunityServerText";
 
 export default {
   title: "molecules/Text",
