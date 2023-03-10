@@ -16,6 +16,7 @@ const FriendHeaderLeft = () => {
 const FriendHeaderLeftContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.5rem;
   svg {
     color: ${({ theme }) => theme.color["tab3-header"]};
