@@ -29,7 +29,7 @@ const UserProfilePage = () => {
             <FieldButton text="아바타 변경하기" onClick={showModal} />
           </AvatarWrapper>
           <LinkWrapper>
-            <LinkText text="아바타 제거하기" onClick={() => console.log(1)} />
+            <LinkText text="아바타 제거하기" onClick={() => null} />
           </LinkWrapper>
         </CustomButtons>
         {/* <Text

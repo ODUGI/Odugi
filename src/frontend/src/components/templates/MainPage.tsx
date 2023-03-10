@@ -13,7 +13,6 @@ import CommunitySettingBar from "@components/organisms/CommunitySettingBar";
 
 const MainPage = () => {
   const { setShowModal, showModal, modalType } = useModalStore();
-  console.log(showModal, modalType);
 
   useEffect(() => {
     setShowModal(false);

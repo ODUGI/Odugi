@@ -2,19 +2,15 @@ import styled from "styled-components";
 import CommunitySettingBar from "../components/organisms/MyAccountSettingBar";
 import UserProfile from "../components/organisms/UserProfile";
 import MyAccount from "../components/organisms/MyAccount";
-import useUserSetStore, { UserSettingType } from "../store/useUserSetStore";
+import useUserSetStore from "../store/useUserSetStore";
 import BackgroundModal from "@components/organisms/BackgroundModal";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
+
 const userComponent = {
   "내 계정": MyAccount,
   프로필: UserProfile,
   알림: UserProfile,
-};
-
-const getStatus = (status: UserSettingType) => {
-  const Component = userComponent[status];
-  return <Component />;
 };
 
 const UserSetting = () => {
@@ -24,6 +20,8 @@ const UserSetting = () => {
   const closeModal = () => {
     setShowModal(false);
   };
+
+  const Component = userComponent[userStatus];
 
   return (
     <BackgroundModal width={800} p={0}>
@@ -35,15 +33,12 @@ const UserSetting = () => {
           <CancelIconWrapper onClick={closeModal}>
             <CancelIcon />
           </CancelIconWrapper>
-          {/* <UserProfile /> */}
-          {getStatus(userStatus)}
+          <Component />
         </Container>
       </SettingBox>
     </BackgroundModal>
   );
 };
-
-export default UserSetting;
 
 const CancelIconWrapper = styled.div`
   font-size: 5rem;
@@ -84,3 +79,5 @@ const Side = styled.div`
   flex: 1 1 auto;
   justify-content: flex-end;
 `;
+
+export default UserSetting;

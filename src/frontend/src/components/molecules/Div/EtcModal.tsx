@@ -6,7 +6,6 @@ import DropdownModalButton from "../Button/DropdownModalButton";
 
 const EtcModal = () => {
   const { deleteFriendEmail } = useMainStore();
-  console.log(deleteFriendEmail);
   const { mutate: deleteFriend } = useRejectFriend();
 
   const clickDeleteFriend = (e: MouseEvent<HTMLDivElement>) => {

@@ -26,10 +26,8 @@ const CardUserInfo = () => {
         <SettingButton
           text="사용자 프로필 편집"
           status={"프로필"}
-          onClick={() => {
-            console.log(1);
-          }}
-          // <FieldButton text="사용자 프로필 편집" onClick={() => console.log(1)} />
+          onClick={() => null}
+          // <FieldButton text="사용자 프로필 편집" onClick={() => null} />
         />
       </ButtonWrapper>
     </InfoContainer>

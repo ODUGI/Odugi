@@ -32,7 +32,7 @@ const MyAccount = () => {
         <ButtonWrappper>
           <FieldButton
             text="비밀번호 변경하기"
-            onClick={() => console.log(1)}
+            onClick={() => null}
             fontWeight="bold"
           />
         </ButtonWrappper>

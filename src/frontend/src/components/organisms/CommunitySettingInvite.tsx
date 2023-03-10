@@ -42,7 +42,7 @@ const CommunitySettingInvite = () => {
         </Member>
         <Member>
           <Mini1>
-            <LogoImage height={3} width={3} onClick={() => console.log(1)} />
+            <LogoImage height={3} width={3} onClick={() => null} />
             <Text text={"김현우"} color="white" fontSize="sm" />
           </Mini1>
           <Mini1>

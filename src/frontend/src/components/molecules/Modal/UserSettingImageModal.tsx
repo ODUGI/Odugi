@@ -26,7 +26,6 @@ const UserSettingImageModal = () => {
   });
 
   const closeModal = () => {
-    console.log(showSettingModal);
     setShowSettingModal(false);
   };
 

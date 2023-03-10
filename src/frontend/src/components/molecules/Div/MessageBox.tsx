@@ -37,7 +37,6 @@ const MessageBox = ({
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      console.log(value);
       addChatMessage();
     } else if (e.key === "Tab") {
       e.preventDefault();

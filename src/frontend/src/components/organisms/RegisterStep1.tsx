@@ -19,9 +19,6 @@ const RegisterStep1 = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const { mutate: sendEmail } = useSendEmail({
-    onError: () => {
-      console.log("err");
-    },
     onSuccess: () => {
       setStep(2);
     },

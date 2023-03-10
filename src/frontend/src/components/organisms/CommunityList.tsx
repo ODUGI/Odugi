@@ -63,7 +63,6 @@ const CommunityList = () => {
   //   return <EmptyContainer />;
   // }
 
-  // console.log("res", res);
   // const List = res?.data.data[0].split("},");
   // if (List[0] === "") return <EmptyContainer />;
 

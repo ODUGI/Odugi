@@ -34,7 +34,6 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
       channelId: channelId,
       linkMessage: `${backUrl}/invite/${shortUrl}/${userId}`,
     });
-    console.log(`${backUrl}/invite/${shortUrl}/${userId}`);
   };
 
   return (
