@@ -1,3 +1,4 @@
+import useModalStore from "@store/useModalStore";
 import { flexCenter } from "@styles/flexCenter";
 import { ReactElement } from "react";
 import styled from "styled-components";
@@ -7,17 +8,27 @@ interface BackgroundModalProps {
   children: ReactElement;
   width: number;
   p: number;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const BackgroundModal = ({
-  onClick,
   children,
   width,
   p,
+  onClick,
 }: BackgroundModalProps) => {
+  const { setShowModal } = useModalStore();
+
+  const closeModal = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      setShowModal(false);
+    }
+  };
+
   return (
-    <BackgroundWrapper onClick={onClick}>
+    <BackgroundWrapper onClick={closeModal}>
       <DefaultModal width={width} p={p} onClick={(e) => e.stopPropagation()}>
         {children}
       </DefaultModal>
@@ -30,7 +41,9 @@ const BackgroundWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   position: fixed;
-  z-index: 10000;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.8);
 `;
 

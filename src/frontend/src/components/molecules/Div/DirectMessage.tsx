@@ -12,7 +12,7 @@ const DirectMessage = () => {
       <DirectMessageContainer>
         <Text text="다이렉트 메시지" fontSize="xs" fontWeight="bold" />
         <Tip title="DM 생성" place="top">
-          <PlusButtonContainer onClick={() => setShowDMModal(!showDMModal)}>
+          <PlusButtonContainer onClick={() => setShowDMModal((prev) => !prev)}>
             <AddIcon />
           </PlusButtonContainer>
         </Tip>

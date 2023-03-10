@@ -26,7 +26,7 @@ const UserSetting = () => {
   };
 
   return (
-    <BackgroundModal width={800} p={0} onClick={closeModal}>
+    <BackgroundModal width={800} p={0}>
       <SettingBox>
         <Side>
           <CommunitySettingBar />

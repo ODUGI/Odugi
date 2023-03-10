@@ -8,6 +8,7 @@ import CreateDirectMesssageHeader from "../molecules/Div/CreateDirectMessageHead
 import CreateDirectMesssageFooter from "../molecules/Div/CreateDirectMesssageFooter";
 import ScrollableBox from "../molecules/Div/scrollableBox";
 import SelectFriend from "../molecules/Div/SelectFriend";
+import searchImage from "../../assets/images/search.svg";
 
 interface CreateDirectMessageModalProps {
   top?: number;
@@ -27,10 +28,6 @@ const CreateDirectMessageModal = ({
 
   const [search, changeSearch] = useInput();
 
-  if (!isSuccess) return <></>;
-
-  const num = friendList.length;
-
   return (
     <CreateDirectMessageModalContainer
       left={left}
@@ -45,7 +42,7 @@ const CreateDirectMessageModal = ({
         addFriendNum={1}
       />
       <>
-        {num > 0 ? (
+        {isSuccess && friendList.length > 0 ? (
           <ScrollableBox>
             {/* <SelectFriend />   
             <SelectFriend check /> */}
@@ -55,7 +52,7 @@ const CreateDirectMessageModal = ({
           </ScrollableBox>
         ) : (
           <SearchContainer>
-            <SearchImage src="/search.svg" alt="" width={85} height={85} />
+            <SearchImage src={searchImage} alt="" width={85} height={85} />
             <Text
               text="개인 메시지에 모든 친구가 포함되어 있어요."
               color="auth-desc"

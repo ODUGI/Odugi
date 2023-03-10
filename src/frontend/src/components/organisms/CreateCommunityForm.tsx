@@ -38,7 +38,7 @@ const CreateCommunityForm = () => {
   };
 
   return (
-    <BackgroundModal width={440} p={0} onClick={() => null}>
+    <BackgroundModal width={440} p={0}>
       <CommunityContainer>
         <CreateCommunityText />
         <CommunityLogoUpload setImg={setImg} />

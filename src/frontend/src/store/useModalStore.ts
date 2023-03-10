@@ -5,12 +5,11 @@ export type ModalType =
   | null
   | "inviteFriend"
   | "userSetting"
-  | "community"
   | "communitySetting";
 
 interface ModalState {
-  modalType: ModalType;
   showModal: boolean;
+  modalType: ModalType;
 }
 
 interface ModalAction {
@@ -23,8 +22,8 @@ const useModalStore = create<ModalState & ModalAction>()(
     modalType: null,
     showModal: false,
 
-    setShowModal: (showModal: boolean) => set({ showModal }),
     setModalType: (modalType: ModalType) => set({ modalType }),
+    setShowModal: (showModal: boolean) => set({ showModal }),
   }))
 );
 

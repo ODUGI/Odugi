@@ -10,7 +10,6 @@ import useModalStore from "@store/useModalStore";
 import InviteFriendModal from "@components/organisms/InviteFriendModal";
 import UserSetting from "@pages/UserSetting";
 import CommunitySettingBar from "@components/organisms/CommunitySettingBar";
-import CommunityModal from "@components/molecules/Div/CommunityModal";
 
 const MainPage = () => {
   const { setShowModal, showModal, modalType } = useModalStore();
@@ -24,7 +23,6 @@ const MainPage = () => {
     inviteFriend: <InviteFriendModal />,
     userSetting: <UserSetting />,
     communitySetting: <CommunitySettingBar />,
-    community: <CommunityModal />,
   };
 
   const Component = modalType ? modalTable[modalType] : <></>;

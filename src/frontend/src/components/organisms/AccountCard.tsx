@@ -32,5 +32,4 @@ const FieldWrapper = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor["tab2"]};
   padding: 16px;
   margin: 8px 16px 16px;
-  box-sizing: border-box;
 `;
