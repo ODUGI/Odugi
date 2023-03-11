@@ -20,7 +20,7 @@ const getBodyByStatus = (status: MainStatusType) => {
   return <Component />;
 };
 
-const MainBody = () => {
+const Tab3MainBody = () => {
   const isMain = useMatch("/@me");
   const { mainStatus } = useMainStore(({ mainStatus }) => ({ mainStatus }));
 
@@ -47,9 +47,10 @@ const MainBodyContainer = styled.div`
 const MainFriendBody = styled.div`
   padding: 0 20px;
   height: calc(100vh - 55px);
+
   display: flex;
   flex-direction: column;
-  width: 100%;
+  flex: 1;
 `;
 
-export default MainBody;
+export default Tab3MainBody;

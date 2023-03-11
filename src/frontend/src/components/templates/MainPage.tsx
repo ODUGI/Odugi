@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import MainBody from "../organisms/MainBody";
+import Tab3MainBody from "../organisms/Tab3MainBody";
 import CommunityList from "../organisms/CommunityList";
 import Tab2MainBody from "../organisms/Tab2MainBody";
 import Tab2Footer from "../organisms/Tab2Footer";
@@ -36,7 +36,7 @@ const MainPage = () => {
       </Tab2Container>
       <Tab3Container>
         <Tab3MainHeader />
-        <MainBody />
+        <Tab3MainBody />
       </Tab3Container>
       {showModal && Component}
     </>
