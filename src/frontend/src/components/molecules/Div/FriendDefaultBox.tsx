@@ -16,7 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import RoundButton from "../Button/RoundButton";
-import EtcModal from "./EtcModal";
+import FriendEtcDropdown from "./FriendEtcDropdown";
 import FriendBox from "./FriendBox";
 
 interface FriendDefaultBoxProps {
@@ -25,7 +25,8 @@ interface FriendDefaultBoxProps {
   id: string;
   name: string;
   userId: number;
-  status: FriendStateType;
+  // status: FriendStateType;
+  status: any;
   src: string;
 }
 
@@ -84,7 +85,7 @@ const FriendDefaultBox = ({
           <Tip title="기타" place="top">
             <RoundButton Icon={<MoreIcon />} onClick={clickChatIcon} />
           </Tip>
-          {showEtcModal && <EtcModal />}
+          {showEtcModal && <FriendEtcDropdown />}
         </EtcContainer>
       </>
     );

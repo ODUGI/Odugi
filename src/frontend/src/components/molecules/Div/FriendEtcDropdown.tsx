@@ -5,7 +5,7 @@ import { MouseEvent } from "react";
 import styled from "styled-components";
 import DropdownModalButton from "../Button/DropdownModalButton";
 
-const EtcModal = () => {
+const FriendEtcDropdown = () => {
   const { deleteFriendEmail } = useMainStore();
   const { mutate: deleteFriend } = useRejectFriend();
 
@@ -16,7 +16,7 @@ const EtcModal = () => {
 
   return (
     <EtcModalContainer>
-      <DropdownModal width={188} left={0}>
+      <DropdownModal width={188} right={50}>
         <DropdownModalButton text="영상 통화 시작하기" onClick={() => null} />
         <DropdownModalButton text="음성 통화 시작하기" onClick={() => null} />
         <DropdownModalButton
@@ -32,4 +32,4 @@ const EtcModal = () => {
 
 const EtcModalContainer = styled.div``;
 
-export default EtcModal;
+export default FriendEtcDropdown;
