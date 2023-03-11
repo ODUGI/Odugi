@@ -44,11 +44,6 @@ const UserProfilePage = () => {
   const onClickToggleModal = useCallback(() => {
     setOpenModal(!isOpenModal);
   }, [isOpenModal]);
-  // const [backgroundColor, setBackgroundColor] = useState("#fff");
-
-  // const handleChangeComplete = (color: any) => {
-  //   setBackgroundColor(color.hex);
-  // };
   return (
     <MainWrapper>
       {isOpenModal && (
@@ -72,30 +67,6 @@ const UserProfilePage = () => {
             <LinkText text="아바타 제거하기" onClick={() => console.log(1)} />
           </LinkWrapper>
         </CustomButtons>
-        {/* <Text
-          text="배너색상"
-          fontSize="xs"
-          color="setting-tab"
-          mb={8}
-          fontWeight="bold"
-        />
-        <SketchPicker
-          color={backgroundColor}
-          onChangeComplete={handleChangeComplete}
-        />
-        <Text
-          text="내 소개"
-          fontSize="xs"
-          color="setting-tab"
-          mb={8}
-          fontWeight="bold"
-        />
-        <Text
-          text="간단한 소개 작성"
-          fontSize="sm"
-          color="setting-tab"
-          mb={16}
-        /> */}
       </BlockWrapper>
       {/* <BlockWrapper><AccountCard /></BlockWrapper> */}
     </MainWrapper>
