@@ -280,13 +280,6 @@ const FieldList = () => {
           <Text text="이메일" fontSize="xs" color="setting-tab" mb={8} />
           <Text text={userInfo.email} fontSize="base" color="white" />
         </LeftRow>
-        {/* <ButtonWrappper>
-          <FieldButton
-            text="확인"
-            backgroundColor="setting"
-            onClick={onClickToggleModal}
-          />
-        </ButtonWrappper> */}
       </FieldContinaer>
       <FieldContinaer>
         <LeftRow>
