@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import MainDirectBody from "./MainDirectBody";
 
 const Tab3CommunityBody = () => {
   return (
     <Tab3CommunityBodyContainer>
-      {/* <MainDirectBody /> */}
+      <MainDirectBody />
     </Tab3CommunityBodyContainer>
   );
 };

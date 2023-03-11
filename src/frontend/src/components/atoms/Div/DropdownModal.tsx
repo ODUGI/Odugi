@@ -11,7 +11,7 @@ interface DropdownModalProps {
 const DropdownModal = styled.div<DropdownModalProps>`
   position: absolute;
   border-radius: 4px;
-  z-index: 9;
+  z-index: 2;
   padding: 8px;
   width: ${({ width }) => width}px;
   background-color: ${({ theme }) => theme.backgroundColor["voice-modal"]};

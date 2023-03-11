@@ -71,7 +71,7 @@ const CreateDirectMessageDropdownContainer = styled(
 )<CreateDirectMessageDropdownProps>`
   border-radius: 0.25rem;
   position: absolute;
-  z-index: 9;
+  z-index: 2;
   top: ${({ top }) => top}px;
   left: ${({ left }) => left}px;
   right: ${({ right }) => right}px;

@@ -10,12 +10,13 @@ const CommunityDropdown = () => {
   const { setModalType, setShowModal } = useModalStore();
 
   const setModal = (modalType: ModalType) => {
+    console.log("modalType", modalType);
     setModalType(modalType);
     setShowModal(true);
   };
 
   return (
-    <DropdownModal width={220} top={55} left={80}>
+    <DropdownModal width={220} top={55} left={10}>
       <DropdownModalButton
         text="초대하기"
         color="invite"

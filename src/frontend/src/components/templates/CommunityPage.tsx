@@ -1,16 +1,17 @@
 import useModalStore from "@store/useModalStore";
 import { useEffect } from "react";
 import styled from "styled-components";
-import InviteFriendModal from "../organisms/InviteFriendModal";
+import InviteFriendModal from "../organisms/Modal/InviteFriendModal";
 import CommunityList from "../organisms/CommunityList";
 import Tab2Footer from "../organisms/Tab2Footer";
 import Tab2CommunityHeader from "@components/organisms/Tab2CommunityHeader";
 import Tab2CommunityBody from "@components/organisms/Tab2CommunityBody";
 import Tab3CommunityHeader from "@components/organisms/Tab3CommunityHeader";
 import Tab3CommunityBody from "@components/organisms/Tab3CommunityBody";
-import CommunitySettingBar from "@components/organisms/CommunitySettingBar";
 import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
 import { CreateCommunity } from "@components/molecules/Text/CreateCommunityText.stories";
+import CommunitySettingModal from "@components/organisms/Modal/CommunitySettingModal";
+import TabDivider from "@components/atoms/Div/TabDivider";
 
 const CommunityPage = () => {
   const { setShowModal, showModal, modalType } = useModalStore();
@@ -22,7 +23,7 @@ const CommunityPage = () => {
   const modalTable = {
     inviteFriend: <InviteFriendModal />,
     userSetting: <UserSettingModal />,
-    communitySetting: <CommunitySettingBar />,
+    communitySetting: <CommunitySettingModal />,
     createCommunity: <CreateCommunity />,
   };
 
@@ -33,11 +34,13 @@ const CommunityPage = () => {
       <CommunityList />
       <Tab2Container>
         <Tab2CommunityHeader />
+        <TabDivider />
         <Tab2CommunityBody />
         <Tab2Footer />
       </Tab2Container>
       <Tab3Container>
         <Tab3CommunityHeader />
+        <TabDivider />
         <Tab3CommunityBody />
       </Tab3Container>
       {showModal && Component}

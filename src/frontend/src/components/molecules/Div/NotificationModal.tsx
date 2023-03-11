@@ -4,11 +4,11 @@ import { RadioButtonChecked } from "@mui/icons-material";
 import { useState } from "react";
 import DropdownModalButton from "../Button/DropdownModalButton";
 
-const NotificationModal = ({ alarmRef }: any) => {
+const NotificationModal = () => {
   const [type, setType] = useState(1);
 
   return (
-    <DropdownModal width={188} top={40} right={160} ref={alarmRef}>
+    <DropdownModal width={188} top={40} right={160}>
       <DropdownModalButton
         text="카테고리 기본값 사용"
         color="auth-desc"

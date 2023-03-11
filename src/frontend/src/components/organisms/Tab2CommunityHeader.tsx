@@ -2,7 +2,6 @@ import CommunityDropdown from "@components/molecules/Div/CommunityDropdown";
 import useOutsideClick from "@hooks/common/useOutsideClick";
 import { useRef, useState } from "react";
 import styled from "styled-components";
-import TabDivider from "../atoms/Div/TabDivider";
 import ArrowBottomIcon from "../atoms/Icons/ArrowBottomIcon";
 import Text from "../atoms/Text/Text";
 
@@ -19,18 +18,15 @@ const Tab2CommunityHeader = () => {
   };
 
   return (
-    <>
-      <Tab2HeaderContainer
-        ref={dropdownRef}
-        showModal={showDropdown}
-        onClick={showCommunityDropdown}
-      >
-        <Text text={communityName} color="white" />
-        <ArrowBottomIcon />
-      </Tab2HeaderContainer>
-      <TabDivider />
+    <Tab2HeaderContainer
+      ref={dropdownRef}
+      showModal={showDropdown}
+      onClick={showCommunityDropdown}
+    >
+      <Text text={communityName} color="white" />
+      <ArrowBottomIcon />
       {showDropdown && <CommunityDropdown />}
-    </>
+    </Tab2HeaderContainer>
   );
 };
 
