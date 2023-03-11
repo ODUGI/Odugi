@@ -2,7 +2,7 @@ import useModalStore from "@store/useModalStore";
 import { flexCenter } from "@styles/flexCenter";
 import { ReactElement } from "react";
 import styled from "styled-components";
-import DefaultModal from "../atoms/Div/DefaultModal";
+import ModalContainer from "../atoms/Div/ModalContainer";
 
 interface BackgroundModalProps {
   children: ReactElement;
@@ -29,9 +29,9 @@ const BackgroundModal = ({
 
   return (
     <BackgroundWrapper onClick={closeModal}>
-      <DefaultModal width={width} p={p} onClick={(e) => e.stopPropagation()}>
+      <ModalContainer width={width} p={p} onClick={(e) => e.stopPropagation()}>
         {children}
-      </DefaultModal>
+      </ModalContainer>
     </BackgroundWrapper>
   );
 };

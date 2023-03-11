@@ -1,28 +1,34 @@
 import Tip from "@components/atoms/Div/Tooltip";
 import AddIcon from "@components/atoms/Icons/AddIcon";
 import Text from "@components/atoms/Text/Text";
-import CreateDirectMessageModal from "@components/organisms/CreateDirectMessageModal";
-import { useState } from "react";
+import CreateDirectMessageModal from "@components/organisms/CreateDirectMessageDropdown";
+import useOutsideClick from "@hooks/common/useOutsideClick";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 
 const DirectMessage = () => {
-  const [showDMModal, setShowDMModal] = useState(false);
+  const dropdownRef = useRef<any>();
+  const [showDMDropdown, setShowDMDropdown] = useState(false);
+
+  useOutsideClick(dropdownRef, () => setShowDMDropdown(false));
+
   return (
-    <>
-      <DirectMessageContainer>
-        <Text text="다이렉트 메시지" fontSize="xs" fontWeight="bold" />
-        <Tip title="DM 생성" place="top">
-          <PlusButtonContainer onClick={() => setShowDMModal((prev) => !prev)}>
-            <AddIcon />
-          </PlusButtonContainer>
-        </Tip>
-      </DirectMessageContainer>
-      {showDMModal && (
-        <DMModalWrapper>
-          <CreateDirectMessageModal left={200} />
-        </DMModalWrapper>
-      )}
-    </>
+    <DirectMessageContainer>
+      <Text text="다이렉트 메시지" fontSize="xs" fontWeight="bold" />
+      <Tip title="DM 생성" place="top">
+        <PlusButtonContainer
+          ref={dropdownRef}
+          onClick={() => setShowDMDropdown((prev) => !prev)}
+        >
+          <AddIcon />
+          {showDMDropdown && (
+            <DMModalWrapper>
+              <CreateDirectMessageModal />
+            </DMModalWrapper>
+          )}
+        </PlusButtonContainer>
+      </Tip>
+    </DirectMessageContainer>
   );
 };
 

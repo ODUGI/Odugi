@@ -2,6 +2,7 @@ import Tip from "@components/atoms/Div/Tooltip";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import ChatIcon from "@components/atoms/Icons/ChatIcon";
 import MoreIcon from "@components/atoms/Icons/MoreIcon";
+import useOutsideClick from "@hooks/common/useOutsideClick";
 import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
 import useMainStore from "@store/useMainStore";
 import {
@@ -9,6 +10,7 @@ import {
   MouseEvent,
   ReactElement,
   SetStateAction,
+  useRef,
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
@@ -36,11 +38,16 @@ const FriendDefaultBox = ({
   status,
   src,
 }: FriendDefaultBoxProps) => {
-  const { setDeleteFriendEmail } = useMainStore();
   const navigate = useNavigate();
-  const { setUserName, setUserId } = useMainStore();
+
+  const dropdownRef = useRef<any>();
   const [showEtcModal, setShowEtcModal] = useState(false);
+
+  const { setDeleteFriendEmail } = useMainStore();
+  const { setUserName, setUserId } = useMainStore();
   const { data: isOnline, isLoading } = useGetFriendStatus({ userId });
+
+  useOutsideClick(dropdownRef, () => setShowEtcModal(false));
 
   if (isLoading) return <></>;
 
@@ -73,7 +80,7 @@ const FriendDefaultBox = ({
         <Tip title="메시지 보내기" place="top">
           <RoundButton Icon={<ChatIcon />} onClick={enterDM} />
         </Tip>
-        <EtcContainer>
+        <EtcContainer ref={dropdownRef}>
           <Tip title="기타" place="top">
             <RoundButton Icon={<MoreIcon />} onClick={clickChatIcon} />
           </Tip>

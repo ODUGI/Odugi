@@ -10,7 +10,12 @@ const FriendList = () => {
     userInfo: { email },
   } = useUserStore();
   const { data, isSuccess } = useGetFriendList(email);
-  if (!isSuccess) return <></>;
+  if (!isSuccess)
+    return (
+      <FriendListContainer>
+        <DirectMessage />
+      </FriendListContainer>
+    );
 
   const friendList: FriendType[] = data.filter(
     (friend: FriendType) => friend.friendState === "ACCEPTED"

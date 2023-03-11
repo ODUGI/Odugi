@@ -6,7 +6,7 @@ import useModalStore, { ModalType } from "@store/useModalStore";
 import styled from "styled-components";
 import DropdownModalButton from "../Button/DropdownModalButton";
 
-const CommunityModal = () => {
+const CommunityDropdown = () => {
   const { setModalType, setShowModal } = useModalStore();
 
   const setModal = (modalType: ModalType) => {
@@ -44,4 +44,4 @@ const Divider = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor.divider};
 `;
 
-export default CommunityModal;
+export default CommunityDropdown;

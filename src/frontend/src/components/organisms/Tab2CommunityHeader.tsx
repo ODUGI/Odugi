@@ -1,22 +1,27 @@
-import useDropdownStore from "@store/useDropdownStore";
+import CommunityDropdown from "@components/molecules/Div/CommunityDropdown";
+import useOutsideClick from "@hooks/common/useOutsideClick";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import TabDivider from "../atoms/Div/TabDivider";
 import ArrowBottomIcon from "../atoms/Icons/ArrowBottomIcon";
 import Text from "../atoms/Text/Text";
 
 const Tab2CommunityHeader = () => {
-  const { showDropdown, setShowDropdown, setDropdownType } = useDropdownStore();
+  const dropdownRef = useRef<any>();
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  useOutsideClick(dropdownRef, () => setShowDropdown(false));
 
   const communityName = "자바스크립트 스터디";
 
   const showCommunityDropdown = () => {
-    setShowDropdown(!showDropdown);
-    setDropdownType("community");
+    setShowDropdown((prev) => !prev);
   };
 
   return (
     <>
       <Tab2HeaderContainer
+        ref={dropdownRef}
         showModal={showDropdown}
         onClick={showCommunityDropdown}
       >
@@ -24,6 +29,7 @@ const Tab2CommunityHeader = () => {
         <ArrowBottomIcon />
       </Tab2HeaderContainer>
       <TabDivider />
+      {showDropdown && <CommunityDropdown />}
     </>
   );
 };
