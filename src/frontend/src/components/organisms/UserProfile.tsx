@@ -5,13 +5,13 @@ import SettingWrapper from "./SettingWrapper";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
 import DefaultButton from "@components/atoms/Button/DefaultButton";
-import CommunityLogoUpload from "@components/molecules/Button/CommunityLogoUpload";
+import ImageUploadButton from "@components/molecules/Button/ImageUploadButton";
 
 const ImageChange = () => {
   return (
     <>
       <TopWrapper>
-        <CommunityLogoUpload />
+        <ImageUploadButton />
       </TopWrapper>
       <Bottom>
         <DefaultButton text="완료" onClick={() => null} />

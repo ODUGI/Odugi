@@ -3,7 +3,7 @@ import SettingWrapper from "./SettingWrapper";
 import FieldButton from "../atoms/Button/fieldButton";
 import styled from "styled-components";
 import CommunityInput from "../molecules/Input/CommunityInput";
-import CommunityLogoUpload from "../molecules/Button/CommunityLogoUpload";
+import ImageUploadButton from "../molecules/Button/ImageUploadButton";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useUserStore } from "@store/useUserStore";
@@ -73,7 +73,7 @@ const CommunitySettingDefault = () => {
             mb={20}
           />
           <Mini>
-            <CommunityLogoUpload setImg={setImg} />
+            <ImageUploadButton setImg={setImg} />
           </Mini>
           <ButtonWrapper>
             <FieldButton text="아바타 변경하기" onClick={changeImage} />
