@@ -1,13 +1,14 @@
 import AddCircleIcon from "@components/atoms/Icons/AddCircleIcon";
 import MessageInput from "@components/atoms/Input/MessageInput";
-import { ChangeEvent, KeyboardEvent, MouseEventHandler, useRef } from "react";
+import useOutsideClick from "@hooks/common/useOutsideClick";
+import { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
 import styled from "styled-components";
+import FileUploadeDropdown from "./FileUploadeDropdown";
 
 interface MessageInputProps {
   value: string;
   nickname: string;
   onChange: Function;
-  onClick: MouseEventHandler<HTMLButtonElement>;
   addChatMessage: () => void;
 }
 
@@ -15,10 +16,14 @@ const MessageBox = ({
   value,
   nickname,
   onChange,
-  onClick,
   addChatMessage,
 }: MessageInputProps) => {
-  const messageRef = useRef<HTMLInputElement>(null);
+  // const messageRef = useRef<HTMLInputElement>(null);
+
+  const dropdownRef = useRef<any>(false);
+  const [showUploadDropdown, setShowUploadDropdown] = useState(false);
+
+  useOutsideClick(dropdownRef, () => setShowUploadDropdown(false));
 
   // const resizeTextAreaHeight = () => {
   //   if (messageRef.current instanceof HTMLTextAreaElement) {
@@ -44,12 +49,13 @@ const MessageBox = ({
   };
 
   return (
-    <MessageInputContainer>
-      <AddButton onClick={onClick}>
+    <MessageInputContainer ref={dropdownRef}>
+      <AddButton onClick={() => setShowUploadDropdown((prev) => !prev)}>
         <AddCircleIcon />
+        {showUploadDropdown && <FileUploadeDropdown />}
       </AddButton>
       <MessageInput
-        ref={messageRef}
+        // ref={messageRef}
         placeholder={`@${nickname}에 메시지 보내기`}
         rows={1}
         value={value}

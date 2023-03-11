@@ -3,7 +3,7 @@ import UploadIcon from "@components/atoms/Icons/UploadIcon";
 import Text from "@components/atoms/Text/Text";
 import styled from "styled-components";
 
-const FileUploadModal = () => {
+const FileUploadeDropdown = () => {
   return (
     <DropdownModal width={200} top={-60}>
       <FileUploadModalWrapper>
@@ -32,4 +32,4 @@ const FileUploadModalWrapper = styled.div`
   }
 `;
 
-export default FileUploadModal;
+export default FileUploadeDropdown;
