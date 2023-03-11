@@ -1,4 +1,4 @@
-import CommunitySetting from "@pages/CommunityPage";
+import CommunitySetting from "@pages/CommunitySetting";
 import UserSetting from "@pages/UserSetting";
 import useModalStore from "@store/useModalStore";
 import { useEffect } from "react";
