@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import CommunitySettingBar from "../components/organisms/MyAccountSettingBar";
-import UserProfile from "../components/organisms/UserProfile";
-import MyAccount from "../components/organisms/MyAccount";
-import useUserSetStore from "../store/useUserSetStore";
 import BackgroundModal from "@components/organisms/BackgroundModal";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
+import useUserSetStore, { UserSettingType } from "@store/useUserSetStore";
+import MyAccount from "../MyAccount";
+import UserProfile from "../UserProfile";
+import CommunitySettingBar from "../CommunitySettingBar";
 
 const userComponent = {
   "내 계정": MyAccount,
@@ -13,27 +13,27 @@ const userComponent = {
   알림: UserProfile,
 };
 
-const UserSetting = () => {
+const getStatus = (status: UserSettingType) => {
+  const Component = userComponent[status];
+  return <Component />;
+};
+
+const UserSettingModal = () => {
   const { userStatus } = useUserSetStore();
   const { setShowModal } = useModalStore();
 
-  const closeModal = () => {
-    setShowModal(false);
-  };
-
-  const Component = userComponent[userStatus];
-
   return (
-    <BackgroundModal width={800} p={0}>
+    <BackgroundModal width={800} p={0} onClick={() => setShowModal(false)}>
       <SettingBox>
         <Side>
           <CommunitySettingBar />
         </Side>
         <Container>
-          <CancelIconWrapper onClick={closeModal}>
+          <CancelIconWrapper onClick={() => setShowModal(false)}>
             <CancelIcon />
           </CancelIconWrapper>
-          <Component />
+          {/* <UserProfile /> */}
+          {getStatus(userStatus)}
         </Container>
       </SettingBox>
     </BackgroundModal>
@@ -56,8 +56,6 @@ const SettingBox = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -80,4 +78,4 @@ const Side = styled.div`
   justify-content: flex-end;
 `;
 
-export default UserSetting;
+export default UserSettingModal;

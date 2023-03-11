@@ -1,12 +1,10 @@
-import { Helmet } from "react-helmet-async";
+import HeaderHelmet from "@components/atoms/Helmet";
 
 const NotFound = () => {
   return (
     <>
-      <Helmet>
-        <title>페이지 없음 | Discord</title>
-      </Helmet>
-      not found
+      <HeaderHelmet title="페이지 없음 | Discord" />
+      Not Found
     </>
   );
 };

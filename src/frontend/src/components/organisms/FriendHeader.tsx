@@ -23,12 +23,14 @@ const FriendHeader = () => {
           <MainTabButton status={"대기 중"} />
           <MainTabButton status={"친구 추가하기"} />
         </LeftContainer>
+
         <Tip title="새로운 그룹 메시지" place="bottom">
           <RightContainer onClick={() => setShowDMModal(!showDMModal)}>
             <ChatAddIcon />
           </RightContainer>
         </Tip>
       </FriendHeaderContainer>
+
       {showDMModal && (
         <DMModalWrapper ref={modalRef}>
           <CreateDirectMessageModal top={20} left={-440} />

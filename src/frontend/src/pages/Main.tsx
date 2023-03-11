@@ -20,7 +20,7 @@ const Main = () => {
 
   return (
     <>
-      <HeaderHelmet title="Discord | 친구" />
+      <HeaderHelmet title="친구 | Discord" />
       <PageContainer>
         <MainPage />
       </PageContainer>

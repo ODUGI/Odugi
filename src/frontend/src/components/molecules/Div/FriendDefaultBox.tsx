@@ -40,7 +40,7 @@ const FriendDefaultBox = ({
   const navigate = useNavigate();
   const { setUserName, setUserId } = useMainStore();
   const [showEtcModal, setShowEtcModal] = useState(false);
-  const { data: isOnline, isLoading } = useGetFriendStatus({ userId });
+  const { data: isOnline, isLoading } = useGetFriendStatus(userId);
 
   if (isLoading) return <></>;
 

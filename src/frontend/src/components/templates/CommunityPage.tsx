@@ -1,5 +1,3 @@
-import CommunitySetting from "@pages/CommunityPage";
-import UserSetting from "@pages/UserSetting";
 import useModalStore from "@store/useModalStore";
 import { useEffect } from "react";
 import styled from "styled-components";
@@ -13,6 +11,8 @@ import Tab3CommunityBody from "@components/organisms/Tab3CommunityBody";
 import CommunityModal from "@components/molecules/Div/CommunityModal";
 import useDropdownStore from "@store/useDropdownStore";
 import CommunitySettingBar from "@components/organisms/CommunitySettingBar";
+import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
+import { CreateCommunity } from "@components/molecules/Text/CreateCommunityText.stories";
 
 const CommunityPage = () => {
   const { setShowModal, showModal, modalType } = useModalStore();
@@ -25,8 +25,9 @@ const CommunityPage = () => {
 
   const modalTable = {
     inviteFriend: <InviteFriendModal />,
-    userSetting: <UserSetting />,
+    userSetting: <UserSettingModal />,
     communitySetting: <CommunitySettingBar />,
+    createCommunity: <CreateCommunity />,
   };
 
   const Component = modalType ? modalTable[modalType] : <></>;
