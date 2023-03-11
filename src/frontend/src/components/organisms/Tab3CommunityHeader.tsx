@@ -2,7 +2,6 @@ import useInput from "@hooks/common/useInput";
 import useOutsideClick from "@hooks/common/useOutsideClick";
 import { useRef, useState } from "react";
 import styled from "styled-components";
-import TabDivider from "../atoms/Div/TabDivider";
 import NotificationsIcon from "../atoms/Icons/NotificationsIcon";
 import TagIcon from "../atoms/Icons/TagIcon";
 import Text from "../atoms/Text/Text";
@@ -13,43 +12,40 @@ const Tab3CommunityHeader = () => {
   const chatroomName = "test";
   const [value, onChange] = useInput();
   const [showNotiModal, setShowNotiModal] = useState(false);
-  const alarmRef = useRef<any>();
+  const dropdownRef = useRef<any>();
 
-  useOutsideClick(alarmRef, () => setShowNotiModal(false));
+  useOutsideClick(dropdownRef, () => setShowNotiModal(false));
 
   return (
-    <>
-      <Tab3CommunityHeaderContainer>
-        <HeaderLeftWrapper>
-          <TagIcon />
-          <Text text={chatroomName} color="white" />
-        </HeaderLeftWrapper>
-        <HeaderRightWrapper>
-          <div onClick={() => setShowNotiModal(!showNotiModal)}>
+    <Tab3CommunityHeaderContainer>
+      <HeaderLeftWrapper>
+        <TagIcon />
+        <Text text={chatroomName} color="white" />
+      </HeaderLeftWrapper>
+      <HeaderRightWrapper>
+        <div ref={dropdownRef}>
+          <AlarmButtonWrapper onClick={() => setShowNotiModal((prev) => !prev)}>
             <NotificationsIcon />
-          </div>
-          {showNotiModal && <NotificationModal alarmRef={alarmRef} />}
-          <SearchInputWrapper>
-            <SearchInput size="s" value={value} onChange={onChange} />
-          </SearchInputWrapper>
-        </HeaderRightWrapper>
-      </Tab3CommunityHeaderContainer>
-      <TabDivider />
-    </>
+          </AlarmButtonWrapper>
+          {showNotiModal && <NotificationModal />}
+        </div>
+        <SearchInputWrapper>
+          <SearchInput size="s" value={value} onChange={onChange} />
+        </SearchInputWrapper>
+      </HeaderRightWrapper>
+    </Tab3CommunityHeaderContainer>
   );
 };
 
 const Tab3CommunityHeaderContainer = styled.div`
-  position: sticky;
-  top: 0;
   width: 100%;
-  z-index: 99;
   height: 48px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0 0.5rem;
+
   svg {
     font-size: ${({ theme }) => theme.fontSize.xxl};
     color: ${({ theme }) => theme.color.icon};
@@ -58,6 +54,7 @@ const Tab3CommunityHeaderContainer = styled.div`
 
 const HeaderLeftWrapper = styled.div`
   margin-left: 0.5rem;
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -66,12 +63,15 @@ const HeaderLeftWrapper = styled.div`
 
 const HeaderRightWrapper = styled.div`
   margin-right: 0.5rem;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
+
   svg {
     cursor: pointer;
+
     &:hover {
       color: ${({ theme }) => theme.color.white};
     }
@@ -80,6 +80,13 @@ const HeaderRightWrapper = styled.div`
 
 const SearchInputWrapper = styled.div`
   width: 9rem;
+
+  &:has(input:focus) {
+    width: 15rem;
+  }
+  transition: width 0.3s;
 `;
+
+const AlarmButtonWrapper = styled.div``;
 
 export default Tab3CommunityHeader;
