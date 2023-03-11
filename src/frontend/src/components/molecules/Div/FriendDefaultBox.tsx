@@ -46,7 +46,7 @@ const FriendDefaultBox = ({
 
   const { setDeleteFriendEmail } = useMainStore();
   const { setUserName, setUserId } = useMainStore();
-  const { data: isOnline, isLoading } = useGetFriendStatus({ userId });
+  const { data: isOnline, isLoading } = useGetFriendStatus(userId);
 
   useOutsideClick(dropdownRef, () => setShowEtcModal(false));
 

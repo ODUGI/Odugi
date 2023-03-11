@@ -1,5 +1,5 @@
-import useSendToStore from "@store/useSendToStore";
-import { Dispatch, SetStateAction } from "react";
+import useMainStore from "@store/useMainStore";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import MessageBox from "../molecules/Div/MessageBox";
@@ -16,7 +16,7 @@ const MessageFooter = ({
   addChatMessage,
 }: MessageFooterProps) => {
   const { communityId } = useParams();
-  const { sendTo } = useSendToStore();
+  const { userName } = useMainStore();
 
   const onChange = (v: string) => {
     setMessage(v);
@@ -27,7 +27,7 @@ const MessageFooter = ({
       <MessageBox
         value={message}
         onChange={onChange}
-        nickname={sendTo}
+        nickname={userName}
         addChatMessage={addChatMessage}
       />
     </MessageFooterContainer>

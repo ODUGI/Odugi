@@ -19,12 +19,15 @@ const RegisterStep1 = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const { mutate: sendEmail } = useSendEmail({
+    onError: () => {
+      setErrorMessage("문제가 발생했습니다. 다시 시도해주세요.");
+    },
     onSuccess: () => {
       setStep(2);
     },
   });
 
-  const onLoadLogin = () => navigate("/login");
+  const goLoginPage = () => navigate("/login");
 
   const onRegister = () => {
     if (!email || !name || !password) {
@@ -42,7 +45,7 @@ const RegisterStep1 = () => {
 
   return (
     <>
-      <AuthHeader text="계정 만들기" />{" "}
+      <AuthHeader text="계정 만들기" />
       {errorMessage && (
         <Text
           text={errorMessage}
@@ -66,7 +69,7 @@ const RegisterStep1 = () => {
         onChange={changePassword}
       />
       <DefaultButton text="계속하기" onClick={onRegister} height={44} mb={12} />
-      <LinkText text="이미 계정이 있으신가요?" onClick={onLoadLogin} />
+      <LinkText text="이미 계정이 있으신가요?" onClick={goLoginPage} />
     </>
   );
 };

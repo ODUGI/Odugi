@@ -1,17 +1,17 @@
 import styled from "styled-components";
-import CommunityLogoUpload from "../molecules/Button/CommunityLogoUpload";
-import DefaultButton from "../atoms/Button/DefaultButton";
 import useInput from "@hooks/common/useInput";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@store/useUserStore";
 import { useState } from "react";
-import BackgroundModal from "./BackgroundModal";
 import communityApi from "@api/community";
 import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
+import BackgroundModal from "../BackgroundModal";
+import CommunityLogoUpload from "@components/molecules/Button/CommunityLogoUpload";
+import DefaultButton from "@components/atoms/Button/DefaultButton";
 
-const CreateCommunityForm = () => {
+const CreateCommunityModal = () => {
   const { userInfo } = useUserStore();
   const navigate = useNavigate();
   let formData = new FormData();
@@ -51,8 +51,6 @@ const CreateCommunityForm = () => {
   );
 };
 
-export default CreateCommunityForm;
-
 const CommunityContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -70,3 +68,5 @@ const Bottom = styled.div`
   margin-top: 4rem;
   background-color: ${({ theme }) => theme.backgroundColor["grey-7"]};
 `;
+
+export default CreateCommunityModal;

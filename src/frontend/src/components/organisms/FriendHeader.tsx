@@ -23,6 +23,7 @@ const FriendHeader = () => {
           <MainTabButton status={"대기 중"} />
           <MainTabButton status={"친구 추가하기"} />
         </LeftContainer>
+
         <Tip title="새로운 그룹 메시지" place="bottom">
           <RightContainer
             ref={dropdownRef}

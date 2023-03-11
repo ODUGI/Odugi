@@ -3,11 +3,11 @@ import HeaderHelmet from "../components/atoms/Helmet";
 import CommunityPage from "../components/templates/CommunityPage";
 
 const Community = () => {
-  const chatroomName = "welcome";
+  const channelName = "welcome";
 
   return (
     <>
-      <HeaderHelmet title={`• Discord | ${chatroomName}`} />
+      <HeaderHelmet title={`${channelName} | Discord`} />
       <PageContainer>
         <CommunityPage />
       </PageContainer>

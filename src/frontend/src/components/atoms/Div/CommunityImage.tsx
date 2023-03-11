@@ -27,6 +27,7 @@ const CommunityImage = ({
   active = Number(communityStatus) === id;
 
   const selectCommunity = () => {
+    if (id === -2) return;
     setCommunityStatus(id.toString());
   };
 
@@ -60,10 +61,11 @@ const CommunityIconBox = styled.div<CommunityIconBoxProps>`
   margin-bottom: 0.5rem;
   align-items: center;
   .avatar {
-    border-radius: ${({ borderRadius }) => `${borderRadius}rem`};
+    border-radius: ${({ borderRadius }) => borderRadius}rem;
+    background-color: ${({ theme }) => theme.backgroundColor.tab3};
   }
   .side {
-    height: ${({ height }) => `${height}px`};
+    height: ${({ height }) => height}px;
   }
   &:hover {
     .avatar {
@@ -71,7 +73,7 @@ const CommunityIconBox = styled.div<CommunityIconBoxProps>`
       transition: all 0.4s ease-in-out;
     }
     .side {
-      height: ${({ height }) => (height === 35 ? "35px" : "25px")};
+      height: ${({ height }) => (height === 35 ? 35 : 25)}px;
       transition: height 0.4s ease-in-out;
     }
   }
@@ -101,7 +103,7 @@ const ClickedWrapper = styled.div`
   list-style-type: none;
   line-height: 16px;
   width: 6px;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.backgroundColor.white};
   border-radius: 0 1rem 1rem 0;
   justify-content: flex-start;
   vertical-align: baseline;

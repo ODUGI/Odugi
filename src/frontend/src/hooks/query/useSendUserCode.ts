@@ -1,15 +1,8 @@
-import { useRegisterStore } from "@store/useRegisterStore";
 import { useMutation } from "@tanstack/react-query";
 import authApi from "@api/auth";
 
-const useSendUserCode = () => {
-  const { setStep } = useRegisterStore();
-
-  return useMutation(authApi.verify, {
-    onSuccess: () => {
-      setStep(3);
-    },
-  });
+const useSendUserCode = (options: any) => {
+  return useMutation(authApi.verify, options);
 };
 
 export default useSendUserCode;
