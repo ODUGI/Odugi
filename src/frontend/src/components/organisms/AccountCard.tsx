@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Banner from "../atoms/Div/Banner";
 import CardUserInfo from "../molecules/Div/CardUserInfo";
-import FieldList from "../molecules/Div/FieldList";
+import UserSettingGeneralTab from "../molecules/Div/UserSettingGeneralTab";
 
 const AccountCard = () => {
   return (
@@ -9,13 +9,11 @@ const AccountCard = () => {
       <Banner />
       <CardUserInfo />
       <FieldWrapper>
-        <FieldList />
+        <UserSettingGeneralTab />
       </FieldWrapper>
     </Card>
   );
 };
-
-export default AccountCard;
 
 const Card = styled.div`
   width: 660px;
@@ -33,3 +31,5 @@ const FieldWrapper = styled.div`
   padding: 16px;
   margin: 8px 16px 16px;
 `;
+
+export default AccountCard;

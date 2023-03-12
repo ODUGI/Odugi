@@ -1,9 +1,9 @@
-import DropdownModal from "@components/atoms/Div/DropdownModal";
+import DropdownContainer from "@components/atoms/Div/DropdownContainer";
 import useRejectFriend from "@hooks/query/useRejectFriend";
 import useMainStore from "@store/useMainStore";
 import { MouseEvent } from "react";
 import styled from "styled-components";
-import DropdownModalButton from "../Button/DropdownModalButton";
+import DropdownButton from "../Button/DropdownButton";
 
 const FriendEtcDropdown = () => {
   const { deleteFriendEmail } = useMainStore();
@@ -16,16 +16,16 @@ const FriendEtcDropdown = () => {
 
   return (
     <EtcModalContainer>
-      <DropdownModal width={188} right={50}>
-        <DropdownModalButton text="영상 통화 시작하기" onClick={() => null} />
-        <DropdownModalButton text="음성 통화 시작하기" onClick={() => null} />
-        <DropdownModalButton
+      <DropdownContainer width={188} right={50}>
+        <DropdownButton text="영상 통화 시작하기" onClick={() => null} />
+        <DropdownButton text="음성 통화 시작하기" onClick={() => null} />
+        <DropdownButton
           text="친구 삭제하기"
           color="red"
           hoverBackgroundColor="voice-hangup"
           onClick={clickDeleteFriend}
         />
-      </DropdownModal>
+      </DropdownContainer>
     </EtcModalContainer>
   );
 };

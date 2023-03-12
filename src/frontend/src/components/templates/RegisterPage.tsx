@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import AuthModal from "@components/organisms/AuthModal";
+import AuthModal from "@components/organisms/Modal/AuthModal";
 import RegisterStep1 from "@components/organisms/RegisterStep1";
 import RegisterStep2 from "@components/organisms/RegisterStep2";
 import RegisterStep3 from "@components/organisms/RegisterStep3";

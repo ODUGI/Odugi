@@ -11,7 +11,7 @@ import UserSettingIntroModal from "../Modal/UserSettingIntroModal";
 import { useEffect } from "react";
 import UserSettingImageModal from "../Modal/UserSettingImageModal";
 
-const FieldList = () => {
+const UserSettingGeneralTab = () => {
   const { userInfo } = useUserStore();
 
   const {
@@ -109,4 +109,4 @@ const ButtonWrappper = styled.div`
   height: 2rem;
 `;
 
-export default FieldList;
+export default UserSettingGeneralTab;

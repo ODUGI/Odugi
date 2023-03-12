@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface DropdownModalProps {
+interface DropdownContainerProps {
   width: number;
   top?: number | null;
   right?: number | null;
@@ -8,7 +8,7 @@ interface DropdownModalProps {
   bottom?: number | null;
 }
 
-const DropdownModal = styled.div<DropdownModalProps>`
+const DropdownContainer = styled.div<DropdownContainerProps>`
   position: absolute;
   border-radius: 4px;
   z-index: 2;
@@ -21,4 +21,4 @@ const DropdownModal = styled.div<DropdownModalProps>`
   ${({ bottom }) => bottom && `bottom: ${bottom}px`};
 `;
 
-export default DropdownModal;
+export default DropdownContainer;
