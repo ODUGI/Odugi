@@ -51,14 +51,6 @@ const MyAccountSettingBar = () => {
             onClick={() => null}
           />
         </li>
-        {/* <li>
-          <SettingButton
-            text="알림"
-            status={"알림"}
-            backgroundColor="voice-icon"
-            onClick={() => null}
-          />
-        </li> */}
         <Divider
           sx={{ borderColor: "#96989D93", opacity: 0.5, mr: 1, mt: 1, mb: 1 }}
         />

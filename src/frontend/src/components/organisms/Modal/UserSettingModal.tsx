@@ -32,7 +32,6 @@ const UserSettingModal = () => {
           <CancelIconWrapper onClick={() => setShowModal(false)}>
             <CancelIcon />
           </CancelIconWrapper>
-          {/* <UserProfile /> */}
           {getStatus(userStatus)}
         </Container>
       </SettingBox>

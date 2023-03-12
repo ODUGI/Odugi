@@ -8,9 +8,9 @@ const AccountCard = () => {
     <Card>
       <Banner />
       <CardUserInfo />
-      <FieldWrapper>
+      <UserSettingGeneralTabWrapper>
         <UserSettingGeneralTab />
-      </FieldWrapper>
+      </UserSettingGeneralTabWrapper>
     </Card>
   );
 };
@@ -25,7 +25,7 @@ const Card = styled.div`
   position: relative;
 `;
 
-const FieldWrapper = styled.div`
+const UserSettingGeneralTabWrapper = styled.div`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.backgroundColor["tab2"]};
   padding: 16px;
