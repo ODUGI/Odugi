@@ -4,7 +4,7 @@ import styled from "styled-components";
 import useCommunityStore from "@store/useCommunityStore";
 
 interface CommunityImageChildProps {
-  id: Number;
+  id: number;
   name: string;
   active?: boolean;
   src?: string;
@@ -19,7 +19,7 @@ const CommunityImageChild = ({
   active = Number(communityStatus) === id;
 
   const selectCommunity = () => {
-    setCommunityStatus(id.toString());
+    setCommunityStatus(id);
   };
 
   return (

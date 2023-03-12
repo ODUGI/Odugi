@@ -1,4 +1,4 @@
-import CommunitySettingButton from "@components/atoms/Button/CommunitySettingButton";
+import SettingButton from "@components/atoms/Button/SettingButton";
 import styled from "styled-components";
 import Text from "../atoms/Text/Text";
 
@@ -16,27 +16,27 @@ const CommunitySettingBar = () => {
       </Header>
       <ul>
         <li>
-          <CommunitySettingButton
-            status={"일반"}
+          <SettingButton
+            type="community"
             text="일반"
+            status="일반"
             backgroundColor="voice-icon"
-            onClick={() => null}
           />
         </li>
         <li>
-          <CommunitySettingButton
+          <SettingButton
+            type="community"
             text="멤버"
-            status={"멤버"}
+            status="멤버"
             backgroundColor="voice-icon"
-            onClick={() => null}
           />
         </li>
         <li>
-          <CommunitySettingButton
+          <SettingButton
+            type="community"
             text="초대"
-            status={"초대"}
+            status="초대"
             backgroundColor="voice-icon"
-            onClick={() => null}
           />
         </li>
       </ul>
