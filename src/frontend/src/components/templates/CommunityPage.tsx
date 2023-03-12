@@ -1,34 +1,35 @@
-import CommunitySetting from "@pages/CommunitySetting";
-import UserSetting from "@pages/UserSetting";
 import useModalStore from "@store/useModalStore";
 import { useEffect } from "react";
 import styled from "styled-components";
 import InviteFriendModal from "../organisms/InviteFriendModal";
 import CommunityList from "../organisms/CommunityList";
 import Tab2Footer from "../organisms/Tab2Footer";
-import Tab2CommunityHeader from "@components/organisms/Tab2ServerHeader";
-import Tab2CommunityBody from "@components/organisms/Tab2ServerBody";
-import Tab3CommunityHeader from "@components/organisms/Tab3ServerHeader";
-import Tab3CommunityBody from "@components/organisms/Tab3ServerBody";
+import Tab2CommunityHeader from "@components/organisms/Tab2CommunityHeader";
+import Tab2CommunityBody from "@components/organisms/Tab2CommunityBody";
+import Tab3CommunityHeader from "@components/organisms/Tab3CommunityHeader";
+import Tab3CommunityBody from "@components/organisms/Tab3CommunityBody";
+import CommunitySettingBar from "@components/organisms/CommunitySettingBar";
+import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
+import { CreateCommunity } from "@components/molecules/Text/CreateCommunityText.stories";
 
 const CommunityPage = () => {
-  const {
-    inviteFriendModal,
-    userSettingModal,
-    communitySettingModal,
-    setInviteFriendModal,
-    setUserSettingModal,
-    setCommunitySettingModal,
-  } = useModalStore();
+  const { setShowModal, showModal, modalType } = useModalStore();
 
   useEffect(() => {
-    setInviteFriendModal(false);
-    setUserSettingModal(false);
-    setCommunitySettingModal(false);
+    setShowModal(false);
   }, []);
 
+  const modalTable = {
+    inviteFriend: <InviteFriendModal />,
+    userSetting: <UserSettingModal />,
+    communitySetting: <CommunitySettingBar />,
+    createCommunity: <CreateCommunity />,
+  };
+
+  const Component = modalType ? modalTable[modalType] : <></>;
+
   return (
-    <>
+    <CommunityPageContainer>
       <CommunityList />
       <Tab2Container>
         <Tab2CommunityHeader />
@@ -39,12 +40,17 @@ const CommunityPage = () => {
         <Tab3CommunityHeader />
         <Tab3CommunityBody />
       </Tab3Container>
-      {inviteFriendModal && <InviteFriendModal />}
-      {userSettingModal && <UserSetting />}
-      {communitySettingModal && <CommunitySetting />}
-    </>
+      {showModal && Component}
+    </CommunityPageContainer>
   );
 };
+
+const CommunityPageContainer = styled.div`
+  width: 100vw;
+  display: flex;
+  position: relative;
+  height: 100vh;
+`;
 
 const Tab2Container = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor.tab2};

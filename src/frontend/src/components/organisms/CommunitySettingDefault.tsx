@@ -49,6 +49,7 @@ const CommunitySettingDefault = () => {
 
     modifyImage({ formData });
   };
+
   return (
     <SettingWrapper>
       <Text
@@ -75,19 +76,19 @@ const CommunitySettingDefault = () => {
             <CommunityLogoUpload setImg={setImg} />
           </Mini>
           <ButtonWrapper>
-            <FieldButton text="아바타 변경하기" onClick={() => changeImage()} />
+            <FieldButton text="아바타 변경하기" onClick={changeImage} />
           </ButtonWrapper>
         </LeftSide>
         <RightSide></RightSide>
       </Summary>
       <CommunityInput name={name} changeName={changeName} />
       <ButtonWrapper>
-        <FieldButton text="서버이름 변경하기" onClick={() => onChangeName()} />
+        <FieldButton text="서버이름 변경하기" onClick={changeImage} />
       </ButtonWrapper>
       <ButtonWrapper>
         <FieldButton
           text="서버 삭제하기"
-          onClick={() => DeleteCommunity()}
+          onClick={DeleteCommunity}
           backgroundColor="voice-hangup"
           fontWeight="bold"
         />

@@ -40,9 +40,7 @@ const MyAccountSettingBar = () => {
             text="내 계정"
             status={"내 계정"}
             backgroundColor="voice-icon"
-            onClick={() => {
-              console.log(1);
-            }}
+            onClick={() => null}
           />
         </li>
         <li>
@@ -50,7 +48,7 @@ const MyAccountSettingBar = () => {
             text="프로필"
             status={"프로필"}
             backgroundColor="voice-icon"
-            onClick={() => console.log(1)}
+            onClick={() => null}
           />
         </li>
         <Divider

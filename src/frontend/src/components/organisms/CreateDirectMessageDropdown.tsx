@@ -2,24 +2,25 @@ import useInput from "@hooks/common/useInput";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 import { useUserStore } from "@store/useUserStore";
 import styled from "styled-components";
-import DefaultModal from "../atoms/Div/DefaultModal";
+import ModalContainer from "../atoms/Div/ModalContainer";
 import Text from "../atoms/Text/Text";
 import CreateDirectMesssageHeader from "../molecules/Div/CreateDirectMessageHeader";
 import CreateDirectMesssageFooter from "../molecules/Div/CreateDirectMesssageFooter";
 import ScrollableBox from "../molecules/Div/scrollableBox";
 import SelectFriend from "../molecules/Div/SelectFriend";
+import searchImage from "../../assets/images/search.svg";
 
-interface CreateDirectMessageModalProps {
+interface CreateDirectMessageDropdownProps {
   top?: number;
   left?: number;
   right?: number;
 }
 
-const CreateDirectMessageModal = ({
+const CreateDirectMessageDropdown = ({
   top = 0,
   left = 0,
   right = 0,
-}: CreateDirectMessageModalProps) => {
+}: CreateDirectMessageDropdownProps) => {
   const {
     userInfo: { email },
   } = useUserStore();
@@ -27,12 +28,8 @@ const CreateDirectMessageModal = ({
 
   const [search, changeSearch] = useInput();
 
-  if (!isSuccess) return <></>;
-
-  const num = friendList.length;
-
   return (
-    <CreateDirectMessageModalContainer
+    <CreateDirectMessageDropdownContainer
       left={left}
       right={right}
       top={top}
@@ -45,7 +42,7 @@ const CreateDirectMessageModal = ({
         addFriendNum={1}
       />
       <>
-        {num > 0 ? (
+        {isSuccess && friendList.length > 0 ? (
           <ScrollableBox>
             {/* <SelectFriend />   
             <SelectFriend check /> */}
@@ -55,7 +52,7 @@ const CreateDirectMessageModal = ({
           </ScrollableBox>
         ) : (
           <SearchContainer>
-            <SearchImage src="/search.svg" alt="" width={85} height={85} />
+            <SearchImage src={searchImage} alt="" width={85} height={85} />
             <Text
               text="개인 메시지에 모든 친구가 포함되어 있어요."
               color="auth-desc"
@@ -65,13 +62,13 @@ const CreateDirectMessageModal = ({
         )}
       </>
       <CreateDirectMesssageFooter />
-    </CreateDirectMessageModalContainer>
+    </CreateDirectMessageDropdownContainer>
   );
 };
 
-const CreateDirectMessageModalContainer = styled(
-  DefaultModal
-)<CreateDirectMessageModalProps>`
+const CreateDirectMessageDropdownContainer = styled(
+  ModalContainer
+)<CreateDirectMessageDropdownProps>`
   border-radius: 0.25rem;
   position: absolute;
   z-index: 9;
@@ -90,4 +87,4 @@ const SearchImage = styled.img`
   margin-bottom: 20px;
 `;
 
-export default CreateDirectMessageModal;
+export default CreateDirectMessageDropdown;

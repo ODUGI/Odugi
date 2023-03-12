@@ -1,41 +1,41 @@
-import DarkModal from "@components/atoms/Div/DarkModal";
+import DropdownModal from "@components/atoms/Div/DropdownModal";
 import EditIcon from "@components/atoms/Icons/EditIcon";
 import LogoutIcon from "@components/atoms/Icons/LogoutIcon";
 import PersonAddIcon from "@components/atoms/Icons/PersonAddIcon";
-import useModalStore from "@store/useModalStore";
+import useModalStore, { ModalType } from "@store/useModalStore";
 import styled from "styled-components";
-import DarkModalButton from "../Button/DarkModalButton";
+import DropdownModalButton from "../Button/DropdownModalButton";
 
-const CommunityModal = ({ setShowModal }: any) => {
-  const { setInviteFriendModal, setCommunitySettingModal } = useModalStore();
+const CommunityDropdown = () => {
+  const { setModalType, setShowModal } = useModalStore();
 
-  const setModal = () => {
-    setCommunitySettingModal(true);
-    setShowModal(false);
+  const setModal = (modalType: ModalType) => {
+    setModalType(modalType);
+    setShowModal(true);
   };
 
   return (
-    <DarkModal width={220} top={55} left={80}>
-      <DarkModalButton
+    <DropdownModal width={220} top={55} left={80}>
+      <DropdownModalButton
         text="초대하기"
         color="invite"
-        onClick={() => setInviteFriendModal(true)}
+        onClick={() => setModal("inviteFriend")}
         Icon={<PersonAddIcon />}
       />
-      <DarkModalButton
+      <DropdownModalButton
         text="서버 설정"
-        onClick={() => setModal()}
+        onClick={() => setModal("communitySetting")}
         Icon={<EditIcon />}
       />
       <Divider />
-      <DarkModalButton
+      <DropdownModalButton
         text="서버 나가기"
         color="red"
         hoverBackgroundColor="voice-hangup"
         onClick={() => null}
         Icon={<LogoutIcon />}
       />
-    </DarkModal>
+    </DropdownModal>
   );
 };
 
@@ -44,4 +44,4 @@ const Divider = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor.divider};
 `;
 
-export default CommunityModal;
+export default CommunityDropdown;

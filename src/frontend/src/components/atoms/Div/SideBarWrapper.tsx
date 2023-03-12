@@ -15,8 +15,6 @@ const SideBar = ({ children }: SideBarProps) => {
   } = useUserStore();
   const { data } = useGetFriendList(email);
 
-  if (!data) return <></>;
-
   return (
     <SideBarContainer>
       <Text
@@ -26,18 +24,16 @@ const SideBar = ({ children }: SideBarProps) => {
         fontWeight="bold"
         mb={16}
       />
-      <NobodyActive />
-      {/* {data ? <>{children}</> : <NobodyActive />} */}
+      {data ? <>{children}</> : <NobodyActive />}
     </SideBarContainer>
   );
 };
 
 const SideBarContainer = styled.div`
-  padding-top: 0.5rem;
-  width: 22.375rem;
+  width: 358px;
   padding: 1rem 0.5rem 1rem 1rem;
-  margin-left: 0.125rem;
   border-left: 1px solid ${({ theme }) => theme.borderColor.divider};
+
   @media (max-width: 75rem) {
     display: none;
   }

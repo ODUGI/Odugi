@@ -5,14 +5,14 @@ import useModalStore from "@store/useModalStore";
 import styled from "styled-components";
 
 const InviteFriendModalHeader = () => {
-  const { setInviteFriendModal } = useModalStore();
+  const { setShowModal } = useModalStore();
   const groupName = "test";
   const chatRoomName = "환영";
   return (
     <InviteFriendModalHeadeContainer>
       <Header>
         <Text text={`친구를 ${groupName}그룹으로 초대하기`} color="white" />
-        <CancelIconWrapper onClick={() => setInviteFriendModal(false)}>
+        <CancelIconWrapper onClick={() => setShowModal(false)}>
           <CancelIcon />
         </CancelIconWrapper>
       </Header>

@@ -1,5 +1,4 @@
-import FileUploadModal from "@components/molecules/Div/FileUploadeModal";
-import useSendToStore from "@store/useSendToStore";
+import useMainStore from "@store/useMainStore";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -17,8 +16,7 @@ const MessageFooter = ({
   addChatMessage,
 }: MessageFooterProps) => {
   const { communityId } = useParams();
-  const [showUploadModal, setShowUploadModal] = useState(false);
-  const { sendTo } = useSendToStore();
+  const { userName } = useMainStore();
 
   const onChange = (v: string) => {
     setMessage(v);
@@ -29,11 +27,9 @@ const MessageFooter = ({
       <MessageBox
         value={message}
         onChange={onChange}
-        onClick={() => setShowUploadModal((prev) => !prev)}
-        nickname={sendTo}
+        nickname={userName}
         addChatMessage={addChatMessage}
       />
-      {showUploadModal && <FileUploadModal />}
     </MessageFooterContainer>
   );
 };

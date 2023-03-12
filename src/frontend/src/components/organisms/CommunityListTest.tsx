@@ -43,7 +43,7 @@ const CommunityListTest = () => {
                           ref={provided.innerRef}
                           {...provided.dragHandleProps}
                           {...provided.draggableProps}
-                          onClick={() => console.log({ index })}
+                          onClick={() => null}
                         >
                           <CommunityImage
                             avatarHeight={3}

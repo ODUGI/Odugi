@@ -7,14 +7,14 @@ import styled from "styled-components";
 import DefaultButton from "@components/atoms/Button/DefaultButton";
 import CommunityLogoUpload from "@components/molecules/Button/CommunityLogoUpload";
 
-const NameChange = () => {
+const ImageChange = () => {
   return (
     <>
       <TopWrapper>
         <CommunityLogoUpload />
       </TopWrapper>
       <Bottom>
-        <DefaultButton text="완료" onClick={() => console.log(1)} />
+        <DefaultButton text="완료" onClick={() => null} />
       </Bottom>
     </>
   );
@@ -22,9 +22,11 @@ const NameChange = () => {
 
 const UserProfile = () => {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
+
   const onClickToggleModal = useCallback(() => {
     setOpenModal(!isOpenModal);
   }, [isOpenModal]);
+
   return (
     <SettingWrapper>
       <ProfileWrapper>
@@ -39,7 +41,7 @@ const UserProfile = () => {
       </ProfileWrapper>
       {isOpenModal && (
         <Modal onClickToggleModal={onClickToggleModal}>
-          <NameChange />
+          <ImageChange />
         </Modal>
       )}
     </SettingWrapper>
@@ -49,14 +51,6 @@ const UserProfile = () => {
 export default UserProfile;
 const ProfileWrapper = styled.div`
   width: 100%;
-`;
-const Wrapper = styled.div`
-  width: 100%;
-  padding: 1rem 1rem 0 1rem;
-`;
-
-const TextWrapper = styled.div`
-  text-align: center;
 `;
 
 const TopWrapper = styled.div`

@@ -10,7 +10,13 @@ const FriendList = () => {
     userInfo: { email },
   } = useUserStore();
   const { data, isSuccess } = useGetFriendList(email);
-  if (!isSuccess) return <></>;
+
+  if (!isSuccess)
+    return (
+      <FriendListContainer>
+        <DirectMessage />
+      </FriendListContainer>
+    );
 
   const friendList: FriendType[] = data.filter(
     (friend: FriendType) => friend.friendState === "ACCEPTED"
@@ -18,9 +24,9 @@ const FriendList = () => {
 
   return (
     <FriendListContainer>
-      <DirectMessage />
+      {friendList.length !== 0 && <DirectMessage />}
       <ScrollableBox>
-        <ListContainer>
+        <FriendListWrapper>
           {friendList.map(
             ({ name, userId, channelId, profileImagePath }: FriendType) => (
               <DirectButton
@@ -32,7 +38,7 @@ const FriendList = () => {
               />
             )
           )}
-        </ListContainer>
+        </FriendListWrapper>
       </ScrollableBox>
     </FriendListContainer>
   );
@@ -43,8 +49,9 @@ const FriendListContainer = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor.trans};
 `;
 
-const ListContainer = styled.div`
+const FriendListWrapper = styled.div`
   height: calc(100vh - 200px);
+
   display: flex;
   flex-direction: column;
   gap: 2px;

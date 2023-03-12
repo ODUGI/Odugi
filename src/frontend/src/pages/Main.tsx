@@ -6,12 +6,12 @@ import { useEffect } from "react";
 import useModalStore from "@store/useModalStore";
 
 const Main = () => {
-  const { setUserSettingModal } = useModalStore();
+  const { setShowModal } = useModalStore();
   const navigate = useNavigate();
   const isMain = useMatch("/");
 
   useEffect(() => {
-    setUserSettingModal(false);
+    setShowModal(false);
   }, []);
 
   if (isMain) {
@@ -20,7 +20,7 @@ const Main = () => {
 
   return (
     <>
-      <HeaderHelmet title="Discord | 친구" />
+      <HeaderHelmet title="친구 | Discord" />
       <PageContainer>
         <MainPage />
       </PageContainer>

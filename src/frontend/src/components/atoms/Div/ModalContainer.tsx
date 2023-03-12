@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-interface DefaultModalProps {
+interface ModalContainerProps {
   width: number;
   p?: number;
 }
 
-const DefaultModal = styled.div<DefaultModalProps>`
+const ModalContainer = styled.div<ModalContainerProps>`
   background-color: ${({ theme }) => theme.backgroundColor.tab3};
   width: ${({ width }) => width}px;
   border-radius: 0.375rem;
@@ -14,8 +14,8 @@ const DefaultModal = styled.div<DefaultModalProps>`
   flex-direction: column;
 `;
 
-DefaultModal.defaultProps = {
+ModalContainer.defaultProps = {
   p: 32,
 };
 
-export default DefaultModal;
+export default ModalContainer;

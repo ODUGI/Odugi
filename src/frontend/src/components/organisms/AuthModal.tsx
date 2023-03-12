@@ -1,6 +1,6 @@
 import { flexCenter } from "@styles/flexCenter";
 import styled from "styled-components";
-import DefaultModal from "../atoms/Div/DefaultModal";
+import ModalContainer from "../atoms/Div/ModalContainer";
 
 interface AuthModalProps {
   children: React.ReactElement;
@@ -10,7 +10,7 @@ interface AuthModalProps {
 const AuthModal = ({ children, width }: AuthModalProps) => {
   return (
     <Background>
-      <DefaultModal width={width}>{children}</DefaultModal>
+      <ModalContainer width={width}>{children}</ModalContainer>
     </Background>
   );
 };

@@ -1,11 +1,12 @@
 import styled from "styled-components";
-import CommunitySettingBar from "../components/organisms/MyAccountSettingBar";
-import UserProfile from "../components/organisms/UserProfile";
-import MyAccount from "../components/organisms/MyAccount";
-import useUserSetStore, { UserSettingType } from "../store/useUserSetStore";
 import BackgroundModal from "@components/organisms/BackgroundModal";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
+import useUserSetStore, { UserSettingType } from "@store/useUserSetStore";
+import MyAccount from "../MyAccount";
+import UserProfile from "../UserProfile";
+import CommunitySettingBar from "../CommunitySettingBar";
+
 const userComponent = {
   "내 계정": MyAccount,
   프로필: UserProfile,
@@ -17,22 +18,18 @@ const getStatus = (status: UserSettingType) => {
   return <Component />;
 };
 
-const UserSetting = () => {
+const UserSettingModal = () => {
   const { userStatus } = useUserSetStore();
-  const { setUserSettingModal } = useModalStore();
+  const { setShowModal } = useModalStore();
 
   return (
-    <BackgroundModal
-      width={800}
-      p={0}
-      onClick={() => setUserSettingModal(false)}
-    >
+    <BackgroundModal width={800} p={0} onClick={() => setShowModal(false)}>
       <SettingBox>
         <Side>
           <CommunitySettingBar />
         </Side>
         <Container>
-          <CancelIconWrapper onClick={() => setUserSettingModal(false)}>
+          <CancelIconWrapper onClick={() => setShowModal(false)}>
             <CancelIcon />
           </CancelIconWrapper>
           {getStatus(userStatus)}
@@ -41,8 +38,6 @@ const UserSetting = () => {
     </BackgroundModal>
   );
 };
-
-export default UserSetting;
 
 const CancelIconWrapper = styled.div`
   font-size: 5rem;
@@ -60,8 +55,6 @@ const SettingBox = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -83,3 +76,5 @@ const Side = styled.div`
   flex: 1 1 auto;
   justify-content: flex-end;
 `;
+
+export default UserSettingModal;

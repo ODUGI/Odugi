@@ -21,20 +21,20 @@ const getStatus = (status: SettingStatusType) => {
 
 const CommunityPage = () => {
   const { settingStatus } = useCommunityStore();
-  const { setCommunitySettingModal } = useModalStore();
+  const { setShowModal } = useModalStore();
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   return (
-    <BackgroundModal
-      width={800}
-      p={0}
-      onClick={() => setCommunitySettingModal(false)}
-    >
+    <BackgroundModal width={800} p={0}>
       <SettingBox>
         <Side>
           <CommunitySettingBar />
         </Side>
         <Container>
-          <CancelIconWrapper onClick={() => setCommunitySettingModal(false)}>
+          <CancelIconWrapper onClick={closeModal}>
             <CancelIcon />
           </CancelIconWrapper>
           {getStatus(settingStatus)}

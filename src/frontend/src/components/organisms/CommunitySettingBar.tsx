@@ -20,7 +20,7 @@ const CommunitySettingBar = () => {
             status={"일반"}
             text="일반"
             backgroundColor="voice-icon"
-            onClick={() => console.log(1)}
+            onClick={() => null}
           />
         </li>
         <li>
@@ -28,7 +28,7 @@ const CommunitySettingBar = () => {
             text="멤버"
             status={"멤버"}
             backgroundColor="voice-icon"
-            onClick={() => console.log(1)}
+            onClick={() => null}
           />
         </li>
         <li>
@@ -36,7 +36,7 @@ const CommunitySettingBar = () => {
             text="초대"
             status={"초대"}
             backgroundColor="voice-icon"
-            onClick={() => console.log(1)}
+            onClick={() => null}
           />
         </li>
       </ul>

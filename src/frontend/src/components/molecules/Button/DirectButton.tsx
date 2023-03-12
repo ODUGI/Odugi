@@ -3,7 +3,6 @@ import ButtonWrapper from "@components/atoms/Button/ButtonWrapper";
 import Text from "@components/atoms/Text/Text";
 import { useNavigate, useParams } from "react-router-dom";
 import UserState from "../Div/UserState";
-import useSendToStore from "@store/useSendToStore";
 import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
 import useMainStore from "@store/useMainStore";
 
@@ -15,11 +14,12 @@ interface DirectButtonProps {
 }
 
 const DirectButton = ({ id, name, userId, src }: DirectButtonProps) => {
-  const { setUserId, setUserName } = useMainStore();
-  const { data: status, isLoading } = useGetFriendStatus({ userId });
   const { channelId } = useParams();
   const navigate = useNavigate();
-  const { setSendTo } = useSendToStore();
+
+  const { setUserId, setUserName } = useMainStore();
+
+  const { data: status, isLoading } = useGetFriendStatus(userId);
 
   if (isLoading) return <></>;
 
@@ -27,7 +27,6 @@ const DirectButton = ({ id, name, userId, src }: DirectButtonProps) => {
     setUserId(userId);
     setUserName(name);
     navigate(`/@me/${id}`);
-    setSendTo(name);
   };
 
   return (
