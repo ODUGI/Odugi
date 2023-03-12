@@ -5,7 +5,7 @@ import useSettingModalStore from "@store/useSettingModalStore";
 import { useUserStore } from "@store/useUserStore";
 import { useState } from "react";
 import styled from "styled-components";
-import CommunityLogoUpload from "../Button/CommunityLogoUpload";
+import ImageUploadButton from "../Button/ImageUploadButton";
 
 const UserSettingImageModal = () => {
   const formData = new FormData();
@@ -36,7 +36,7 @@ const UserSettingImageModal = () => {
       onClick={closeModal}
       children={
         <Wrapper>
-          <CommunityLogoUpload setImg={setImg} />
+          <ImageUploadButton setImg={setImg} />
           <AvatarWrapper>
             <FieldButton text="변경하기" onClick={updateImage} />
           </AvatarWrapper>

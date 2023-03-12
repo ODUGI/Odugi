@@ -22,6 +22,7 @@ interface RoomType {
 const Tab2CommunityBody = () => {
   const navigate = useNavigate();
   const { communityId, channelId } = useParams();
+
   const { data: res, isSuccess } = useGetChannelList({
     communityId,
   });

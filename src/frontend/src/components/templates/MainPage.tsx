@@ -7,11 +7,11 @@ import Tab2MainHeader from "../organisms/Tab2MainHeader";
 import Tab3MainHeader from "../organisms/Tab3MainHeader";
 import { useEffect } from "react";
 import useModalStore from "@store/useModalStore";
-import InviteFriendModal from "@components/organisms/InviteFriendModal";
-import CommunitySettingBar from "@components/organisms/CommunitySettingBar";
+import InviteFriendModal from "@components/organisms/Modal/InviteFriendModal";
 import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
 import CreateCommunityModal from "@components/organisms/Modal/CreateCommunityModal";
 import TabDivider from "@components/atoms/Div/TabDivider";
+import CommunitySettingModal from "@components/organisms/Modal/CommunitySettingModal";
 
 const MainPage = () => {
   const { setShowModal, showModal, modalType } = useModalStore();
@@ -23,7 +23,7 @@ const MainPage = () => {
   const modalTable = {
     inviteFriend: <InviteFriendModal />,
     userSetting: <UserSettingModal />,
-    communitySetting: <CommunitySettingBar />,
+    communitySetting: <CommunitySettingModal />,
     createCommunity: <CreateCommunityModal />,
   };
 

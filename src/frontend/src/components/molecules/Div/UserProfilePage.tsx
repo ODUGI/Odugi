@@ -32,32 +32,7 @@ const UserProfilePage = () => {
             <LinkText text="아바타 제거하기" onClick={() => null} />
           </LinkWrapper>
         </CustomButtons>
-        {/* <Text
-          text="배너색상"
-          fontSize="xs"
-          color="setting-tab"
-          mb={8}
-          fontWeight="bold"
-        />
-        <SketchPicker
-          color={backgroundColor}
-          onChangeComplete={handleChangeComplete}
-        />
-        <Text
-          text="내 소개"
-          fontSize="xs"
-          color="setting-tab"
-          mb={8}
-          fontWeight="bold"
-        />
-        <Text
-          text="간단한 소개 작성"
-          fontSize="sm"
-          color="setting-tab"
-          mb={16}
-        /> */}
       </BlockWrapper>
-      {/* <BlockWrapper><AccountCard /></BlockWrapper> */}
     </MainWrapper>
   );
 };

@@ -9,12 +9,12 @@ const Tab3MainHeader = () => {
   const { channelId } = useParams();
   const { userId, userName } = useMainStore();
 
-  const { data: status } = useGetFriendStatus(Number(userId));
+  const status = useGetFriendStatus(Number(userId));
 
   return (
     <Tab3MainHeaderContainer>
       {channelId ? (
-        <DirectMessageHeader name={userName} status={status?.data.data} />
+        <DirectMessageHeader name={userName} status={status} />
       ) : (
         <FriendHeader />
       )}

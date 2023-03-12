@@ -1,15 +1,15 @@
-import DropdownModal from "@components/atoms/Div/DropdownModal";
+import DropdownContainer from "@components/atoms/Div/DropdownContainer";
 import RadioButtonUncheckedIcon from "@components/atoms/Icons/RadioButtonUncheckedIcon";
 import { RadioButtonChecked } from "@mui/icons-material";
 import { useState } from "react";
-import DropdownModalButton from "../Button/DropdownModalButton";
+import DropdownButton from "../Button/DropdownButton";
 
-const NotificationModal = ({ alarmRef }: any) => {
+const NotificationModal = () => {
   const [type, setType] = useState(1);
 
   return (
-    <DropdownModal width={188} top={40} right={160} ref={alarmRef}>
-      <DropdownModalButton
+    <DropdownContainer width={188} top={40} right={160}>
+      <DropdownButton
         text="카테고리 기본값 사용"
         color="auth-desc"
         onClick={() => setType(1)}
@@ -17,7 +17,7 @@ const NotificationModal = ({ alarmRef }: any) => {
           type === 1 ? <RadioButtonChecked /> : <RadioButtonUncheckedIcon />
         }
       />
-      <DropdownModalButton
+      <DropdownButton
         text="모든 메시지"
         color="auth-desc"
         onClick={() => setType(2)}
@@ -25,7 +25,7 @@ const NotificationModal = ({ alarmRef }: any) => {
           type === 2 ? <RadioButtonChecked /> : <RadioButtonUncheckedIcon />
         }
       />
-      <DropdownModalButton
+      <DropdownButton
         text="@mentions만"
         color="auth-desc"
         onClick={() => setType(3)}
@@ -33,7 +33,7 @@ const NotificationModal = ({ alarmRef }: any) => {
           type === 3 ? <RadioButtonChecked /> : <RadioButtonUncheckedIcon />
         }
       />
-      <DropdownModalButton
+      <DropdownButton
         text="없음"
         color="auth-desc"
         onClick={() => setType(4)}
@@ -42,7 +42,7 @@ const NotificationModal = ({ alarmRef }: any) => {
           type === 4 ? <RadioButtonChecked /> : <RadioButtonUncheckedIcon />
         }
       />
-    </DropdownModal>
+    </DropdownContainer>
   );
 };
 

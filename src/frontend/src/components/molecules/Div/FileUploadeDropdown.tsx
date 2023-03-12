@@ -1,18 +1,18 @@
-import DropdownModal from "@components/atoms/Div/DropdownModal";
+import DropdownContainer from "@components/atoms/Div/DropdownContainer";
 import UploadIcon from "@components/atoms/Icons/UploadIcon";
 import Text from "@components/atoms/Text/Text";
 import styled from "styled-components";
 
 const FileUploadeDropdown = () => {
   return (
-    <DropdownModal width={200} top={-60}>
+    <DropdownContainer width={200} top={-60}>
       <FileUploadModalWrapper>
         <UploadIconWrapper onClick={() => null}>
           <UploadIcon />
         </UploadIconWrapper>
         <Text text="파일 업로드" fontSize="sm" />
       </FileUploadModalWrapper>
-    </DropdownModal>
+    </DropdownContainer>
   );
 };
 

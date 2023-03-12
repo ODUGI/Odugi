@@ -1,10 +1,10 @@
-import CommunityLogoUpload from "./CommunityLogoUpload";
+import ImageUploadButton from "./ImageUploadButton";
 
 export default {
   title: "molecules/Button",
-  component: CommunityLogoUpload,
+  component: ImageUploadButton,
 };
 
 export const CommunityLogo = () => {
-  return <CommunityLogoUpload />;
+  return <ImageUploadButton />;
 };

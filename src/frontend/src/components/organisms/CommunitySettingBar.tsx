@@ -44,8 +44,6 @@ const CommunitySettingBar = () => {
   );
 };
 
-export default CommunitySettingBar;
-
 const BarContainer = styled.div`
   width: 12rem;
   height: 67.5rem;
@@ -70,3 +68,5 @@ const Header = styled.div`
   width: 100%;
   padding: 0px 6px;
 `;
+
+export default CommunitySettingBar;

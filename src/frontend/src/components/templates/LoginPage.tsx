@@ -3,7 +3,7 @@ import LinkText from "@components/atoms/Text/LinkText";
 import Text from "@components/atoms/Text/Text";
 import LoginForm from "@components/molecules/Form/LoginForm";
 import AuthDesc from "@components/molecules/Text/AuthDesc";
-import AuthModal from "@components/organisms/AuthModal";
+import AuthModal from "@components/organisms/Modal/AuthModal";
 import useInput from "@hooks/common/useInput";
 import useLogin from "@hooks/query/useLogin";
 import validateEmail from "@utils/validateEmail";

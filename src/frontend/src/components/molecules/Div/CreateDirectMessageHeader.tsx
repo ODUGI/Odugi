@@ -16,7 +16,7 @@ const CreateDirectMesssageHeader = ({
 }: CreateDirectMesssageHeaderProps) => {
   return (
     <CreateDirectMesssageHeaderContainer>
-      <Text text="친구 선택하기" color="white" fontSize="lg" mb={4} />
+      <Text text="친구 선택하기" color="white" fontSize="lg" mb={8} />
       <Text
         text={`친구를 ${9 - addFriendNum}명 더 추가할 수 있어요.`}
         color="auth-desc"
