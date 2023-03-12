@@ -3,13 +3,16 @@ import Text from "@components/atoms/Text/Text";
 import Modal from "@components/organisms/Modal";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
-import DefaultButton from "../../atoms/Button/DefaultButton";
-import DefaultInput from "../../atoms/Input/DefaultInput";
+import DefaultButton from "@components/atoms/Button/DefaultButton";
+import DefaultInput from "@components/atoms/Input/DefaultInput";
 import useInput from "@hooks/common/useInput";
 import useModifyPassword from "@hooks/query/useModifyPassword";
 import { useUserStore } from "@store/useUserStore";
 import useModifyName from "@hooks/query/useModifyName";
 import useModifyIntro from "@hooks/query/useModifyIntro";
+import UserNameChangeModal from "@components/organisms/UserNameChangeModal";
+import UserIntroChangeModal from "@components/organisms/UserIntroChangeModal";
+import UserPasswordChangeModal from "@components/organisms/UserPasswordChangeModal";
 
 const IntroChange = ({ setOpenModal3 }: any) => {
   const { userInfo, setUserInfo } = useUserStore();
@@ -230,36 +233,63 @@ const PwChange = ({ setOpenModal2 }: any) => {
   );
 };
 
-const FieldList = () => {
+const UserSettingDefaultList = () => {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
-  const [password, changePassword] = useInput();
-  const [isOpenModal2, setOpenModal2] = useState<boolean>(false);
-  const [isOpenModal3, setOpenModal3] = useState<boolean>(false);
+  // const [isOpenModal2, setOpenModal2] = useState<boolean>(false);
+  // const [isOpenModal3, setOpenModal3] = useState<boolean>(false);
+  // const [isOpenModal4, setOpenModal4] = useState<boolean>(false);
   const { userInfo } = useUserStore();
-  const onClickToggleModal = useCallback(() => {
-    setOpenModal(!isOpenModal);
-  }, [isOpenModal]);
-  const onClickToggleModal2 = useCallback(() => {
-    setOpenModal2(!isOpenModal2);
-  }, [isOpenModal2]);
-  const onClickToggleModal3 = useCallback(() => {
-    setOpenModal3(!isOpenModal3);
-  }, [isOpenModal3]);
+  type UserSettingType = "이름변경" | "자기소개변경" | "비밀번호변경";
+  const [key, setKey] = useState<UserSettingType>();
+  const userSettingComponent = {
+    이름변경: UserNameChangeModal,
+    자기소개변경: UserIntroChangeModal,
+    비밀번호변경: UserPasswordChangeModal,
+  };
+
+  // const onClickToggleModal = useCallback(() => {
+  //   setOpenModal(!isOpenModal);
+  // }, [isOpenModal]);
+  // const onClickToggleModal2 = useCallback(() => {
+  //   setOpenModal2(!isOpenModal2);
+  // }, [isOpenModal2]);
+  // const onClickToggleModal3 = useCallback(() => {
+  //   setOpenModal3(!isOpenModal3);
+  // }, [isOpenModal3]);
+
+  const getModalStatus = (key: UserSettingType) => {
+    const Component = userSettingComponent[key];
+    return <Component setOpenModal={setOpenModal} />;
+  };
+
+  const onClickToggleModal = useCallback(
+    (key: UserSettingType) => {
+      setKey(key);
+      setOpenModal(!isOpenModal);
+    },
+    [isOpenModal]
+  );
+
   return (
     <ListWrapper>
-      {isOpenModal && (
-        <Modal onClickToggleModal={onClickToggleModal}>
-          <NameChange setOpenModal={setOpenModal} />
+      {/* {isOpenModal4 && (
+        <Modal onClickToggleModal={() => onClickToggleModal4("이름변경")}>
+          <NameChange setOpenModal4={setOpenModal4} />
         </Modal>
       )}
-      {isOpenModal2 && (
-        <Modal onClickToggleModal={onClickToggleModal2}>
-          <PwChange setOpenModal2={setOpenModal2} />
+      {isOpenModal4 && (
+        <Modal onClickToggleModal={() => onClickToggleModal4("비밀번호변경")}>
+          <PwChange setOpenModal4={setOpenModal4} />
         </Modal>
       )}
-      {isOpenModal3 && (
-        <Modal onClickToggleModal={onClickToggleModal3}>
-          <IntroChange setOpenModal3={setOpenModal3} />
+      {isOpenModal4 && (
+        <Modal onClickToggleModal={() => onClickToggleModal4("자기소개변경")}>
+          <IntroChange setOpenModal4={setOpenModal4} />
+        </Modal>
+      )} */}
+      {key && (
+        <Modal onClickToggleModal={() => onClickToggleModal(key)}>
+          {getModalStatus(key)}
         </Modal>
       )}
       <FieldContinaer>
@@ -271,7 +301,7 @@ const FieldList = () => {
           <FieldButton
             text="수정"
             backgroundColor="setting"
-            onClick={onClickToggleModal}
+            onClick={() => onClickToggleModal("이름변경")}
           />
         </ButtonWrappper>
       </FieldContinaer>
@@ -280,13 +310,6 @@ const FieldList = () => {
           <Text text="이메일" fontSize="xs" color="setting-tab" mb={8} />
           <Text text={userInfo.email} fontSize="base" color="white" />
         </LeftRow>
-        {/* <ButtonWrappper>
-          <FieldButton
-            text="확인"
-            backgroundColor="setting"
-            onClick={onClickToggleModal}
-          />
-        </ButtonWrappper> */}
       </FieldContinaer>
       <FieldContinaer>
         <LeftRow>
@@ -294,7 +317,10 @@ const FieldList = () => {
           <Text text="********" fontSize="base" color="white" />
         </LeftRow>
         <ButtonWrappper>
-          <FieldButton text="변경하기" onClick={onClickToggleModal2} />
+          <FieldButton
+            text="변경하기"
+            onClick={() => onClickToggleModal("비밀번호변경")}
+          />
         </ButtonWrappper>
       </FieldContinaer>
       <FieldContinaer>
@@ -303,14 +329,17 @@ const FieldList = () => {
           {/* <Text text="****" fontSize="base" color="white" /> */}
         </LeftRow>
         <ButtonWrappper>
-          <FieldButton text="변경하기" onClick={onClickToggleModal3} />
+          <FieldButton
+            text="변경하기"
+            onClick={() => onClickToggleModal("자기소개변경")}
+          />
         </ButtonWrappper>
       </FieldContinaer>
     </ListWrapper>
   );
 };
 
-export default FieldList;
+export default UserSettingDefaultList;
 
 const FieldContinaer = styled.div`
   display: -webkit-box;

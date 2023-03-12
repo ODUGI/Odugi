@@ -1,4 +1,4 @@
-import CommunitySetting from "./CommunityPage";
+import CommunitySetting from "./CommunitySetting";
 
 export default {
   title: "Pages/CommunitySetting",
