@@ -1,52 +1,41 @@
-import { MouseEventHandler } from "react";
 import styled from "styled-components";
 import { BackgroundColorType, ColorType } from "@styles/theme";
-import useUserSetStore, { UserSettingType } from "@store/useUserSetStore";
+import useSettingModalStore from "@store/useSettingModalStore";
 
 interface SettingButtonProps {
   text: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
   fontWeight?: "normal" | "bold";
   color?: ColorType;
   backgroundColor?: BackgroundColorType;
   disabled?: boolean;
-  status: UserSettingType;
+  status: SettingBarType;
+  type: "user" | "community";
 }
 
 const SettingButton = ({
   text,
-  onClick,
   fontWeight = "normal",
-  disabled = false,
   status,
-  backgroundColor,
+  type,
 }: SettingButtonProps) => {
-  const { userStatus, userSettingStatus } = useUserSetStore(
-    ({ userStatus, userSettingStatus }) => ({
-      userStatus,
-      userSettingStatus,
-    })
-  );
+  const { settingBarStatus, setSettingBarStatus } = useSettingModalStore();
 
-  const getColor = (status: UserSettingType) => {
-    return status === userStatus ? "white" : "tab3-header";
+  const getColor = (status: SettingBarType) => {
+    return status === settingBarStatus ? "white" : "tab3-header";
   };
 
-  // const getHoverColor = (status: UserSettingType) => {
-  //   return status === userStatus ? "white" : "icon";
-  // };
-
-  const getBackgroundColor = (status: UserSettingType) => {
-    return status === userStatus ? "active" : "trans";
+  const getBackgroundColor = (status: SettingBarType) => {
+    return status === settingBarStatus ? "active" : "trans";
   };
 
-  // const getHoverBackgroundColor = () => {
-  //   return "active";
-  // };
-
-  const changeUserStatus = (mainStatus: UserSettingType) => {
-    userSettingStatus(mainStatus);
+  const changeUserStatus = (mainStatus: SettingBarType) => {
+    if (type === "community") {
+      setSettingBarStatus(mainStatus);
+    } else {
+      setSettingBarStatus(mainStatus);
+    }
   };
+
   return (
     <SettingButtonContainer
       onClick={() => changeUserStatus(status)}
@@ -62,19 +51,19 @@ const SettingButton = ({
 export const SettingButtonContainer = styled.button<
   Pick<SettingButtonProps, "color" | "backgroundColor" | "fontWeight">
 >`
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
   text-align: left;
   border: none;
   width: 100%;
   height: 100%;
-  font-size: 16px;
-  padding: 6px;
+  font-size: 1rem;
+  padding: 0.375rem;
   box-sizing: border-box;
   color: ${({ theme, color }) => theme.color[color]};
   background-color: ${({ theme, backgroundColor }) =>
     theme.backgroundColor[backgroundColor]};
   font-weight: ${({ fontWeight }) => fontWeight};
-  border-radius: 4px;
+  border-radius: 0.25rem;
   cursor: pointer;
   &:hover {
     opacity: 1;

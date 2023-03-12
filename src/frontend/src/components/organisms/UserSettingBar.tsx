@@ -37,18 +37,18 @@ const MyAccountSettingBar = () => {
       <ul>
         <li>
           <SettingButton
+            type="user"
             text="내 계정"
-            status={"내 계정"}
+            status="내 계정"
             backgroundColor="voice-icon"
-            onClick={() => null}
           />
         </li>
         <li>
           <SettingButton
+            type="user"
             text="프로필"
-            status={"프로필"}
+            status="프로필"
             backgroundColor="voice-icon"
-            onClick={() => null}
           />
         </li>
         <Divider

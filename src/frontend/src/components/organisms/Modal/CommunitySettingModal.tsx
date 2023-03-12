@@ -3,32 +3,37 @@ import CommunitySettingBar from "../CommunitySettingBar";
 import CommunitySettingMember from "../CommunitySettingMember";
 import CommunitySettingDefault from "../CommunitySettingDefault";
 import CommunitySettingInvite from "../CommunitySettingInvite";
-import BackgroundModal from "@components/organisms/BackgroundModal";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
-import useCommunityStore, { SettingStatusType } from "@store/useCommunityStore";
 import useModalStore from "@store/useModalStore";
+import MyAccount from "../MyAccount";
+import UserProfile from "../UserProfile";
+import useSettingModalStore from "@store/useSettingModalStore";
+import { useEffect } from "react";
 
-const communityComponent = {
-  일반: CommunitySettingDefault,
-  멤버: CommunitySettingMember,
-  초대: CommunitySettingInvite,
-};
-
-const getStatus = (status: SettingStatusType) => {
-  const Component = communityComponent[status];
-  return <Component />;
+const userComponent = {
+  "내 계정": <MyAccount />,
+  프로필: <UserProfile />,
+  알림: <UserProfile />,
+  일반: <CommunitySettingDefault />,
+  멤버: <CommunitySettingMember />,
+  초대: <CommunitySettingInvite />,
 };
 
 const CommunitySettingModal = () => {
-  const { settingStatus } = useCommunityStore();
   const { setShowModal } = useModalStore();
+  const { settingBarStatus, setSettingBarStatus } = useSettingModalStore();
+
+  const Component = settingBarStatus ? userComponent[settingBarStatus] : <></>;
 
   const closeModal = () => {
     setShowModal(false);
   };
 
+  useEffect(() => {
+    setSettingBarStatus("일반");
+  }, []);
+
   return (
-    // <BackgroundModal width={0} p={0}>
     <SettingBox>
       <Side>
         <CommunitySettingBar />
@@ -37,15 +42,14 @@ const CommunitySettingModal = () => {
         <CancelIconWrapper onClick={closeModal}>
           <CancelIcon />
         </CancelIconWrapper>
-        {getStatus(settingStatus)}
+        {Component}
       </Container>
     </SettingBox>
-    // </BackgroundModal>
   );
 };
 
 const SettingBox = styled.div`
-  /* width: 100%; */
+  width: 100%;
   position: fixed;
   z-index: 4;
   top: 0;
@@ -64,10 +68,10 @@ const SettingBox = styled.div`
 const CancelIconWrapper = styled.div`
   font-size: 5rem;
   color: ${({ theme }) => theme.color["auth-desc"]};
-  cursor: pointer;
   position: absolute;
   right: 500px;
   top: 25px;
+  cursor: pointer;
 `;
 
 const Container = styled.div`

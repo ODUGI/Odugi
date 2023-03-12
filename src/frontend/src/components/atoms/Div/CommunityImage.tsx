@@ -5,7 +5,7 @@ import { ReactElement } from "react";
 import useCommunityStore from "@store/useCommunityStore";
 
 interface CommunityImageProps {
-  id: Number;
+  id: number;
   name: string;
   active?: boolean;
   src?: string;
@@ -28,7 +28,7 @@ const CommunityImage = ({
 
   const selectCommunity = () => {
     if (id === -2) return;
-    setCommunityStatus(id.toString());
+    setCommunityStatus(id);
   };
 
   return (

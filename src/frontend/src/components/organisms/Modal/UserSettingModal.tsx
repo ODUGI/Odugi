@@ -1,41 +1,46 @@
 import styled from "styled-components";
-import BackgroundModal from "@components/organisms/BackgroundModal";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
-import useUserSetStore, { UserSettingType } from "@store/useUserSetStore";
 import MyAccount from "../MyAccount";
 import UserProfile from "../UserProfile";
-import CommunitySettingBar from "../CommunitySettingBar";
+import useSettingModalStore from "@store/useSettingModalStore";
+import CommunitySettingDefault from "../CommunitySettingDefault";
+import CommunitySettingMember from "../CommunitySettingMember";
+import CommunitySettingInvite from "../CommunitySettingInvite";
+import { UserSettingBar } from "../UserSettingBar.stories";
+import { useEffect } from "react";
 
 const userComponent = {
-  "내 계정": MyAccount,
-  프로필: UserProfile,
-  알림: UserProfile,
-};
-
-const getStatus = (status: UserSettingType) => {
-  const Component = userComponent[status];
-  return <Component />;
+  "내 계정": <MyAccount />,
+  프로필: <UserProfile />,
+  알림: <UserProfile />,
+  일반: <CommunitySettingDefault />,
+  멤버: <CommunitySettingMember />,
+  초대: <CommunitySettingInvite />,
 };
 
 const UserSettingModal = () => {
-  const { userStatus } = useUserSetStore();
+  const { settingBarStatus, setSettingBarStatus } = useSettingModalStore();
   const { setShowModal } = useModalStore();
 
+  const Component = settingBarStatus ? userComponent[settingBarStatus] : <></>;
+
+  useEffect(() => {
+    setSettingBarStatus("내 계정");
+  }, []);
+
   return (
-    <BackgroundModal width={800} p={0} onClick={() => setShowModal(false)}>
-      <SettingBox>
-        <Side>
-          <CommunitySettingBar />
-        </Side>
-        <Container>
-          <CancelIconWrapper onClick={() => setShowModal(false)}>
-            <CancelIcon />
-          </CancelIconWrapper>
-          {getStatus(userStatus)}
-        </Container>
-      </SettingBox>
-    </BackgroundModal>
+    <SettingBox>
+      <Side>
+        <UserSettingBar />
+      </Side>
+      <Container>
+        <CancelIconWrapper onClick={() => setShowModal(false)}>
+          <CancelIcon />
+        </CancelIconWrapper>
+        {Component}
+      </Container>
+    </SettingBox>
   );
 };
 

@@ -23,12 +23,7 @@ const CardUserInfo = () => {
         <Text text={userInfo.introduction} fontSize="sm" color="setting-tab" />
       </NameWrapper>
       <ButtonWrapper>
-        <SettingButton
-          text="사용자 프로필 편집"
-          status={"프로필"}
-          onClick={() => null}
-          // <FieldButton text="사용자 프로필 편집" onClick={() => null} />
-        />
+        <SettingButton type="user" text="사용자 프로필 편집" status="프로필" />
       </ButtonWrapper>
     </InfoContainer>
   );
