@@ -5,11 +5,11 @@ import { useUserStore } from "@store/useUserStore";
 import useSettingModalStore, {
   SettingModalType,
 } from "@store/useSettingModalStore";
-import UserSettingNameModal from "../Modal/UserSettingNameModal";
-import UserSettingPasswordModal from "../Modal/UserSettingPasswordModal";
-import UserSettingIntroModal from "../Modal/UserSettingIntroModal";
+import UserSettingNameModal from "@components/molecules/Modal/UserSettingNameModal";
+import UserSettingPasswordModal from "@components/molecules/Modal/UserSettingPasswordModal";
+import UserSettingIntroModal from "@components/molecules/Modal/UserSettingIntroModal";
+import UserSettingImageModal from "@components/molecules/Modal/UserSettingImageModal";
 import { useEffect } from "react";
-import UserSettingImageModal from "../Modal/UserSettingImageModal";
 
 const FieldList = () => {
   const { userInfo } = useUserStore();
