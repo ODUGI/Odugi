@@ -43,14 +43,16 @@ const UserSettingModal = () => {
 const CancelIconWrapper = styled.div`
   font-size: 5rem;
   color: ${({ theme }) => theme.color["auth-desc"]};
-  cursor: pointer;
   position: absolute;
+
   right: 500px;
   top: 25px;
+
+  cursor: pointer;
 `;
 
 const SettingBox = styled.div`
-  width: 100%;
+  width: 100vw;
   position: absolute;
   top: 0;
   right: 0;
