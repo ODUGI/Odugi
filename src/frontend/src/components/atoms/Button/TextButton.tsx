@@ -38,11 +38,10 @@ const TextButtonContainer = styled.span<
   color: ${({ theme, color }) => theme.color[color]};
   background-color: ${({ theme, backgroundColor }) =>
     theme.backgroundColor[backgroundColor]};
-  font-weight: bold;
   border-radius: 4px;
   text-align: center;
   margin: 0 0.5rem;
-  padding: 0.125rem 0.5rem;
+  padding: 0.25rem 0.5rem;
   cursor: pointer;
   &:hover {
     color: ${({ theme, hoverColor }) => theme.color[hoverColor]};

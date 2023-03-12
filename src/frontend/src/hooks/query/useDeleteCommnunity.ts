@@ -1,8 +1,8 @@
+import communityApi from "@api/community";
 import { useMutation } from "@tanstack/react-query";
-import serverSettingApi from "@api/server";
 
 const useDeleteCommunity = () => {
-  return useMutation(serverSettingApi.delete);
+  return useMutation(communityApi.delete);
 };
 
 export default useDeleteCommunity;

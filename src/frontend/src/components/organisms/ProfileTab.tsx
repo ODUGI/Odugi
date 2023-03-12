@@ -1,25 +1,25 @@
 import { useState } from "react";
 import styled from "styled-components";
-import ServerProfile from "./ServerProfile";
-import UserProfilePage from "./UserProfilePage";
+import CommunityProfile from "./CommunityProfile";
+import UserProfilePage from "../molecules/Div/UserProfilePage";
 import Text from "@components/atoms/Text/Text";
 
 // Styled-Component 라이브러리를 활용해 TabMenu 와 Desc 컴포넌트의 CSS를 구현.
 
 export const Tab = () => {
   // Tab Menu 중 현재 어떤 Tab이 선택되어 있는지 확인하기 위한 currentTab 상태와 currentTab을 갱신하는 함수가 존재해야 하고, 초기값은 0.
-  // const [currentTab, clickTab] = useState(0);
+  const [currentTab, clickTab] = useState(0);
 
-  // const menuArr = [
-  //   { name: "사용자 프로필", content: <UserProfilePage /> },
-  //   { name: "서버 프로필", content: <ServerProfile /> },
-  // ];
+  const menuArr = [
+    { name: "사용자 프로필", content: <UserProfilePage /> },
+    { name: "서버 프로필", content: <CommunityProfile /> },
+  ];
 
-  // const selectMenuHandler = (index: number) => {
-  //   // parameter로 현재 선택한 인덱스 값을 전달해야 하며, 이벤트 객체(event)는 쓰지 않는다
-  //   // 해당 함수가 실행되면 현재 선택된 Tab Menu 가 갱신.
-  //   clickTab(index);
-  // };
+  const selectMenuHandler = (index: number) => {
+    // parameter로 현재 선택한 인덱스 값을 전달해야 하며, 이벤트 객체(event)는 쓰지 않는다
+    // 해당 함수가 실행되면 현재 선택된 Tab Menu 가 갱신.
+    clickTab(index);
+  };
 
   return (
     <>
@@ -59,7 +59,7 @@ export const Tab = () => {
         mb={16}
         fontWeight="bold"
       />
-      <ServerProfile />
+      <CommunityProfile />
     </>
   );
 };

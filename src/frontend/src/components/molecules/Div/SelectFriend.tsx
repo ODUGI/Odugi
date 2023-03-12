@@ -3,7 +3,7 @@ import CheckboxOffIcon from "@components/atoms/Icons/CheckboxOffIcon";
 import CheckboxOnIcon from "@components/atoms/Icons/CheckboxOnIcon";
 import Text from "@components/atoms/Text/Text";
 import styled from "styled-components";
-import UserState32 from "./UserState32";
+import UserState from "./UserState";
 
 interface SelectFriendProps {
   status: "0" | "1" | "2" | "3";
@@ -14,7 +14,7 @@ const SelectFriend = ({ check = false, status }: SelectFriendProps) => {
   return (
     <ButtonWrapper onClick={() => null}>
       <SelectFriendContainer>
-        <UserState32 status={status} />
+        <UserState type="s" status={status} />
         <UserNameWrapper>
           <Text text="name" />
         </UserNameWrapper>

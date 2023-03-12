@@ -6,5 +6,5 @@ export default {
 };
 
 export const Default = () => (
-  <DefaultButton text="로그인" onClick={() => console.log(1)} />
+  <DefaultButton text="로그인" onClick={() => null} />
 );

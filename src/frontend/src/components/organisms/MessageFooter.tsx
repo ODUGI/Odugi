@@ -1,5 +1,4 @@
-import FileUploadModal from "@components/molecules/Div/FileUploadeModal";
-import useSendToStore from "@store/useSendToStore";
+import useMainStore from "@store/useMainStore";
 import { Dispatch, SetStateAction, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -16,34 +15,30 @@ const MessageFooter = ({
   setMessage,
   addChatMessage,
 }: MessageFooterProps) => {
-  const { serverId } = useParams();
-  const [showUploadModal, setShowUploadModal] = useState(false);
-  const { sendTo } = useSendToStore();
+  const { communityId } = useParams();
+  const { userName } = useMainStore();
 
   const onChange = (v: string) => {
-    // enter 누르면 onClick처리
     setMessage(v);
   };
 
   return (
-    <MessageFooterContainer isServer={!!serverId}>
+    <MessageFooterContainer isCommunity={!!communityId}>
       <MessageBox
         value={message}
         onChange={onChange}
-        onClick={() => setShowUploadModal((prev) => !prev)}
-        nickname={sendTo}
+        nickname={userName}
         addChatMessage={addChatMessage}
       />
-      {showUploadModal && <FileUploadModal />}
     </MessageFooterContainer>
   );
 };
 
-const MessageFooterContainer = styled.div<{ isServer: boolean }>`
+const MessageFooterContainer = styled.div<{ isCommunity: boolean }>`
   position: relative;
   background-color: ${({ theme }) => theme.backgroundColor.tab3};
-  width: ${({ isServer }) =>
-    isServer ? "calc(100vw - 19.6875rem)" : "calc(100vw - 41.875rem)"};
+  width: ${({ isCommunity }) =>
+    isCommunity ? "calc(100vw - 19.6875rem)" : "calc(100vw - 41.875rem)"};
   position: absolute;
   bottom: 0;
   padding: 0 1rem 1.5rem 1rem;

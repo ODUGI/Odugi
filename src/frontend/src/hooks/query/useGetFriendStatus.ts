@@ -1,12 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import friendApi from "@api/friend";
 
-interface useGetFriendStatusProps {
-  userId: number;
-}
+const useGetFriendStatus = (userId: number) => {
+  const { data } = useQuery(["friendStatus", { userId }], friendApi.isOnline);
 
-const useGetFriendStatus = ({ userId }: useGetFriendStatusProps) => {
-  return useQuery(["friendStatus", { userId }], friendApi.isOnline);
+  return data?.data.data;
 };
 
 export default useGetFriendStatus;

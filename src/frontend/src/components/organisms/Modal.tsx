@@ -46,7 +46,7 @@ const DialogBox = styled.dialog`
   /* box-shadow: 0 0 30px rgba(30, 30, 30, 0.185); */
   box-sizing: border-box;
   background-color: ${({ theme }) => theme.backgroundColor["tab3"]};
-  z-index: 10000;
+  z-index: 4;
   top: 0;
   left: 0;
   padding: 0.2rem 0 0 0;
@@ -58,7 +58,7 @@ const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 3;
   background-color: rgba(0, 0, 0, 0.8);
 `;
 

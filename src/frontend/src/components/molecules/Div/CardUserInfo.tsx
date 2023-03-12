@@ -1,9 +1,8 @@
-import FieldButton from "@components/atoms/Button/fieldButton";
 import SettingButton from "@components/atoms/Button/SettingButton";
 import Text from "@components/atoms/Text/Text";
 import { useUserStore } from "@store/useUserStore";
 import styled from "styled-components";
-import UserState80 from "./UserState80";
+import UserState from "./UserState";
 
 const CardUserInfo = () => {
   const { userInfo } = useUserStore();
@@ -11,7 +10,7 @@ const CardUserInfo = () => {
   return (
     <InfoContainer>
       <Logo>
-        <UserState80 src={userInfo.profileImagePath} status="1" />
+        <UserState type="m" src={userInfo.profileImagePath} status="1" />
       </Logo>
       <NameWrapper>
         <Text
@@ -27,10 +26,8 @@ const CardUserInfo = () => {
         <SettingButton
           text="사용자 프로필 편집"
           status={"프로필"}
-          onClick={() => {
-            console.log(1);
-          }}
-          // <FieldButton text="사용자 프로필 편집" onClick={() => console.log(1)} />
+          onClick={() => null}
+          // <FieldButton text="사용자 프로필 편집" onClick={() => null} />
         />
       </ButtonWrapper>
     </InfoContainer>

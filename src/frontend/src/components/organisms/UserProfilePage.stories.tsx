@@ -1,4 +1,4 @@
-import UserProfilePage from "./UserProfilePage";
+import UserProfilePage from "../molecules/Div/UserProfilePage";
 
 export default {
   title: "Organisms/MyAccount",

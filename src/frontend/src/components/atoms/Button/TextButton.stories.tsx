@@ -10,6 +10,6 @@ export const Text = () => (
     text="온라인"
     color="white"
     backgroundColor="hover"
-    onClick={() => console.log(1)}
+    onClick={() => null}
   />
 );

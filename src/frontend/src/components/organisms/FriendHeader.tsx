@@ -1,13 +1,18 @@
-import { useState } from "react";
+import useOutsideClick from "@hooks/common/useOutsideClick";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import FriendHeaderLeft from "../atoms/Div/FriendHeaderLeft";
 import MainTabButton from "../atoms/Div/MainTabButton";
 import Tip from "../atoms/Div/Tooltip";
 import ChatAddIcon from "../atoms/Icons/ChatAddIcon";
-import CreateDirectMessageModal from "./CreateDirectMessageModal";
+import CreateDirectMessageModal from "./CreateDirectMessageDropdown";
 
 const FriendHeader = () => {
-  const [showDMModal, setShowDMModal] = useState(false);
+  const [showDMDropdown, setShowDMDropdown] = useState(false);
+  const dropdownRef = useRef<any>();
+
+  useOutsideClick(dropdownRef, () => setShowDMDropdown(false));
+
   return (
     <>
       <FriendHeaderContainer>
@@ -18,17 +23,21 @@ const FriendHeader = () => {
           <MainTabButton status={"대기 중"} />
           <MainTabButton status={"친구 추가하기"} />
         </LeftContainer>
+
         <Tip title="새로운 그룹 메시지" place="bottom">
-          <RightContainer onClick={() => setShowDMModal(!showDMModal)}>
+          <RightContainer
+            ref={dropdownRef}
+            onClick={() => setShowDMDropdown((prev) => !prev)}
+          >
             <ChatAddIcon />
+            {showDMDropdown && (
+              <DMModalWrapper>
+                <CreateDirectMessageModal top={20} left={-440} />
+              </DMModalWrapper>
+            )}
           </RightContainer>
         </Tip>
       </FriendHeaderContainer>
-      {showDMModal && (
-        <DMModalWrapper>
-          <CreateDirectMessageModal top={20} left={-440} />
-        </DMModalWrapper>
-      )}
     </>
   );
 };
@@ -36,6 +45,7 @@ const FriendHeader = () => {
 const FriendHeaderContainer = styled.div`
   width: 100%;
   height: 1.5rem;
+  padding: 0 0.5rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -47,7 +57,10 @@ const LeftContainer = styled.div`
   flex-direction: row;
 `;
 
-const RightContainer = styled.div``;
+const RightContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const DMModalWrapper = styled.div`
   position: relative;

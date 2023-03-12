@@ -1,20 +1,30 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
+export type ModalType =
+  | null
+  | "inviteFriend"
+  | "userSetting"
+  | "communitySetting"
+  | "createCommunity";
+
 interface ModalState {
-  inviteFriendModal: boolean;
+  showModal: boolean;
+  modalType: ModalType;
 }
 
 interface ModalAction {
-  setInviteFriendModal: (inviteFriendModal: boolean) => void;
+  setShowModal: (showModal: boolean) => void;
+  setModalType: (modalType: ModalType) => void;
 }
 
 const useModalStore = create<ModalState & ModalAction>()(
   devtools((set) => ({
-    inviteFriendModal: true,
+    modalType: null,
+    showModal: false,
 
-    setInviteFriendModal: (inviteFriendModal: boolean) =>
-      set({ inviteFriendModal }),
+    setModalType: (modalType: ModalType) => set({ modalType }),
+    setShowModal: (showModal: boolean) => set({ showModal }),
   }))
 );
 

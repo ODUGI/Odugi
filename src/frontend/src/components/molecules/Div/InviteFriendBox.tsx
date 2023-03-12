@@ -14,19 +14,15 @@ interface friend {
 }
 
 const InviteFriendBox = ({ name, userId, channelId }: friend) => {
-  // const dummyPost = (data) => ({
-  //   id: shortId.generate(),
-  //   content: data,
-  // });
   const { mutate: sendInvite } = useSendInvite();
   const { userInfo } = useUserStore();
-  const { serverId: communityId } = useParams();
+  const { communityId } = useParams();
   const { mutate: sendInviteToChat } = useSendInviteToChat();
 
   let backUrl = process.env.REACT_APP_BASE_URL;
   let uuid = crypto.randomUUID();
-  // console.log(typeof uuid);
   let shortUrl = uuid;
+
   const onSendInvite = () => {
     sendInvite({
       communityId,
@@ -38,9 +34,8 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
       channelId: channelId,
       linkMessage: `${backUrl}/invite/${shortUrl}/${userId}`,
     });
-    console.log(`${backUrl}/invite/${shortUrl}/${userId}`);
   };
-  // const name = "nno3onn";
+
   return (
     <ButtonWrapper onClick={() => null}>
       <InviteFriendBoxContainer>
@@ -50,8 +45,7 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
         </UserInfoContainer>
         <DefaultButton
           text="초대..."
-          onClick={() => onSendInvite()}
-          // onClick={() => console.log(userId)}
+          onClick={onSendInvite}
           pv={2}
           width={90}
           height={32}

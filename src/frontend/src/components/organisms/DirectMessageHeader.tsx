@@ -25,6 +25,7 @@ const DirectMessageHeader = ({ name, status }: DirectMessageHeaderProps) => {
         <Text text={name} color="white" />
         <Status status={status} fontSize="14px" />
       </LeftContainer>
+
       <RightContainer>
         <Tip title="음성 통화 시작하기" place="bottom">
           <ButtonWrapper>
@@ -46,23 +47,25 @@ const DirectMessageHeader = ({ name, status }: DirectMessageHeaderProps) => {
 
 const DirectMessageHeaderContainer = styled.div`
   width: 100%;
+  padding: 0 8px;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 8px;
-`;
-
-const AtIconWrapper = styled.div`
-  color: ${({ theme }) => theme.color.icon};
-  margin-top: -0.25rem;
 `;
 
 const LeftContainer = styled.div`
+  color: ${({ theme }) => theme.color.icon};
   padding-top: 0.5rem;
+
   display: flex;
   flex-direction: row;
   gap: 0.375rem;
+`;
+
+const AtIconWrapper = styled.div`
+  margin-top: -0.25rem;
 `;
 
 const RightContainer = styled.div`
@@ -74,6 +77,7 @@ const RightContainer = styled.div`
 const ButtonWrapper = styled.div`
   color: ${({ theme }) => theme.color.icon};
   cursor: pointer;
+
   &:hover {
     color: ${({ theme }) => theme.color.white};
   }

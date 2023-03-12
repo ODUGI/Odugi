@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Main from "../pages/Main";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Server from "../pages/Server";
+import Community from "../pages/Community";
 import ProtectAuth from "../components/organisms/ProtectAuth";
 import ProtectPage from "../components/organisms/ProtectHome";
 import NotFound from "@pages/NotFound";
@@ -13,60 +13,60 @@ const Router = () => {
       <Route
         path={"/"}
         element={
-          <ProtectPage>
-            <Main />
-          </ProtectPage>
+          // <ProtectPage>
+          <Main />
+          // </ProtectPage>
         }
       />
 
       <Route
         path="/login"
         element={
-          <ProtectAuth>
-            <Login />
-          </ProtectAuth>
+          // <ProtectAuth>
+          <Login />
+          // </ProtectAuth>
         }
       />
       <Route
         path="/register"
         element={
-          <ProtectAuth>
-            <Register />
-          </ProtectAuth>
+          // <ProtectAuth>
+          <Register />
+          // </ProtectAuth>
         }
       />
 
       <Route
         path={"/@me"}
         element={
-          <ProtectPage>
-            <Main />
-          </ProtectPage>
+          // <ProtectPage>
+          <Main />
+          // </ProtectPage>
         }
       />
       <Route
         path="/@me/:channelId"
         element={
-          <ProtectPage>
-            <Main />
-          </ProtectPage>
+          // <ProtectPage>
+          <Main />
+          // </ProtectPage>
         }
       />
 
       <Route
-        path="/:serverId"
+        path="/:communityId"
         element={
-          <ProtectPage>
-            <Server />
-          </ProtectPage>
+          // <ProtectPage>
+          <Community />
+          // </ProtectPage>
         }
       />
       <Route
-        path="/:serverId/:channelId"
+        path="/:communityId/:channelId"
         element={
-          <ProtectPage>
-            <Server />
-          </ProtectPage>
+          // <ProtectPage>
+          <Community />
+          // </ProtectPage>
         }
       />
 
