@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import Banner from "../atoms/Div/Banner";
 import CardUserInfo from "../molecules/Div/CardUserInfo";
-import FieldList from "../molecules/Div/FieldList";
+import UserSettingDefaultList from "./UserSettingDefaultList";
 
 const AccountCard = () => {
   return (
     <Card>
       <Banner />
       <CardUserInfo />
-      <FieldWrapper>
-        <FieldList />
-      </FieldWrapper>
+      <UseSettingDefulatListWrapper>
+        <UserSettingDefaultList />
+      </UseSettingDefulatListWrapper>
     </Card>
   );
 };
@@ -27,7 +27,7 @@ const Card = styled.div`
   position: relative;
 `;
 
-const FieldWrapper = styled.div`
+const UseSettingDefulatListWrapper = styled.div`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.backgroundColor["tab2"]};
   padding: 16px;

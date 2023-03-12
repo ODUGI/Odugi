@@ -3,8 +3,8 @@ import Text from "@components/atoms/Text/Text";
 import Modal from "@components/organisms/Modal";
 import { useCallback, useState } from "react";
 import styled from "styled-components";
-import DefaultButton from "../../atoms/Button/DefaultButton";
-import DefaultInput from "../../atoms/Input/DefaultInput";
+import DefaultButton from "@components/atoms/Button/DefaultButton";
+import DefaultInput from "@components/atoms/Input/DefaultInput";
 import useInput from "@hooks/common/useInput";
 import useModifyPassword from "@hooks/query/useModifyPassword";
 import { useUserStore } from "@store/useUserStore";
@@ -233,7 +233,7 @@ const PwChange = ({ setOpenModal2 }: any) => {
   );
 };
 
-const FieldList = () => {
+const UserSettingDefaultList = () => {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
   // const [isOpenModal2, setOpenModal2] = useState<boolean>(false);
   // const [isOpenModal3, setOpenModal3] = useState<boolean>(false);
@@ -247,8 +247,6 @@ const FieldList = () => {
     비밀번호변경: UserPasswordChangeModal,
   };
 
-  console.log(userSettingComponent);
-
   // const onClickToggleModal = useCallback(() => {
   //   setOpenModal(!isOpenModal);
   // }, [isOpenModal]);
@@ -261,7 +259,6 @@ const FieldList = () => {
 
   const getModalStatus = (key: UserSettingType) => {
     const Component = userSettingComponent[key];
-    console.log(Component);
     return <Component setOpenModal={setOpenModal} />;
   };
 
@@ -342,7 +339,7 @@ const FieldList = () => {
   );
 };
 
-export default FieldList;
+export default UserSettingDefaultList;
 
 const FieldContinaer = styled.div`
   display: -webkit-box;
