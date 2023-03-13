@@ -12,22 +12,38 @@ import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
 import CreateCommunityModal from "@components/organisms/Modal/CreateCommunityModal";
 import TabDivider from "@components/atoms/Div/TabDivider";
 import CommunitySettingModal from "@components/organisms/Modal/CommunitySettingModal";
+import { useMatch, useNavigate, useParams } from "react-router-dom";
+import useChannelStore from "@store/useChannelStore";
+
+const modalTable = {
+  inviteFriend: <InviteFriendModal />,
+  userSetting: <UserSettingModal />,
+  communitySetting: <CommunitySettingModal />,
+  createCommunity: <CreateCommunityModal />,
+};
 
 const MainPage = () => {
   const { setShowModal, showModal, modalType } = useModalStore();
+  const navigate = useNavigate();
+  const { channelId: routerChannelId } = useParams();
+  const { channelIdList, setChannelIdList } = useChannelStore();
+
+  const handleRouter = () => {
+    const storeChannelId = channelIdList["@me"];
+
+    setChannelIdList({ ...channelIdList, "@me": routerChannelId || "" });
+
+    if (!routerChannelId && storeChannelId) {
+      navigate(`/@me/${storeChannelId}`);
+    }
+  };
 
   useEffect(() => {
     setShowModal(false);
+    handleRouter();
   }, []);
 
-  const modalTable = {
-    inviteFriend: <InviteFriendModal />,
-    userSetting: <UserSettingModal />,
-    communitySetting: <CommunitySettingModal />,
-    createCommunity: <CreateCommunityModal />,
-  };
-
-  const Component = modalType ? modalTable[modalType] : <></>;
+  const component = modalType ? modalTable[modalType] : <></>;
 
   return (
     <>
@@ -43,7 +59,7 @@ const MainPage = () => {
         <TabDivider />
         <Tab3MainBody />
       </Tab3Container>
-      {showModal && Component}
+      {showModal && component}
     </>
   );
 };

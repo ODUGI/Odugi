@@ -12,22 +12,49 @@ import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
 import { CreateCommunity } from "@components/molecules/Text/CreateCommunityText.stories";
 import CommunitySettingModal from "@components/organisms/Modal/CommunitySettingModal";
 import TabDivider from "@components/atoms/Div/TabDivider";
+import { useNavigate, useParams } from "react-router-dom";
+import useChannelStore from "@store/useChannelStore";
+
+const modalTable = {
+  inviteFriend: <InviteFriendModal />,
+  userSetting: <UserSettingModal />,
+  communitySetting: <CommunitySettingModal />,
+  createCommunity: <CreateCommunity />,
+};
 
 const CommunityPage = () => {
+  const navigate = useNavigate();
+  const { communityId, channelId: routerChannelId } = useParams();
+
+  const { channelIdList, setChannelIdList } = useChannelStore();
   const { setShowModal, showModal, modalType } = useModalStore();
+
+  const handleRoute = () => {
+    if (!communityId) {
+      navigate("/@me");
+      return null;
+    }
+
+    if (routerChannelId) {
+      setChannelIdList({ ...channelIdList, [communityId]: routerChannelId });
+    } else {
+      const storeChannelId = channelIdList[communityId];
+
+      if (storeChannelId) {
+        navigate(`/${communityId}/${storeChannelId}`);
+        return null;
+      } else {
+        //!TODO 추후에 처리해주어야 함 (Default channelId)
+      }
+    }
+  };
 
   useEffect(() => {
     setShowModal(false);
+    handleRoute();
   }, []);
 
-  const modalTable = {
-    inviteFriend: <InviteFriendModal />,
-    userSetting: <UserSettingModal />,
-    communitySetting: <CommunitySettingModal />,
-    createCommunity: <CreateCommunity />,
-  };
-
-  const Component = modalType ? modalTable[modalType] : <></>;
+  const component = modalType ? modalTable[modalType] : <></>;
 
   return (
     <CommunityPageContainer>
@@ -43,7 +70,7 @@ const CommunityPage = () => {
         <TabDivider />
         <Tab3CommunityBody />
       </Tab3Container>
-      {showModal && Component}
+      {showModal && component}
     </CommunityPageContainer>
   );
 };
