@@ -12,7 +12,7 @@ import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
 import CreateCommunityModal from "@components/organisms/Modal/CreateCommunityModal";
 import TabDivider from "@components/atoms/Div/TabDivider";
 import CommunitySettingModal from "@components/organisms/Modal/CommunitySettingModal";
-import { useMatch, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useChannelStore from "@store/useChannelStore";
 
 const modalTable = {
