@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ReactElement } from "react";
 import useCommunityStore from "@store/useCommunityStore";
 
-interface CommunityImageProps {
+interface CommunityLogoProps {
   id: number;
   name: string;
   active?: boolean;
@@ -14,7 +14,7 @@ interface CommunityImageProps {
   avatarHeight: Number;
 }
 
-const CommunityImage = ({
+const CommunityLogo = ({
   id,
   name,
   active = false,
@@ -22,7 +22,7 @@ const CommunityImage = ({
   children,
   avatarHeight = 3,
   avatarWidth = 3,
-}: CommunityImageProps) => {
+}: CommunityLogoProps) => {
   const { communityStatus, setCommunityStatus } = useCommunityStore();
   active = Number(communityStatus) === id;
 
@@ -49,7 +49,7 @@ const CommunityImage = ({
   );
 };
 
-export default CommunityImage;
+export default CommunityLogo;
 
 interface CommunityIconBoxProps {
   borderRadius: number | string;

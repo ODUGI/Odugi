@@ -3,30 +3,37 @@ import Text from "@components/atoms/Text/Text";
 import { ChangeEvent } from "react";
 import styled from "styled-components";
 
-interface AuthFormProps {
+interface DefaultFormProps {
   text: string | React.ReactElement;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   type?: string;
+  formType?: "auth" | "community";
 }
 
-const AuthForm = ({ text, value, onChange, type = "text" }: AuthFormProps) => {
+const DefaultForm = ({
+  text,
+  value,
+  onChange,
+  type = "text",
+  formType = "auth",
+}: DefaultFormProps) => {
   return (
-    <AuthFormContainer>
+    <DefaultFormContainer>
       <Text
         text={text}
-        color="auth-label"
+        color={formType === "auth" ? "auth-label" : "setting-tab"}
         fontWeight="bold"
         fontSize="xs"
         mb={8}
       />
       <DefaultInput value={value} onChange={onChange} type={type} />
-    </AuthFormContainer>
+    </DefaultFormContainer>
   );
 };
 
-const AuthFormContainer = styled.div`
+const DefaultFormContainer = styled.div`
   margin-bottom: 1.25rem;
 `;
 
-export default AuthForm;
+export default DefaultForm;

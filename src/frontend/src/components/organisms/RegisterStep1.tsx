@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import DefaultButton from "../atoms/Button/DefaultButton";
 import LinkText from "../atoms/Text/LinkText";
 import Text from "../atoms/Text/Text";
-import AuthForm from "../molecules/Form/AuthForm";
+import DefaultForm from "../molecules/Form/DefaultForm";
 import AuthHeader from "../molecules/Text/AuthHeader";
 
 const RegisterStep1 = () => {
@@ -55,14 +55,14 @@ const RegisterStep1 = () => {
           mb={8}
         />
       )}
-      <AuthForm
+      <DefaultForm
         text="이메일"
         type="email"
         value={email}
         onChange={changeEmail}
       />
-      <AuthForm text="사용자명" value={name} onChange={changeName} />
-      <AuthForm
+      <DefaultForm text="사용자명" value={name} onChange={changeName} />
+      <DefaultForm
         text="비밀번호"
         type="password"
         value={password}

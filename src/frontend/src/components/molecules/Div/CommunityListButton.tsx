@@ -1,7 +1,7 @@
-import CommunityImage from "@components/atoms/Div/CommunityImage";
+import CommunityImage from "@components/atoms/Div/CommunityLogo";
 import styled from "styled-components";
 
-const CommunityLogo = () => {
+const CommunityListButton = () => {
   return (
     <CommunityContainer>
       <CommunityImage avatarHeight={3} avatarWidth={3} id={1} name="서버1" />
@@ -39,4 +39,4 @@ const CommunityContainer = styled.div`
   position: relative;
 `;
 
-export default CommunityLogo;
+export default CommunityListButton;
