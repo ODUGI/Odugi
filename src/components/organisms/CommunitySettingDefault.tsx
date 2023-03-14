@@ -2,8 +2,6 @@ import Text from "../atoms/Text/Text";
 import SettingWrapper from "./SettingWrapper";
 import FieldButton from "../atoms/Button/fieldButton";
 import styled from "styled-components";
-import CommunityInput from "../molecules/Input/CommunityInput";
-import DefaultForm from "@components/molecules/Form/DefaultForm";
 import ImageUploadButton from "../molecules/Button/ImageUploadButton";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
@@ -27,7 +25,7 @@ const CommunitySettingDefault = () => {
   const { mutate: updateCommunityName } = useMutation(communityApi.update);
   const { mutate: deleteCommunity } = useDeleteCommunity();
 
-  const onChangeName = () => {
+  const changeCommunityName = () => {
     updateCommunityName({
       communityName: name,
       communityId,
@@ -90,7 +88,7 @@ const CommunitySettingDefault = () => {
         type="text"
       />
       <ButtonWrapper>
-        <FieldButton text="서버이름 변경하기" onClick={changeImage} />
+        <FieldButton text="서버이름 변경하기" onClick={changeCommunityName} />
       </ButtonWrapper>
       <ButtonWrapper>
         <FieldButton
