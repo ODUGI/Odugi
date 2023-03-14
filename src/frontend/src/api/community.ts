@@ -28,7 +28,7 @@ const communityApi = {
   // 커뮤니티 리스트 가져옴
   getList: async ({ queryKey }: any) => {
     const { userId } = queryKey[1];
-    return await clientApi.get(`/community/getlist/`, {
+    return await clientApi.get(`/community/getlist`, {
       params: { userId },
     });
   },
@@ -36,7 +36,7 @@ const communityApi = {
   // 커뮤니티의 카테고리 리스트 가져옴
   getChannelList: async ({ queryKey }: any) => {
     const { communityId } = queryKey[1];
-    return await clientApi.get(`/community/getoption/`, {
+    return await clientApi.get(`/community/getoption`, {
       params: { communityId },
     });
   },
