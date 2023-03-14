@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SearchButton from "../molecules/Button/SearchButton";
 
-const Tab2Header = () => {
+const Tab2MainHeader = () => {
   return (
     <Tab2HeaderContainer>
       <SearchButton />
@@ -17,4 +17,4 @@ const Tab2HeaderContainer = styled.div`
   align-items: center;
 `;
 
-export default Tab2Header;
+export default Tab2MainHeader;
