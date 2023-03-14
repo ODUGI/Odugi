@@ -1,4 +1,4 @@
-import LogoImage from "@components/atoms/Div/LogoImage";
+import UserLogo from "@components/atoms/Div/UserLogo";
 import MessageText from "@components/atoms/Div/MessageText";
 import { createRef, useEffect, useState } from "react";
 import styled from "styled-components";
@@ -35,7 +35,7 @@ const MessageLog = ({
       {/* <MessageHoverButtons /> */}
       {hasImage && (
         <LogoImageContainer>
-          <LogoImage
+          <UserLogo
             src={imageUrl}
             height={2.5}
             width={2.5}

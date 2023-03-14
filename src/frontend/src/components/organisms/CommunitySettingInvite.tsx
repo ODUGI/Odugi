@@ -2,7 +2,7 @@ import Text from "../atoms/Text/Text";
 import SettingWrapper from "./SettingWrapper";
 import { Divider } from "@mui/material";
 import styled from "styled-components";
-import LogoImage from "../atoms/Div/LogoImage";
+import UserLogo from "../atoms/Div/UserLogo";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import IconButton from "@mui/material/IconButton";
 
@@ -42,7 +42,7 @@ const CommunitySettingInvite = () => {
         </Member>
         <Member>
           <Mini1>
-            <LogoImage height={3} width={3} onClick={() => null} />
+            <UserLogo height={3} width={3} onClick={() => null} />
             <Text text={"김현우"} color="white" fontSize="sm" />
           </Mini1>
           <Mini1>

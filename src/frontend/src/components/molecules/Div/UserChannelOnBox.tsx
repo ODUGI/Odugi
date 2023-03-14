@@ -1,5 +1,5 @@
 import ButtonWrapper from "@components/atoms/Button/ButtonWrapper";
-import LogoImage from "@components/atoms/Div/LogoImage";
+import UserLogo from "@components/atoms/Div/UserLogo";
 import Text from "@components/atoms/Text/Text";
 import { useUserStore } from "@store/useUserStore";
 import styled from "styled-components";
@@ -18,7 +18,7 @@ const UserChannelOnBox = ({ name, src }: UserChannelOnBoxProps) => {
     <Container>
       <ButtonWrapper onClick={() => null} height={30}>
         <UserChannelOnBoxContainer>
-          <LogoImage
+          <UserLogo
             src={src || mysrc}
             width={1.5}
             height={1.5}
