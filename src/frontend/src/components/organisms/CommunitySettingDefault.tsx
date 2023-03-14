@@ -3,6 +3,7 @@ import SettingWrapper from "./SettingWrapper";
 import FieldButton from "../atoms/Button/fieldButton";
 import styled from "styled-components";
 import CommunityInput from "../molecules/Input/CommunityInput";
+import DefaultForm from "@components/molecules/Form/DefaultForm";
 import ImageUploadButton from "../molecules/Button/ImageUploadButton";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
@@ -12,6 +13,7 @@ import useInput from "@hooks/common/useInput";
 import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
 import communityApi from "@api/community";
 import useModifyCommunityImage from "@hooks/query/useModifyCommunityImage";
+import DefaultInput from "@components/atoms/Input/DefaultInput";
 
 const CommunitySettingDefault = () => {
   let formData = new FormData();
@@ -81,7 +83,12 @@ const CommunitySettingDefault = () => {
         </LeftSide>
         <RightSide></RightSide>
       </Summary>
-      <CommunityInput name={name} changeName={changeName} />
+      <DefaultInput
+        height="48"
+        value={name}
+        onChange={changeName}
+        type="text"
+      />
       <ButtonWrapper>
         <FieldButton text="서버이름 변경하기" onClick={changeImage} />
       </ButtonWrapper>
