@@ -1,5 +1,5 @@
 import useMainStore from "@store/useMainStore";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import MessageBox from "../molecules/Div/MessageBox";
