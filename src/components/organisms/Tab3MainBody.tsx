@@ -22,7 +22,7 @@ const getBodyByStatus = (status: MainStatusType) => {
 
 const Tab3MainBody = () => {
   const isMain = useMatch("/@me");
-  const { mainStatus } = useMainStore(({ mainStatus }) => ({ mainStatus }));
+  const { mainStatus } = useMainStore();
 
   return (
     <MainBodyContainer>

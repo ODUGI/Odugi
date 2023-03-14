@@ -22,6 +22,7 @@ const useMainStore = create<TabState & TabAction>()(
     persist(
       (set) => ({
         mainStatus: "온라인",
+
         userId: -1,
         userName: "",
         deleteFriendEmail: "",
