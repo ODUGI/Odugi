@@ -2,7 +2,7 @@ import Text from "../atoms/Text/Text";
 import SettingWrapper from "./SettingWrapper";
 import { Divider } from "@mui/material";
 import styled from "styled-components";
-import LogoImage from "../atoms/Div/LogoImage";
+import UserLogo from "../atoms/Div/UserLogo";
 
 const CommunitySettingMember = () => {
   return (
@@ -17,7 +17,7 @@ const CommunitySettingMember = () => {
       <Text text={"멤버 총 x명"} color="setting-tab" fontSize="sm" mb={20} />
       <Divider sx={{ borderColor: "#96989D93", opacity: 0.5, mt: 1, mb: 1 }} />
       <Member>
-        <LogoImage height={3} width={3} onClick={() => null} />
+        <UserLogo height={3} width={3} onClick={() => null} />
         <Text text={"김현우"} color="white" fontSize="sm" />
       </Member>
     </SettingWrapper>

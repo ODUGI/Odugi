@@ -1,9 +1,11 @@
+import DefaultForm from "@components/molecules/Form/DefaultForm";
+import useInput from "@hooks/common/useInput";
 import styled from "styled-components";
 import DropDown from "../atoms/Div/DropDown";
 import Text from "../atoms/Text/Text";
-import CommunityInput from "../molecules/Input/CommunityInput";
 
 const CommunityProfile = () => {
+  const [name, changeName] = useInput();
   return (
     <ProfileWrapper>
       <BlockWrapper>
@@ -23,7 +25,12 @@ const CommunityProfile = () => {
         <DropDown />
       </BlockWrapper>
       <BlockWrapper>
-        <CommunityInput />
+        <DefaultForm
+          type="community"
+          text="서버이름"
+          value={name}
+          onChange={changeName}
+        />
       </BlockWrapper>
     </ProfileWrapper>
   );

@@ -1,4 +1,4 @@
-import LogoImage from "@components/atoms/Div/LogoImage";
+import UserLogo from "@components/atoms/Div/UserLogo";
 import Status from "@components/atoms/Div/Status";
 import styled from "styled-components";
 import mask32 from "../../../assets/mask/avatar-mask-32.png";
@@ -20,7 +20,7 @@ const UserState = ({
   return (
     <UserStateContainer>
       <Mask type={type}>
-        <LogoImage
+        <UserLogo
           height={type === "s" ? 2 : 5}
           width={type === "s" ? 2 : 5}
           src={src}

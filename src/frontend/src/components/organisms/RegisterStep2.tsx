@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import DefaultButton from "../atoms/Button/DefaultButton";
 import LinkText from "../atoms/Text/LinkText";
-import AuthForm from "../molecules/Form/AuthForm";
+import DefaultForm from "../molecules/Form/DefaultForm";
 import AuthDesc from "../molecules/Text/AuthDesc";
 import AuthHeader from "../molecules/Text/AuthHeader";
 
@@ -50,7 +50,11 @@ const RegisterStep2 = () => {
           mb={16}
         />
       )}
-      <AuthForm value={userCode} onChange={onChangeUserCode} text="인증 코드" />
+      <DefaultForm
+        value={userCode}
+        onChange={onChangeUserCode}
+        text="인증 코드"
+      />
       <LinkText
         text="코드를 받지 못했거나 코드가 만료되었나요? 다시 보내세요."
         onClick={resendEmail}

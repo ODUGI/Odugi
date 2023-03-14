@@ -1,24 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import Main from "../pages/Main";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Community from "../pages/Community";
 import ProtectAuth from "../components/organisms/ProtectAuth";
 import ProtectPage from "../components/organisms/ProtectHome";
 import NotFound from "@pages/NotFound";
+import Common from "@pages/Common";
 
 const Router = () => {
   return (
     <Routes>
-      <Route
-        path={"/"}
-        element={
-          // <ProtectPage>
-          <Main />
-          // </ProtectPage>
-        }
-      />
-
       <Route
         path="/login"
         element={
@@ -36,39 +26,22 @@ const Router = () => {
         }
       />
 
-      <Route
-        path={"/@me"}
-        element={
-          // <ProtectPage>
-          <Main />
-          // </ProtectPage>
-        }
-      />
-      <Route
-        path="/@me/:channelId"
-        element={
-          // <ProtectPage>
-          <Main />
-          // </ProtectPage>
-        }
-      />
-
-      <Route
-        path="/:communityId"
-        element={
-          // <ProtectPage>
-          <Community />
-          // </ProtectPage>
-        }
-      />
-      <Route
-        path="/:communityId/:channelId"
-        element={
-          // <ProtectPage>
-          <Community />
-          // </ProtectPage>
-        }
-      />
+      {[
+        "/",
+        "/@me",
+        "/@me/:channelId",
+        "/:communityId",
+        "/:communityId/:channelId",
+      ].map((path, idx) => (
+        <Route
+          path={path}
+          element={
+            // <ProtectPage>
+            <Common />
+            // </ProtectPage>
+          }
+        />
+      ))}
 
       <Route path="/*" element={<NotFound />} />
     </Routes>

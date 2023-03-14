@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import CommunityImage from "../atoms/Div/CommunityImage";
+import CommunityLgoo from "../atoms/Div/CommunityLogo";
 import { useNavigate, useParams } from "react-router-dom";
 import AddIcon from "@components/atoms/Icons/AddIcon";
 import { useUserStore } from "@store/useUserStore";
@@ -39,7 +39,7 @@ const CommunityList = () => {
       <ScrollableBox>
         <ul>
           <li onClick={goMainPage}>
-            <CommunityImage
+            <CommunityLgoo
               avatarHeight={3}
               avatarWidth={3}
               name="메인"
@@ -52,7 +52,7 @@ const CommunityList = () => {
 
           {list.map((community: any, idx) => (
             <li key={idx} onClick={() => onCommunity(community.community_id)}>
-              <CommunityImage
+              <CommunityLgoo
                 avatarHeight={3}
                 avatarWidth={3}
                 name={community.name}
@@ -64,9 +64,9 @@ const CommunityList = () => {
           {list.length !== 0 && <Divider />}
 
           <li onClick={createCommunity}>
-            <CommunityImage avatarHeight={3} avatarWidth={3} name="" id={-2}>
+            <CommunityLgoo avatarHeight={3} avatarWidth={3} name="" id={-2}>
               <AddIcon />
-            </CommunityImage>
+            </CommunityLgoo>
           </li>
         </ul>
       </ScrollableBox>
