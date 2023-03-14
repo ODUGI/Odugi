@@ -7,7 +7,7 @@ import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
 import CommonPage from "@components/templates/CommonPage";
 import useModalStore from "@store/useModalStore";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useMatch, useNavigate, useParams } from "react-router-dom";
 
 const modalTable = {
   inviteFriend: <InviteFriendModal />,
@@ -17,6 +17,8 @@ const modalTable = {
 };
 
 const Common = () => {
+  const navigate = useNavigate();
+  const isBaseUrl = useMatch("/");
   const { communityId, channelId } = useParams();
   const { setShowModal, showModal, modalType } = useModalStore();
 
@@ -26,6 +28,11 @@ const Common = () => {
   useEffect(() => {
     setShowModal(false);
   }, []);
+
+  if (isBaseUrl) {
+    navigate("/@me");
+    return null;
+  }
 
   const component = modalType ? modalTable[modalType] : <></>;
 
