@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Divider } from "../atoms/Div/Divider.stories";
-import CommunityImage from "../atoms/Div/CommunityImage";
+import CommunityLogo from "../atoms/Div/CommunityLogo";
 import { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
@@ -45,7 +45,7 @@ const CommunityListTest = () => {
                           {...provided.draggableProps}
                           onClick={() => null}
                         >
-                          <CommunityImage
+                          <CommunityLogo
                             avatarHeight={3}
                             avatarWidth={3}
                             name="서버1"

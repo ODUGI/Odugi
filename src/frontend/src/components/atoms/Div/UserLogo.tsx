@@ -11,7 +11,7 @@ interface LogoImageProps {
   child?: ReactElement;
 }
 
-const LogoImage = ({
+const UserLogo = ({
   onClick,
   height,
   width,
@@ -43,4 +43,4 @@ const StyledIconButton = styled(IconButton)<ButtonProps>`
   height: ${({ height }) => height + "rem"}; ;
 `;
 
-export default LogoImage;
+export default UserLogo;

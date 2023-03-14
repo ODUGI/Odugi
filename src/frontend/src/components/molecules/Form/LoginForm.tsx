@@ -1,6 +1,6 @@
 import SpanText from "@components/atoms/Text/SpanText";
 import { ChangeEvent } from "react";
-import AuthForm from "./AuthForm";
+import DefaultForm from "./DefaultForm";
 
 interface LoginFormProps {
   text: string;
@@ -17,7 +17,7 @@ const LoginForm = ({
 }: LoginFormProps) => {
   return (
     <>
-      <AuthForm
+      <DefaultForm
         text={
           <>
             {text}
