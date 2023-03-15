@@ -15,7 +15,6 @@ import Text from "@components/atoms/Text/Text";
 import useCreateCommunity from "@hooks/query/useCreateCommunity";
 
 const CreateCommunityModal = () => {
-  const queryClient = useQueryClient();
   const navigate = useNavigate();
   let formData = new FormData();
 
@@ -25,32 +24,7 @@ const CreateCommunityModal = () => {
   const [img, setImg] = useState<Blob | undefined>();
   const [name, changeName] = useInput();
 
-  const { mutate: createCommunity } = useCreateCommunity({
-    onMutate: async (newCommunityList: any) => {
-      await queryClient.cancelQueries({
-        queryKey: ["communityList", { userId: userInfo.id }],
-      });
-      const previousCommunityList = queryClient.getQueriesData([
-        "communityList",
-        newCommunityList,
-      ]);
-      return { newCommunityList, previousCommunityList };
-    },
-    onError: (_err: Error, _newCommunityList: any, context: any) => {
-      queryClient.setQueriesData(
-        ["communityList"],
-        context?.previousCommunityList
-      );
-    },
-    onSuccess: () => {
-      navigate(-1);
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["communityList", { userId: userInfo.id }],
-      });
-    },
-  });
+  const { mutate: createCommunity } = useCreateCommunity(userInfo.id);
 
   const MakeCommunity = () => {
     formData.append("communityName", name);
