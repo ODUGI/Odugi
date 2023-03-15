@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 const useGetCommunityList = ({ userId }: any) => {
   const [list, setList] = useState([]);
   const { data: res } = useQuery(
-    ["CommunityList", { userId }],
+    ["communityList", { userId }],
     communityApi.getList
   );
 

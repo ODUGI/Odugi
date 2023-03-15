@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import useInput from "@hooks/common/useInput";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
-import { useMutation } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@store/useUserStore";
 import { useState } from "react";
-import communityApi from "@api/community";
 import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
 import BackgroundModal from "../BackgroundModal";
 import ImageUploadButton from "@components/molecules/Button/ImageUploadButton";
@@ -13,10 +12,11 @@ import DefaultButton from "@components/atoms/Button/DefaultButton";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
 import Text from "@components/atoms/Text/Text";
+import useCreateCommunity from "@hooks/query/useCreateCommunity";
 
 const CreateCommunityModal = () => {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
-
   let formData = new FormData();
 
   const { userInfo } = useUserStore();
@@ -24,11 +24,31 @@ const CreateCommunityModal = () => {
 
   const [img, setImg] = useState<Blob | undefined>();
   const [name, changeName] = useInput();
-  const [nickName, setNickName] = useState(userInfo.name);
 
-  const { mutate: createCommunity } = useMutation(communityApi.create, {
+  const { mutate: createCommunity } = useCreateCommunity({
+    onMutate: async (newCommunityList: any) => {
+      await queryClient.cancelQueries({
+        queryKey: ["communityList", { userId: userInfo.id }],
+      });
+      const previousCommunityList = queryClient.getQueriesData([
+        "communityList",
+        newCommunityList,
+      ]);
+      return { newCommunityList, previousCommunityList };
+    },
+    onError: (_err: Error, _newCommunityList: any, context: any) => {
+      queryClient.setQueriesData(
+        ["communityList"],
+        context?.previousCommunityList
+      );
+    },
     onSuccess: () => {
       navigate(-1);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["communityList", { userId: userInfo.id }],
+      });
     },
   });
 
@@ -39,7 +59,11 @@ const CreateCommunityModal = () => {
     formData.append("img", img);
     formData.append(
       "profile",
-      JSON.stringify({ userName: nickName, img: null, 한줄소개: "한줄소개" })
+      JSON.stringify({
+        userName: userInfo.name,
+        img: null,
+        한줄소개: "한줄소개",
+      })
     );
     createCommunity({ formData });
     navigate(-1);
