@@ -5,29 +5,24 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 const useCreateCommunity = (userId: number) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const QUERY_KEY = ["communityList", userId];
 
   return useMutation(communityApi.create, {
     onMutate: async (newCommunityList: any) => {
       await queryClient.cancelQueries({
-        queryKey: ["communityList", userId],
+        queryKey: QUERY_KEY,
       });
-      const previousCommunityList = queryClient.getQueriesData([
-        "communityList",
-        userId,
+      const previousCommunityList = queryClient.getQueriesData(QUERY_KEY);
+      queryClient.setQueryData(QUERY_KEY, [
+        ...previousCommunityList,
+        newCommunityList,
       ]);
-      queryClient.setQueryData(
-        ["communityList", userId],
-        [previousCommunityList, newCommunityList]
-      );
 
       return { previousCommunityList };
     },
 
     onError: (_err: Error, _newCommunityList: any, context: any) => {
-      queryClient.setQueriesData(
-        ["communityList", userId],
-        context.previousCommunityList
-      );
+      queryClient.setQueriesData(QUERY_KEY, context.previousCommunityList);
     },
 
     onSuccess: () => {
@@ -36,7 +31,7 @@ const useCreateCommunity = (userId: number) => {
 
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ["communityList", userId],
+        queryKey: QUERY_KEY,
       });
     },
   });
