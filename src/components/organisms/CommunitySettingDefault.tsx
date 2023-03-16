@@ -23,7 +23,10 @@ const CommunitySettingDefault = () => {
 
   const { mutate: modifyImage } = useModifyCommunityImage();
   const { mutate: updateCommunityName } = useMutation(communityApi.update);
-  const { mutate: deleteCommunity } = useDeleteCommunity();
+  const { mutate: deleteCommunity } = useDeleteCommunity({
+    communityId,
+    userId: userInfo.id,
+  });
 
   const changeCommunityName = () => {
     updateCommunityName({
@@ -37,7 +40,6 @@ const CommunitySettingDefault = () => {
     if (!communityId) return;
 
     deleteCommunity({ communityId, userId: userInfo.id });
-    window.location.replace("/@me");
   };
 
   const changeImage = () => {

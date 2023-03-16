@@ -15,19 +15,25 @@ const useCreateCommunity = (userId: number) => {
         "communityList",
         userId,
       ]);
-      queryClient.setQueryData(["communityList", userId], newCommunityList);
+      queryClient.setQueryData(
+        ["communityList", userId],
+        [previousCommunityList, newCommunityList]
+      );
 
-      return { newCommunityList, previousCommunityList };
+      return { previousCommunityList };
     },
+
     onError: (_err: Error, _newCommunityList: any, context: any) => {
       queryClient.setQueriesData(
         ["communityList", userId],
-        context?.previousCommunityList
+        context.previousCommunityList
       );
     },
+
     onSuccess: () => {
       navigate(-1);
     },
+
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: ["communityList", userId],
