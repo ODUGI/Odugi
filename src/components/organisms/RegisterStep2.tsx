@@ -3,7 +3,7 @@ import useInput from "@hooks/common/useInput";
 import useRegister from "@hooks/query/useRegister";
 import useSendUserCode from "@hooks/query/useSendUserCode";
 import { useRegisterStore } from "@store/useRegisterStore";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import DefaultButton from "../atoms/Button/DefaultButton";
 import LinkText from "../atoms/Text/LinkText";

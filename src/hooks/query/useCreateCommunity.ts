@@ -8,20 +8,18 @@ const useCreateCommunity = (userId: number) => {
   const QUERY_KEY = ["communityList", userId];
 
   return useMutation(communityApi.create, {
-    onMutate: async (newCommunityList: any) => {
-      await queryClient.cancelQueries({
-        queryKey: QUERY_KEY,
-      });
+    onMutate: async (newCommunity: any) => {
+      await queryClient.cancelQueries({ queryKey: QUERY_KEY });
       const previousCommunityList = queryClient.getQueriesData(QUERY_KEY);
       queryClient.setQueryData(QUERY_KEY, [
         ...previousCommunityList,
-        newCommunityList,
+        newCommunity,
       ]);
 
       return { previousCommunityList };
     },
 
-    onError: (_err: Error, _newCommunityList: any, context: any) => {
+    onError: (_err: Error, _newCommunity: any, context: any) => {
       queryClient.setQueriesData(QUERY_KEY, context.previousCommunityList);
     },
 

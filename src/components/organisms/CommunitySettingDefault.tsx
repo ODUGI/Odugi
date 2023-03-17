@@ -4,14 +4,13 @@ import FieldButton from "../atoms/Button/fieldButton";
 import styled from "styled-components";
 import ImageUploadButton from "../molecules/Button/ImageUploadButton";
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
 import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
 import useInput from "@hooks/common/useInput";
 import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
-import communityApi from "@api/community";
 import useModifyCommunityImage from "@hooks/query/useModifyCommunityImage";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
+import useUpdateCommunityName from "@hooks/query/useUpdateCommunityName";
 
 const CommunitySettingDefault = () => {
   let formData = new FormData();
@@ -21,8 +20,8 @@ const CommunitySettingDefault = () => {
   const [img, setImg] = useState();
   const [name, changeName] = useInput();
 
+  const { mutate: updateCommunityName } = useUpdateCommunityName();
   const { mutate: modifyImage } = useModifyCommunityImage();
-  const { mutate: updateCommunityName } = useMutation(communityApi.update);
   const { mutate: deleteCommunity } = useDeleteCommunity({
     communityId,
     userId: userInfo.id,
@@ -81,7 +80,7 @@ const CommunitySettingDefault = () => {
             <FieldButton text="아바타 변경하기" onClick={changeImage} />
           </ButtonWrapper>
         </LeftSide>
-        <RightSide></RightSide>
+        {/* <RightSide></RightSide> */}
       </Summary>
       <DefaultInput
         height="48"
@@ -104,13 +103,12 @@ const CommunitySettingDefault = () => {
   );
 };
 
-export default CommunitySettingDefault;
-
 const ButtonWrapper = styled.div`
   width: 140px;
   height: 40px;
   margin-top: 0.5rem;
 `;
+
 const Summary = styled.div`
   width: 100%;
   height: auto;
@@ -131,8 +129,11 @@ const Mini = styled.div`
   flex-direction: row;
   width: auto;
 `;
+
 const RightSide = styled.div`
   display: flex;
   flex-direction: row;
   height: 30%;
 `;
+
+export default CommunitySettingDefault;

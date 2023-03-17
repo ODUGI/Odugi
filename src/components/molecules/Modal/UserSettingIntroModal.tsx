@@ -12,10 +12,11 @@ const UserSettingIntroModal = () => {
   const { setShowSettingModal } = useSettingModalStore();
 
   const { userInfo, setUserInfo } = useUserStore();
-  const [introduction, changeIntroduction] = useInput();
+  const [introduction, changeIntroduction] = useInput(userInfo.introduction);
   const { mutate: modifyIntro } = useModifyIntro();
 
   const updataIntro = () => {
+    setShowSettingModal(false);
     modifyIntro({ introduction });
     setUserInfo({ ...userInfo, introduction });
   };

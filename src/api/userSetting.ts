@@ -35,8 +35,8 @@ const userSettingApi = {
     });
   },
 
-  // 서버 프로필명 이름 변경
-  communityUpdate: async ({
+  // 커뮤니티 프로필명 이름 변경
+  updateCommunityName: async ({
     communityId,
     userId,
     userName,

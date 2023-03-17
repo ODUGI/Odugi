@@ -18,14 +18,7 @@ const RegisterStep1 = () => {
   const [password, changePassword] = useInput();
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { mutate: sendEmail } = useSendEmail({
-    onError: () => {
-      setErrorMessage("문제가 발생했습니다. 다시 시도해주세요.");
-    },
-    onSuccess: () => {
-      setStep(2);
-    },
-  });
+  const { mutate: sendEmail } = useSendEmail();
 
   const goLoginPage = () => navigate("/login");
 
@@ -41,6 +34,7 @@ const RegisterStep1 = () => {
     setName(name);
     setPassword(password);
     sendEmail({ email, name, password });
+    setStep(2);
   };
 
   return (

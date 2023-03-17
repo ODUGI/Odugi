@@ -1,8 +1,8 @@
 import communityApi from "@api/community";
 import { useMutation } from "@tanstack/react-query";
 
-const useModifyPassword = () => {
+const useUpdateCommunityName = () => {
   return useMutation(communityApi.update);
 };
 
-export default useModifyPassword;
+export default useUpdateCommunityName;
