@@ -40,7 +40,7 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
     <ButtonWrapper onClick={() => null}>
       <InviteFriendBoxContainer>
         <UserInfoContainer>
-          <UserProfile />
+          <UserProfileWrapper />
           <Text text={name} color="white" />
         </UserInfoContainer>
         <DefaultButton
@@ -77,7 +77,7 @@ const UserInfoContainer = styled.div`
   gap: 8px;
 `;
 
-const UserProfile = styled.div`
+const UserProfileWrapper = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 25px;

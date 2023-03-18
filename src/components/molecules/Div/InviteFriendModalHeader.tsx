@@ -6,10 +6,12 @@ import styled from "styled-components";
 
 const InviteFriendModalHeader = () => {
   const { setShowModal } = useModalStore();
+  //!TODO: 추후에 channelId로 groupName, chatRoomName을 가져와야 함!
   const groupName = "test";
   const chatRoomName = "환영";
+
   return (
-    <InviteFriendModalHeadeContainer>
+    <InviteFriendModalHeaderContainer>
       <Header>
         <Text text={`친구를 ${groupName}그룹으로 초대하기`} color="white" />
         <CancelIconWrapper onClick={() => setShowModal(false)}>
@@ -20,11 +22,11 @@ const InviteFriendModalHeader = () => {
         <TagIcon />
         <Text text={chatRoomName} />
       </TextWrapper>
-    </InviteFriendModalHeadeContainer>
+    </InviteFriendModalHeaderContainer>
   );
 };
 
-const InviteFriendModalHeadeContainer = styled.div`
+const InviteFriendModalHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 1rem 1rem 0px 1rem;

@@ -7,7 +7,7 @@ import AuthModal from "@components/organisms/Modal/AuthModal";
 import useInput from "@hooks/common/useInput";
 import useLogin from "@hooks/query/useLogin";
 import validateEmail from "@utils/validateEmail";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -17,11 +17,11 @@ const LoginPage = () => {
   const [password, changePassword] = useInput();
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { mutate: login } = useLogin();
+  const { mutate: login } = useLogin(setErrorMessage);
 
   const goRegisterPage = () => navigate("/register");
 
-  const onLogin = () => {
+  const onLogin = useCallback(() => {
     if (!email || !password) {
       return setErrorMessage("모든 값을 입력해주세요.");
     }
@@ -33,7 +33,7 @@ const LoginPage = () => {
     }
     setErrorMessage("");
     login({ email, password });
-  };
+  }, [email, password]);
 
   return (
     <AuthModal width={480}>
@@ -75,7 +75,7 @@ const LoginPage = () => {
         <Text
           text={
             <>
-              <>계정이 필요한가요? </>
+              계정이 필요한가요?
               <LinkText text="가입하기" onClick={goRegisterPage} />
             </>
           }

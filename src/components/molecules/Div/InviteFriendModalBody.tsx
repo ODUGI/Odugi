@@ -64,7 +64,7 @@ const InviteFriendModalBodyContainer = styled.div`
 `;
 
 const SearchInputWrapper = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 `;
 
 const Divider = styled.div<{ color: string }>`

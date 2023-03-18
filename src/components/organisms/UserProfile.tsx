@@ -1,31 +1,12 @@
 import Text from "../atoms/Text/Text";
-import { ProfileTab } from "./ProfileTab.stories";
-import Modal from "@components/organisms/Modal";
 import SettingWrapper from "./SettingWrapper";
-import { useCallback, useState } from "react";
 import styled from "styled-components";
-import DefaultButton from "@components/atoms/Button/DefaultButton";
-import ImageUploadButton from "@components/molecules/Button/ImageUploadButton";
-
-const ImageChange = () => {
-  return (
-    <>
-      <TopWrapper>
-        <ImageUploadButton />
-      </TopWrapper>
-      <Bottom>
-        <DefaultButton text="완료" onClick={() => null} />
-      </Bottom>
-    </>
-  );
-};
+import UserSettingProfile from "./UserSettingProfile";
+import UserSettingImageModal from "@components/molecules/Modal/UserSettingImageModal";
+import useSettingModalStore from "@store/useSettingModalStore";
 
 const UserProfile = () => {
-  const [isOpenModal, setOpenModal] = useState<boolean>(false);
-
-  const onClickToggleModal = useCallback(() => {
-    setOpenModal(!isOpenModal);
-  }, [isOpenModal]);
+  const { showSettingModal } = useSettingModalStore();
 
   return (
     <SettingWrapper>
@@ -37,31 +18,15 @@ const UserProfile = () => {
           color="white"
           mb={24}
         />
-        <ProfileTab />
+        <UserSettingProfile />
       </ProfileWrapper>
-      {isOpenModal && (
-        <Modal onClickToggleModal={onClickToggleModal}>
-          <ImageChange />
-        </Modal>
-      )}
+      {showSettingModal && <UserSettingImageModal />}
     </SettingWrapper>
   );
 };
 
-export default UserProfile;
 const ProfileWrapper = styled.div`
   width: 100%;
 `;
 
-const TopWrapper = styled.div`
-  padding: 1rem;
-  width: 100%;
-  text-align: center;
-`;
-
-const Bottom = styled.div`
-  width: 100%;
-  height: 4rem;
-  padding: 1rem;
-  background-color: ${({ theme }) => theme.backgroundColor["voice-nobody"]};
-`;
+export default UserProfile;

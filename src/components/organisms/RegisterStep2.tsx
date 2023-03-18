@@ -3,7 +3,7 @@ import useInput from "@hooks/common/useInput";
 import useRegister from "@hooks/query/useRegister";
 import useSendUserCode from "@hooks/query/useSendUserCode";
 import { useRegisterStore } from "@store/useRegisterStore";
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import styled from "styled-components";
 import DefaultButton from "../atoms/Button/DefaultButton";
 import LinkText from "../atoms/Text/LinkText";
@@ -14,28 +14,29 @@ import AuthHeader from "../molecules/Text/AuthHeader";
 const RegisterStep2 = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const { email, name, password, setStep } = useRegisterStore();
-  const [userCode, onChangeUserCode] = useInput();
+  const [emailCode, changeEmailCode] = useInput();
 
   const { mutate: sendEmail } = useRegister();
   const { mutate: sendUserCode } = useSendUserCode({
     onError: () => {
       setErrorMessage("인증 코드를 다시 입력해주세요.");
     },
+
     onSuccess: () => {
       setStep(3);
     },
   });
 
-  const resendEmail = () => {
+  const resendEmail = useCallback(() => {
     sendEmail({ email, name, password });
-  };
+  }, [email, name, password]);
 
-  const verifyEmail = () => {
-    if (!userCode) {
+  const verifyEmail = useCallback(() => {
+    if (!emailCode) {
       setErrorMessage("코드를 입력해주세요.");
     }
-    sendUserCode(userCode);
-  };
+    sendUserCode(emailCode);
+  }, [emailCode]);
 
   return (
     <>
@@ -51,8 +52,8 @@ const RegisterStep2 = () => {
         />
       )}
       <DefaultForm
-        value={userCode}
-        onChange={onChangeUserCode}
+        value={emailCode}
+        onChange={changeEmailCode}
         text="인증 코드"
       />
       <LinkText

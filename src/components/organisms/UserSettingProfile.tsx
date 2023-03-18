@@ -6,7 +6,7 @@ import Text from "@components/atoms/Text/Text";
 
 // Styled-Component 라이브러리를 활용해 TabMenu 와 Desc 컴포넌트의 CSS를 구현.
 
-export const Tab = () => {
+const UserSettingProfile = () => {
   // Tab Menu 중 현재 어떤 Tab이 선택되어 있는지 확인하기 위한 currentTab 상태와 currentTab을 갱신하는 함수가 존재해야 하고, 초기값은 0.
   const [currentTab, clickTab] = useState(0);
 
@@ -44,27 +44,11 @@ export const Tab = () => {
           <p>{menuArr[currentTab].content}</p>
         </Desc>
       </div> */}
-      <Text
-        text="유저프로필"
-        fontSize="base"
-        color="setting-tab"
-        mb={16}
-        fontWeight="bold"
-      />
       <UserProfilePage />
-      <Text
-        text="서버프로필"
-        fontSize="base"
-        color="setting-tab"
-        mb={16}
-        fontWeight="bold"
-      />
       <CommunityProfile />
     </>
   );
 };
-
-export default Tab;
 
 const TabMenu = styled.ul`
   background-color: ${({ theme }) => theme.backgroundColor["tab3"]};
@@ -108,3 +92,5 @@ const TabMenu = styled.ul`
 const Desc = styled.div`
   text-align: center;
 `;
+
+export default UserSettingProfile;

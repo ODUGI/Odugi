@@ -34,8 +34,6 @@ const ImageUploadButton = ({ setImg }: any) => {
   );
 };
 
-export default ImageUploadButton;
-
 const UploadContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -85,3 +83,5 @@ const UploadWrapper = styled.div`
     font-size: 0px;
   }
 `;
+
+export default ImageUploadButton;

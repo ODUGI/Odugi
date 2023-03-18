@@ -2,7 +2,7 @@ import useInput from "@hooks/common/useInput";
 import useSendEmail from "@hooks/query/useSendEmail";
 import { useRegisterStore } from "@store/useRegisterStore";
 import validateEmail from "@utils/validateEmail";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DefaultButton from "../atoms/Button/DefaultButton";
 import LinkText from "../atoms/Text/LinkText";
@@ -22,26 +22,29 @@ const RegisterStep1 = () => {
     onError: () => {
       setErrorMessage("문제가 발생했습니다. 다시 시도해주세요.");
     },
+
     onSuccess: () => {
       setStep(2);
     },
   });
 
-  const goLoginPage = () => navigate("/login");
+  const goLoginPage = useCallback(() => navigate("/login"), []);
 
-  const onRegister = () => {
+  const onRegister = useCallback(() => {
     if (!email || !name || !password) {
       return setErrorMessage("모든 값을 입력해주세요.");
     }
+
     if (!validateEmail(email) || password.length < 8) {
       return setErrorMessage("유효하지 않은 아이디 또는 비밀번호입니다.");
     }
+
     setErrorMessage("");
     setEmail(email);
     setName(name);
     setPassword(password);
     sendEmail({ email, name, password });
-  };
+  }, [email, name, password]);
 
   return (
     <>

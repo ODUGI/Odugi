@@ -1,4 +1,4 @@
-import Tab from "./ProfileTab";
+import Tab from "./UserSettingProfile";
 
 export default {
   title: "Organisms/MyAccount",

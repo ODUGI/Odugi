@@ -2,12 +2,11 @@ import styled from "styled-components";
 import FieldButton from "../../atoms/Button/fieldButton";
 import Text from "../../atoms/Text/Text";
 import LinkText from "../../atoms/Text/LinkText";
-import UserSettingImageModal from "../Modal/UserSettingImageModal";
 import useSettingModalStore from "@store/useSettingModalStore";
 
 const UserProfilePage = () => {
-  const { showSettingModal, setShowSettingModal, setSettingModalType } =
-    useSettingModalStore();
+  const { setShowSettingModal, setSettingModalType } = useSettingModalStore();
+
   const showModal = () => {
     setShowSettingModal(true);
     setSettingModalType("image");
@@ -15,8 +14,14 @@ const UserProfilePage = () => {
 
   return (
     <MainWrapper>
-      {showSettingModal && <UserSettingImageModal />}
       <BlockWrapper>
+        <Text
+          text="유저프로필"
+          fontSize="base"
+          color="setting-tab"
+          mb={16}
+          fontWeight="bold"
+        />
         <Text
           text="아바타"
           fontSize="xs"

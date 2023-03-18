@@ -8,6 +8,7 @@ import useDeleteUser from "@hooks/query/useDeleteUser";
 
 const MyAccount = () => {
   const { mutate: deleteUser } = useDeleteUser();
+
   return (
     <SettingWrapper>
       <>
@@ -28,14 +29,14 @@ const MyAccount = () => {
           fontSize="xs"
           mb={10}
         />
-        <ButtonWrappper2>
+        <ButtonWrappper>
           <FieldButton
             text="계정 삭제하기"
             onClick={() => deleteUser()}
             backgroundColor="voice-hangup"
             fontWeight="bold"
           />
-        </ButtonWrappper2>
+        </ButtonWrappper>
       </>
     </SettingWrapper>
   );
@@ -44,11 +45,6 @@ const MyAccount = () => {
 export default MyAccount;
 
 const ButtonWrappper = styled.div`
-  width: 10em;
-  height: 2rem;
-`;
-
-const ButtonWrappper2 = styled.div`
   width: 7.5rem;
   height: 2rem;
 `;
