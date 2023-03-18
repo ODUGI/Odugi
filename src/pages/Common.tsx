@@ -18,7 +18,7 @@ const modalTable = {
 
 const Common = () => {
   const navigate = useNavigate();
-  const isBaseUrl = useMatch("/");
+  // const isBaseUrl = useMatch("/");
   //!TODO: channelId는 추후에 channelName을 받아오는 용도로 사용
   const { communityId, channelId } = useParams();
   const { setShowModal, showModal, modalType } = useModalStore();
@@ -30,12 +30,10 @@ const Common = () => {
     setShowModal(false);
   }, []);
 
-  useCallback(() => {
-    if (isBaseUrl) {
-      navigate("/@me");
-      return null;
-    }
-  }, []);
+  // if (isBaseUrl) {
+  //   navigate("/@me");
+  //   return null;
+  // }
 
   const component = modalType ? modalTable[modalType] : null;
 

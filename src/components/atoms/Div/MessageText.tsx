@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ColorType, FontSizeType } from "@styles/theme";
 import LinkText from "../Text/LinkText";
 import useEnterInvitation from "@hooks/query/useEnterInvitation";
+import validateUrl from "@utils/validateUrl";
 
 interface MessageTextProps {
   text: string;
@@ -14,9 +15,7 @@ interface MessageTextProps {
 const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
   ({ text, hasDate, createdAt }, ref) => {
     const { mutate: enterInvitation } = useEnterInvitation();
-    const hasLink = useMemo(() => {
-      return /(https?:\/\/[^\s]+)/g.test(text);
-    }, [text]);
+    const hasLink = useMemo(() => validateUrl(text), [text]);
     const words = text.split(" ");
     const link = words[0];
     words.splice(0, 1);
@@ -31,26 +30,25 @@ const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
       <MessageTextContainer>
         {hasDate && (
           <MessageDate className="msg-date">
-            <Text ref={ref} color="auth-label" fontSize="xs">
+            <Message ref={ref} color="auth-label" fontSize="xs">
               {getFormatTime(createdAt)}
-            </Text>
+            </Message>
           </MessageDate>
         )}
-        <TextContainer>
+        <MessageContainer>
           {hasLink ? (
             <>
               <LinkText text={link} onClick={clickInvitation} />
-
-              <Text ref={ref} color="msg">
+              <Message ref={ref} color="msg">
                 {chat2}
-              </Text>
+              </Message>
             </>
           ) : (
-            <Text ref={ref} color="msg">
+            <Message ref={ref} color="msg">
               {text}
-            </Text>
+            </Message>
           )}
-        </TextContainer>
+        </MessageContainer>
       </MessageTextContainer>
     );
   }
@@ -66,16 +64,16 @@ const MessageTextContainer = styled.div`
 
 const MessageDate = styled.span`
   position: absolute;
-  margin-left: 12px;
+  margin-left: 0.75rem;
   visibility: hidden;
 `;
-const TextContainer = styled.div`
+
+const MessageContainer = styled.div`
   left: 0;
-  padding: 2px 48px 2px 72px;
+  padding: 0.125rem 3rem 0.125rem 4.5rem;
 `;
 
-interface TextProps {
-  text: string | React.ReactElement;
+interface MessageProps {
   fontSize?: FontSizeType;
   color?: ColorType;
   mb?: number;
@@ -83,12 +81,12 @@ interface TextProps {
   center?: boolean;
 }
 
-const Text = styled.p<Omit<TextProps, "text">>`
+const Message = styled.p<MessageProps>`
   line-height: 1.5rem;
   color: ${({ theme, color }) => theme.color[color]};
   font-size: ${({ theme, fontSize }) => theme.fontSize[fontSize]};
-  margin-top: 0px;
-  margin-left: 0px;
+  margin-top: 0;
+  margin-left: 0;
 `;
 
 export default MessageText;

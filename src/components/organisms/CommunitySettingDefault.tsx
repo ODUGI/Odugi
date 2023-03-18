@@ -3,7 +3,7 @@ import SettingWrapper from "./SettingWrapper";
 import FieldButton from "../atoms/Button/fieldButton";
 import styled from "styled-components";
 import ImageUploadButton from "../molecules/Button/ImageUploadButton";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
@@ -25,22 +25,22 @@ const CommunitySettingDefault = () => {
   const { mutate: updateCommunityName } = useMutation(communityApi.update);
   const { mutate: deleteCommunity } = useDeleteCommunity();
 
-  const changeCommunityName = () => {
+  const changeCommunityName = useCallback(() => {
     updateCommunityName({
       communityName: name,
       communityId,
       userId: userInfo.id,
     });
-  };
+  }, [name]);
 
-  const DeleteCommunity = () => {
+  const DeleteCommunity = useCallback(() => {
     if (!communityId) return;
 
     deleteCommunity({ communityId, userId: userInfo.id });
     window.location.replace("/@me");
-  };
+  }, []);
 
-  const changeImage = () => {
+  const changeImage = useCallback(() => {
     if (!communityId || !img) return;
 
     formData.append("communityId", communityId);
@@ -48,7 +48,7 @@ const CommunitySettingDefault = () => {
     formData.append("img", img);
 
     modifyImage({ formData });
-  };
+  }, [img]);
 
   return (
     <SettingWrapper>
