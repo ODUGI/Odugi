@@ -5,6 +5,24 @@ const communityApi = {
   create: async ({ formData }: any) => {
     return await clientApi.post("/community/create", formData);
   },
+  //카테고리 생성
+  createCategory: async ({ name, communityId, role }: any) => {
+    return await clientApi.post("/community/createchannel", {
+      name,
+      communityId,
+      role,
+    });
+  },
+
+  // 채널 생성
+  createChannel: async ({ name, categoryId, role, type }: any) => {
+    return await clientApi.post("/community/createcategory", {
+      name,
+      categoryId,
+      role,
+      type,
+    });
+  },
 
   // 커뮤니티 이름 변경
   update: async ({ communityName, communityId, userId }: any) => {
