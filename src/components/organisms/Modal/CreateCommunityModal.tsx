@@ -13,36 +13,26 @@ import DefaultButton from "@components/atoms/Button/DefaultButton";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
 import Text from "@components/atoms/Text/Text";
+import useCreateCommunity from "@hooks/query/useCreateCommunity";
 
 const CreateCommunityModal = () => {
   const navigate = useNavigate();
 
   let formData = new FormData();
 
-  const { userInfo } = useUserStore();
   const { setShowModal } = useModalStore();
 
   const [img, setImg] = useState<Blob | undefined>();
   const [name, changeName] = useInput();
-  const [nickName, setNickName] = useState(userInfo.name);
 
-  const { mutate: createCommunity } = useMutation(communityApi.create, {
-    onSuccess: () => {
-      navigate(-1);
-    },
-  });
+  const { mutate: createCommunity } = useCreateCommunity();
 
   const MakeCommunity = () => {
     formData.append("communityName", name);
-    formData.append("userId", JSON.stringify(userInfo.id));
     if (!img) return 0;
-    formData.append("img", img);
-    formData.append(
-      "profile",
-      JSON.stringify({ userName: nickName, img: null, 한줄소개: "한줄소개" })
-    );
+    formData.append("file", img);
+    console.log(formData.get("communityName"));
     createCommunity({ formData });
-    navigate(-1);
   };
 
   const closeModal = () => {

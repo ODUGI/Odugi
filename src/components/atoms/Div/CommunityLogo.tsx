@@ -26,7 +26,8 @@ const CommunityLogo = ({
   const { communityStatus, setCommunityStatus } = useCommunityStore();
   active = Number(communityStatus) === id;
 
-  const selectCommunity = () => {
+  const selectCommunity = (e: any) => {
+    e.stopPropagation();
     if (id === -2) return;
     setCommunityStatus(id);
   };
@@ -37,7 +38,8 @@ const CommunityLogo = ({
       <StyledIconButton
         height={avatarHeight}
         width={avatarWidth}
-        onClick={selectCommunity}
+        onClick={(e) => selectCommunity(e)}
+        disabled
       >
         {/* borderRadius로 이미지 동그란 정도 조절하기 */}
         <Avatar className="avatar" src={src}>
