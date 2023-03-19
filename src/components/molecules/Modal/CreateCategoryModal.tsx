@@ -13,29 +13,24 @@ import DefaultButton from "@components/atoms/Button/DefaultButton";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
 import Text from "@components/atoms/Text/Text";
+import useCreateCategory from "@hooks/query/useCreateCatergory";
 
 const CreateCategroyModal = () => {
   const navigate = useNavigate();
-
-  let formData = new FormData();
 
   const { userInfo } = useUserStore();
   const { setShowModal } = useModalStore();
   const [name, changeName] = useInput();
   const [type, setType] = useState();
-  const [role, setRole] = useState();
+  const [role, setRole] = useState<number>(0);
   //userInfo에 role이 없었던가?
   const [categoryId, setCategoryId] = useState();
   const { communityId } = useParams();
-  const { mutate: createCategory } = useMutation(communityApi.createCategory, {
-    onSuccess: () => {
-      navigate(-1);
-    },
-  });
+  const { mutate: createCategory } = useCreateCategory();
 
   const MakeCategory = () => {
     createCategory({ name, communityId, role });
-    navigate(-1);
+    closeModal();
   };
 
   const closeModal = () => {
@@ -49,7 +44,8 @@ const CreateCategroyModal = () => {
           <CancelIconWrapper onClick={closeModal}>
             <CancelIcon />
           </CancelIconWrapper>
-          <CreateCommunityText />
+
+          <Text text="카테고리 만들기" fontSize="xxl" color="white" />
         </CreateCommunityHeader>
         <CreateCommunityBody>
           <Text text="카테고리 이름" fontSize="xs" color="white" mb={8} />
