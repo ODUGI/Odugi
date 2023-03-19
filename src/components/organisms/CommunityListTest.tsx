@@ -32,32 +32,35 @@ const CommunityListTest = () => {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              ...
-              <Divider />
               {array &&
                 array.map(({ id, title }, index) => {
                   return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <li
-                          ref={provided.innerRef}
-                          {...provided.dragHandleProps}
-                          {...provided.draggableProps}
-                          onClick={() => null}
-                        >
-                          <CommunityLogo
-                            avatarHeight={3}
-                            avatarWidth={3}
-                            name="서버1"
-                            id={index}
-                          />
-                        </li>
-                      )}
-                    </Draggable>
+                    <div
+                      onClick={(e) => {
+                        e.stopPropagation();
+                      }}
+                    >
+                      <Draggable key={id} draggableId={id} index={index}>
+                        {(provided) => (
+                          <li
+                            ref={provided.innerRef}
+                            {...provided.dragHandleProps}
+                            {...provided.draggableProps}
+                            onClick={() => null}
+                          >
+                            <CommunityLogo
+                              avatarHeight={3}
+                              avatarWidth={3}
+                              name={title}
+                              id={index}
+                            />
+                          </li>
+                        )}
+                      </Draggable>
+                    </div>
                   );
                 })}
               {provided.placeholder}
-              ...
             </ul>
           )}
         </Droppable>
