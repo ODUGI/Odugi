@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { memo, MouseEventHandler } from "react";
 import styled from "styled-components";
 import { ColorType } from "@styles/theme";
 
@@ -8,13 +8,13 @@ interface LinkTextProps {
   color?: ColorType;
 }
 
-const LinkText = ({ text, onClick, color = "blue" }: LinkTextProps) => {
+const LinkText = memo(({ text, onClick, color = "blue" }: LinkTextProps) => {
   return (
     <LinkTextContainer onClick={onClick} color={color}>
       {text}
     </LinkTextContainer>
   );
-};
+});
 
 const LinkTextContainer = styled.span<{ color: ColorType }>`
   color: ${({ theme, color }) => theme.color[color]};

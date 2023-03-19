@@ -50,13 +50,9 @@ const RegisterStep1 = () => {
     <>
       <AuthHeader text="계정 만들기" />
       {errorMessage && (
-        <Text
-          text={errorMessage}
-          color="invite-danger"
-          fontSize="xs"
-          fontWeight="bold"
-          mb={8}
-        />
+        <Text color="invite-danger" fontSize="xs" fontWeight="bold" mb={8}>
+          {errorMessage}
+        </Text>
       )}
       <DefaultForm
         text="이메일"

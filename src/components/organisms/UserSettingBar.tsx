@@ -26,13 +26,9 @@ const MyAccountSettingBar = () => {
   return (
     <BarContainer>
       <Header>
-        <Text
-          text="사용자 설정"
-          fontSize="xs"
-          color="msg-hover"
-          mb={6}
-          fontWeight="bold"
-        />
+        <Text fontSize="xs" color="msg-hover" mb={6} fontWeight="bold">
+          사용자 설정
+        </Text>
       </Header>
       <ul>
         <li>

@@ -41,7 +41,7 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
       <InviteFriendBoxContainer>
         <UserInfoContainer>
           <UserProfileWrapper />
-          <Text text={name} color="white" />
+          <Text color="white">{name}</Text>
         </UserInfoContainer>
         <DefaultButton
           text="초대..."

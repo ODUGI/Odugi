@@ -33,8 +33,12 @@ const CallDirectMessage = ({
       </CallImageContainer>
       <TextContainer>
         <LinkText text={name} color="white" onClick={() => null} />
-        <Text text={text} color="auth-desc" fontSize="sm" />
-        <Text text="2023.02.05.오후 4:20" color="auth-desc" fontSize="xs" />
+        <Text color="auth-desc" fontSize="sm">
+          {text}
+        </Text>
+        <Text color="auth-desc" fontSize="xs">
+          2023.02.05.오후 4:20
+        </Text>
       </TextContainer>
     </CallDirectMessageContainer>
   );

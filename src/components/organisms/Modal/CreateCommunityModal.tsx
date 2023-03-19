@@ -84,7 +84,9 @@ const CreateCommunityModal = () => {
         </CreateCommunityHeader>
         <CreateCommunityBody>
           <ImageUploadButton setImg={setImg} />
-          <Text text="서버 이름" fontSize="xs" color="white" mb={8} />
+          <Text fontSize="xs" color="white" mb={8}>
+            서버 이름
+          </Text>
           <DefaultInput value={name} onChange={changeName} type="text" />
         </CreateCommunityBody>
         <CreateCommunityFooter>

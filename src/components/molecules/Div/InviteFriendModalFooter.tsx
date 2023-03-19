@@ -5,19 +5,13 @@ import InviteCommunityInput from "../Input/InviteCommunityInput";
 const InviteFriendModalFooter = () => {
   return (
     <InviteFriendModalFooterContainer>
-      <Text
-        text="또는 친구에게 서버 초대 링크 전송하기"
-        color="auth-desc"
-        fontSize="xs"
-        fontWeight="bold"
-        mb={8}
-      />
+      <Text color="auth-desc" fontSize="xs" fontWeight="bold" mb={8}>
+        또는 친구에게 서버 초대 링크 전송하기
+      </Text>
       <InviteCommunityInput url="https://discord.gg/e3AZaGPM" />
-      <Text
-        text="초대 링크가 7일 후 만료돼요."
-        fontSize="xs"
-        color="auth-desc"
-      />
+      <Text fontSize="xs" color="auth-desc">
+        초대 링크가 7일 후 만료돼요.
+      </Text>
     </InviteFriendModalFooterContainer>
   );
 };

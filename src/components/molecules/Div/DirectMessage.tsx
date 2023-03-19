@@ -14,7 +14,9 @@ const DirectMessage = () => {
 
   return (
     <DirectMessageContainer>
-      <Text text="다이렉트 메시지" fontSize="xs" fontWeight="bold" />
+      <Text fontSize="xs" fontWeight="bold">
+        다이렉트 메시지
+      </Text>
       <Tip title="DM 생성" place="top">
         <PlusButtonContainer
           ref={dropdownRef}

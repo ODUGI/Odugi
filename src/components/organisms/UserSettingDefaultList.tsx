@@ -44,8 +44,12 @@ const UserSettingGeneralTab = () => {
       {showSettingModal && Component}
       <FieldContinaer>
         <LeftRow>
-          <Text text="사용자명" fontSize="xs" color="setting-tab" mb={8} />
-          <Text text={userInfo.name} fontSize="base" color="white" />
+          <Text fontSize="xs" color="setting-tab" mb={8}>
+            사용자명
+          </Text>
+          <Text fontSize="base" color="white">
+            {userInfo.name}
+          </Text>
         </LeftRow>
         <ButtonWrappper>
           <FieldButton
@@ -57,8 +61,12 @@ const UserSettingGeneralTab = () => {
       </FieldContinaer>
       <FieldContinaer>
         <LeftRow>
-          <Text text="이메일" fontSize="xs" color="setting-tab" mb={8} />
-          <Text text={userInfo.email} fontSize="base" color="white" />
+          <Text fontSize="xs" color="setting-tab" mb={8}>
+            이메일
+          </Text>
+          <Text fontSize="base" color="white">
+            {userInfo.email}
+          </Text>
         </LeftRow>
         <ButtonWrappper>
           <FieldButton
@@ -70,8 +78,12 @@ const UserSettingGeneralTab = () => {
       </FieldContinaer>
       <FieldContinaer>
         <LeftRow>
-          <Text text="비밀번호" fontSize="xs" color="setting-tab" mb={8} />
-          <Text text="********" fontSize="base" color="white" />
+          <Text fontSize="xs" color="setting-tab" mb={8}>
+            비밀번호
+          </Text>
+          <Text fontSize="base" color="white">
+            =********
+          </Text>
         </LeftRow>
         <ButtonWrappper>
           <FieldButton text="변경하기" onClick={() => showModal("password")} />
@@ -79,8 +91,12 @@ const UserSettingGeneralTab = () => {
       </FieldContinaer>
       <FieldContinaer>
         <LeftRow>
-          <Text text="자기소개" fontSize="base" color="setting-tab" mb={8} />
-          <Text text={userInfo.introduction} fontSize="base" color="white" />
+          <Text fontSize="base" color="setting-tab" mb={8}>
+            자기소개
+          </Text>
+          <Text fontSize="base" color="white">
+            {userInfo.introduction}
+          </Text>
         </LeftRow>
         <ButtonWrappper>
           <FieldButton text="변경하기" onClick={() => showModal("intro")} />

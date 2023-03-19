@@ -10,7 +10,9 @@ const CommunityLabel = ({ text }: CommunityLabelProps) => {
   return (
     <CommunityLabelContainer>
       <ArrowBottomIcon />
-      <Text text={text} fontSize="xs" fontWeight="bold" />
+      <Text fontSize="xs" fontWeight="bold">
+        {text}
+      </Text>
     </CommunityLabelContainer>
   );
 };

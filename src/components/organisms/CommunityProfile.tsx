@@ -8,27 +8,16 @@ const CommunityProfile = () => {
   const [name, changeName] = useInput();
   return (
     <ProfileWrapper>
-      <Text
-        text="서버프로필"
-        fontSize="base"
-        color="setting-tab"
-        mb={16}
-        fontWeight="bold"
-      />
+      <Text fontSize="base" color="setting-tab" mb={16} fontWeight="bold">
+        서버 프로필
+      </Text>
       <BlockWrapper>
-        <Text
-          text="참가 중인 서버마다 다른 프로필을 사용하여 보세요."
-          fontSize="sm"
-          color="msg-placeholder"
-          mb={16}
-        />
-        <Text
-          text="서버 선택하기"
-          fontSize="xs"
-          color="setting-tab"
-          mb={12}
-          fontWeight="bold"
-        />
+        <Text fontSize="sm" color="msg-placeholder" mb={16}>
+          참가 중인 서버마다 다른 프로필을 사용하여 보세요.
+        </Text>
+        <Text fontSize="xs" color="setting-tab" mb={12} fontWeight="bold">
+          서버 선택하기
+        </Text>
         <DropDown />
       </BlockWrapper>
       <BlockWrapper>

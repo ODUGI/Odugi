@@ -22,29 +22,18 @@ const UserPasswordChangeModal = ({ setOpenModal2 }: any) => {
     <>
       <TopWrapper>
         <TextWrapper>
-          <Text
-            text="비밀번호를 바꿔주세요"
-            fontSize="xxl"
-            fontWeight="bold"
-            mb={12}
-            color="white"
-          />
-          <Text
-            text="현재 비밀번호와 새 비밀번호를 입력하세요."
-            fontSize="base"
-            color="setting-tab"
-            mb={20}
-          />
+          <Text fontSize="xxl" fontWeight="bold" mb={12} color="white">
+            비밀번호를 바꿔주세요.
+          </Text>
+          <Text fontSize="base" color="setting-tab" mb={20}>
+            현재 비밀번호와 새 비밀번호를 입력하세요.
+          </Text>
         </TextWrapper>
 
         <Wrapper>
-          <Text
-            text="현재비밀번호"
-            color="setting-tab"
-            fontSize="xs"
-            mb={10}
-            fontWeight="bold"
-          />
+          <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+            현재 비밀번호
+          </Text>
           <DefaultInput
             value={originalPassword}
             onChange={changeOriginalPassword}
@@ -55,13 +44,9 @@ const UserPasswordChangeModal = ({ setOpenModal2 }: any) => {
           />
         </Wrapper>
         <Wrapper>
-          <Text
-            text="새 비밀번호"
-            color="setting-tab"
-            fontSize="xs"
-            mb={10}
-            fontWeight="bold"
-          />
+          <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+            새 비밀번호
+          </Text>
           <DefaultInput
             value={password}
             onChange={changePassword}
@@ -72,13 +57,9 @@ const UserPasswordChangeModal = ({ setOpenModal2 }: any) => {
           />
         </Wrapper>
         <Wrapper>
-          <Text
-            text="새 비밀번호 확인"
-            color="setting-tab"
-            fontSize="xs"
-            mb={10}
-            fontWeight="bold"
-          />
+          <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+            새 비밀번호 확인
+          </Text>
           <DefaultInput
             value={passwordConfirm}
             onChange={changePasswordConfirm}
@@ -95,8 +76,6 @@ const UserPasswordChangeModal = ({ setOpenModal2 }: any) => {
     </>
   );
 };
-
-export default UserPasswordChangeModal;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -122,3 +101,5 @@ const Bottom = styled.div`
   padding: 1rem;
   background-color: ${({ theme }) => theme.backgroundColor["voice-nobody"]};
 `;
+
+export default UserPasswordChangeModal;

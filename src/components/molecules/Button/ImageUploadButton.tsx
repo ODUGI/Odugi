@@ -20,7 +20,9 @@ const ImageUploadButton = ({ setImg }: any) => {
       ) : (
         <UploadWrapper>
           <CameraIcon />
-          <Text text="UPLOAD" color="white" fontWeight="bold" fontSize="xs" />
+          <Text color="white" fontWeight="bold" fontSize="xs">
+            UPLOAD
+          </Text>
           <CommunityAddIcon />
           <input
             type="file"

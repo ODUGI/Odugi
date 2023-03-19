@@ -20,7 +20,7 @@ const Tab3CommunityHeader = () => {
     <Tab3CommunityHeaderContainer>
       <HeaderLeftWrapper>
         <TagIcon />
-        <Text text={chatroomName} color="white" />
+        <Text color="white">{chatroomName}</Text>
       </HeaderLeftWrapper>
       <HeaderRightWrapper>
         <div ref={dropdownRef}>

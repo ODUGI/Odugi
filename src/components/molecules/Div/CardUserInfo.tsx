@@ -13,14 +13,12 @@ const CardUserInfo = () => {
         <UserState type="m" src={userInfo.profileImagePath} status="1" />
       </Logo>
       <NameWrapper>
-        <Text
-          text={userInfo.name}
-          fontSize="lg"
-          fontWeight="bold"
-          color="white"
-          mb={4}
-        />
-        <Text text={userInfo.introduction} fontSize="sm" color="setting-tab" />
+        <Text fontSize="lg" fontWeight="bold" color="white" mb={4}>
+          {userInfo.name}
+        </Text>
+        <Text fontSize="sm" color="setting-tab">
+          {userInfo.introduction}
+        </Text>
       </NameWrapper>
       <ButtonWrapper>
         <SettingButton type="user" text="사용자 프로필 편집" status="프로필" />

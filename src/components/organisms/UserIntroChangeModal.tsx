@@ -21,19 +21,12 @@ const UserIntroChangeModal = ({ setOpenModal3 }: any) => {
     <>
       <TopWrapper>
         <TextWrapper>
-          <Text
-            text="자기소개 작성하기"
-            fontSize="xxl"
-            fontWeight="bold"
-            mb={12}
-            color="white"
-          />
-          <Text
-            text="한줄로 자기소개를 작성해주세요!"
-            fontSize="base"
-            color="setting-tab"
-            mb={20}
-          />
+          <Text fontSize="xxl" fontWeight="bold" mb={12} color="white">
+            자기소개 작성하기
+          </Text>
+          <Text fontSize="base" color="setting-tab" mb={20}>
+            한줄로 자기소개를 작성해주세요!
+          </Text>
         </TextWrapper>
         <Wrapper>
           {/* <Text

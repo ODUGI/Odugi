@@ -62,16 +62,14 @@ const InviteInput = () => {
         />
       </InviteInputContainer>
       {status === "success" && (
-        <Text
-          text={`${email}에게 성공적으로 친구 요청을 보냈어요.`}
-          color="invite-success"
-        />
+        <Text color="invite-success">
+          {email}에게 성공적으로 친구 요청을 보냈어요.
+        </Text>
       )}
       {status === "danger" && (
-        <Text
-          text="음, 안되네요. 이메일이 정확한지 다시 한 번 확인해주세요."
-          color="invite-danger"
-        />
+        <Text color="invite-danger">
+          음, 안되네요. 이메일이 정확한지 다시 한 번 확인해주세요.
+        </Text>
       )}
     </>
   );

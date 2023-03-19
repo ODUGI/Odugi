@@ -1,19 +1,20 @@
+import ModalContainer from "@components/atoms/Div/ModalContainer";
 import { flexCenter } from "@styles/flexCenter";
+import { memo } from "react";
 import styled from "styled-components";
-import ModalContainer from "../../atoms/Div/ModalContainer";
 
 interface AuthModalProps {
   children: React.ReactElement;
   width: number;
 }
 
-const AuthModal = ({ children, width }: AuthModalProps) => {
+const AuthModal = memo(({ children, width }: AuthModalProps) => {
   return (
     <Background>
       <ModalContainer width={width}>{children}</ModalContainer>
     </Background>
   );
-};
+});
 
 const Background = styled.div`
   ${flexCenter}

@@ -23,7 +23,7 @@ const Tab2CommunityHeader = () => {
       showModal={showDropdown}
       onClick={showCommunityDropdown}
     >
-      <Text text={communityName} color="white" />
+      <Text color="white">{communityName}</Text>
       <ArrowBottomIcon />
       {showDropdown && <CommunityDropdown />}
     </Tab2HeaderContainer>

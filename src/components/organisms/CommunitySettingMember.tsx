@@ -7,24 +7,22 @@ import UserLogo from "../atoms/Div/UserLogo";
 const CommunitySettingMember = () => {
   return (
     <SettingWrapper>
-      <Text
-        text={"서버 멤버"}
-        color="white"
-        fontWeight="bold"
-        fontSize="xl"
-        mb={20}
-      />
-      <Text text={"멤버 총 x명"} color="setting-tab" fontSize="sm" mb={20} />
+      <Text color="white" fontWeight="bold" fontSize="xl" mb={20}>
+        서버 멤버
+      </Text>
+      <Text color="setting-tab" fontSize="sm" mb={20}>
+        멤버 총 x명
+      </Text>
       <Divider sx={{ borderColor: "#96989D93", opacity: 0.5, mt: 1, mb: 1 }} />
       <Member>
         <UserLogo height={3} width={3} onClick={() => null} />
-        <Text text={"김현우"} color="white" fontSize="sm" />
+        <Text color="white" fontSize="sm">
+          김현우
+        </Text>
       </Member>
     </SettingWrapper>
   );
 };
-
-export default CommunitySettingMember;
 
 const Member = styled.div`
   display: flex;
@@ -37,7 +35,4 @@ const Member = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.borderColor.divider}; ;
 `;
 
-const Mini = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+export default CommunitySettingMember;

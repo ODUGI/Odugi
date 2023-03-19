@@ -15,20 +15,12 @@ const UserProfilePage = () => {
   return (
     <MainWrapper>
       <BlockWrapper>
-        <Text
-          text="유저프로필"
-          fontSize="base"
-          color="setting-tab"
-          mb={16}
-          fontWeight="bold"
-        />
-        <Text
-          text="아바타"
-          fontSize="xs"
-          color="setting-tab"
-          mb={8}
-          fontWeight="bold"
-        />
+        <Text fontSize="base" color="setting-tab" mb={16} fontWeight="bold">
+          유저프로필
+        </Text>
+        <Text fontSize="xs" color="setting-tab" mb={8} fontWeight="bold">
+          아바타
+        </Text>
         <CustomButtons>
           <AvatarWrapper>
             <FieldButton text="아바타 변경하기" onClick={showModal} />

@@ -52,26 +52,17 @@ const CommunitySettingDefault = () => {
 
   return (
     <SettingWrapper>
-      <Text
-        text={"서버 개요"}
-        color="white"
-        fontWeight="bold"
-        fontSize="xl"
-        mb={20}
-      />
+      <Text color="white" fontWeight="bold" fontSize="xl" mb={20}>
+        서버 개요
+      </Text>
       <Summary>
         <LeftSide>
-          <Text
-            text={"서버 이미지 해상도는 최소 512*512를 추천해요."}
-            color="auth-desc"
-            fontSize="sm"
-          />
-          <Text
-            text={"최소 크기: 128*128"}
-            color="auth-desc"
-            fontSize="xxs"
-            mb={20}
-          />
+          <Text color="auth-desc" fontSize="sm">
+            서버 이미지 해상도는 최소 512*512를 추천해요.
+          </Text>
+          <Text color="auth-desc" fontSize="xxs" mb={20}>
+            최소 크기: 128*128
+          </Text>
           <Mini>
             <ImageUploadButton setImg={setImg} />
           </Mini>
@@ -101,8 +92,6 @@ const CommunitySettingDefault = () => {
     </SettingWrapper>
   );
 };
-
-export default CommunitySettingDefault;
 
 const ButtonWrapper = styled.div`
   width: 140px;
@@ -134,3 +123,5 @@ const RightSide = styled.div`
   flex-direction: row;
   height: 30%;
 `;
+
+export default CommunitySettingDefault;

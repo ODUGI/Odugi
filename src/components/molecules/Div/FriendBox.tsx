@@ -26,8 +26,12 @@ const FriendBox = ({ name, status, onClick, Buttons, src }: FriendBoxProps) => {
         <UserContainer>
           <UserState type="s" src={src} status={status} />
           <UserText>
-            <Text text={name} color="white" fontWeight="bold" mb={3} />
-            <Text text={statusTable[status]} fontSize="sm" color="auth-desc" />
+            <Text color="white" fontWeight="bold" mb={3}>
+              {name}
+            </Text>
+            <Text fontSize="sm" color="auth-desc">
+              {statusTable[status]}
+            </Text>
           </UserText>
         </UserContainer>
         <ButtonsWrapper>{Buttons}</ButtonsWrapper>

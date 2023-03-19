@@ -43,12 +43,9 @@ const InviteFriendModalBody = () => {
               ))
             ) : (
               <TextWrapper>
-                <Text
-                  text="검색 결과가 없어요"
-                  color="auth-desc"
-                  center
-                  fontWeight="bold"
-                />
+                <Text color="auth-desc" center fontWeight="bold">
+                  검색 결과가 없어요
+                </Text>
               </TextWrapper>
             )}
           </FriendListContainer>

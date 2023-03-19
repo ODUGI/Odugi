@@ -10,7 +10,7 @@ const FileUploadeDropdown = () => {
         <UploadIconWrapper onClick={() => null}>
           <UploadIcon />
         </UploadIconWrapper>
-        <Text text="파일 업로드" fontSize="sm" />
+        <Text fontSize="sm">파일 업로드</Text>
       </FileUploadModalWrapper>
     </DropdownContainer>
   );

@@ -38,23 +38,14 @@ const LoginPage = () => {
   return (
     <AuthModal width={480}>
       <>
-        <Text
-          text="돌아오신 것을 환영해요!"
-          color="white"
-          fontSize="xxl"
-          fontWeight="bold"
-          center
-          mb={8}
-        />
-        <AuthDesc text=" 만나다니 너무 반가워요!" />
+        <Text color="white" fontSize="xxl" fontWeight="bold" center mb={8}>
+          돌아오신 것을 환영해요!
+        </Text>
+        <AuthDesc text="만나다니 너무 반가워요!" />
         {errorMessage && (
-          <Text
-            text={errorMessage}
-            color="invite-danger"
-            fontSize="xs"
-            fontWeight="bold"
-            mb={8}
-          />
+          <Text color="invite-danger" fontSize="xs" fontWeight="bold" mb={8}>
+            {errorMessage}
+          </Text>
         )}
         <LoginForm
           text="이메일"
@@ -72,16 +63,10 @@ const LoginPage = () => {
           <LinkText text="비밀번호를 잊으셨나요?" onClick={() => null} />
         </LinkTextContainer>
         <DefaultButton text="로그인" onClick={onLogin} height={44} mb={12} />
-        <Text
-          text={
-            <>
-              계정이 필요한가요?
-              <LinkText text="가입하기" onClick={goRegisterPage} />
-            </>
-          }
-          color="auth-desc"
-          fontSize="sm"
-        />
+        <Text color="auth-desc" fontSize="sm">
+          계정이 필요한가요?
+          <LinkText text=" 가입하기" onClick={goRegisterPage} />
+        </Text>
       </>
     </AuthModal>
   );

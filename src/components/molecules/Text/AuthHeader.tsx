@@ -6,14 +6,9 @@ interface AuthHeaderProps {
 
 const AuthHeader = ({ text }: AuthHeaderProps) => {
   return (
-    <Text
-      text={text}
-      color="white"
-      fontSize="xxl"
-      fontWeight="bold"
-      mb={20}
-      center
-    />
+    <Text color="white" fontSize="xxl" fontWeight="bold" mb={20} center>
+      {text}
+    </Text>
   );
 };
 

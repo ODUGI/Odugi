@@ -13,14 +13,14 @@ const InviteFriendModalHeader = () => {
   return (
     <InviteFriendModalHeaderContainer>
       <Header>
-        <Text text={`친구를 ${groupName}그룹으로 초대하기`} color="white" />
+        <Text color="white">친구를 {groupName}그룹으로 초대하기</Text>
         <CancelIconWrapper onClick={() => setShowModal(false)}>
           <CancelIcon />
         </CancelIconWrapper>
       </Header>
       <TextWrapper>
         <TagIcon />
-        <Text text={chatRoomName} />
+        <Text>{chatRoomName}</Text>
       </TextWrapper>
     </InviteFriendModalHeaderContainer>
   );

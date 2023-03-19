@@ -5,15 +5,15 @@ import CommunitySettingDefault from "../CommunitySettingDefault";
 import CommunitySettingInvite from "../CommunitySettingInvite";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
-import MyAccount from "../MyAccount";
-import UserProfile from "../UserProfile";
+import UserSettingMyAccount from "../UserSettingMyAccount";
+import UserSettingProfile from "../UserSettingProfile";
 import useSettingModalStore from "@store/useSettingModalStore";
 import { useEffect } from "react";
 
 const userComponent = {
-  "내 계정": <MyAccount />,
-  프로필: <UserProfile />,
-  알림: <UserProfile />,
+  "내 계정": <UserSettingMyAccount />,
+  프로필: <UserSettingProfile />,
+  알림: <UserSettingProfile />,
   일반: <CommunitySettingDefault />,
   멤버: <CommunitySettingMember />,
   초대: <CommunitySettingInvite />,

@@ -6,29 +6,22 @@ import FieldButton from "../atoms/Button/fieldButton";
 import styled from "styled-components";
 import useDeleteUser from "@hooks/query/useDeleteUser";
 
-const MyAccount = () => {
+const UserSettingMyAccount = () => {
   const { mutate: deleteUser } = useDeleteUser();
 
   return (
     <SettingWrapper>
       <>
-        <Text
-          text={"내 계정"}
-          color="white"
-          fontWeight="bold"
-          fontSize="xl"
-          mb={20}
-        />
+        <Text color="white" fontWeight="bold" fontSize="xl" mb={20}>
+          내 계정
+        </Text>
         <AccountCard />
         <Divider
           sx={{ borderColor: "#96989D93", opacity: 0.5, mr: 9, mt: 5, mb: 5 }}
         />
-        <Text
-          text={"계정 삭제하기"}
-          color="setting-tab"
-          fontSize="xs"
-          mb={10}
-        />
+        <Text color="setting-tab" fontSize="xs" mb={10}>
+          계정 삭제하기
+        </Text>
         <ButtonWrappper>
           <FieldButton
             text="계정 삭제하기"
@@ -42,7 +35,7 @@ const MyAccount = () => {
   );
 };
 
-export default MyAccount;
+export default UserSettingMyAccount;
 
 const ButtonWrappper = styled.div`
   width: 7.5rem;

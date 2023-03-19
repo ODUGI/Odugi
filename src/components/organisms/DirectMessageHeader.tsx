@@ -22,7 +22,7 @@ const DirectMessageHeader = ({ name, status }: DirectMessageHeaderProps) => {
         <AtIconWrapper>
           <AtIcon />
         </AtIconWrapper>
-        <Text text={name} color="white" />
+        <Text color="white">{name}</Text>
         <Status status={status} fontSize="14px" />
       </LeftContainer>
 
