@@ -74,8 +74,8 @@ const CommunitySettingDefault = () => {
       </Summary>
       <DefaultInput
         height="48"
-        value={name}
-        onChange={changeName}
+        // value={name}
+        // onChange={changeName}
         type="text"
       />
       <ButtonWrapper>
@@ -119,7 +119,7 @@ const Mini = styled.div`
   width: auto;
 `;
 const RightSide = styled.div`
-  display: flex;
+  display: flex
   flex-direction: row;
   height: 30%;
 `;

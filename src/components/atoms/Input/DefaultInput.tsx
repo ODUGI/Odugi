@@ -1,11 +1,10 @@
-import { ChangeEventHandler } from "react";
+import { forwardRef } from "react";
 import styled from "styled-components";
 import { BackgroundColorType, ColorType, FontSizeType } from "@styles/theme";
 
 interface DefaultInputProps {
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
   type: string;
+  initValue?: string;
   maxLength?: number;
   width?: number | string;
   height?: number | string;
@@ -16,35 +15,52 @@ interface DefaultInputProps {
   backgroundColor?: BackgroundColorType;
 }
 
-const DefaultInput = ({
-  value,
-  onChange,
-  type = "text",
-  maxLength = 524288,
-  width = "100%",
-  height = "100%",
-  placeholder = "",
-  placeholderColor = "tab2-placeholder",
-  fontSize = "sm",
-  color = "white",
-  backgroundColor = "tab1",
-}: DefaultInputProps) => {
-  return (
-    <DefaultInputContainer
-      value={value}
-      onChange={onChange}
-      type={type}
-      maxLength={maxLength}
-      width={width}
-      height={height}
-      placeholder={placeholder}
-      placeholderColor={placeholderColor}
-      fontSize={fontSize}
-      color={color}
-      backgroundColor={backgroundColor}
-    />
-  );
-};
+const DefaultInput = forwardRef<HTMLInputElement, DefaultInputProps>(
+  (
+    {
+      type = "text",
+      initValue = "",
+      maxLength = 524288,
+      width = "100%",
+      height = "100%",
+      placeholder = "",
+      placeholderColor = "tab2-placeholder",
+      fontSize = "sm",
+      color = "white",
+      backgroundColor = "tab1",
+    },
+    ref
+  ) => {
+    return initValue ? (
+      <DefaultInputContainer
+        ref={ref}
+        value={initValue}
+        type={type}
+        maxLength={maxLength}
+        width={width}
+        height={height}
+        placeholder={placeholder}
+        placeholderColor={placeholderColor}
+        fontSize={fontSize}
+        color={color}
+        backgroundColor={backgroundColor}
+      />
+    ) : (
+      <DefaultInputContainer
+        ref={ref}
+        type={type}
+        maxLength={maxLength}
+        width={width}
+        height={height}
+        placeholder={placeholder}
+        placeholderColor={placeholderColor}
+        fontSize={fontSize}
+        color={color}
+        backgroundColor={backgroundColor}
+      />
+    );
+  }
+);
 
 const DefaultInputContainer = styled.input<
   Pick<

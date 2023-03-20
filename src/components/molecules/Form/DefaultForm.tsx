@@ -1,24 +1,16 @@
 import DefaultInput from "@components/atoms/Input/DefaultInput";
 import Text from "@components/atoms/Text/Text";
-import { ChangeEvent, memo } from "react";
+import { forwardRef } from "react";
 import styled from "styled-components";
 
 interface DefaultFormProps {
   text: string | React.ReactElement;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   type?: string;
   formType?: "auth" | "community";
 }
 
-const DefaultForm = memo(
-  ({
-    text,
-    value,
-    onChange,
-    type = "text",
-    formType = "auth",
-  }: DefaultFormProps) => {
+const DefaultForm = forwardRef<HTMLInputElement, DefaultFormProps>(
+  ({ text, type = "text", formType = "auth" }, ref) => {
     return (
       <DefaultFormContainer>
         <Text
@@ -29,7 +21,7 @@ const DefaultForm = memo(
         >
           {text}
         </Text>
-        <DefaultInput value={value} onChange={onChange} type={type} />
+        <DefaultInput ref={ref} type={type} />
       </DefaultFormContainer>
     );
   }

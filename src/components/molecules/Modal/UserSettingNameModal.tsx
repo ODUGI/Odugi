@@ -6,7 +6,6 @@ import useInput from "@hooks/common/useInput";
 import useModifyName from "@hooks/query/useModifyName";
 import useSettingModalStore from "@store/useSettingModalStore";
 import { useUserStore } from "@store/useUserStore";
-import styled from "styled-components";
 import { Bottom, InputWrapper, TextWrapper } from "./UserSettingModal";
 
 const UserSettingNameModal = () => {
@@ -50,8 +49,8 @@ const UserSettingNameModal = () => {
                 사용자명
               </Text>
               <DefaultInput
-                value={name}
-                onChange={changeName}
+                // value={name}
+                // onChange={changeName}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"
@@ -64,8 +63,8 @@ const UserSettingNameModal = () => {
                 현재 비밀번호
               </Text>
               <DefaultInput
-                value={password}
-                onChange={changePassword}
+                // value={password}
+                // onChange={changePassword}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"

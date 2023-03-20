@@ -44,8 +44,8 @@ const UserSettingIntroModal = () => {
             </TextWrapper>
             <InputWrapper>
               <DefaultInput
-                value={introduction}
-                onChange={changeIntroduction}
+                // value={introduction}
+                // onChange={changeIntroduction}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"

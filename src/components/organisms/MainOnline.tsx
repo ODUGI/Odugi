@@ -25,7 +25,9 @@ const MainOnline = () => {
     <>
       {friendList.length > 0 ? (
         <>
-          <BigSearchInputBox value={value} onChange={onChangeValue} />
+          <BigSearchInputBox
+          //  value={value} onChange={onChangeValue}
+          />
           <LabelText label={"온라인"} num={friendList.length} />
           <ScrollableBox>
             {friendList.map(

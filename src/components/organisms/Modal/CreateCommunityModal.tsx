@@ -87,7 +87,10 @@ const CreateCommunityModal = () => {
           <Text fontSize="xs" color="white" mb={8}>
             서버 이름
           </Text>
-          <DefaultInput value={name} onChange={changeName} type="text" />
+          <DefaultInput
+            type="text"
+            //  value={name} onChange={changeName}
+          />
         </CreateCommunityBody>
         <CreateCommunityFooter>
           <DefaultButton

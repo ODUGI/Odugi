@@ -31,7 +31,9 @@ const MainWaiting = () => {
     <>
       {num > 0 ? (
         <>
-          <BigSearchInputBox value={value} onChange={onChangeValue} />
+          <BigSearchInputBox
+          // value={value} onChange={onChangeValue}
+          />
           <LabelText label={"대기 중"} num={num} />
           <ScrollableBox>
             {friendList.map(

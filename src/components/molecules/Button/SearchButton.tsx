@@ -4,12 +4,7 @@ import styled from "styled-components";
 const SearchButton = () => {
   return (
     <SearchButtonContainer>
-      <DefaultInput
-        type="text"
-        placeholder="대화 찾기 또는 시작하기"
-        value=""
-        onChange={() => null}
-      />
+      <DefaultInput type="text" placeholder="대화 찾기 또는 시작하기" />
     </SearchButtonContainer>
   );
 };

@@ -38,7 +38,10 @@ const DirectMessageHeader = ({ name, status }: DirectMessageHeaderProps) => {
           </ButtonWrapper>
         </Tip>
         <ButtonWrapper>
-          <SearchInput size="s" value={search} onChange={onChangeSearch} />
+          <SearchInput
+            size="s"
+            // value={search} onChange={onChangeSearch}
+          />
         </ButtonWrapper>
       </RightContainer>
     </DirectMessageHeaderContainer>

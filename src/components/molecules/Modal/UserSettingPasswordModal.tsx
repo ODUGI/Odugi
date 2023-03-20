@@ -51,8 +51,8 @@ const UserSettingPasswordModal = () => {
                 현재 비밀번호
               </Text>
               <DefaultInput
-                value={originalPassword}
-                onChange={changeOriginalPassword}
+                // value={originalPassword}
+                // onChange={changeOriginalPassword}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"
@@ -64,8 +64,8 @@ const UserSettingPasswordModal = () => {
                 새 비밀번호
               </Text>
               <DefaultInput
-                value={password}
-                onChange={changePassword}
+                // value={password}
+                // onChange={changePassword}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"
@@ -77,8 +77,8 @@ const UserSettingPasswordModal = () => {
                 새 비밀번호 확인
               </Text>
               <DefaultInput
-                value={passwordConfirm}
-                onChange={changePasswordConfirm}
+                // value={passwordConfirm}
+                // onChange={changePasswordConfirm}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"

@@ -22,10 +22,10 @@ const UserPasswordChangeModal = ({ setOpenModal2 }: any) => {
     <>
       <TopWrapper>
         <TextWrapper>
-          <Text fontSize="xxl" fontWeight="bold" mb={12} color="white">
+          <Text fontSize="xxl" fontWeight="bold" mb={12} color="white" center>
             비밀번호를 바꿔주세요.
           </Text>
-          <Text fontSize="base" color="setting-tab" mb={20}>
+          <Text fontSize="base" color="setting-tab" mb={20} center>
             현재 비밀번호와 새 비밀번호를 입력하세요.
           </Text>
         </TextWrapper>
@@ -35,12 +35,12 @@ const UserPasswordChangeModal = ({ setOpenModal2 }: any) => {
             현재 비밀번호
           </Text>
           <DefaultInput
-            value={originalPassword}
-            onChange={changeOriginalPassword}
+            type="text"
+            color="white"
             backgroundColor="voice-modal"
             fontSize="base"
-            color="white"
-            type="text"
+            // value={originalPassword}
+            // onChange={changeOriginalPassword}
           />
         </Wrapper>
         <Wrapper>
@@ -48,12 +48,12 @@ const UserPasswordChangeModal = ({ setOpenModal2 }: any) => {
             새 비밀번호
           </Text>
           <DefaultInput
-            value={password}
-            onChange={changePassword}
+            type="text"
+            color="white"
             backgroundColor="voice-modal"
             fontSize="base"
-            color="white"
-            type="text"
+            // value={password}
+            // onChange={changePassword}
           />
         </Wrapper>
         <Wrapper>
@@ -61,12 +61,12 @@ const UserPasswordChangeModal = ({ setOpenModal2 }: any) => {
             새 비밀번호 확인
           </Text>
           <DefaultInput
-            value={passwordConfirm}
-            onChange={changePasswordConfirm}
+            type="text"
+            color="white"
             backgroundColor="voice-modal"
             fontSize="base"
-            color="white"
-            type="text"
+            // value={passwordConfirm}
+            // onChange={changePasswordConfirm}
           />
         </Wrapper>
       </TopWrapper>
@@ -82,12 +82,7 @@ const Wrapper = styled.div`
   padding: 0.8rem 1rem 0 1rem;
 `;
 
-const TextWrapper = styled.div`
-  text-align: center;
-  p {
-    text-align: center;
-  }
-`;
+const TextWrapper = styled.div``;
 
 const TopWrapper = styled.div`
   padding: 1rem;

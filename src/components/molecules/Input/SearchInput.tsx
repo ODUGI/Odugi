@@ -6,23 +6,23 @@ import styled from "styled-components";
 type SizeType = "s" | "m";
 interface SearchInputProps {
   size: SizeType;
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  // value: string;
+  // onChange: ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
 }
 
 const SearchInput = ({
   size,
-  value,
-  onChange,
+  // value,
+  // onChange,
   placeholder = "검색하기",
 }: SearchInputProps) => {
   return (
     <SearchInputContainer size={size}>
       <DefaultInput
         type="text"
-        value={value}
-        onChange={onChange}
+        // value={value}
+        // onChange={onChange}
         placeholder={placeholder}
         fontSize={size === "s" ? "sm" : "base"}
       />

@@ -48,8 +48,8 @@ const RegisterStep2 = () => {
         </Text>
       )}
       <DefaultForm
-        value={emailCode}
-        onChange={changeEmailCode}
+        // value={emailCode}
+        // onChange={changeEmailCode}
         text="인증 코드"
       />
       <LinkText

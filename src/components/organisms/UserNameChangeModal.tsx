@@ -7,10 +7,12 @@ import useModifyName from "@hooks/query/useModifyName";
 import DefaultButton from "@components/atoms/Button/DefaultButton";
 
 const UserNameChangeModal = ({ setOpenModal }: any) => {
-  const { userInfo, setUserInfo } = useUserStore();
   const [name, changeName] = useInput();
   const [password, changePassword] = useInput();
+
+  const { userInfo, setUserInfo } = useUserStore();
   const { mutate: modifyName } = useModifyName();
+
   const updataUserName = () => {
     modifyName({
       name,
@@ -19,6 +21,7 @@ const UserNameChangeModal = ({ setOpenModal }: any) => {
     setUserInfo({ ...userInfo, name });
     setOpenModal(false);
   };
+
   return (
     <>
       <TopWrapper>
@@ -35,12 +38,12 @@ const UserNameChangeModal = ({ setOpenModal }: any) => {
             사용자명
           </Text>
           <DefaultInput
-            value={name}
-            onChange={changeName}
+            type="text"
+            color="white"
             backgroundColor="voice-modal"
             fontSize="base"
-            color="white"
-            type="text"
+            // value={name}
+            // onChange={changeName}
           />
         </Wrapper>
 
@@ -49,12 +52,12 @@ const UserNameChangeModal = ({ setOpenModal }: any) => {
             현재 비밀번호
           </Text>
           <DefaultInput
-            value={password}
-            onChange={changePassword}
+            type="text"
+            color="white"
             backgroundColor="voice-modal"
             fontSize="base"
-            color="white"
-            type="text"
+            // value={password}
+            // onChange={changePassword}
           />
         </Wrapper>
       </TopWrapper>

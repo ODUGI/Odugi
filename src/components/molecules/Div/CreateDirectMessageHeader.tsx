@@ -1,19 +1,19 @@
 import DefaultInput from "@components/atoms/Input/DefaultInput";
 import Text from "@components/atoms/Text/Text";
-import { ChangeEventHandler } from "react";
+// import { ChangeEventHandler } from "react";
 import styled from "styled-components";
 
 interface CreateDirectMesssageHeaderProps {
   addFriendNum: number;
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  // value: string;
+  // onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 const CreateDirectMesssageHeader = ({
   addFriendNum,
-  value,
-  onChange,
-}: CreateDirectMesssageHeaderProps) => {
+}: // value,
+// onChange,
+CreateDirectMesssageHeaderProps) => {
   return (
     <CreateDirectMesssageHeaderContainer>
       <Text color="white" fontSize="lg" mb={8}>
@@ -24,8 +24,8 @@ const CreateDirectMesssageHeader = ({
       </Text>
       <DefaultInput
         placeholder="친구의 사용자명 입력하기"
-        value={value}
-        onChange={onChange}
+        // value={value}
+        // onChange={onChange}
         type="text"
       />
     </CreateDirectMesssageHeaderContainer>

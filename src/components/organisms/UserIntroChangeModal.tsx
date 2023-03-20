@@ -21,10 +21,10 @@ const UserIntroChangeModal = ({ setOpenModal3 }: any) => {
     <>
       <TopWrapper>
         <TextWrapper>
-          <Text fontSize="xxl" fontWeight="bold" mb={12} color="white">
+          <Text fontSize="xxl" fontWeight="bold" mb={12} color="white" center>
             자기소개 작성하기
           </Text>
-          <Text fontSize="base" color="setting-tab" mb={20}>
+          <Text fontSize="base" color="setting-tab" mb={20} center>
             한줄로 자기소개를 작성해주세요!
           </Text>
         </TextWrapper>
@@ -37,35 +37,28 @@ const UserIntroChangeModal = ({ setOpenModal3 }: any) => {
                 fontWeight="bold"
               /> */}
           <DefaultInput
-            value={introduction}
-            onChange={changeIntroduction}
-            backgroundColor="voice-modal"
+            type="text"
             fontSize="base"
             color="white"
-            type="text"
+            backgroundColor="voice-modal"
+            // value={introduction}
+            // onChange={changeIntroduction}
           />
         </Wrapper>
       </TopWrapper>
       <Bottom>
-        <DefaultButton text="완료" onClick={() => updataIntro()} />
+        <DefaultButton text="완료" onClick={updataIntro} />
       </Bottom>
     </>
   );
 };
-
-export default UserIntroChangeModal;
 
 const Wrapper = styled.div`
   width: 100%;
   padding: 0.8rem 1rem 0 1rem;
 `;
 
-const TextWrapper = styled.div`
-  text-align: center;
-  p {
-    text-align: center;
-  }
-`;
+const TextWrapper = styled.div``;
 
 const TopWrapper = styled.div`
   padding: 1rem;
@@ -79,3 +72,5 @@ const Bottom = styled.div`
   padding: 1rem;
   background-color: ${({ theme }) => theme.backgroundColor["voice-nobody"]};
 `;
+
+export default UserIntroChangeModal;

@@ -53,15 +53,18 @@ const RegisterStep1 = () => {
       <DefaultForm
         text="이메일"
         type="email"
-        value={email}
-        onChange={changeEmail}
+        // value={email}
+        // onChange={changeEmail}
       />
-      <DefaultForm text="사용자명" value={name} onChange={changeName} />
+      <DefaultForm
+        text="사용자명"
+        // value={name} onChange={changeName}
+      />
       <DefaultForm
         text="비밀번호"
         type="password"
-        value={password}
-        onChange={changePassword}
+        // value={password}
+        // onChange={changePassword}
       />
       <DefaultButton text="계속하기" onClick={onRegister} height={44} mb={12} />
       <LinkText text="이미 계정이 있으신가요?" onClick={goLoginPage} />

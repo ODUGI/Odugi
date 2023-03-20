@@ -30,7 +30,10 @@ const Tab3CommunityHeader = () => {
           {showNotiModal && <NotificationModal />}
         </div>
         <SearchInputWrapper>
-          <SearchInput size="s" value={value} onChange={onChange} />
+          <SearchInput
+            size="s"
+            // value={value} onChange={onChange}
+          />
         </SearchInputWrapper>
       </HeaderRightWrapper>
     </Tab3CommunityHeaderContainer>

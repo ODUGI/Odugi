@@ -31,7 +31,9 @@ const MainTotal = () => {
     <>
       {friendList.length > 0 ? (
         <>
-          <BigSearchInputBox value={value} onChange={onChangeValue} />
+          <BigSearchInputBox
+          // value={value} onChange={onChangeValue}
+          />
           <LabelText label={"모든 친구"} num={friendList.length} />
           <ScrollableBox>
             {friendList.map(

@@ -37,8 +37,8 @@ const CreateDirectMessageDropdown = ({
       p={16}
     >
       <CreateDirectMesssageHeader
-        value={search}
-        onChange={changeSearch}
+        // value={search}
+        // onChange={changeSearch}
         addFriendNum={1}
       />
       <>

@@ -1,5 +1,5 @@
 import Text from "@components/atoms/Text/Text";
-import useInput from "@hooks/common/useInput";
+// import useInput from "@hooks/common/useInput";
 import { useUserStore } from "@store/useUserStore";
 import { flexCenter } from "@styles/flexCenter";
 import styled from "styled-components";
@@ -9,7 +9,7 @@ import ScrollableBox from "./scrollableBox";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 
 const InviteFriendModalBody = () => {
-  const [search, changeSearch] = useInput();
+  // const [search, changeSearch] = useInput();
   const {
     userInfo: { email },
   } = useUserStore();
@@ -24,8 +24,8 @@ const InviteFriendModalBody = () => {
       <SearchInputWrapper>
         <SearchInput
           size="m"
-          value={search}
-          onChange={changeSearch}
+          // value={search}
+          // onChange={changeSearch}
           placeholder="친구 찾기"
         />
       </SearchInputWrapper>

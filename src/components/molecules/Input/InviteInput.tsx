@@ -46,9 +46,9 @@ const InviteInput = () => {
         <DefaultInput
           maxLength={37}
           placeholder="사용자 이메일 입력"
-          value={email}
           type="email"
-          onChange={onChange}
+          // value={email}
+          // onChange={onChange}
           fontSize="base"
           backgroundColor="trans"
         />

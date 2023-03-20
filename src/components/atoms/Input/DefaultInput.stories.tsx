@@ -1,4 +1,3 @@
-import { useState } from "react";
 import DefaultInput from "./DefaultInput";
 
 export default {
@@ -6,13 +5,4 @@ export default {
   component: DefaultInput,
 };
 
-export const Default = () => {
-  const [text, setText] = useState("");
-  return (
-    <DefaultInput
-      type="text"
-      value={text}
-      onChange={({ target: { value } }) => setText(value)}
-    />
-  );
-};
+export const Default = () => <DefaultInput type="text" />;
