@@ -19,7 +19,9 @@ const LinkText = memo(({ text, onClick, color = "blue" }: LinkTextProps) => {
 const LinkTextContainer = styled.span<{ color: ColorType }>`
   color: ${({ theme, color }) => theme.color[color]};
   font-size: ${({ theme }) => theme.fontSize.sm};
+
   cursor: pointer;
+
   &:hover {
     text-decoration: underline;
   }

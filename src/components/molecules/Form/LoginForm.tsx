@@ -1,5 +1,5 @@
 import SpanText from "@components/atoms/Text/SpanText";
-import { ChangeEvent } from "react";
+import { ChangeEvent, memo } from "react";
 import DefaultForm from "./DefaultForm";
 
 interface LoginFormProps {
@@ -9,13 +9,8 @@ interface LoginFormProps {
   type?: string;
 }
 
-const LoginForm = ({
-  text,
-  value,
-  onChange,
-  type = "text",
-}: LoginFormProps) => {
-  return (
+const LoginForm = memo(
+  ({ text, value, onChange, type = "text" }: LoginFormProps) => (
     <>
       <DefaultForm
         text={
@@ -29,7 +24,7 @@ const LoginForm = ({
         onChange={onChange}
       />
     </>
-  );
-};
+  )
+);
 
 export default LoginForm;

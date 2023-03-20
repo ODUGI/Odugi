@@ -1,3 +1,4 @@
+import ErrorText from "@components/atoms/Text/ErrorText";
 import useInput from "@hooks/common/useInput";
 import useSendEmail from "@hooks/query/useSendEmail";
 import { useRegisterStore } from "@store/useRegisterStore";
@@ -6,7 +7,6 @@ import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DefaultButton from "../atoms/Button/DefaultButton";
 import LinkText from "../atoms/Text/LinkText";
-import Text from "../atoms/Text/Text";
 import DefaultForm from "../molecules/Form/DefaultForm";
 import AuthHeader from "../molecules/Text/AuthHeader";
 
@@ -49,11 +49,7 @@ const RegisterStep1 = () => {
   return (
     <>
       <AuthHeader text="계정 만들기" />
-      {errorMessage && (
-        <Text color="invite-danger" fontSize="xs" fontWeight="bold" mb={8}>
-          {errorMessage}
-        </Text>
-      )}
+      {errorMessage && <ErrorText text={errorMessage} />}
       <DefaultForm
         text="이메일"
         type="email"
