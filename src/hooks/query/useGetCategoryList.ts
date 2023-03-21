@@ -1,13 +1,13 @@
 import communityApi from "@api/community";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetChannelList = ({ communityId }: any) => {
+const useGetCategoryList = ({ communityId }: any) => {
   const { data } = useQuery(
-    ["channelList", { communityId }],
-    communityApi.getChannelList
+    ["categoryList", { communityId }],
+    communityApi.getCategoryList
   );
   if (!data?.data?.data) return [];
   return data?.data?.data;
 };
 
-export default useGetChannelList;
+export default useGetCategoryList;
