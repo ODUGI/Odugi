@@ -1,6 +1,6 @@
 import { COOKIE_KEY } from "@configs/cookie";
 import { ReactElement } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useMatch } from "react-router-dom";
 import { cookies } from "src/App";
 
 interface ProtectAuthProps {
@@ -8,12 +8,21 @@ interface ProtectAuthProps {
 }
 
 const ProtectPage = ({ children }: ProtectAuthProps) => {
+  const isBaseUrl = useMatch("/");
   const cookie = cookies.get(COOKIE_KEY);
   const accessToken = localStorage.getItem("accessToken");
 
-  return (
-    <>{cookie && accessToken ? children : <Navigate replace to="/login" />}</>
-  );
+  const navigateUrl = () => {
+    if (cookie && accessToken) {
+      if (isBaseUrl) {
+        return <Navigate replace to="/@me" />;
+      }
+      return children;
+    }
+    return <Navigate replace to="/login" />;
+  };
+
+  return navigateUrl();
 };
 
 export default ProtectPage;
