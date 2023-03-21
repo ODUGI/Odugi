@@ -1,6 +1,5 @@
 import SearchIcon from "@components/atoms/Icons/SearchIcon";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
-import { ChangeEventHandler } from "react";
 import styled from "styled-components";
 
 type SizeType = "s" | "m";
