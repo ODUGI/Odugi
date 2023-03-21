@@ -7,6 +7,8 @@ import ScrollableBox from "@components/molecules/Div/scrollableBox";
 import useGetCommunityList from "@hooks/query/useGetCommunityList";
 import OdugiLogo from "../../assets/images/logo.jpg";
 import useModalStore from "@store/useModalStore";
+import { useEffect, useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 const CommunityList = () => {
   const navigate = useNavigate();
@@ -18,6 +20,11 @@ const CommunityList = () => {
   const goMainPage = () => {
     navigate("/@me");
   };
+
+  const [array, setArray] = useState([]);
+  useEffect(() => {
+    setArray(list);
+  }, [list]);
 
   if (!params) {
     goMainPage();
@@ -33,41 +40,74 @@ const CommunityList = () => {
     setModalType("createCommunity");
   };
 
+  const handleChange = (result: any) => {
+    if (!result.destination) return;
+    const items = [...array];
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setArray(items);
+  };
+
   return (
     <BarContainer>
       <ScrollableBox>
-        <ul>
-          <li onClick={goMainPage}>
-            <CommunityLogo
-              avatarHeight={3}
-              avatarWidth={3}
-              name="메인"
-              id={-1}
-              src={OdugiLogo}
-            />
-          </li>
+        <DragDropContext onDragEnd={handleChange}>
+          <Droppable droppableId="communities">
+            {(provided) => (
+              <ul>
+                <li onClick={goMainPage}>
+                  <CommunityLogo
+                    avatarHeight={3}
+                    avatarWidth={3}
+                    name="메인"
+                    id={-1}
+                    src={OdugiLogo}
+                  />
+                </li>
 
-          <Divider />
+                <Divider />
 
-          {list.map((community: any, idx: number) => (
-            <li key={idx} onClick={() => onCommunity(community.communityId)}>
-              <CommunityLogo
-                avatarHeight={3}
-                avatarWidth={3}
-                name={community.name}
-                id={community.communityId}
-                src={community.img}
-              />
-            </li>
-          ))}
-          {list.length !== 0 && <Divider />}
+                {list.map((community: any, idx: number) => (
+                  <Draggable
+                    key={community.communityId}
+                    draggableId={community.communityId}
+                    index={idx}
+                  >
+                    {(provided) => (
+                      <li
+                        ref={provided.innerRef}
+                        {...provided.dragHandleProps}
+                        {...provided.draggableProps}
+                        onClick={() => onCommunity(community.communityId)}
+                      >
+                        <CommunityLogo
+                          avatarHeight={3}
+                          avatarWidth={3}
+                          name={community.name}
+                          id={community.communityId}
+                          src={community.img}
+                        />
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
 
-          <li onClick={createCommunity}>
-            <CommunityLogo avatarHeight={3} avatarWidth={3} name="" id={-2}>
-              <AddIcon />
-            </CommunityLogo>
-          </li>
-        </ul>
+                {list.length !== 0 && <Divider />}
+
+                <li onClick={createCommunity}>
+                  <CommunityLogo
+                    avatarHeight={3}
+                    avatarWidth={3}
+                    name=""
+                    id={-2}
+                  >
+                    <AddIcon />
+                  </CommunityLogo>
+                </li>
+              </ul>
+            )}
+          </Droppable>
+        </DragDropContext>
       </ScrollableBox>
     </BarContainer>
   );
