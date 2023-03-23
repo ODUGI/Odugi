@@ -1,3 +1,4 @@
 import ScreenShareIcon from "@mui/icons-material/ScreenShare";
+import { memo } from "react";
 
-export default () => <ScreenShareIcon />;
+export default memo(() => <ScreenShareIcon />);

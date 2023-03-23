@@ -5,8 +5,8 @@ import { MouseEventHandler, ReactElement } from "react";
 
 interface LogoImageProps {
   onClick: MouseEventHandler<HTMLButtonElement>;
-  width: Number;
-  height: Number;
+  width: number;
+  height: number;
   src?: string;
   child?: ReactElement;
 }
@@ -28,8 +28,8 @@ const UserLogo = ({
 };
 
 interface ButtonProps {
-  width: Number;
-  height: Number;
+  width: number;
+  height: number;
 }
 
 const StyledIconButton = styled(IconButton)<ButtonProps>`
@@ -39,8 +39,8 @@ const StyledIconButton = styled(IconButton)<ButtonProps>`
   }
   margin: 0px;
   padding: 0rem !important;
-  width: ${({ width }) => width + "rem"};
-  height: ${({ height }) => height + "rem"}; ;
+  width: ${({ width }) => width}rem;
+  height: ${({ height }) => height}rem; ;
 `;
 
 export default UserLogo;

@@ -1,4 +1,5 @@
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
+import { memo } from "react";
 import styled from "styled-components";
 
 const WelcomeIcon = styled(ArrowForwardRoundedIcon)`
@@ -7,4 +8,4 @@ const WelcomeIcon = styled(ArrowForwardRoundedIcon)`
   height: 1rem;
 `;
 
-export default () => <WelcomeIcon />;
+export default memo(() => <WelcomeIcon />);

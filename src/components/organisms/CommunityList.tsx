@@ -1,38 +1,34 @@
 import styled from "styled-components";
 import CommunityLgoo from "../atoms/Div/CommunityLogo";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AddIcon from "@components/atoms/Icons/AddIcon";
 import { useUserStore } from "@store/useUserStore";
 import ScrollableBox from "@components/molecules/Div/scrollableBox";
 import useGetCommunityList from "@hooks/query/useGetCommunityList";
 import OdugiLogo from "../../assets/images/logo.jpg";
 import useModalStore from "@store/useModalStore";
+import { useCallback } from "react";
 
 const CommunityList = () => {
   const navigate = useNavigate();
-  const params = useParams();
 
   const { userInfo } = useUserStore();
   const { setShowModal, setModalType } = useModalStore();
+
   const { list } = useGetCommunityList({ userId: userInfo.id });
 
-  const goMainPage = () => {
+  const goMainPage = useCallback(() => {
     navigate("/@me");
-  };
+  }, []);
 
-  if (!params) {
-    goMainPage();
-    return null;
-  }
-
-  const onCommunity = (communityId: Number) => {
-    navigate(`/${communityId}`);
-  };
-
-  const createCommunity = () => {
+  const createCommunity = useCallback(() => {
     setShowModal(true);
     setModalType("createCommunity");
-  };
+  }, []);
+
+  const onCommunity = useCallback((communityId: number) => {
+    navigate(`/${communityId}`);
+  }, []);
 
   return (
     <BarContainer>
@@ -61,6 +57,7 @@ const CommunityList = () => {
               />
             </li>
           ))}
+
           {list.length !== 0 && <Divider />}
 
           <li onClick={createCommunity}>

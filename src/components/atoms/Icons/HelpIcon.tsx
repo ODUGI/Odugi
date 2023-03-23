@@ -1,3 +1,4 @@
 import HelpIcon from "@mui/icons-material/Help";
+import { memo } from "react";
 
-export default () => <HelpIcon />;
+export default memo(() => <HelpIcon />);

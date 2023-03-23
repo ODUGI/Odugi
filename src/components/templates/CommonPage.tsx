@@ -37,6 +37,7 @@ const CommonPage = ({ isMainPage }: CommonPageProps) => {
 const Tab2Container = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor.tab2};
   width: 15rem;
+
   display: flex;
   flex-direction: column;
 `;
@@ -44,6 +45,7 @@ const Tab2Container = styled.div`
 const Tab3Container = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor.tab3};
   flex: 1;
+
   display: flex;
   flex-direction: column;
 `;

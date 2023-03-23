@@ -1,4 +1,5 @@
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import { memo } from "react";
 import styled from "styled-components";
 
 const StateEmptyIcon = styled(DarkModeIcon)`
@@ -10,4 +11,8 @@ interface StateIconProps {
   padding?: number;
 }
 
-export default ({ fontSize, padding = 1 }: StateIconProps) => <StateEmptyIcon sx={{ fontSize, padding: `${padding}px`, borderRadius: 25 }} />;
+export default memo(({ fontSize, padding = 1 }: StateIconProps) => (
+  <StateEmptyIcon
+    sx={{ fontSize, padding: `${padding}px`, borderRadius: 25 }}
+  />
+));

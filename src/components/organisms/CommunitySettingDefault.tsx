@@ -3,10 +3,10 @@ import SettingWrapper from "./SettingWrapper";
 import FieldButton from "../atoms/Button/fieldButton";
 import styled from "styled-components";
 import ImageUploadButton from "../molecules/Button/ImageUploadButton";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useUserStore } from "@store/useUserStore";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useInput from "@hooks/common/useInput";
 import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
 import communityApi from "@api/community";
@@ -15,29 +15,31 @@ import DefaultInput from "@components/atoms/Input/DefaultInput";
 
 const CommunitySettingDefault = () => {
   let formData = new FormData();
+  const navigate = useNavigate();
   const { communityId } = useParams();
   const { userInfo } = useUserStore();
 
   const [img, setImg] = useState();
-  const [name, changeName] = useInput();
+  const nameRef = useRef<HTMLInputElement>(null);
+  // const [name, changeName] = useInput();
 
   const { mutate: modifyImage } = useModifyCommunityImage();
   const { mutate: updateCommunityName } = useMutation(communityApi.update);
   const { mutate: deleteCommunity } = useDeleteCommunity();
 
   const changeCommunityName = useCallback(() => {
-    updateCommunityName({
-      communityName: name,
-      communityId,
-      userId: userInfo.id,
-    });
-  }, [name]);
+    if (nameRef.current)
+      updateCommunityName({
+        communityName: nameRef.current.value,
+        communityId,
+        userId: userInfo.id,
+      });
+  }, [nameRef]);
 
   const DeleteCommunity = useCallback(() => {
     if (!communityId) return;
 
     deleteCommunity({ communityId, userId: userInfo.id });
-    window.location.replace("/@me");
   }, []);
 
   const changeImage = useCallback(() => {
@@ -72,12 +74,7 @@ const CommunitySettingDefault = () => {
         </LeftSide>
         <RightSide></RightSide>
       </Summary>
-      <DefaultInput
-        height="48"
-        // value={name}
-        // onChange={changeName}
-        type="text"
-      />
+      <DefaultInput ref={nameRef} height="48" type="text" />
       <ButtonWrapper>
         <FieldButton text="서버이름 변경하기" onClick={changeCommunityName} />
       </ButtonWrapper>
@@ -119,7 +116,7 @@ const Mini = styled.div`
   width: auto;
 `;
 const RightSide = styled.div`
-  display: flex
+  display: flex;
   flex-direction: row;
   height: 30%;
 `;

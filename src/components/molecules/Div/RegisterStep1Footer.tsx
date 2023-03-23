@@ -48,7 +48,7 @@ const RegisterStep1Footer = ({ refs, setErrorMessage }: any) => {
     setName(name);
     setPassword(password);
     sendEmail({ email, name, password });
-  }, []);
+  }, [refs]);
 
   return (
     <>

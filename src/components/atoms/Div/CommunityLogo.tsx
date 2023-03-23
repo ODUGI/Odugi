@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import { IconButton } from "@mui/material";
 import styled from "styled-components";
-import { ReactElement } from "react";
+import { ReactElement, useCallback } from "react";
 import useCommunityStore from "@store/useCommunityStore";
 
 interface CommunityLogoProps {
@@ -10,8 +10,8 @@ interface CommunityLogoProps {
   active?: boolean;
   src?: string;
   children?: ReactElement;
-  avatarWidth: Number;
-  avatarHeight: Number;
+  avatarWidth: number;
+  avatarHeight: number;
 }
 
 const CommunityLogo = ({
@@ -26,10 +26,10 @@ const CommunityLogo = ({
   const { communityStatus, setCommunityStatus } = useCommunityStore();
   active = Number(communityStatus) === id;
 
-  const selectCommunity = () => {
+  const selectCommunity = useCallback(() => {
     if (id === -2) return;
     setCommunityStatus(id);
-  };
+  }, []);
 
   return (
     <CommunityIconBox borderRadius={active ? 0.8 : 5} height={active ? 35 : 10}>
@@ -39,7 +39,6 @@ const CommunityLogo = ({
         width={avatarWidth}
         onClick={selectCommunity}
       >
-        {/* borderRadius로 이미지 동그란 정도 조절하기 */}
         <Avatar className="avatar" src={src}>
           {children}
           {name}
@@ -48,8 +47,6 @@ const CommunityLogo = ({
     </CommunityIconBox>
   );
 };
-
-export default CommunityLogo;
 
 interface CommunityIconBoxProps {
   borderRadius: number | string;
@@ -80,8 +77,8 @@ const CommunityIconBox = styled.div<CommunityIconBoxProps>`
 `;
 
 interface CommunityIconButtonProps {
-  width: Number;
-  height: Number;
+  width: number;
+  height: number;
 }
 
 const StyledIconButton = styled(IconButton)<CommunityIconButtonProps>`
@@ -89,20 +86,21 @@ const StyledIconButton = styled(IconButton)<CommunityIconButtonProps>`
     width: 100%;
     height: 100%;
   }
-  margin: 0px;
-  padding: 0rem !important;
-  border-radius: 5rem;
-  width: ${({ width }) => width + "rem"};
-  height: ${({ height }) => height + "rem"};
 
-  border: 3px solid white;
+  margin: 0;
+  padding: 0 !important;
+  border-radius: 5rem;
+  width: ${({ width }) => width}rem;
+  height: ${({ height }) => height}rem;
+
+  border: 0.1875rem solid white;
 `;
 
 const ClickedWrapper = styled.div`
-  height: 10px;
+  height: 0.625rem;
   list-style-type: none;
-  line-height: 16px;
-  width: 6px;
+  line-height: 1rem;
+  width: 0.375rem;
   background-color: ${({ theme }) => theme.backgroundColor.white};
   border-radius: 0 1rem 1rem 0;
   justify-content: flex-start;
@@ -111,3 +109,5 @@ const ClickedWrapper = styled.div`
   opacity: 1;
   margin-right: 0.5rem;
 `;
+
+export default CommunityLogo;

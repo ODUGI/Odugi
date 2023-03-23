@@ -7,7 +7,7 @@ import UserSettingModal from "@components/organisms/Modal/UserSettingModal";
 import CommonPage from "@components/templates/CommonPage";
 import useModalStore from "@store/useModalStore";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const modalTable = {
   inviteFriend: <InviteFriendModal />,
@@ -17,7 +17,6 @@ const modalTable = {
 };
 
 const Common = () => {
-  const navigate = useNavigate();
   //!TODO: channelId는 추후에 channelName을 받아오는 용도로 사용
   const { communityId, channelId } = useParams();
   const { setShowModal, showModal, modalType } = useModalStore();

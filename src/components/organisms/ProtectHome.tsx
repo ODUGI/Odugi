@@ -1,6 +1,6 @@
 import { COOKIE_KEY } from "@configs/cookie";
 import { ReactElement } from "react";
-import { Navigate, useMatch } from "react-router-dom";
+import { Navigate, useMatch, useParams } from "react-router-dom";
 import { cookies } from "src/App";
 
 interface ProtectAuthProps {
@@ -9,12 +9,14 @@ interface ProtectAuthProps {
 
 const ProtectPage = ({ children }: ProtectAuthProps) => {
   const isBaseUrl = useMatch("/");
+  const { communityId, channelId } = useParams();
+
   const cookie = cookies.get(COOKIE_KEY);
   const accessToken = localStorage.getItem("accessToken");
 
   const navigateUrl = () => {
     if (cookie && accessToken) {
-      if (isBaseUrl) {
+      if (isBaseUrl || (!communityId && channelId)) {
         return <Navigate replace to="/@me" />;
       }
       return children;

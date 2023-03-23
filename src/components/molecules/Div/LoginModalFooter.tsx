@@ -3,7 +3,7 @@ import LinkText from "@components/atoms/Text/LinkText";
 import Text from "@components/atoms/Text/Text";
 import useLogin from "@hooks/query/useLogin";
 import validateEmail from "@utils/validateEmail";
-import { Dispatch, Ref, SetStateAction, useCallback } from "react";
+import { Dispatch, SetStateAction, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface LoginModalFooterProps {
@@ -33,7 +33,7 @@ const LoginModalFooter = ({ refs, setErrorMessage }: LoginModalFooterProps) => {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     });
-  }, []);
+  }, [refs]);
 
   return (
     <>
