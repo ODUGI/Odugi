@@ -1,5 +1,7 @@
 import PageContainer from "@components/atoms/Div/PageContainer";
 import HeaderHelmet from "@components/atoms/Helmet";
+import CreateCategroyModal from "@components/molecules/Modal/CreateCategoryModal";
+import CreateChannelModal from "@components/molecules/Modal/CreateChannelModal";
 import CommunitySettingModal from "@components/organisms/Modal/CommunitySettingModal";
 import CreateCommunityModal from "@components/organisms/Modal/CreateCommunityModal";
 import InviteFriendModal from "@components/organisms/Modal/InviteFriendModal";
@@ -14,6 +16,8 @@ const modalTable = {
   userSetting: <UserSettingModal />,
   communitySetting: <CommunitySettingModal />,
   createCommunity: <CreateCommunityModal />,
+  createCategory: <CreateCategroyModal />,
+  createChannel: <CreateChannelModal />,
 };
 
 const Common = () => {
