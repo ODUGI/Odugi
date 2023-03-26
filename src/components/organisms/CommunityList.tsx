@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import CommunityLgoo from "../atoms/Div/CommunityLogo";
-import { useNavigate } from "react-router-dom";
+import CommunityLogo from "../atoms/Div/CommunityLogo";
+import { useNavigate, useParams } from "react-router-dom";
 import AddIcon from "@components/atoms/Icons/AddIcon";
 import { useUserStore } from "@store/useUserStore";
 import ScrollableBox from "@components/molecules/Div/scrollableBox";
@@ -15,8 +15,7 @@ const CommunityList = () => {
   const { userInfo } = useUserStore();
   const { setShowModal, setModalType } = useModalStore();
 
-  const { list } = useGetCommunityList({ userId: userInfo.id });
-
+  const list = useGetCommunityList();
   const goMainPage = useCallback(() => {
     navigate("/@me");
   }, []);
@@ -35,7 +34,7 @@ const CommunityList = () => {
       <ScrollableBox>
         <ul>
           <li onClick={goMainPage}>
-            <CommunityLgoo
+            <CommunityLogo
               avatarHeight={3}
               avatarWidth={3}
               name="메인"
@@ -46,13 +45,13 @@ const CommunityList = () => {
 
           <Divider />
 
-          {list.map((community: any, idx) => (
-            <li key={idx} onClick={() => onCommunity(community.community_id)}>
-              <CommunityLgoo
+          {list.map((community: any, idx: number) => (
+            <li key={idx} onClick={() => onCommunity(community.communityId)}>
+              <CommunityLogo
                 avatarHeight={3}
                 avatarWidth={3}
                 name={community.name}
-                id={community.community_id}
+                id={community.communityId}
                 src={community.img}
               />
             </li>
@@ -61,9 +60,9 @@ const CommunityList = () => {
           {list.length !== 0 && <Divider />}
 
           <li onClick={createCommunity}>
-            <CommunityLgoo avatarHeight={3} avatarWidth={3} name="" id={-2}>
+            <CommunityLogo avatarHeight={3} avatarWidth={3} name="" id={-2}>
               <AddIcon />
-            </CommunityLgoo>
+            </CommunityLogo>
           </li>
         </ul>
       </ScrollableBox>

@@ -6,7 +6,9 @@ export type ModalType =
   | "inviteFriend"
   | "userSetting"
   | "communitySetting"
-  | "createCommunity";
+  | "createCommunity"
+  | "createCategory"
+  | "createChannel";
 
 interface ModalState {
   showModal: boolean;

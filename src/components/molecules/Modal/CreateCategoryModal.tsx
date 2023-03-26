@@ -1,32 +1,36 @@
 import styled from "styled-components";
 import useInput from "@hooks/common/useInput";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
+import { useUserStore } from "@store/useUserStore";
 import { useState } from "react";
+import communityApi from "@api/community";
 import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
-import BackgroundModal from "../BackgroundModal";
+import BackgroundModal from "@components/organisms/BackgroundModal";
 import ImageUploadButton from "@components/molecules/Button/ImageUploadButton";
 import DefaultButton from "@components/atoms/Button/DefaultButton";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
 import Text from "@components/atoms/Text/Text";
-import useCreateCommunity from "@hooks/query/useCreateCommunity";
+import useCreateCategory from "@hooks/query/useCreateCatergory";
 
-const CreateCommunityModal = () => {
-  let formData = new FormData();
+const CreateCategroyModal = () => {
+  const navigate = useNavigate();
 
+  const { userInfo } = useUserStore();
   const { setShowModal } = useModalStore();
-
-  const [img, setImg] = useState<Blob | undefined>();
   const [name, changeName] = useInput();
+  const [type, setType] = useState();
+  const [role, setRole] = useState<number>(0);
+  //userInfo에 role이 없었던가?
+  const [categoryId, setCategoryId] = useState();
+  const { communityId } = useParams();
+  const { mutate: createCategory } = useCreateCategory();
 
-  const { mutate: createCommunity } = useCreateCommunity();
-
-  const MakeCommunity = () => {
-    if (!img) return 0;
-
-    formData.append("communityName", name);
-    formData.append("file", img);
-    createCommunity({ formData });
+  const MakeCategory = () => {
+    createCategory({ name, communityId, role });
+    closeModal();
   };
 
   const closeModal = () => {
@@ -40,17 +44,12 @@ const CreateCommunityModal = () => {
           <CancelIconWrapper onClick={closeModal}>
             <CancelIcon />
           </CancelIconWrapper>
-          <CreateCommunityText />
+
+          <Text text="카테고리 만들기" fontSize="xxl" color="white" />
         </CreateCommunityHeader>
         <CreateCommunityBody>
-          <ImageUploadButton setImg={setImg} />
-          <Text fontSize="xs" color="white" mb={8}>
-            서버 이름
-          </Text>
-          <DefaultInput
-            type="text"
-            //  value={name} onChange={changeName}
-          />
+          <Text text="카테고리 이름" fontSize="xs" color="white" mb={8} />
+          <DefaultInput value={name} onChange={changeName} type="text" />
         </CreateCommunityBody>
         <CreateCommunityFooter>
           <DefaultButton
@@ -65,7 +64,7 @@ const CreateCommunityModal = () => {
             width={96}
             height={38}
             text="만들기"
-            onClick={MakeCommunity}
+            onClick={MakeCategory}
           />
         </CreateCommunityFooter>
       </>
@@ -100,4 +99,4 @@ const CreateCommunityFooter = styled.div`
   justify-content: space-between;
 `;
 
-export default CreateCommunityModal;
+export default CreateCategroyModal;

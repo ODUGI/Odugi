@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import { IconButton } from "@mui/material";
 import styled from "styled-components";
-import { ReactElement, useCallback } from "react";
+import { MouseEvent, ReactElement, useCallback } from "react";
 import useCommunityStore from "@store/useCommunityStore";
 
 interface CommunityLogoProps {
@@ -26,7 +26,8 @@ const CommunityLogo = ({
   const { communityStatus, setCommunityStatus } = useCommunityStore();
   active = Number(communityStatus) === id;
 
-  const selectCommunity = useCallback(() => {
+  const selectCommunity = useCallback((e: MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (id === -2) return;
     setCommunityStatus(id);
   }, []);
@@ -38,6 +39,7 @@ const CommunityLogo = ({
         height={avatarHeight}
         width={avatarWidth}
         onClick={selectCommunity}
+        disabled
       >
         <Avatar className="avatar" src={src}>
           {children}

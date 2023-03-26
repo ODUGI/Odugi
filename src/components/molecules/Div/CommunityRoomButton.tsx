@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 interface CommunityRoomButtonProps {
-  type: "chat" | "voice";
+  type: "CHAT" | "VOICE";
   text: string;
   communityId: string;
   channelId: number;
@@ -44,7 +44,7 @@ const CommunityRoomButton = ({
       >
         <CommunityRoomButtonContainer>
           <LeftContainer>
-            {type === "chat" ? <TagIcon /> : <VolumeIcon />}
+            {type === "CHAT" ? <TagIcon /> : <VolumeIcon />}
             <Text>{text}</Text>
           </LeftContainer>
           <div className="right-icon" onClick={showInviteModal}>
