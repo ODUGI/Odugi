@@ -86,5 +86,30 @@ const communityApi = {
       linkMessage,
     });
   },
+
+  deleteCommunity: async ({ communityId, role }: any) => {
+    return await clientApi.delete(`community/community`, {
+      data: {
+        communityId,
+        role,
+      },
+    });
+  },
+  deleteCategory: async ({ categoryId, role }: any) => {
+    return await clientApi.delete(`community/category`, {
+      data: {
+        categoryId,
+        role,
+      },
+    });
+  },
+  deleteChannel: async ({ channelId, role }: any) => {
+    return await clientApi.delete(`community/channel`, {
+      data: {
+        channelId,
+        role,
+      },
+    });
+  },
 };
 export default communityApi;
