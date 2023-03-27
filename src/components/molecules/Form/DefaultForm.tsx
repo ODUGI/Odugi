@@ -1,16 +1,16 @@
 import DefaultInput from "@components/atoms/Input/DefaultInput";
 import Text from "@components/atoms/Text/Text";
-import { forwardRef } from "react";
+import { forwardRef, ReactNode } from "react";
 import styled from "styled-components";
 
 interface DefaultFormProps {
-  text: string | React.ReactElement;
   type?: string;
   formType?: "auth" | "community";
+  children: ReactNode;
 }
 
 const DefaultForm = forwardRef<HTMLInputElement, DefaultFormProps>(
-  ({ text, type = "text", formType = "auth" }, ref) => {
+  ({ type = "text", formType = "auth", children }, ref) => {
     return (
       <DefaultFormContainer>
         <Text
@@ -19,7 +19,7 @@ const DefaultForm = forwardRef<HTMLInputElement, DefaultFormProps>(
           fontSize="xs"
           mb={8}
         >
-          {text}
+          {children}
         </Text>
         <DefaultInput ref={ref} type={type} />
       </DefaultFormContainer>

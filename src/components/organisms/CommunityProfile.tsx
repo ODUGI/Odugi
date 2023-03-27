@@ -21,12 +21,7 @@ const CommunityProfile = () => {
         <DropDown />
       </BlockWrapper>
       <BlockWrapper>
-        <DefaultForm
-          type="community"
-          text="서버이름"
-          // value={name}
-          // onChange={changeName}
-        />
+        <DefaultForm type="community">서버이름</DefaultForm>
       </BlockWrapper>
     </ProfileWrapper>
   );

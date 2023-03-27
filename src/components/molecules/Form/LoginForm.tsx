@@ -10,16 +10,10 @@ interface LoginFormProps {
 const LoginForm = forwardRef<HTMLInputElement, LoginFormProps>(
   ({ text, type = "text" }, ref) => (
     <>
-      <DefaultForm
-        ref={ref}
-        text={
-          <>
-            {text}
-            <SpanText text=" *" color="red" />
-          </>
-        }
-        type={type}
-      />
+      <DefaultForm ref={ref} type={type}>
+        {text}
+        <SpanText text=" *" color="red" />
+      </DefaultForm>
     </>
   )
 );
