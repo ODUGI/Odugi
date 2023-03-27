@@ -1,19 +1,26 @@
 import FieldButton from "@components/atoms/Button/fieldButton";
 import Text from "@components/atoms/Text/Text";
+import { lazy, useEffect } from "react";
 import styled from "styled-components";
 import { useUserStore } from "@store/useUserStore";
 import useSettingModalStore, {
   SettingModalType,
 } from "@store/useSettingModalStore";
-import UserSettingNameModal from "@components/molecules/Modal/UserSettingNameModal";
-import UserSettingPasswordModal from "@components/molecules/Modal/UserSettingPasswordModal";
-import UserSettingIntroModal from "@components/molecules/Modal/UserSettingIntroModal";
-import UserSettingImageModal from "@components/molecules/Modal/UserSettingImageModal";
-import { useEffect } from "react";
+const UserSettingNameModal = lazy(
+  () => import("@components/molecules/Modal/UserSettingNameModal")
+);
+const UserSettingPasswordModal = lazy(
+  () => import("@components/molecules/Modal/UserSettingPasswordModal")
+);
+const UserSettingIntroModal = lazy(
+  () => import("@components/molecules/Modal/UserSettingIntroModal")
+);
+const UserSettingImageModal = lazy(
+  () => import("@components/molecules/Modal/UserSettingImageModal")
+);
 
 const UserSettingGeneralTab = () => {
   const { userInfo } = useUserStore();
-
   const {
     showSettingModal,
     settingModalType,
@@ -37,7 +44,7 @@ const UserSettingGeneralTab = () => {
     image: <UserSettingImageModal />,
   };
 
-  const Component = settingModalType ? modalTable[settingModalType] : <></>;
+  const Component = settingModalType ? modalTable[settingModalType] : null;
 
   return (
     <ListWrapper>
