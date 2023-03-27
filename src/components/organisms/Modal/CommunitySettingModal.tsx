@@ -1,14 +1,16 @@
 import styled from "styled-components";
+import { useEffect, lazy } from "react";
 import CommunitySettingBar from "../CommunitySettingBar";
-import CommunitySettingMember from "../CommunitySettingMember";
-import CommunitySettingDefault from "../CommunitySettingDefault";
-import CommunitySettingInvite from "../CommunitySettingInvite";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
-import UserSettingMyAccount from "../UserSettingMyAccount";
-import UserSettingProfile from "../UserSettingProfile";
 import useSettingModalStore from "@store/useSettingModalStore";
-import { useEffect } from "react";
+const CommunitySettingMember = lazy(() => import("../CommunitySettingMember"));
+const CommunitySettingDefault = lazy(
+  () => import("../CommunitySettingDefault")
+);
+const CommunitySettingInvite = lazy(() => import("../CommunitySettingInvite"));
+const UserSettingMyAccount = lazy(() => import("../UserSettingMyAccount"));
+const UserSettingProfile = lazy(() => import("../UserSettingProfile"));
 
 const userComponent = {
   "내 계정": <UserSettingMyAccount />,
@@ -23,7 +25,7 @@ const CommunitySettingModal = () => {
   const { setShowModal } = useModalStore();
   const { settingBarStatus, setSettingBarStatus } = useSettingModalStore();
 
-  const Component = settingBarStatus ? userComponent[settingBarStatus] : <></>;
+  const component = settingBarStatus ? userComponent[settingBarStatus] : null;
 
   const closeModal = () => {
     setShowModal(false);
@@ -42,7 +44,7 @@ const CommunitySettingModal = () => {
         <CancelIconWrapper onClick={closeModal}>
           <CancelIcon />
         </CancelIconWrapper>
-        {Component}
+        {component}
       </Container>
     </SettingBox>
   );
@@ -55,14 +57,12 @@ const SettingBox = styled.div`
   top: 0;
   left: 0;
 
+  background-color: ${({ theme }) => theme.backgroundColor["voice-icon"]};
+
   display: flex;
+  flex-direction: row;
   justify-content: center;
   overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: row;
-  background-color: ${({ theme }) => theme.backgroundColor["voice-icon"]};
 `;
 
 const CancelIconWrapper = styled.div`
@@ -71,6 +71,7 @@ const CancelIconWrapper = styled.div`
   position: absolute;
   right: 500px;
   top: 25px;
+
   cursor: pointer;
 `;
 

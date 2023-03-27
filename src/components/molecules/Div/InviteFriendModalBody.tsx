@@ -7,27 +7,23 @@ import SearchInput from "../Input/SearchInput";
 import InviteFriendBox from "./InviteFriendBox";
 import ScrollableBox from "./scrollableBox";
 import useGetFriendList from "@hooks/query/useGetFriendList";
+import { useRef } from "react";
 
 const InviteFriendModalBody = () => {
-  // const [search, changeSearch] = useInput();
+  const searchRef = useRef<HTMLInputElement>(null);
   const {
     userInfo: { email },
   } = useUserStore();
   const { data: friendList, isSuccess } = useGetFriendList(email);
 
-  if (!isSuccess) return <></>;
+  if (!isSuccess) return null;
 
   const num = friendList.length;
 
   return (
     <InviteFriendModalBodyContainer>
       <SearchInputWrapper>
-        <SearchInput
-          size="m"
-          // value={search}
-          // onChange={changeSearch}
-          placeholder="친구 찾기"
-        />
+        <SearchInput size="m" ref={searchRef} placeholder="친구 찾기" />
       </SearchInputWrapper>
       <Divider color="tab1" />
       <FriendListContainer>

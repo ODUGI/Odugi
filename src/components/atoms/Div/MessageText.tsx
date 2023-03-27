@@ -1,5 +1,5 @@
 import getFormatTime from "@utils/getFormatTime";
-import { forwardRef, useMemo } from "react";
+import { forwardRef, useCallback, useMemo } from "react";
 import styled from "styled-components";
 import { ColorType, FontSizeType } from "@styles/theme";
 import LinkText from "../Text/LinkText";
@@ -21,10 +21,10 @@ const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
     words.splice(0, 1);
     const chat2 = words.join(" ");
 
-    const clickInvitation = () => {
+    const clickInvitation = useCallback(() => {
       enterInvitation();
       window.location.replace(link);
-    };
+    }, []);
 
     return (
       <MessageTextContainer>
@@ -36,18 +36,11 @@ const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
           </MessageDate>
         )}
         <MessageContainer>
-          {hasLink ? (
-            <>
-              <LinkText text={link} onClick={clickInvitation} />
-              <Message ref={ref} color="msg">
-                {chat2}
-              </Message>
-            </>
-          ) : (
-            <Message ref={ref} color="msg">
-              {text}
-            </Message>
-          )}
+          {hasLink && <LinkText text={link} onClick={clickInvitation} />}(
+          <Message ref={ref} color="msg">
+            {hasLink ? chat2 : text}
+          </Message>
+          )
         </MessageContainer>
       </MessageTextContainer>
     );

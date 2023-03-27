@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import useInput from "@hooks/common/useInput";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
 import BackgroundModal from "../BackgroundModal";
 import ImageUploadButton from "@components/molecules/Button/ImageUploadButton";
@@ -14,24 +13,23 @@ import useCreateCommunity from "@hooks/query/useCreateCommunity";
 const CreateCommunityModal = () => {
   let formData = new FormData();
 
-  const { setShowModal } = useModalStore();
-
+  const nameRef = useRef<HTMLInputElement>(null);
   const [img, setImg] = useState<Blob | undefined>();
-  const [name, changeName] = useInput();
 
+  const { setShowModal } = useModalStore();
   const { mutate: createCommunity } = useCreateCommunity();
 
-  const MakeCommunity = () => {
-    if (!img) return 0;
+  const MakeCommunity = useCallback(() => {
+    if (!img || !nameRef?.current) return;
 
-    formData.append("communityName", name);
+    formData.append("communityName", nameRef.current.value);
     formData.append("file", img);
     createCommunity({ formData });
-  };
+  }, [img, nameRef]);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setShowModal(false);
-  };
+  }, []);
 
   return (
     <BackgroundModal width={440} p={0}>
@@ -47,17 +45,14 @@ const CreateCommunityModal = () => {
           <Text fontSize="xs" color="white" mb={8}>
             서버 이름
           </Text>
-          <DefaultInput
-            type="text"
-            //  value={name} onChange={changeName}
-          />
+          <DefaultInput type="text" ref={nameRef} />
         </CreateCommunityBody>
         <CreateCommunityFooter>
           <DefaultButton
             width={96}
             height={38}
             text="취소"
-            backgroundColor="transparernt"
+            backgroundColor="transparent"
             hoverBackgroundColor="transparent"
             onClick={closeModal}
           />

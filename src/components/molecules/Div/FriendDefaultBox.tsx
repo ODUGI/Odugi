@@ -5,14 +5,7 @@ import MoreIcon from "@components/atoms/Icons/MoreIcon";
 import useOutsideClick from "@hooks/common/useOutsideClick";
 import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
 import useMainStore from "@store/useMainStore";
-import {
-  Dispatch,
-  MouseEvent,
-  ReactElement,
-  SetStateAction,
-  useRef,
-  useState,
-} from "react";
+import { MouseEvent, ReactElement, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import RoundButton from "../Button/RoundButton";
@@ -20,7 +13,6 @@ import FriendEtcDropdown from "./FriendEtcDropdown";
 import FriendBox from "./FriendBox";
 
 interface FriendDefaultBoxProps {
-  setNum: Dispatch<SetStateAction<number>>;
   email: string;
   id: string;
   name: string;
@@ -31,7 +23,6 @@ interface FriendDefaultBoxProps {
 }
 
 const FriendDefaultBox = ({
-  setNum,
   email,
   id,
   name,
@@ -50,10 +41,10 @@ const FriendDefaultBox = ({
 
   useOutsideClick(dropdownRef, () => setShowEtcModal(false));
 
-  if (isLoading) return <></>;
+  if (isLoading) return null;
 
   if (isOnline?.data.data !== "1") {
-    return <></>;
+    return null;
   }
 
   const enterDM = () => {

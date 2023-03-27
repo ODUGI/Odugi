@@ -37,11 +37,11 @@ const UserSettingGeneralTab = () => {
     image: <UserSettingImageModal />,
   };
 
-  const Component = settingModalType ? modalTable[settingModalType] : <></>;
+  const component = settingModalType ? modalTable[settingModalType] : null;
 
   return (
     <ListWrapper>
-      {showSettingModal && Component}
+      {showSettingModal && component}
       <FieldContinaer>
         <LeftRow>
           <Text fontSize="xs" color="setting-tab" mb={8}>

@@ -6,8 +6,7 @@ import ImageUploadButton from "../molecules/Button/ImageUploadButton";
 import { useCallback, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useUserStore } from "@store/useUserStore";
-import { useNavigate, useParams } from "react-router-dom";
-import useInput from "@hooks/common/useInput";
+import { useParams } from "react-router-dom";
 import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
 import communityApi from "@api/community";
 import useModifyCommunityImage from "@hooks/query/useModifyCommunityImage";
@@ -15,13 +14,11 @@ import DefaultInput from "@components/atoms/Input/DefaultInput";
 
 const CommunitySettingDefault = () => {
   let formData = new FormData();
-  const navigate = useNavigate();
   const { communityId } = useParams();
   const { userInfo } = useUserStore();
 
-  const [img, setImg] = useState();
   const nameRef = useRef<HTMLInputElement>(null);
-  // const [name, changeName] = useInput();
+  const [img, setImg] = useState();
 
   const { mutate: modifyImage } = useModifyCommunityImage();
   const { mutate: updateCommunityName } = useMutation(communityApi.update);
@@ -36,9 +33,8 @@ const CommunitySettingDefault = () => {
       });
   }, [nameRef]);
 
-  const DeleteCommunity = useCallback(() => {
+  const removeCommunity = useCallback(() => {
     if (!communityId) return;
-
     deleteCommunity({ communityId, userId: userInfo.id });
   }, []);
 
@@ -72,7 +68,6 @@ const CommunitySettingDefault = () => {
             <FieldButton text="아바타 변경하기" onClick={changeImage} />
           </ButtonWrapper>
         </LeftSide>
-        <RightSide></RightSide>
       </Summary>
       <DefaultInput ref={nameRef} height="48" type="text" />
       <ButtonWrapper>
@@ -81,7 +76,7 @@ const CommunitySettingDefault = () => {
       <ButtonWrapper>
         <FieldButton
           text="서버 삭제하기"
-          onClick={DeleteCommunity}
+          onClick={removeCommunity}
           backgroundColor="voice-hangup"
           fontWeight="bold"
         />
@@ -95,6 +90,7 @@ const ButtonWrapper = styled.div`
   height: 40px;
   margin-top: 0.5rem;
 `;
+
 const Summary = styled.div`
   width: 100%;
   height: auto;
@@ -115,6 +111,7 @@ const Mini = styled.div`
   flex-direction: row;
   width: auto;
 `;
+
 const RightSide = styled.div`
   display: flex;
   flex-direction: row;

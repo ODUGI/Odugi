@@ -1,4 +1,10 @@
-import { forwardRef } from "react";
+import {
+  ForwardedRef,
+  forwardRef,
+  MutableRefObject,
+  Ref,
+  useEffect,
+} from "react";
 import styled from "styled-components";
 import { BackgroundColorType, ColorType, FontSizeType } from "@styles/theme";
 
@@ -29,8 +35,12 @@ const DefaultInput = forwardRef<HTMLInputElement, DefaultInputProps>(
       color = "white",
       backgroundColor = "tab1",
     },
-    ref
+    ref: Ref<HTMLInputElement>
   ) => {
+    if (ref !== null && (ref.current as HTMLInputElement) && initValue) {
+      ref.current.value = initValue;
+    }
+
     return initValue ? (
       <DefaultInputContainer
         ref={ref}
@@ -83,9 +93,11 @@ const DefaultInputContainer = styled.input<
   font-size: ${({ theme, fontSize }) => theme.fontSize[fontSize]};
   background-color: ${({ theme, backgroundColor }) =>
     theme.backgroundColor[backgroundColor]};
+
   ::placeholder {
     color: ${({ theme, placeholderColor }) => theme.color[placeholderColor]};
   }
+
   &:focus {
     outline: none;
   }

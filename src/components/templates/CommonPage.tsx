@@ -57,8 +57,8 @@ const Tab2Container = styled.div`
 `;
 
 const Tab3Container = styled.div`
-  background-color: ${({ theme }) => theme.backgroundColor.tab3};
   flex: 1;
+  background-color: ${({ theme }) => theme.backgroundColor.tab3};
 
   display: flex;
   flex-direction: column;
