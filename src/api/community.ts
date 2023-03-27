@@ -111,5 +111,32 @@ const communityApi = {
       },
     });
   },
+  patchCommunity: async ({ communityId, name, role }: any) => {
+    return await clientApi.patch(`community/community`, {
+      data: {
+        communityId,
+        name,
+        role,
+      },
+    });
+  },
+  patchCategory: async ({ categoryId, role, name }: any) => {
+    return await clientApi.patch(`community/category`, {
+      data: {
+        categoryId,
+        name,
+        role,
+      },
+    });
+  },
+  patchChannel: async ({ channelId, role, name }: any) => {
+    return await clientApi.patch(`community/channel`, {
+      data: {
+        channelId,
+        name,
+        role,
+      },
+    });
+  },
 };
 export default communityApi;
