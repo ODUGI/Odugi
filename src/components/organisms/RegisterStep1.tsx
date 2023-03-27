@@ -4,10 +4,11 @@ import RegisterStep1Header from "@components/molecules/Div/RegisterStep1Header";
 import { useRef, useState } from "react";
 
 const RegisterStep1 = () => {
-  const emailRef = useRef<HTMLInputElement>();
-  const nameRef = useRef<HTMLInputElement>();
-  const passwordRef = useRef<HTMLInputElement>();
+  const emailRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
   const refs = { emailRef, nameRef, passwordRef };
+
   const [errorMessage, setErrorMessage] = useState("");
 
   return (

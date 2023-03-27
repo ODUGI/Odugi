@@ -12,6 +12,7 @@ import useCreateChannel from "@hooks/query/useCreateChanel";
 const CreateChannelModal = () => {
   const { setShowModal } = useModalStore();
   const nameRef = useRef<HTMLInputElement>(null);
+
   const { communityId } = useParams();
   const [type, setType] = useState(0);
   const [role, setRole] = useState(0);

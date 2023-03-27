@@ -1,11 +1,11 @@
 import DefaultForm from "@components/molecules/Form/DefaultForm";
-// import useInput from "@hooks/common/useInput";
+import { useRef } from "react";
 import styled from "styled-components";
 import DropDown from "../atoms/Div/DropDown";
 import Text from "../atoms/Text/Text";
 
 const CommunityProfile = () => {
-  // const [name, changeName] = useInput();
+  const nameRef = useRef<HTMLInputElement>(null);
   return (
     <ProfileWrapper>
       <Text fontSize="base" color="setting-tab" mb={16} fontWeight="bold">
@@ -21,13 +21,13 @@ const CommunityProfile = () => {
         <DropDown />
       </BlockWrapper>
       <BlockWrapper>
-        <DefaultForm type="community">서버이름</DefaultForm>
+        <DefaultForm ref={nameRef} type="community">
+          서버이름
+        </DefaultForm>
       </BlockWrapper>
     </ProfileWrapper>
   );
 };
-
-export default CommunityProfile;
 
 const ProfileWrapper = styled.div`
   text-align: left;
@@ -36,7 +36,9 @@ const ProfileWrapper = styled.div`
 `;
 
 const BlockWrapper = styled.div`
-  margin-bottom: 24px;
-  border-bottom: 0.25px solid ${({ theme }) => theme.color["setting-tab"]};
-  padding-bottom: 16px;
+  margin-bottom: 1.5rem;
+  border-bottom: 0.25rem solid ${({ theme }) => theme.color["setting-tab"]};
+  padding-bottom: 1rem;
 `;
+
+export default CommunityProfile;

@@ -1,10 +1,16 @@
 import DefaultInput from "@components/atoms/Input/DefaultInput";
+import { useRef } from "react";
 import styled from "styled-components";
 
 const SearchButton = () => {
+  const ref = useRef<HTMLInputElement>(null);
   return (
     <SearchButtonContainer>
-      <DefaultInput type="text" placeholder="대화 찾기 또는 시작하기" />
+      <DefaultInput
+        ref={ref}
+        type="text"
+        placeholder="대화 찾기 또는 시작하기"
+      />
     </SearchButtonContainer>
   );
 };

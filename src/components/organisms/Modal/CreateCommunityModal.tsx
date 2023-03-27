@@ -45,7 +45,7 @@ const CreateCommunityModal = () => {
           <Text fontSize="xs" color="white" mb={8}>
             서버 이름
           </Text>
-          <DefaultInput type="text" ref={nameRef} />
+          <DefaultInput ref={nameRef} type="text" />
         </CreateCommunityBody>
         <CreateCommunityFooter>
           <DefaultButton

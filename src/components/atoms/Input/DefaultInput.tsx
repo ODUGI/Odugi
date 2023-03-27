@@ -1,10 +1,4 @@
-import {
-  ForwardedRef,
-  forwardRef,
-  MutableRefObject,
-  Ref,
-  useEffect,
-} from "react";
+import { forwardRef, RefObject } from "react";
 import styled from "styled-components";
 import { BackgroundColorType, ColorType, FontSizeType } from "@styles/theme";
 
@@ -35,27 +29,13 @@ const DefaultInput = forwardRef<HTMLInputElement, DefaultInputProps>(
       color = "white",
       backgroundColor = "tab1",
     },
-    ref: Ref<HTMLInputElement>
+    ref
   ) => {
-    if (ref !== null && (ref.current as HTMLInputElement) && initValue) {
-      ref.current.value = initValue;
+    if (initValue && ref) {
+      (ref as RefObject<HTMLInputElement>)!.current!.value = initValue;
     }
 
-    return initValue ? (
-      <DefaultInputContainer
-        ref={ref}
-        value={initValue}
-        type={type}
-        maxLength={maxLength}
-        width={width}
-        height={height}
-        placeholder={placeholder}
-        placeholderColor={placeholderColor}
-        fontSize={fontSize}
-        color={color}
-        backgroundColor={backgroundColor}
-      />
-    ) : (
+    return (
       <DefaultInputContainer
         ref={ref}
         type={type}
