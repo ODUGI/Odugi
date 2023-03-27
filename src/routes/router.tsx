@@ -12,17 +12,17 @@ const Router = () => {
       <Route
         path="/login"
         element={
-          // <ProtectAuth>
-          <Login />
-          // </ProtectAuth>
+          <ProtectAuth>
+            <Login />
+          </ProtectAuth>
         }
       />
       <Route
         path="/register"
         element={
-          // <ProtectAuth>
-          <Register />
-          // </ProtectAuth>
+          <ProtectAuth>
+            <Register />
+          </ProtectAuth>
         }
       />
 
