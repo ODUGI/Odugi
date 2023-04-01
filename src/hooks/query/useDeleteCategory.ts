@@ -1,8 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import communityApi from "@api/community";
 
-const useCreateCommunity = () => {
+const useDeleteCategory = () => {
   return useMutation(communityApi.deleteCategory);
 };
 
-export default useCreateCommunity;
+export default useDeleteCategory;

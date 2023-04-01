@@ -3,7 +3,7 @@ import DefaultInput from "@components/atoms/Input/DefaultInput";
 import Text from "@components/atoms/Text/Text";
 import BackgroundModal from "@components/organisms/BackgroundModal";
 import useInput from "@hooks/common/useInput";
-import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
+import useDeleteChannel from "@hooks/query/useDeleteChannel";
 import useModifyIntro from "@hooks/query/useModifyIntro";
 import useSettingModalStore from "@store/useSettingModalStore";
 import { useUserStore } from "@store/useUserStore";
@@ -13,12 +13,12 @@ import { Bottom, InputWrapper, TextWrapper } from "./UserSettingModal";
 const DeleteChannelModal = () => {
   const { setShowSettingModal } = useSettingModalStore();
 
-  const { mutate: deleteCommunity } = useDeleteCommunity();
+  const { mutate: deleteChannel } = useDeleteChannel();
   const { userInfo } = useUserStore();
 
   const { channelId, communityId, categoryId } = useParams();
   const updataIntro = () => {
-    deleteCommunity(channelId);
+    deleteChannel(channelId);
   };
 
   return (

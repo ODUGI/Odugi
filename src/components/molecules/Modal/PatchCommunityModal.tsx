@@ -13,12 +13,12 @@ const DeleteCategoryModal = () => {
   const { setShowSettingModal } = useSettingModalStore();
 
   const [name, changeName] = useInput();
-  const { mutate: deleteCommunity } = usePatchCommunity();
+  const { mutate: patchCommunity } = usePatchCommunity();
   const { userInfo } = useUserStore();
 
   const { channelId, communityId, categoryId } = useParams();
   const updataIntro = () => {
-    deleteCommunity(communityId);
+    patchCommunity(communityId);
   };
 
   return (

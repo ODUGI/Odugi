@@ -3,7 +3,7 @@ import DefaultInput from "@components/atoms/Input/DefaultInput";
 import Text from "@components/atoms/Text/Text";
 import BackgroundModal from "@components/organisms/BackgroundModal";
 import useInput from "@hooks/common/useInput";
-import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
+import useDeleteCommunity from "@hooks/query/useDeleteCommunity";
 import useModifyIntro from "@hooks/query/useModifyIntro";
 import useSettingModalStore from "@store/useSettingModalStore";
 import { useUserStore } from "@store/useUserStore";
