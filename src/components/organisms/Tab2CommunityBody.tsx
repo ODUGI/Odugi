@@ -29,7 +29,6 @@ const Tab2CommunityBody = () => {
   const channelList = useGetChannelList({
     communityId,
   });
-  console.log(channelList);
   const categoryList = useGetCategoryList({
     communityId,
   });
@@ -47,6 +46,8 @@ const Tab2CommunityBody = () => {
     setModalType("createChannel");
     setShowModal(true);
   };
+
+  console.log(categoryList);
 
   if (!communityId)
     return (

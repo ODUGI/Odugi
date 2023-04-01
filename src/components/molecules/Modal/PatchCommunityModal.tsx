@@ -9,7 +9,7 @@ import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
 import { Bottom, InputWrapper, TextWrapper } from "./UserSettingModal";
 
-const DeleteCategoryModal = () => {
+const PatchCommunityModal = () => {
   const { setShowSettingModal } = useSettingModalStore();
 
   const [name, changeName] = useInput();
@@ -63,4 +63,4 @@ const DeleteCategoryModal = () => {
   );
 };
 
-export default DeleteCategoryModal;
+export default PatchCommunityModal;
