@@ -104,6 +104,7 @@ const CommunityList = () => {
                     <AddIcon />
                   </CommunityLogo>
                 </li>
+                {provided.placeholder}
               </ul>
             )}
           </Droppable>
