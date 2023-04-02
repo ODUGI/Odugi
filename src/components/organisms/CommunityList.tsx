@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import CommunityLogo from "../atoms/Div/CommunityLogo";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AddIcon from "@components/atoms/Icons/AddIcon";
 import { useUserStore } from "@store/useUserStore";
 import ScrollableBox from "@components/molecules/Div/scrollableBox";
@@ -12,7 +12,6 @@ import { useCallback } from "react";
 const CommunityList = () => {
   const navigate = useNavigate();
 
-  const { userInfo } = useUserStore();
   const { setShowModal, setModalType } = useModalStore();
 
   const list = useGetCommunityList();

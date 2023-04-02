@@ -1,12 +1,16 @@
+import { useUserStore } from "@store/useUserStore";
 import communityApi from "@api/community";
 import { useQuery } from "@tanstack/react-query";
 
-const useGetCommunityList = ({ userId }: any) => {
-  const [list, setList] = useState([]);
+const useGetCommunityList = () => {
+  const { userInfo } = useUserStore();
+
   const { data: res } = useQuery(
-    ["communityList", userId],
+    ["communityList", userInfo.id],
     communityApi.getList
   );
+
+  if (!res) return [];
 
   return res.data.data;
 };
