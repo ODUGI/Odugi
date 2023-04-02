@@ -3,11 +3,11 @@ import clientApi from "./axios";
 const communityApi = {
   // 커뮤니티 생성
   create: async ({ formData }: any) => {
-    return await clientApi.post("/community/createcommunity", formData);
+    return await clientApi.post("/community/community", formData);
   },
   //카테고리 생성
   createCategory: async ({ name, communityId, role }: any) => {
-    return await clientApi.post("/community/createcategory", {
+    return await clientApi.post("/community/category", {
       name,
       communityId,
       role,
@@ -16,7 +16,7 @@ const communityApi = {
 
   // 채널 생성
   createChannel: async ({ name, categoryId, communityId, role, type }: any) => {
-    return await clientApi.post("/community/createchannel", {
+    return await clientApi.post("/community/channel", {
       name,
       categoryId,
       role,
@@ -36,7 +36,10 @@ const communityApi = {
 
   // 커뮤니티 삭제
   delete: async ({ communityId, userId }: any) => {
-    return await clientApi.patch("/community/delete", { communityId, userId });
+    return await clientApi.patch("/community/community", {
+      communityId,
+      userId,
+    });
   },
 
   // 커뮤니티 이미지 변경
@@ -54,7 +57,7 @@ const communityApi = {
 
   // 커뮤니티 리스트 가져옴
   getList: async () => {
-    return await clientApi.get(`/community/showcommunitys`);
+    return await clientApi.get(`/community/communitys`);
   },
   // 커뮤니티의 카테고리 가져옴
   getCategoryList: async ({ queryKey }: any) => {
@@ -69,8 +72,6 @@ const communityApi = {
   },
 
   // 커뮤니티 멤버 목록 가져오기
-  // getCommunityMemberList: async({})
-
   sendInvite: async ({ communityId, userId, shortUrl }: any) => {
     return await clientApi.post(`/invite/member`, {
       communityId,
@@ -84,6 +85,52 @@ const communityApi = {
       sender,
       channelId,
       linkMessage,
+    });
+  },
+
+  deleteCommunity: async ({ communityId, role }: any) => {
+    return await clientApi.delete(`community/community`, {
+      data: {
+        communityId,
+        role,
+      },
+    });
+  },
+  deleteCategory: async ({ categoryId, role }: any) => {
+    return await clientApi.delete(`community/category`, {
+      data: {
+        categoryId,
+        role,
+      },
+    });
+  },
+  deleteChannel: async ({ channelId, role }: any) => {
+    return await clientApi.delete(`community/channel`, {
+      data: {
+        channelId,
+        role,
+      },
+    });
+  },
+  patchCommunity: async ({ communityId, name, role }: any) => {
+    return await clientApi.patch(`community/community`, {
+      communityId,
+      name,
+      role,
+    });
+  },
+  patchCategory: async ({ categoryId, role, name }: any) => {
+    return await clientApi.patch(`community/category`, {
+      categoryId,
+      name,
+      role,
+    });
+  },
+  patchChannel: async ({ channelId, role, name }: any) => {
+    return await clientApi.patch(`community/channel`, {
+      channelId,
+      name,
+      role,
     });
   },
 };

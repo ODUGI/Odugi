@@ -8,7 +8,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
 import useInput from "@hooks/common/useInput";
-import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
+import useDeleteCommunity from "@hooks/query/useDeleteCommunity";
 import communityApi from "@api/community";
 import useModifyCommunityImage from "@hooks/query/useModifyCommunityImage";
 import DefaultInput from "@components/atoms/Input/DefaultInput";

@@ -44,7 +44,6 @@ const CreateChannelModal = () => {
   };
   const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setType(event.target.value === "CHAT" ? 0 : 1);
-    console.log(type);
   };
 
   return (

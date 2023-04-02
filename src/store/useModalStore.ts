@@ -8,7 +8,13 @@ export type ModalType =
   | "communitySetting"
   | "createCommunity"
   | "createCategory"
-  | "createChannel";
+  | "createChannel"
+  | "patchCommunity"
+  | "patchCategory"
+  | "patchChannel"
+  | "deleteCommunity"
+  | "deleteCategory"
+  | "deleteChannel";
 
 interface ModalState {
   showModal: boolean;

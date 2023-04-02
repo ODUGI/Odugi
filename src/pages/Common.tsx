@@ -2,6 +2,12 @@ import PageContainer from "@components/atoms/Div/PageContainer";
 import HeaderHelmet from "@components/atoms/Helmet";
 import CreateCategroyModal from "@components/molecules/Modal/CreateCategoryModal";
 import CreateChannelModal from "@components/molecules/Modal/CreateChannelModal";
+import DeleteCategoryModal from "@components/molecules/Modal/DeleteCategoryModal";
+import DeleteChannelModal from "@components/molecules/Modal/DeleteChannelModal";
+import DeleteCommunityModal from "@components/molecules/Modal/DeleteCommunityModal";
+import PatchCategoryModal from "@components/molecules/Modal/PatchCategoryModal";
+import PatchChannelModal from "@components/molecules/Modal/PatchChannelModal";
+import PatchCommunityModal from "@components/molecules/Modal/PatchCommunityModal";
 import CommunitySettingModal from "@components/organisms/Modal/CommunitySettingModal";
 import CreateCommunityModal from "@components/organisms/Modal/CreateCommunityModal";
 import InviteFriendModal from "@components/organisms/Modal/InviteFriendModal";
@@ -18,6 +24,12 @@ const modalTable = {
   createCommunity: <CreateCommunityModal />,
   createCategory: <CreateCategroyModal />,
   createChannel: <CreateChannelModal />,
+  patchCommunity: <PatchCommunityModal />,
+  patchCategory: <PatchCategoryModal />,
+  patchChannel: <PatchChannelModal />,
+  deleteCommunity: <DeleteCommunityModal />,
+  deleteCategory: <DeleteCategoryModal />,
+  deleteChannel: <DeleteChannelModal />,
 };
 
 const Common = () => {

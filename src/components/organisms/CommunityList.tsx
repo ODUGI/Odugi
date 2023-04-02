@@ -54,7 +54,7 @@ const CommunityList = () => {
         <DragDropContext onDragEnd={handleChange}>
           <Droppable droppableId="communities">
             {(provided) => (
-              <ul>
+              <ul {...provided.droppableProps} ref={provided.innerRef}>
                 <li onClick={goMainPage}>
                   <CommunityLogo
                     avatarHeight={3}
@@ -70,7 +70,7 @@ const CommunityList = () => {
                 {list.map((community: any, idx: number) => (
                   <Draggable
                     key={community.communityId}
-                    draggableId={community.communityId}
+                    draggableId={community.name}
                     index={idx}
                   >
                     {(provided) => (
@@ -104,6 +104,7 @@ const CommunityList = () => {
                     <AddIcon />
                   </CommunityLogo>
                 </li>
+                {provided.placeholder}
               </ul>
             )}
           </Droppable>
