@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 const SearchButton = () => {
   const ref = useRef<HTMLInputElement>(null);
+
   return (
     <SearchButtonContainer>
       <DefaultInput

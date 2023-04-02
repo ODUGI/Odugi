@@ -32,7 +32,7 @@ const FriendDefaultBox = ({
 }: FriendDefaultBoxProps) => {
   const navigate = useNavigate();
 
-  const dropdownRef = useRef<any>();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [showEtcModal, setShowEtcModal] = useState(false);
 
   const { setDeleteFriendEmail } = useMainStore();

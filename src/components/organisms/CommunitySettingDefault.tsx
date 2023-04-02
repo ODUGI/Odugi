@@ -17,8 +17,8 @@ const CommunitySettingDefault = () => {
   const { communityId } = useParams();
   const { userInfo } = useUserStore();
 
-  const nameRef = useRef<HTMLInputElement>(null);
   const [img, setImg] = useState();
+  const nameRef = useRef<HTMLInputElement>(null);
 
   const { mutate: modifyImage } = useModifyCommunityImage();
   const { mutate: updateCommunityName } = useMutation(communityApi.update);

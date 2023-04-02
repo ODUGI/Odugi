@@ -12,9 +12,8 @@ import useCreateCommunity from "@hooks/query/useCreateCommunity";
 
 const CreateCommunityModal = () => {
   let formData = new FormData();
-
   const nameRef = useRef<HTMLInputElement>(null);
-  const [img, setImg] = useState<Blob | undefined>();
+  const [img, setImg] = useState<Blob>();
 
   const { setShowModal } = useModalStore();
   const { mutate: createCommunity } = useCreateCommunity();

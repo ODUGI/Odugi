@@ -6,6 +6,7 @@ import Text from "../atoms/Text/Text";
 
 const CommunityProfile = () => {
   const nameRef = useRef<HTMLInputElement>(null);
+
   return (
     <ProfileWrapper>
       <Text fontSize="base" color="setting-tab" mb={16} fontWeight="bold">
@@ -31,6 +32,7 @@ const CommunityProfile = () => {
 
 const ProfileWrapper = styled.div`
   text-align: left;
+
   display: flex;
   flex-direction: column;
 `;

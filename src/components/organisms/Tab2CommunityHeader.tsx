@@ -6,15 +6,15 @@ import ArrowBottomIcon from "../atoms/Icons/ArrowBottomIcon";
 import Text from "../atoms/Text/Text";
 
 const Tab2CommunityHeader = () => {
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const communityName = "자바스크립트 스터디";
 
   useOutsideClick(
     dropdownRef,
     useCallback(() => setShowDropdown(false), [])
   );
-
-  const communityName = "자바스크립트 스터디";
 
   const showCommunityDropdown = useCallback(() => {
     setShowDropdown((prev) => !prev);

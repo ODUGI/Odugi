@@ -13,7 +13,6 @@ const CreateCategroyModal = () => {
   const { setShowModal } = useModalStore();
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [role, setRole] = useState<number>(0);
   //userInfo에 role이 없었던가?
   const { communityId } = useParams();
   const { mutate: createCategory } = useCreateCategory();
@@ -21,7 +20,7 @@ const CreateCategroyModal = () => {
   const MakeCategory = useCallback(() => {
     if (inputRef.current) {
       const name = inputRef.current.value;
-      createCategory({ name, communityId, role });
+      createCategory({ name, communityId, role: 0 });
       closeModal();
     }
   }, [inputRef]);

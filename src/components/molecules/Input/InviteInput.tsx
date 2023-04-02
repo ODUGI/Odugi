@@ -4,7 +4,7 @@ import Text from "@components/atoms/Text/Text";
 import useRequestFriend from "@hooks/query/useRequestFriend";
 import { useUserStore } from "@store/useUserStore";
 import { useQueryClient } from "@tanstack/react-query";
-import { ChangeEvent, useState } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
@@ -12,15 +12,20 @@ const InviteInput = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const { userInfo } = useUserStore();
-  const [email, setEmail] = useState("");
+
+  const emailRef = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState("default");
+
   const { mutate: requestFriend } = useRequestFriend({
+    onMutate: () => {
+      if (emailRef?.current) {
+        emailRef.current.value = "";
+      }
+    },
     onError: () => {
-      setEmail("");
       setStatus("danger");
     },
     onSuccess: () => {
-      setEmail("");
       setStatus("success");
     },
     onSettled: () => {
@@ -28,32 +33,25 @@ const InviteInput = () => {
     },
   });
 
-  const onChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
-    setEmail(value);
-    if (status !== "default") {
-      setStatus("default");
-    }
-  };
-
   const inviteFriend = () => {
     if (!userInfo) navigate("/login");
-    requestFriend({ email });
+    if (emailRef?.current) {
+      requestFriend({ email: emailRef.current.value });
+    }
   };
 
   return (
     <>
       <InviteInputContainer borderColor={status}>
         <DefaultInput
+          ref={emailRef}
           maxLength={37}
           placeholder="사용자 이메일 입력"
           type="email"
-          // value={email}
-          // onChange={onChange}
           fontSize="base"
           backgroundColor="trans"
         />
         <DefaultButton
-          disabled={email === "" ? true : false}
           text="친구 요청 보내기"
           onClick={inviteFriend}
           height={32}
@@ -63,7 +61,8 @@ const InviteInput = () => {
       </InviteInputContainer>
       {status === "success" && (
         <Text color="invite-success">
-          {email}에게 성공적으로 친구 요청을 보냈어요.
+          {emailRef?.current && emailRef.current.value}에게 성공적으로 친구
+          요청을 보냈어요.
         </Text>
       )}
       {status === "danger" && (
@@ -78,9 +77,11 @@ const InviteInput = () => {
 const InviteInputContainer = styled.label<{ borderColor: any }>`
   width: 100%;
   height: 3.125rem;
+
   display: flex;
   flex-direction: row;
   align-items: center;
+
   background-color: ${({ theme }) => theme.backgroundColor.tab1};
   border-radius: 0.5rem;
   border: 2px solid

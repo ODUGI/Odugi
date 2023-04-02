@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 
 const DirectMessage = () => {
-  const dropdownRef = useRef<any>();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [showDMDropdown, setShowDMDropdown] = useState(false);
 
   useOutsideClick(dropdownRef, () => setShowDMDropdown(false));
