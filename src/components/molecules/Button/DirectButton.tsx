@@ -3,7 +3,7 @@ import ButtonWrapper from "@components/atoms/Button/ButtonWrapper";
 import Text from "@components/atoms/Text/Text";
 import { useNavigate, useParams } from "react-router-dom";
 import UserState from "../Div/UserState";
-import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
+// import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
 import useMainStore from "@store/useMainStore";
 
 interface DirectButtonProps {
@@ -19,9 +19,9 @@ const DirectButton = ({ id, name, userId, src }: DirectButtonProps) => {
 
   const { setUserId, setUserName } = useMainStore();
 
-  const { data: status, isLoading } = useGetFriendStatus(userId);
+  // const { data: status, isLoading } = useGetFriendStatus(userId);
 
-  if (isLoading) return <></>;
+  // if (isLoading) return <></>;
 
   const goChatRoom = () => {
     setUserId(userId);
@@ -38,7 +38,12 @@ const DirectButton = ({ id, name, userId, src }: DirectButtonProps) => {
       color="inactive"
     >
       <DirectButtonContainer>
-        <UserState type="s" status={status?.data.data} src={src} />
+        <UserState
+          type="s"
+          // status={status?.data.data}
+          status="0"
+          src={src}
+        />
         <Text>{name}</Text>
       </DirectButtonContainer>
     </ButtonWrapper>

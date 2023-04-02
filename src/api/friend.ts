@@ -30,12 +30,12 @@ const friendApi = {
     return await clientApi.post("/user/member/cancelfriend");
   },
 
-  isOnline: async ({ queryKey }: any) => {
-    const { userId } = queryKey[1];
-    return await clientApi.get(`/state/get`, {
-      params: { userId },
-    });
-  },
+  // isOnline: async ({ queryKey }: any) => {
+  //   const { userId } = queryKey[1];
+  //   return await clientApi.get(`/state/get`, {
+  //     params: { userId },
+  //   });
+  // },
 };
 
 export default friendApi;

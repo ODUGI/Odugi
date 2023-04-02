@@ -3,7 +3,7 @@ import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import ChatIcon from "@components/atoms/Icons/ChatIcon";
 import MoreIcon from "@components/atoms/Icons/MoreIcon";
 import useOutsideClick from "@hooks/common/useOutsideClick";
-import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
+// import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
 import useMainStore from "@store/useMainStore";
 import { MouseEvent, ReactElement, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -37,15 +37,15 @@ const FriendDefaultBox = ({
 
   const { setDeleteFriendEmail } = useMainStore();
   const { setUserName, setUserId } = useMainStore();
-  const { data: isOnline, isLoading } = useGetFriendStatus(userId);
+  // const { data: isOnline, isLoading } = useGetFriendStatus(userId);
 
   useOutsideClick(dropdownRef, () => setShowEtcModal(false));
 
-  if (isLoading) return null;
+  // if (isLoading) return null;
 
-  if (isOnline?.data.data !== "1") {
-    return null;
-  }
+  // if (isOnline?.data.data !== "1") {
+  //   return null;
+  // }
 
   const enterDM = () => {
     navigate(`/@me/${id}`);
@@ -85,7 +85,8 @@ const FriendDefaultBox = ({
     <FriendBox
       src={src}
       name={name}
-      status={isOnline?.data.data}
+      // status={isOnline?.data.data}
+      status="0"
       onClick={enterDM}
       Buttons={Buttons}
     />

@@ -1,19 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import communityApi from "@api/community";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useUserStore } from "@store/useUserStore";
 
 interface useDeleteCommunityProps {
   communityId: string | undefined;
-  userId: number;
 }
 
-const useDeleteCommunity = ({
-  communityId,
-  userId,
-}: useDeleteCommunityProps) => {
+const useDeleteCommunity = ({ communityId }: useDeleteCommunityProps) => {
+  const { userInfo } = useUserStore();
+
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const QUERY_KEY = ["communityList", userId];
+  const QUERY_KEY = ["communityList", userInfo.id];
 
   return useMutation(communityApi.delete, {
     onMutate: async () => {

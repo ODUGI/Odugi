@@ -23,7 +23,6 @@ const CommunitySettingDefault = () => {
   const { mutate: modifyImage } = useModifyCommunityImage();
   const { mutate: deleteCommunity } = useDeleteCommunity({
     communityId,
-    userId: userInfo.id,
   });
 
   const changeCommunityName = useCallback(() => {

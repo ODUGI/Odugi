@@ -1,4 +1,4 @@
-import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
+// import useGetFriendStatus from "@hooks/query/useGetFriendStatus";
 import useMainStore from "@store/useMainStore";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -9,7 +9,8 @@ const Tab3MainHeader = () => {
   const { channelId } = useParams();
   const { userId, userName } = useMainStore();
 
-  const status = useGetFriendStatus(Number(userId));
+  // const status = useGetFriendStatus(Number(userId));
+  const status = "0";
 
   return (
     <Tab3MainHeaderContainer>

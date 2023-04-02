@@ -6,6 +6,7 @@ import useInput from "@hooks/common/useInput";
 import usePatchChannel from "@hooks/query/usePatchChannel";
 import useSettingModalStore from "@store/useSettingModalStore";
 import { useUserStore } from "@store/useUserStore";
+import { useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Bottom, InputWrapper, TextWrapper } from "./UserSettingModal";
 
@@ -15,7 +16,7 @@ const PatchChannelModal = () => {
   const [name, changeName] = useInput();
   const { mutate: patchChannel } = usePatchChannel();
   const { userInfo } = useUserStore();
-
+  const nameRef = useRef<HTMLInputElement>(null);
   const { channelId, communityId, categoryId } = useParams();
   const updataIntro = () => {
     patchChannel(channelId);
@@ -31,16 +32,17 @@ const PatchChannelModal = () => {
           <div>
             <TextWrapper>
               <Text
-                text="정말로 삭제 하시겠습니까?"
                 fontSize="xxl"
                 fontWeight="bold"
                 mb={12}
                 color="white"
                 center
-              />
+              >
+                정말로 삭제 하시겠습니까?
+              </Text>
             </TextWrapper>
           </div>
-          <DefaultInput value={name} onChange={changeName} type="text" />
+          <DefaultInput ref={nameRef} type="text" />
           <Bottom>
             <DefaultButton
               text="취소"

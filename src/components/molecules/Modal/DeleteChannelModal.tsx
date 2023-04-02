@@ -31,13 +31,14 @@ const DeleteChannelModal = () => {
           <div>
             <TextWrapper>
               <Text
-                text="정말로 삭제 하시겠습니까?"
                 fontSize="xxl"
                 fontWeight="bold"
                 mb={12}
                 color="white"
                 center
-              />
+              >
+                정말로 삭제 하시겠습니까?
+              </Text>
             </TextWrapper>
           </div>
           <Bottom>
