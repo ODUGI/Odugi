@@ -1,6 +1,6 @@
 import FieldButton from "@components/atoms/Button/fieldButton";
 import Text from "@components/atoms/Text/Text";
-import { lazy, useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import styled from "styled-components";
 import { useUserStore } from "@store/useUserStore";
 import useSettingModalStore, {
@@ -44,11 +44,11 @@ const UserSettingGeneralTab = () => {
     image: <UserSettingImageModal />,
   };
 
-  const Component = settingModalType ? modalTable[settingModalType] : null;
+  const component = settingModalType ? modalTable[settingModalType] : null;
 
   return (
     <ListWrapper>
-      {showSettingModal && Component}
+      <Suspense fallback={null}>{showSettingModal && component}</Suspense>
       <FieldContinaer>
         <LeftRow>
           <Text fontSize="xs" color="setting-tab" mb={8}>

@@ -3,7 +3,7 @@ import HeaderHelmet from "@components/atoms/Helmet";
 
 import CommonPage from "@components/templates/CommonPage";
 import useModalStore from "@store/useModalStore";
-import { lazy, useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const InviteFriendModal = lazy(
@@ -77,7 +77,7 @@ const Common = () => {
       <HeaderHelmet title={`${isMainPage ? "친구" : channelName} | Discord`} />
       <PageContainer>
         <CommonPage isMainPage={isMainPage} />
-        {showModal && component}
+        {showModal && <Suspense fallback={null}>{component}</Suspense>}
       </PageContainer>
     </>
   );

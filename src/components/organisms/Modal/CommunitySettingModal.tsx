@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useEffect, lazy } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import CommunitySettingBar from "../CommunitySettingBar";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
@@ -44,7 +44,7 @@ const CommunitySettingModal = () => {
         <CancelIconWrapper onClick={closeModal}>
           <CancelIcon />
         </CancelIconWrapper>
-        {component}
+        <Suspense fallback={null}>{component}</Suspense>
       </Container>
     </SettingBox>
   );

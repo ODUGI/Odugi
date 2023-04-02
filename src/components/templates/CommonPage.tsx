@@ -1,7 +1,7 @@
 import TabDivider from "@components/atoms/Div/TabDivider";
 import CommunityList from "@components/organisms/CommunityList";
 import Tab2Footer from "@components/organisms/Tab2Footer";
-import { lazy } from "react";
+import { lazy, Suspense } from "react";
 import styled from "styled-components";
 
 const Tab2MainHeader = lazy(
@@ -34,15 +34,23 @@ const CommonPage = ({ isMainPage }: CommonPageProps) => {
     <>
       <CommunityList />
       <Tab2Container>
-        {isMainPage ? <Tab2MainHeader /> : <Tab2CommunityHeader />}
+        <Suspense fallback={null}>
+          {isMainPage ? <Tab2MainHeader /> : <Tab2CommunityHeader />}
+        </Suspense>
         <TabDivider />
-        {isMainPage ? <Tab2MainBody /> : <Tab2CommunityBody />}
+        <Suspense fallback={null}>
+          {isMainPage ? <Tab2MainBody /> : <Tab2CommunityBody />}
+        </Suspense>
         <Tab2Footer />
       </Tab2Container>
       <Tab3Container>
-        {isMainPage ? <Tab3MainHeader /> : <Tab3CommunityHeader />}
+        <Suspense fallback={null}>
+          {isMainPage ? <Tab3MainHeader /> : <Tab3CommunityHeader />}
+        </Suspense>
         <TabDivider />
-        {isMainPage ? <Tab3MainBody /> : <Tab3CommunityBody />}
+        <Suspense fallback={null}>
+          {isMainPage ? <Tab3MainBody /> : <Tab3CommunityBody />}
+        </Suspense>
       </Tab3Container>
     </>
   );

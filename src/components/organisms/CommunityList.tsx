@@ -6,8 +6,6 @@ import ScrollableBox from "@components/molecules/Div/scrollableBox";
 import useGetCommunityList from "@hooks/query/useGetCommunityList";
 import OdugiLogo from "../../assets/images/logo.jpg";
 import useModalStore from "@store/useModalStore";
-import { useEffect, useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { useCallback } from "react";
 
 const CommunityList = () => {
