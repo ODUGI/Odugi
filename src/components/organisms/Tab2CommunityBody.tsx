@@ -11,7 +11,7 @@ import useModalStore from "@store/useModalStore";
 import useGetCommunityList from "@hooks/query/useGetCommunityList";
 import useGetCategoryList from "@hooks/query/useGetCategoryList";
 import { useState } from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 interface ChannelType {
   channel_id: number;
@@ -132,40 +132,53 @@ const Tab2CommunityBody = () => {
         <Droppable droppableId="communities">
           {(provided) => (
             <div {...provided.droppableProps} ref={provided.innerRef}>
-              {categoryList.map((category: any) => (
-                <>
-                  <CommunityLabel text={category.name} />
-                  {channelList
-                    .filter(
-                      (channel: any) => category.id === channel.categoryId
-                    )
-                    .map((channel: any) => (
-                      <>
-                        <CommunityRoomButton
-                          type={channel.type === 1 ? "VOICE" : "CHAT"}
-                          text={channel.name}
-                          communityId={communityId}
-                          channelId={channel.id}
-                        />
-                        {channel.id === Number(channelId) && (
-                          <UserChannelOnBox />
-                        )}
-                        {friendList.map((friend: FriendType) => (
-                          <UserFriendChannelOnBox
-                            friend={friend}
-                            channelId={channel["channel_id"]}
-                          />
+              {categoryList.map((category: any, idx: any) => (
+                <Draggable
+                  key={category.id}
+                  draggableId={category.name}
+                  index={idx}
+                >
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.dragHandleProps}
+                      {...provided.draggableProps}
+                    >
+                      <CommunityLabel text={category.name} />
+                      {channelList
+                        .filter(
+                          (channel: any) => category.id === channel.categoryId
+                        )
+                        .map((channel: any) => (
+                          <>
+                            <CommunityRoomButton
+                              type={channel.type === 1 ? "VOICE" : "CHAT"}
+                              text={channel.name}
+                              communityId={communityId}
+                              channelId={channel.id}
+                            />
+                            {channel.id === Number(channelId) && (
+                              <UserChannelOnBox />
+                            )}
+                            {friendList.map((friend: FriendType) => (
+                              <UserFriendChannelOnBox
+                                friend={friend}
+                                channelId={channel["channel_id"]}
+                              />
+                            ))}
+                          </>
                         ))}
-                      </>
-                    ))}
-                  <button onClick={showPatchCategoryModal}>
-                    <AddIcon />
-                  </button>
-                  <button onClick={showDeleteCategoryModal}>
-                    <AddIcon />
-                  </button>
-                </>
+                      <button onClick={showPatchCategoryModal}>
+                        <AddIcon />
+                      </button>
+                      <button onClick={showDeleteCategoryModal}>
+                        <AddIcon />
+                      </button>
+                    </div>
+                  )}
+                </Draggable>
               ))}
+              {provided.placeholder}
             </div>
           )}
         </Droppable>
