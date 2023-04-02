@@ -1,12 +1,11 @@
 import MessageText from "@components/atoms/Div/MessageText";
 import WelcomeIcon from "@components/atoms/Icons/WelcomeIcon";
-import React from "react";
 import styled from "styled-components";
-interface WelcomeMessage {
+interface WelcomeMessageProps {
   name: string;
 }
 
-const WelcomeMessage = ({ name }: WelcomeMessage) => {
+const WelcomeMessage = ({ name }: WelcomeMessageProps) => {
   return (
     <WelcomeMessageProps>
       <IconWrapper>

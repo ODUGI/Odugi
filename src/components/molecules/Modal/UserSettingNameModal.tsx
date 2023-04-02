@@ -6,14 +6,13 @@ import useInput from "@hooks/common/useInput";
 import useModifyName from "@hooks/query/useModifyName";
 import useSettingModalStore from "@store/useSettingModalStore";
 import { useUserStore } from "@store/useUserStore";
-import styled from "styled-components";
 import { Bottom, InputWrapper, TextWrapper } from "./UserSettingModal";
 
 const UserSettingNameModal = () => {
   const { userInfo, setUserInfo } = useUserStore();
   const { setShowSettingModal } = useSettingModalStore();
 
-  const [name, changeName] = useInput();
+  const [name, changeName] = useInput(userInfo.name);
   const [password, changePassword] = useInput();
   const { mutate: modifyName } = useModifyName();
   const updateUserName = () => {

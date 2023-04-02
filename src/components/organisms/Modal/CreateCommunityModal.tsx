@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import useInput from "@hooks/common/useInput";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
+import { useNavigate } from "react-router-dom";
+import { useUserStore } from "@store/useUserStore";
 import { useState } from "react";
 import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
 import BackgroundModal from "../BackgroundModal";
@@ -12,6 +14,7 @@ import Text from "@components/atoms/Text/Text";
 import useCreateCommunity from "@hooks/query/useCreateCommunity";
 
 const CreateCommunityModal = () => {
+  const navigate = useNavigate();
   let formData = new FormData();
 
   const { setShowModal } = useModalStore();
@@ -19,7 +22,7 @@ const CreateCommunityModal = () => {
   const [img, setImg] = useState<Blob | undefined>();
   const [name, changeName] = useInput();
 
-  const { mutate: createCommunity } = useCreateCommunity();
+  const { mutate: createCommunity } = useCreateCommunity(userInfo.id);
 
   const MakeCommunity = () => {
     if (!img) return 0;
