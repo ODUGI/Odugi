@@ -21,18 +21,17 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
 
   let backUrl = process.env.REACT_APP_BASE_URL;
   let uuid = crypto.randomUUID();
-  let shortUrl = uuid;
 
   const onSendInvite = () => {
     sendInvite({
       communityId,
       userId,
-      shortUrl,
+      shortUrl: uuid,
     });
     sendInviteToChat({
       sender: userInfo.name,
       channelId: channelId,
-      linkMessage: `${backUrl}/invite/${shortUrl}/${userId}`,
+      linkMessage: `${backUrl}/invite/${uuid}/${userId}`,
     });
   };
 

@@ -12,7 +12,7 @@ const UserSettingNameModal = () => {
   const { userInfo, setUserInfo } = useUserStore();
   const { setShowSettingModal } = useSettingModalStore();
 
-  const [name, changeName] = useInput();
+  const [name, changeName] = useInput(userInfo.name);
   const [password, changePassword] = useInput();
   const { mutate: modifyName } = useModifyName();
   const updateUserName = () => {

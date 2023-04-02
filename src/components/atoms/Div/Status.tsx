@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import StateDisturbIcon from "../Icons/StateDisturbIcon";
-import StateEmptyIcon from "../Icons/StateEmptyIcon";
-import StateMobileIcon from "../Icons/StateMobileIcon";
 import StateOffIcon from "../Icons/StateOffIcon";
 import StateOnIcon from "../Icons/StateOnIcon";
 

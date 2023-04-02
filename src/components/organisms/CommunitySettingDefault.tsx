@@ -4,13 +4,12 @@ import FieldButton from "../atoms/Button/fieldButton";
 import styled from "styled-components";
 import ImageUploadButton from "../molecules/Button/ImageUploadButton";
 import { useCallback, useRef, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
 import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
 import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
-import communityApi from "@api/community";
 import useModifyCommunityImage from "@hooks/query/useModifyCommunityImage";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
+import useUpdateCommunityName from "@hooks/query/useUpdateCommunityName";
 
 const CommunitySettingDefault = () => {
   let formData = new FormData();
@@ -20,9 +19,12 @@ const CommunitySettingDefault = () => {
   const [img, setImg] = useState();
   const nameRef = useRef<HTMLInputElement>(null);
 
+  const { mutate: updateCommunityName } = useUpdateCommunityName();
   const { mutate: modifyImage } = useModifyCommunityImage();
-  const { mutate: updateCommunityName } = useMutation(communityApi.update);
-  const { mutate: deleteCommunity } = useDeleteCommunity();
+  const { mutate: deleteCommunity } = useDeleteCommunity({
+    communityId,
+    userId: userInfo.id,
+  });
 
   const changeCommunityName = useCallback(() => {
     if (nameRef.current)

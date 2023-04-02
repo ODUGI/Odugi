@@ -13,7 +13,6 @@ import { useEffect } from "react";
 
 const UserSettingGeneralTab = () => {
   const { userInfo } = useUserStore();
-
   const {
     showSettingModal,
     settingModalType,
@@ -68,13 +67,13 @@ const UserSettingGeneralTab = () => {
             {userInfo.email}
           </Text>
         </LeftRow>
-        <ButtonWrappper>
+        {/* <ButtonWrappper>
           <FieldButton
             text="확인"
             backgroundColor="setting"
             onClick={() => null}
           />
-        </ButtonWrappper>
+        </ButtonWrappper> */}
       </FieldContinaer>
       <FieldContinaer>
         <LeftRow>

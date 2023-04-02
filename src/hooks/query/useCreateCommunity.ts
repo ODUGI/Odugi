@@ -1,37 +1,35 @@
+import { useUserStore } from "@store/useUserStore";
 import { useNavigate } from "react-router-dom";
-import { useUserStore } from "./../../store/useUserStore";
 import communityApi from "@api/community";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const useCreateCommunity = () => {
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
-
   const { userInfo } = useUserStore();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  const QUERY_KEY = ["communityList", userInfo.id];
 
   return useMutation(communityApi.create, {
-    onMutate: async (newCommunityList: any) => {
-      await queryClient.cancelQueries({
-        queryKey: ["communityList", { userId: userInfo.id }],
-      });
-      const previousCommunityList = queryClient.getQueriesData([
-        "communityList",
-        newCommunityList,
+    onMutate: async (newCommunity: any) => {
+      await queryClient.cancelQueries({ queryKey: QUERY_KEY });
+      const previousCommunityList = queryClient.getQueriesData(QUERY_KEY);
+      queryClient.setQueryData(QUERY_KEY, [
+        ...previousCommunityList,
+        newCommunity,
       ]);
-      return { newCommunityList, previousCommunityList };
+
+      return { previousCommunityList };
     },
-    onError: (_err: Error, _newCommunityList: any, context: any) => {
-      queryClient.setQueriesData(
-        ["communityList"],
-        context?.previousCommunityList
-      );
+
+    onError: (_err: Error, _newCommunity: any, context: any) => {
+      queryClient.setQueriesData(QUERY_KEY, context.previousCommunityList);
     },
     onSuccess: () => {
       navigate(-1);
     },
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ["communityList", { userId: userInfo.id }],
+        queryKey: QUERY_KEY,
       });
     },
   });

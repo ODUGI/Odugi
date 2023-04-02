@@ -1,7 +1,6 @@
 import clientApi from "@api/axios";
 import WelcomeMessage from "@components/molecules/Div/WelcomeMessage";
 import { Client, Stomp } from "@stomp/stompjs";
-import * as StompJS from "@stomp/stompjs";
 import { useUserStore } from "@store/useUserStore";
 import getFormatDate from "@utils/getFormatDate";
 import { useEffect, useRef, useState } from "react";
