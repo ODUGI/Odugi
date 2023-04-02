@@ -1,14 +1,8 @@
 import styled from "styled-components";
-import useInput from "@hooks/common/useInput";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate, useParams } from "react-router-dom";
-import { useUserStore } from "@store/useUserStore";
-import { useState } from "react";
-import communityApi from "@api/community";
-import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
+import { useParams } from "react-router-dom";
+import { useRef, useState } from "react";
 import BackgroundModal from "@components/organisms/BackgroundModal";
-import ImageUploadButton from "@components/molecules/Button/ImageUploadButton";
 import DefaultButton from "@components/atoms/Button/DefaultButton";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
@@ -16,88 +10,85 @@ import Text from "@components/atoms/Text/Text";
 import useCreateChannel from "@hooks/query/useCreateChanel";
 
 const CreateChannelModal = () => {
-  const navigate = useNavigate();
-
-  let formData = new FormData();
-
-  const { userInfo } = useUserStore();
   const { setShowModal } = useModalStore();
-  const [name, changeName] = useInput();
   const { communityId } = useParams();
+
   const [type, setType] = useState(0);
-  const [role, setRole] = useState(0);
-  //userInfo에 role이 없었던가?
-  const [categoryId, setCategoryId] = useState(10);
-  // const { mutate: createChannel } = useMutation(communityApi.createChannel, {
-  //   onSuccess: () => {
-  //     navigate(-1);
-  //   },
-  // });
+  const nameRef = useRef<HTMLInputElement>(null);
+
   const { mutate: createChannel } = useCreateChannel();
+
   const MakeChannel = () => {
-    createChannel({ name, categoryId, communityId, type, role });
-    closeModal();
+    if (nameRef.current) {
+      const name = nameRef.current.value;
+      createChannel({ name, categoryId: 10, communityId, type, role: 0 });
+      closeModal();
+    }
   };
 
   const closeModal = () => {
     setShowModal(false);
   };
-  const radioHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
     setType(event.target.value === "CHAT" ? 0 : 1);
-    console.log(type);
   };
 
   return (
     <BackgroundModal width={440} p={0}>
-      <>
-        <CreateCommunityHeader>
-          <CancelIconWrapper onClick={closeModal}>
-            <CancelIcon />
-          </CancelIconWrapper>
-          <Text text="채널 만들기" fontSize="xxl" color="white" />
-          <Text text=":채팅에 속해있음" fontSize="sm" color="white" />
-        </CreateCommunityHeader>
-        <CreateCommunityBody>
-          <Text text="채널 이름" fontSize="xs" color="white" mb={8} />
-          <fieldset>
-            <label>
-              <input
-                type="radio"
-                name="contact"
-                value="CHAT"
-                onChange={radioHandler}
-              />
-              <span>채팅채널</span>
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="contact"
-                value="VOICE"
-                onChange={radioHandler}
-              />
-              <span>음성채널</span>
-            </label>
-          </fieldset>
-          <DefaultInput value={name} onChange={changeName} type="text" />
-        </CreateCommunityBody>
-        <CreateCommunityFooter>
-          <DefaultButton
-            width={96}
-            height={38}
-            text="취소"
-            backgroundColor="transparernt"
-            hoverBackgroundColor="transparent"
-            onClick={closeModal}
-          />
-          <DefaultButton
-            width={96}
-            height={38}
-            text="만들기"
-            onClick={MakeChannel}
-          />
-        </CreateCommunityFooter>
-      </>
+      <CreateCommunityHeader>
+        <CancelIconWrapper onClick={closeModal}>
+          <CancelIcon />
+        </CancelIconWrapper>
+        <Text fontSize="xxl" color="white">
+          채널 만들기
+        </Text>
+        <Text fontSize="sm" color="white">
+          :채팅에 속해있음
+        </Text>
+      </CreateCommunityHeader>
+      <CreateCommunityBody>
+        <Text fontSize="xs" color="white" mb={8}>
+          채널 이름
+        </Text>
+        <fieldset>
+          <label>
+            <input
+              type="radio"
+              name="contact"
+              value="CHAT"
+              onChange={handleRadio}
+            />
+            <span>채팅채널</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="contact"
+              value="VOICE"
+              onChange={handleRadio}
+            />
+            <span>음성채널</span>
+          </label>
+        </fieldset>
+        <DefaultInput ref={nameRef} type="text" />
+      </CreateCommunityBody>
+      <CreateCommunityFooter>
+        <DefaultButton
+          width={96}
+          height={38}
+          text="취소"
+          backgroundColor="transparent"
+          hoverBackgroundColor="transparent"
+          onClick={closeModal}
+        />
+        <DefaultButton
+          width={96}
+          height={38}
+          text="만들기"
+          onClick={MakeChannel}
+        />
+      </CreateCommunityFooter>
     </BackgroundModal>
   );
 };

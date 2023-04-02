@@ -1,3 +1,4 @@
 import FolderIcon from "@mui/icons-material/Folder";
+import { memo } from "react";
 
-export default () => <FolderIcon />;
+export default memo(() => <FolderIcon />);

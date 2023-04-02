@@ -5,4 +5,4 @@ export default {
   component: Text,
 };
 
-export const Default = () => <Text text="로그인" />;
+export const Default = () => <Text>로그인</Text>;

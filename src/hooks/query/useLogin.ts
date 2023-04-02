@@ -4,10 +4,14 @@ import { useUserStore } from "@store/useUserStore";
 import authApi from "@api/auth";
 import { cookies } from "src/App";
 
-const useLogin = () => {
+const useLogin = (setErrorMessage: any) => {
   const { setUserInfo } = useUserStore();
 
   return useMutation(authApi.login, {
+    onError: () => {
+      setErrorMessage("다시 시도해주세요.");
+    },
+
     onSuccess: async ({
       data: {
         data: { accessToken, refreshToken },

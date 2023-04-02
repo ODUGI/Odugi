@@ -7,14 +7,16 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 
 const DirectMessage = () => {
-  const dropdownRef = useRef<any>();
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [showDMDropdown, setShowDMDropdown] = useState(false);
 
   useOutsideClick(dropdownRef, () => setShowDMDropdown(false));
 
   return (
     <DirectMessageContainer>
-      <Text text="다이렉트 메시지" fontSize="xs" fontWeight="bold" />
+      <Text fontSize="xs" fontWeight="bold">
+        다이렉트 메시지
+      </Text>
       <Tip title="DM 생성" place="top">
         <PlusButtonContainer
           ref={dropdownRef}

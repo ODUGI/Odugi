@@ -7,14 +7,12 @@ interface InviteCommunityInputProps {
   url: string;
 }
 
-const InviteCommunityInput = ({ url }: InviteCommunityInputProps) => {
-  return (
-    <InviteCommunityInputContainer>
-      <DefaultInput value={url} onChange={() => null} type="text" />
-      <DefaultButton text="복사" onClick={() => null} width={75} height={32} />
-    </InviteCommunityInputContainer>
-  );
-};
+const InviteCommunityInput = ({ url }: InviteCommunityInputProps) => (
+  <InviteCommunityInputContainer>
+    <DefaultInput initValue={url} type="text" />
+    <DefaultButton text="복사" onClick={() => null} width={75} height={32} />
+  </InviteCommunityInputContainer>
+);
 
 const InviteCommunityInputContainer = styled.label`
   ${flexCenter}

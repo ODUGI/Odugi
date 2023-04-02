@@ -12,7 +12,7 @@ const Tab2MainBody = () => {
 };
 
 const Tab2MainBodyContainer = styled.div`
-  margin: 8px 8px 0 8px;
+  margin: 0.5rem 0.5rem 0 0.5rem;
   flex: 1;
 `;
 

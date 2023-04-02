@@ -31,24 +31,22 @@ const UserSettingIntroModal = () => {
           <div>
             <TextWrapper>
               <Text
-                text="자기소개 작성하기"
                 fontSize="xxl"
                 fontWeight="bold"
                 mb={12}
                 color="white"
                 center
-              />
-              <Text
-                text="한줄로 자기소개를 작성해주세요!"
-                fontSize="base"
-                color="setting-tab"
-                center
-              />
+              >
+                자기소개 작성하기
+              </Text>
+              <Text fontSize="base" color="setting-tab" center>
+                한줄로 자기소개를 작성해주세요!
+              </Text>
             </TextWrapper>
             <InputWrapper>
               <DefaultInput
-                value={introduction}
-                onChange={changeIntroduction}
+                // value={introduction}
+                // onChange={changeIntroduction}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"

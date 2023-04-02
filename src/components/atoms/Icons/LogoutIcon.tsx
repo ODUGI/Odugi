@@ -1,3 +1,4 @@
 import LogoutIcon from "@mui/icons-material/Logout";
+import { memo } from "react";
 
-export default () => <LogoutIcon />;
+export default memo(() => <LogoutIcon />);

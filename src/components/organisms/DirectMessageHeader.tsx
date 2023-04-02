@@ -22,7 +22,7 @@ const DirectMessageHeader = ({ name, status }: DirectMessageHeaderProps) => {
         <AtIconWrapper>
           <AtIcon />
         </AtIconWrapper>
-        <Text text={name} color="white" />
+        <Text color="white">{name}</Text>
         <Status status={status} fontSize="14px" />
       </LeftContainer>
 
@@ -38,7 +38,10 @@ const DirectMessageHeader = ({ name, status }: DirectMessageHeaderProps) => {
           </ButtonWrapper>
         </Tip>
         <ButtonWrapper>
-          <SearchInput size="s" value={search} onChange={onChangeSearch} />
+          <SearchInput
+            size="s"
+            // value={search} onChange={onChangeSearch}
+          />
         </ButtonWrapper>
       </RightContainer>
     </DirectMessageHeaderContainer>

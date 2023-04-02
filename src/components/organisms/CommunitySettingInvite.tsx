@@ -10,49 +10,58 @@ const CommunitySettingInvite = () => {
   return (
     <SettingWrapper>
       <>
-        <Text
-          text={"초대"}
-          color="white"
-          fontWeight="bold"
-          fontSize="xl"
-          mb={20}
-        />
-        <Text
-          text={"활성화된 모든 초대 링크 목록입니다. 이 중에서 취소가능합니다."}
-          color="setting-tab"
-          fontSize="sm"
-          mb={20}
-        />
+        <Text color="white" fontWeight="bold" fontSize="xl" mb={20}>
+          초대
+        </Text>
+        <Text color="setting-tab" fontSize="sm" mb={20}>
+          활성화된 모든 초대 링크 목록입니다. 이 중에서 취소가능합니다.
+        </Text>
         <Divider
           sx={{ borderColor: "#96989D93", opacity: 0.5, mt: 1, mb: 1 }}
         />
         <Member>
           <Mini1>
-            <Text text="초대자" color="setting-tab" fontSize="xs" />
+            <Text color="setting-tab" fontSize="xs">
+              초대자
+            </Text>
           </Mini1>
           <Mini1>
-            <Text text="초대코드" color="setting-tab" fontSize="xs" />
+            <Text color="setting-tab" fontSize="xs">
+              초대코드
+            </Text>
           </Mini1>
           <Mini2>
-            <Text text="사용 횟수" color="setting-tab" fontSize="xs" />
+            <Text color="setting-tab" fontSize="xs">
+              사용 횟수
+            </Text>
           </Mini2>
           <Mini2>
-            <Text text="남은시간" color="setting-tab" fontSize="xs" />
+            <Text color="setting-tab" fontSize="xs">
+              남은시간
+            </Text>
           </Mini2>
         </Member>
         <Member>
           <Mini1>
             <UserLogo height={3} width={3} onClick={() => null} />
-            <Text text={"김현우"} color="white" fontSize="sm" />
+            <Text color="white" fontSize="sm">
+              김현우
+            </Text>
           </Mini1>
           <Mini1>
-            <Text text="초대코드" color="white" fontSize="xs" />
+            <Text color="white" fontSize="xs">
+              초대코드
+            </Text>
           </Mini1>
           <Mini2>
-            <Text text="사용 횟수" color="white" fontSize="xs" />
+            <Text color="white" fontSize="xs">
+              사용 횟수
+            </Text>
           </Mini2>
           <Mini2>
-            <Text text="남은시간" color="white" fontSize="xs" />
+            <Text color="white" fontSize="xs">
+              남은시간
+            </Text>
           </Mini2>
           <IconButton>
             <CancelButton className="Cancel" />

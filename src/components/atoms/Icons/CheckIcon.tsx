@@ -1,4 +1,5 @@
 import CheckIcon from "@mui/icons-material/Check";
+import { memo } from "react";
 import styled from "styled-components";
 
 const IconWrapper = styled.div`
@@ -7,8 +8,8 @@ const IconWrapper = styled.div`
   }
 `;
 
-export default () => (
+export default memo(() => (
   <IconWrapper>
     <CheckIcon />
   </IconWrapper>
-);
+));

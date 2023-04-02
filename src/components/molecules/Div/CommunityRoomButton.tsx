@@ -45,7 +45,7 @@ const CommunityRoomButton = ({
         <CommunityRoomButtonContainer>
           <LeftContainer>
             {type === "CHAT" ? <TagIcon /> : <VolumeIcon />}
-            <Text text={text} />
+            <Text>{text}</Text>
           </LeftContainer>
           <div className="right-icon" onClick={showInviteModal}>
             <PersonAddIcon />

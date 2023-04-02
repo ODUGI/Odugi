@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
-import MyAccount from "../MyAccount";
-import UserProfile from "../UserProfile";
+import MyAccount from "../UserSettingMyAccount";
+import UserProfile from "../UserSettingProfile";
 import useSettingModalStore from "@store/useSettingModalStore";
 import CommunitySettingDefault from "../CommunitySettingDefault";
 import CommunitySettingMember from "../CommunitySettingMember";
@@ -20,29 +20,61 @@ const userComponent = {
 };
 
 const UserSettingModal = () => {
-  const { settingBarStatus, setSettingBarStatus } = useSettingModalStore();
   const { setShowModal } = useModalStore();
+  const { settingBarStatus, setSettingBarStatus } = useSettingModalStore();
 
-  const Component = settingBarStatus ? userComponent[settingBarStatus] : <></>;
+  const component = settingBarStatus ? userComponent[settingBarStatus] : null;
 
   useEffect(() => {
     setSettingBarStatus("내 계정");
   }, []);
 
   return (
-    <SettingBox>
-      <Side>
+    <UserSettingModalContainer>
+      <LeftSideContainer>
         <UserSettingBar />
-      </Side>
-      <Container>
+      </LeftSideContainer>
+      <CancelButtonWrapper>
         <CancelIconWrapper onClick={() => setShowModal(false)}>
           <CancelIcon />
         </CancelIconWrapper>
-        {Component}
-      </Container>
-    </SettingBox>
+        {component}
+      </CancelButtonWrapper>
+    </UserSettingModalContainer>
   );
 };
+
+const UserSettingModalContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  top: 0;
+  left: 0;
+
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.backgroundColor["voice-icon"]};
+`;
+
+const LeftSideContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+`;
+
+const CancelButtonWrapper = styled.div`
+  position: relative;
+
+  display: flex;
+  flex: 1 1 800px;
+  align-items: flex-start;
+
+  background-color: ${({ theme }) => theme.backgroundColor["tab3"]};
+`;
 
 const CancelIconWrapper = styled.div`
   font-size: 5rem;
@@ -53,35 +85,6 @@ const CancelIconWrapper = styled.div`
   top: 25px;
 
   cursor: pointer;
-`;
-
-const SettingBox = styled.div`
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: row;
-  background-color: ${({ theme }) => theme.backgroundColor["voice-icon"]};
-`;
-const Container = styled.div`
-  position: relative;
-  display: flex;
-  flex: 1 1 800px;
-  align-items: flex-start;
-  background-color: ${({ theme }) => theme.backgroundColor["tab3"]};
-`;
-const Side = styled.div`
-  display: flex;
-  flex: 1 1 auto;
-  justify-content: flex-end;
 `;
 
 export default UserSettingModal;

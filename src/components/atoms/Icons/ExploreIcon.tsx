@@ -1,3 +1,4 @@
 import ExploreIcon from "@mui/icons-material/Explore";
+import { memo } from "react";
 
-export default () => <ExploreIcon />;
+export default memo(() => <ExploreIcon />);

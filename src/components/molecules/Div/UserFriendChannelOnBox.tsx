@@ -17,7 +17,7 @@ const UserFriendChannelOnBox = ({
       <UserChannelOnBox src={friend.profileImagePath} name={friend.name} />
     );
   }
-  return <></>;
+  return null;
 };
 
 export default UserFriendChannelOnBox;

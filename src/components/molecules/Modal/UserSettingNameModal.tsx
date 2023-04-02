@@ -31,32 +31,26 @@ const UserSettingNameModal = () => {
           <div>
             <TextWrapper>
               <Text
-                text="사용자명 변경하기"
                 fontSize="xxl"
                 fontWeight="bold"
                 mb={12}
                 color="white"
                 center
-              />
-              <Text
-                text="새 사용자명과 기존 비밀번호를 입력하세요."
-                fontSize="base"
-                color="setting-tab"
-                center
-              />
+              >
+                사용자명 변경하기
+              </Text>
+              <Text fontSize="base" color="setting-tab" center>
+                새 사용자명과 기존 비밀번호를 입력하세요.
+              </Text>
             </TextWrapper>
 
             <InputWrapper>
-              <Text
-                text="사용자명"
-                color="setting-tab"
-                fontSize="xs"
-                mb={10}
-                fontWeight="bold"
-              />
+              <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+                사용자명
+              </Text>
               <DefaultInput
-                value={name}
-                onChange={changeName}
+                // value={name}
+                // onChange={changeName}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"
@@ -65,16 +59,12 @@ const UserSettingNameModal = () => {
             </InputWrapper>
 
             <InputWrapper>
-              <Text
-                text="현재 비밀번호"
-                color="setting-tab"
-                fontSize="xs"
-                mb={10}
-                fontWeight="bold"
-              />
+              <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+                현재 비밀번호
+              </Text>
               <DefaultInput
-                value={password}
-                onChange={changePassword}
+                // value={password}
+                // onChange={changePassword}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"

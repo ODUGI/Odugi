@@ -7,7 +7,9 @@ const FriendHeaderLeft = () => {
   return (
     <FriendHeaderLeftContainer>
       <PersonIcon />
-      <Text text="친구" color="white" fontWeight="bold" />
+      <Text color="white" fontWeight="bold">
+        친구
+      </Text>
       <DividerVertical mv={8} />
     </FriendHeaderLeftContainer>
   );

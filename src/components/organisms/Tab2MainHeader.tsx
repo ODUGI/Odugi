@@ -10,7 +10,7 @@ const Tab2MainHeader = () => {
 };
 
 const Tab2HeaderContainer = styled.div`
-  height: 48px;
+  height: 3rem;
   padding: 0 0.625rem;
 
   display: flex;

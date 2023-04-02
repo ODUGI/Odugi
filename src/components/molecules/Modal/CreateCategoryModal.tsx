@@ -1,14 +1,8 @@
 import styled from "styled-components";
-import useInput from "@hooks/common/useInput";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate, useParams } from "react-router-dom";
-import { useUserStore } from "@store/useUserStore";
-import { useState } from "react";
-import communityApi from "@api/community";
-import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
+import { useParams } from "react-router-dom";
+import { useCallback, useRef, useState } from "react";
 import BackgroundModal from "@components/organisms/BackgroundModal";
-import ImageUploadButton from "@components/molecules/Button/ImageUploadButton";
 import DefaultButton from "@components/atoms/Button/DefaultButton";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import useModalStore from "@store/useModalStore";
@@ -16,26 +10,24 @@ import Text from "@components/atoms/Text/Text";
 import useCreateCategory from "@hooks/query/useCreateCatergory";
 
 const CreateCategroyModal = () => {
-  const navigate = useNavigate();
-
-  const { userInfo } = useUserStore();
   const { setShowModal } = useModalStore();
-  const [name, changeName] = useInput();
-  const [type, setType] = useState();
-  const [role, setRole] = useState<number>(0);
+
+  const inputRef = useRef<HTMLInputElement>(null);
   //userInfo에 role이 없었던가?
-  const [categoryId, setCategoryId] = useState();
   const { communityId } = useParams();
   const { mutate: createCategory } = useCreateCategory();
 
-  const MakeCategory = () => {
-    createCategory({ name, communityId, role });
-    closeModal();
-  };
+  const MakeCategory = useCallback(() => {
+    if (inputRef.current) {
+      const name = inputRef.current.value;
+      createCategory({ name, communityId, role: 0 });
+      closeModal();
+    }
+  }, [inputRef]);
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setShowModal(false);
-  };
+  }, []);
 
   return (
     <BackgroundModal width={440} p={0}>
@@ -45,11 +37,15 @@ const CreateCategroyModal = () => {
             <CancelIcon />
           </CancelIconWrapper>
 
-          <Text text="카테고리 만들기" fontSize="xxl" color="white" />
+          <Text fontSize="xxl" color="white">
+            카테고리 만들기
+          </Text>
         </CreateCommunityHeader>
         <CreateCommunityBody>
-          <Text text="카테고리 이름" fontSize="xs" color="white" mb={8} />
-          <DefaultInput value={name} onChange={changeName} type="text" />
+          <Text fontSize="xs" color="white" mb={8}>
+            카테고리 이름
+          </Text>
+          <DefaultInput ref={inputRef} type="text" />
         </CreateCommunityBody>
         <CreateCommunityFooter>
           <DefaultButton

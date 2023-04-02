@@ -1,4 +1,5 @@
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import { memo } from "react";
 import styled from "styled-components";
 
 const Crop = styled.div`
@@ -14,4 +15,4 @@ const PersonIcon = () => (
   </Crop>
 );
 
-export default () => <PersonIcon />;
+export default memo(() => <PersonIcon />);

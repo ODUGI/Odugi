@@ -1,19 +1,14 @@
-import { ChangeEventHandler } from "react";
+import { forwardRef, Ref } from "react";
 import styled from "styled-components";
 import SearchInput from "../Input/SearchInput";
 
-interface SearchInputProps {
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-}
-
-const BigSearchInputBox = ({ value, onChange }: SearchInputProps) => {
+const BigSearchInputBox = forwardRef<HTMLInputElement>((ref) => {
   return (
     <InputContainer>
-      <SearchInput size="m" value={value} onChange={onChange} />
+      <SearchInput size="m" ref={ref as Ref<HTMLInputElement>} />
     </InputContainer>
   );
-};
+});
 
 const InputContainer = styled.div`
   margin-top: 16px;

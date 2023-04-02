@@ -12,17 +12,17 @@ const Router = () => {
       <Route
         path="/login"
         element={
-          // <ProtectAuth>
-          <Login />
-          // </ProtectAuth>
+          <ProtectAuth>
+            <Login />
+          </ProtectAuth>
         }
       />
       <Route
         path="/register"
         element={
-          // <ProtectAuth>
-          <Register />
-          // </ProtectAuth>
+          <ProtectAuth>
+            <Register />
+          </ProtectAuth>
         }
       />
 
@@ -32,13 +32,13 @@ const Router = () => {
         "/@me/:channelId",
         "/:communityId",
         "/:communityId/:channelId",
-      ].map((path, idx) => (
+      ].map((path) => (
         <Route
           path={path}
           element={
-            // <ProtectPage>
-            <Common />
-            // </ProtectPage>
+            <ProtectPage>
+              <Common />
+            </ProtectPage>
           }
         />
       ))}

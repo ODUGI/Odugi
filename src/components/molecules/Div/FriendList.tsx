@@ -9,14 +9,10 @@ const FriendList = () => {
   const {
     userInfo: { email },
   } = useUserStore();
+
   const { data, isSuccess } = useGetFriendList(email);
 
-  if (!isSuccess)
-    return (
-      <FriendListContainer>
-        <DirectMessage />
-      </FriendListContainer>
-    );
+  if (!isSuccess) return null;
 
   const friendList: FriendType[] = data.filter(
     (friend: FriendType) => friend.friendState === "ACCEPTED"
@@ -50,11 +46,11 @@ const FriendListContainer = styled.div`
 `;
 
 const FriendListWrapper = styled.div`
-  height: calc(100vh - 200px);
+  height: calc(100vh - 12.5rem);
 
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 0.125rem;
 `;
 
 export default FriendList;

@@ -37,8 +37,8 @@ const CreateDirectMessageDropdown = ({
       p={16}
     >
       <CreateDirectMesssageHeader
-        value={search}
-        onChange={changeSearch}
+        // value={search}
+        // onChange={changeSearch}
         addFriendNum={1}
       />
       <>
@@ -53,11 +53,9 @@ const CreateDirectMessageDropdown = ({
         ) : (
           <SearchContainer>
             <SearchImage src={searchImage} alt="" width={85} height={85} />
-            <Text
-              text="개인 메시지에 모든 친구가 포함되어 있어요."
-              color="auth-desc"
-              center
-            />
+            <Text color="auth-desc" center>
+              개인 메시지에 모든 친구가 포함되어 있어요.
+            </Text>
           </SearchContainer>
         )}
       </>

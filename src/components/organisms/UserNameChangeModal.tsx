@@ -7,10 +7,12 @@ import useModifyName from "@hooks/query/useModifyName";
 import DefaultButton from "@components/atoms/Button/DefaultButton";
 
 const UserNameChangeModal = ({ setOpenModal }: any) => {
-  const { userInfo, setUserInfo } = useUserStore();
   const [name, changeName] = useInput();
   const [password, changePassword] = useInput();
+
+  const { userInfo, setUserInfo } = useUserStore();
   const { mutate: modifyName } = useModifyName();
+
   const updataUserName = () => {
     modifyName({
       name,
@@ -19,57 +21,43 @@ const UserNameChangeModal = ({ setOpenModal }: any) => {
     setUserInfo({ ...userInfo, name });
     setOpenModal(false);
   };
+
   return (
     <>
       <TopWrapper>
         <TextWrapper>
-          <Text
-            text="사용자명 변경하기"
-            fontSize="xxl"
-            fontWeight="bold"
-            mb={12}
-            color="white"
-          />
-          <Text
-            text="새 사용자명과 기존 비밀번호를 입력하세요."
-            fontSize="base"
-            color="setting-tab"
-            mb={20}
-          />
+          <Text fontSize="xxl" fontWeight="bold" mb={12} color="white">
+            사용자명 변경하기
+          </Text>
+          <Text fontSize="base" color="setting-tab" mb={20}>
+            새 사용자명과 기존 비밀번호를 입력하세요.
+          </Text>
         </TextWrapper>
         <Wrapper>
-          <Text
-            text="사용자 명"
-            color="setting-tab"
-            fontSize="xs"
-            mb={10}
-            fontWeight="bold"
-          />
+          <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+            사용자명
+          </Text>
           <DefaultInput
-            value={name}
-            onChange={changeName}
+            type="text"
+            color="white"
             backgroundColor="voice-modal"
             fontSize="base"
-            color="white"
-            type="text"
+            // value={name}
+            // onChange={changeName}
           />
         </Wrapper>
 
         <Wrapper>
-          <Text
-            text="현재 비밀번호"
-            color="setting-tab"
-            fontSize="xs"
-            mb={10}
-            fontWeight="bold"
-          />
+          <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+            현재 비밀번호
+          </Text>
           <DefaultInput
-            value={password}
-            onChange={changePassword}
+            type="text"
+            color="white"
             backgroundColor="voice-modal"
             fontSize="base"
-            color="white"
-            type="text"
+            // value={password}
+            // onChange={changePassword}
           />
         </Wrapper>
       </TopWrapper>

@@ -4,7 +4,6 @@ import { ColorType, FontSizeType } from "@styles/theme";
 type fontWeightType = "normal" | "bold";
 
 interface TextProps {
-  text: string | React.ReactElement;
   fontSize?: FontSizeType;
   fontWeight?: fontWeightType;
   color?: ColorType;
@@ -13,28 +12,7 @@ interface TextProps {
   center?: boolean;
 }
 
-const Text = ({
-  text,
-  fontSize = "base",
-  fontWeight = "normal",
-  color = "inherit",
-  mb = 0,
-  mr = 0,
-  center = false,
-}: TextProps) => (
-  <TextContainer
-    fontSize={fontSize}
-    fontWeight={fontWeight}
-    color={color}
-    mb={mb}
-    mr={mr}
-    center={center}
-  >
-    {text}
-  </TextContainer>
-);
-
-const TextContainer = styled.p<Omit<TextProps, "text">>`
+const Text = styled.p<Omit<TextProps, "text">>`
   color: ${({ theme, color }) => theme.color[color]};
   font-size: ${({ theme, fontSize }) => theme.fontSize[fontSize]};
   font-weight: ${({ fontWeight }) =>
@@ -45,5 +23,14 @@ const TextContainer = styled.p<Omit<TextProps, "text">>`
   margin-right: ${({ mr }) => mr}px;
   text-align: ${({ center }) => (center ? "center" : "left")};
 `;
+
+Text.defaultProps = {
+  fontSize: "base",
+  fontWeight: "normal",
+  color: "inherit",
+  mb: 0,
+  mr: 0,
+  center: false,
+};
 
 export default Text;
