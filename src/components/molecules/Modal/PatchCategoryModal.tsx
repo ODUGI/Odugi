@@ -4,28 +4,31 @@ import Text from "@components/atoms/Text/Text";
 import BackgroundModal from "@components/organisms/BackgroundModal";
 import useInput from "@hooks/common/useInput";
 import usePatchCategory from "@hooks/query/usePatchCategory";
+import useModalStore from "@store/useModalStore";
 import useSettingModalStore from "@store/useSettingModalStore";
 import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
 import { Bottom, InputWrapper, TextWrapper } from "./UserSettingModal";
 
 const PatchCategoryModal = () => {
-  const { setShowSettingModal } = useSettingModalStore();
+  const { setShowModal } = useModalStore();
 
   const [name, changeName] = useInput();
-  const { mutate: patchCommunity } = usePatchCategory();
+  const { mutate: patchCategory } = usePatchCategory();
   const { userInfo } = useUserStore();
 
-  const { channelId, communityId, categoryId } = useParams();
+  // const { channelId, communityId, categoryId } = useParams();
+  const categoryId = 8;
+  const role = 0;
   const updataIntro = () => {
-    patchCommunity(categoryId);
+    patchCategory({ name, categoryId, role });
   };
 
   return (
     <BackgroundModal
       width={440}
       p={0}
-      onClick={() => setShowSettingModal(false)}
+      onClick={() => setShowModal(false)}
       children={
         <>
           <div>
@@ -44,7 +47,7 @@ const PatchCategoryModal = () => {
           <Bottom>
             <DefaultButton
               text="취소"
-              onClick={() => setShowSettingModal(false)}
+              onClick={() => setShowModal(false)}
               height={38}
               width={96}
               backgroundColor="transparent"

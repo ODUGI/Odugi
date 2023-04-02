@@ -47,6 +47,15 @@ const Tab2CommunityBody = () => {
     setShowModal(true);
   };
 
+  const showPatchCategoryModal = () => {
+    setModalType("patchCategory");
+    setShowModal(true);
+  };
+  const showDeleteCategoryModal = () => {
+    setModalType("deleteCategory");
+    setShowModal(true);
+  };
+
   console.log(categoryList);
 
   if (!communityId)
@@ -127,6 +136,12 @@ const Tab2CommunityBody = () => {
                 ))}
               </>
             ))}
+          <button onClick={showPatchCategoryModal}>
+            <AddIcon />
+          </button>
+          <button onClick={showDeleteCategoryModal}>
+            <AddIcon />
+          </button>
         </>
       ))}
     </div>

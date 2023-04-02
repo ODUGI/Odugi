@@ -5,27 +5,29 @@ import BackgroundModal from "@components/organisms/BackgroundModal";
 import useInput from "@hooks/common/useInput";
 import useDeleteCategory from "@hooks/query/useDeleteCategory";
 import useModifyIntro from "@hooks/query/useModifyIntro";
-import useSettingModalStore from "@store/useSettingModalStore";
+import useModalStore from "@store/useModalStore";
 import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
 import { Bottom, InputWrapper, TextWrapper } from "./UserSettingModal";
 
 const DeleteCategoryModal = () => {
-  const { setShowSettingModal } = useSettingModalStore();
+  const { setShowModal } = useModalStore();
 
   const { mutate: deleteCategory } = useDeleteCategory();
   const { userInfo } = useUserStore();
 
-  const { channelId, communityId, categoryId } = useParams();
+  // const { channelId, communityId, categoryId } = useParams();
+  const categoryId = 7;
+  const role = 0;
   const updataIntro = () => {
-    deleteCategory(categoryId);
+    deleteCategory({ categoryId, role });
   };
 
   return (
     <BackgroundModal
       width={440}
       p={0}
-      onClick={() => setShowSettingModal(false)}
+      onClick={() => setShowModal(false)}
       children={
         <>
           <div>
@@ -43,7 +45,7 @@ const DeleteCategoryModal = () => {
           <Bottom>
             <DefaultButton
               text="취소"
-              onClick={() => setShowSettingModal(false)}
+              onClick={() => setShowModal(false)}
               height={38}
               width={96}
               backgroundColor="transparent"
