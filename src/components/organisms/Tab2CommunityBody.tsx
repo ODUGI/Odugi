@@ -10,6 +10,8 @@ import AddIcon from "@components/atoms/Icons/AddIcon";
 import useModalStore from "@store/useModalStore";
 import useGetCommunityList from "@hooks/query/useGetCommunityList";
 import useGetCategoryList from "@hooks/query/useGetCategoryList";
+import { useState } from "react";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 interface ChannelType {
   channel_id: number;
@@ -32,6 +34,10 @@ const Tab2CommunityBody = () => {
   const categoryList = useGetCategoryList({
     communityId,
   });
+
+  const [dndCategoryList, setDndCategoryList] =
+    useState<ChannelType[]>(categoryList);
+  const [dndChannelList, setDndChannelList] = useState<RoomType[]>(channelList);
   const { userInfo } = useUserStore();
   const { data: friendList } = useGetFriendList(userInfo.email);
 
@@ -105,6 +111,14 @@ const Tab2CommunityBody = () => {
   //   navigate(`/${channelId}/${id}`);
   // }
 
+  const handleChange = (result: any) => {
+    if (!result.destination) return;
+    const items = [...dndCategoryList];
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setDndCategoryList(items);
+  };
+
   return (
     <div>
       <button onClick={showCreateChannelModal}>
@@ -114,36 +128,61 @@ const Tab2CommunityBody = () => {
         <AddIcon />
       </button>
       {/* category = channel / room -> channel */}
-      {categoryList.map((category: any) => (
-        <>
-          <CommunityLabel text={category.name} />
-          {channelList
-            .filter((channel: any) => category.id === channel.categoryId)
-            .map((channel: any) => (
-              <>
-                <CommunityRoomButton
-                  type={channel.type === 1 ? "VOICE" : "CHAT"}
-                  text={channel.name}
-                  communityId={communityId}
-                  channelId={channel.id}
-                />
-                {channel.id === Number(channelId) && <UserChannelOnBox />}
-                {friendList.map((friend: FriendType) => (
-                  <UserFriendChannelOnBox
-                    friend={friend}
-                    channelId={channel["channel_id"]}
-                  />
-                ))}
-              </>
-            ))}
-          <button onClick={showPatchCategoryModal}>
-            <AddIcon />
-          </button>
-          <button onClick={showDeleteCategoryModal}>
-            <AddIcon />
-          </button>
-        </>
-      ))}
+      <DragDropContext onDragEnd={handleChange}>
+        <Droppable droppableId="communities">
+          {(provided) => (
+            <div {...provided.droppableProps} ref={provided.innerRef}>
+              {categoryList.map((category: any, idx: any) => (
+                <Draggable
+                  key={category.id}
+                  draggableId={category.name}
+                  index={idx}
+                >
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.dragHandleProps}
+                      {...provided.draggableProps}
+                    >
+                      <CommunityLabel text={category.name} />
+                      {channelList
+                        .filter(
+                          (channel: any) => category.id === channel.categoryId
+                        )
+                        .map((channel: any) => (
+                          <>
+                            <CommunityRoomButton
+                              type={channel.type === 1 ? "VOICE" : "CHAT"}
+                              text={channel.name}
+                              communityId={communityId}
+                              channelId={channel.id}
+                            />
+                            {channel.id === Number(channelId) && (
+                              <UserChannelOnBox />
+                            )}
+                            {friendList.map((friend: FriendType) => (
+                              <UserFriendChannelOnBox
+                                friend={friend}
+                                channelId={channel["channel_id"]}
+                              />
+                            ))}
+                          </>
+                        ))}
+                      <button onClick={showPatchCategoryModal}>
+                        <AddIcon />
+                      </button>
+                      <button onClick={showDeleteCategoryModal}>
+                        <AddIcon />
+                      </button>
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 };
