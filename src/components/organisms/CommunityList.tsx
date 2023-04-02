@@ -2,7 +2,6 @@ import styled from "styled-components";
 import CommunityLogo from "../atoms/Div/CommunityLogo";
 import { useNavigate } from "react-router-dom";
 import AddIcon from "@components/atoms/Icons/AddIcon";
-import { useUserStore } from "@store/useUserStore";
 import ScrollableBox from "@components/molecules/Div/scrollableBox";
 import useGetCommunityList from "@hooks/query/useGetCommunityList";
 import OdugiLogo from "../../assets/images/logo.jpg";
