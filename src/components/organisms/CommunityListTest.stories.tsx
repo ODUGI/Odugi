@@ -1,10 +1,10 @@
-import CommunityLisTesttDiv from "./CommunityListTest";
+import CommunityListTest from "./CommunityListTest";
 
 export default {
   title: "organisms/CommunityListTest",
-  component: CommunityLisTesttDiv,
+  component: CommunityListTest,
 };
 
-export const CommunityList = () => {
-  return <CommunityLisTesttDiv />;
+export const CommunityTestList = () => {
+  return <CommunityListTest />;
 };
