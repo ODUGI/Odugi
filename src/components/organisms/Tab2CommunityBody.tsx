@@ -29,7 +29,6 @@ const Tab2CommunityBody = () => {
   const channelList = useGetChannelList({
     communityId,
   });
-  console.log(channelList);
   const categoryList = useGetCategoryList({
     communityId,
   });
@@ -47,6 +46,17 @@ const Tab2CommunityBody = () => {
     setModalType("createChannel");
     setShowModal(true);
   };
+
+  const showPatchCategoryModal = () => {
+    setModalType("patchCategory");
+    setShowModal(true);
+  };
+  const showDeleteCategoryModal = () => {
+    setModalType("deleteCategory");
+    setShowModal(true);
+  };
+
+  console.log(categoryList);
 
   if (!communityId)
     return (
@@ -126,6 +136,12 @@ const Tab2CommunityBody = () => {
                 ))}
               </>
             ))}
+          <button onClick={showPatchCategoryModal}>
+            <AddIcon />
+          </button>
+          <button onClick={showDeleteCategoryModal}>
+            <AddIcon />
+          </button>
         </>
       ))}
     </div>

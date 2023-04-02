@@ -1,5 +1,6 @@
 import PageContainer from "@components/atoms/Div/PageContainer";
 import HeaderHelmet from "@components/atoms/Helmet";
+
 import CommonPage from "@components/templates/CommonPage";
 import useModalStore from "@store/useModalStore";
 import { lazy, useEffect } from "react";
@@ -23,6 +24,24 @@ const CreateCategroyModal = lazy(
 const CommunitySettingModal = lazy(
   () => import("@components/organisms/Modal/CommunitySettingModal")
 );
+const DeleteCommunityModal = lazy(
+  () => import("@components/molecules/Modal/DeleteCommunityModal")
+);
+const DeleteChannelModal = lazy(
+  () => import("@components/molecules/Modal/DeleteChannelModal")
+);
+const DeleteCategoryModal = lazy(
+  () => import("@components/molecules/Modal/DeleteCategoryModal")
+);
+const PatchCommunityModal = lazy(
+  () => import("@components/molecules/Modal/PatchCommunityModal")
+);
+const PatchChannelModal = lazy(
+  () => import("@components/molecules/Modal/PatchChannelModal")
+);
+const PatchCategoryModal = lazy(
+  () => import("@components/molecules/Modal/PatchCategoryModal")
+);
 
 const modalTable = {
   inviteFriend: <InviteFriendModal />,
@@ -31,6 +50,12 @@ const modalTable = {
   createCommunity: <CreateCommunityModal />,
   createCategory: <CreateCategroyModal />,
   createChannel: <CreateChannelModal />,
+  patchCommunity: <PatchCommunityModal />,
+  patchCategory: <PatchCategoryModal />,
+  patchChannel: <PatchChannelModal />,
+  deleteCommunity: <DeleteCommunityModal />,
+  deleteCategory: <DeleteCategoryModal />,
+  deleteChannel: <DeleteChannelModal />,
 };
 
 const Common = () => {

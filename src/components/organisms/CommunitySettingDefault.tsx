@@ -6,7 +6,7 @@ import ImageUploadButton from "../molecules/Button/ImageUploadButton";
 import { useCallback, useRef, useState } from "react";
 import { useUserStore } from "@store/useUserStore";
 import { useParams } from "react-router-dom";
-import useDeleteCommunity from "@hooks/query/useDeleteCommnunity";
+import useDeleteCommunity from "@hooks/query/useDeleteCommunity";
 import useModifyCommunityImage from "@hooks/query/useModifyCommunityImage";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
 import useUpdateCommunityName from "@hooks/query/useUpdateCommunityName";
