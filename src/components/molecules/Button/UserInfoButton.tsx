@@ -20,12 +20,9 @@ const UserInfoButton = ({ status }: UserInfoButtonProps) => {
     >
       <InfoContainer>
         <UserState type="s" status={status} src={userInfo.profileImagePath} />
-        <Text
-          text={userInfo.email}
-          fontWeight="bold"
-          fontSize="sm"
-          color="white"
-        />
+        <Text fontWeight="bold" fontSize="sm" color="white">
+          {userInfo.email}
+        </Text>
       </InfoContainer>
     </ButtonWrapper>
   );

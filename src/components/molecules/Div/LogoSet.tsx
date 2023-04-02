@@ -4,7 +4,7 @@ import ImageUploadButton from "../Button/ImageUploadButton";
 const LogoSet = () => {
   <>
     <ImageUploadButton />
-    <Text text="최소 크기 128*128 이상" />
+    <Text>최소 크기 128*128 이상</Text>
   </>;
 };
 

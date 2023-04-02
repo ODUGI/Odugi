@@ -1,3 +1,4 @@
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import { memo } from "react";
 
-export default () => <RadioButtonCheckedIcon />;
+export default memo(() => <RadioButtonCheckedIcon />);

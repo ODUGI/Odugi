@@ -9,7 +9,7 @@ import CreateDirectMessageModal from "./CreateDirectMessageDropdown";
 
 const FriendHeader = () => {
   const [showDMDropdown, setShowDMDropdown] = useState(false);
-  const dropdownRef = useRef<any>();
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(dropdownRef, () => setShowDMDropdown(false));
 

@@ -18,9 +18,8 @@ const MessageBox = ({
   onChange,
   addChatMessage,
 }: MessageInputProps) => {
-  // const messageRef = useRef<HTMLInputElement>(null);
-
-  const dropdownRef = useRef<any>(false);
+  const messageRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLLabelElement>(null);
   const [showUploadDropdown, setShowUploadDropdown] = useState(false);
 
   useOutsideClick(dropdownRef, () => setShowUploadDropdown(false));
@@ -55,7 +54,7 @@ const MessageBox = ({
         {showUploadDropdown && <FileUploadeDropdown />}
       </AddButton>
       <MessageInput
-        // ref={messageRef}
+        ref={messageRef}
         placeholder={`@${nickname}에 메시지 보내기`}
         rows={1}
         value={value}
@@ -68,18 +67,22 @@ const MessageBox = ({
 
 const MessageInputContainer = styled.label`
   border-radius: 8px;
+  padding: 0 1rem;
+
   display: flex;
   flex-direction: row;
+
   background-color: ${({ theme }) => theme.backgroundColor["msg-input"]};
-  padding: 0 1rem;
 `;
 
 const AddButton = styled.button`
   height: 44px;
   padding: 0.625rem 1rem;
   margin-left: -1rem;
+
   color: ${({ theme }) => theme.color.icon};
   background-color: transparent;
+
   &:hover {
     color: ${({ theme }) => theme.color.white};
   }

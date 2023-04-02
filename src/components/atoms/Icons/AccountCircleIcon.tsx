@@ -1,3 +1,4 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { memo } from "react";
 
-export default () => <AccountCircleIcon />;
+export default memo(() => <AccountCircleIcon />);

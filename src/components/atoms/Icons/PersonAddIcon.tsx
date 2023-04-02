@@ -1,3 +1,6 @@
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { memo } from "react";
 
-export default () => <PersonAddIcon style={{ transform: "scaleX(-1)" }} />;
+export default memo(() => (
+  <PersonAddIcon style={{ transform: "scaleX(-1)" }} />
+));

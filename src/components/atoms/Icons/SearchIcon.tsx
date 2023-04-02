@@ -1,3 +1,4 @@
 import SearchIcon from "@mui/icons-material/Search";
+import { memo } from "react";
 
-export default () => <SearchIcon />;
+export default memo(() => <SearchIcon />);

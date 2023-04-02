@@ -3,17 +3,17 @@ import EditIcon from "@components/atoms/Icons/EditIcon";
 import LogoutIcon from "@components/atoms/Icons/LogoutIcon";
 import PersonAddIcon from "@components/atoms/Icons/PersonAddIcon";
 import useModalStore, { ModalType } from "@store/useModalStore";
+import { useCallback } from "react";
 import styled from "styled-components";
 import DropdownButton from "../Button/DropdownButton";
 
 const CommunityDropdown = () => {
   const { setModalType, setShowModal } = useModalStore();
 
-  const setModal = (modalType: ModalType) => {
-    console.log("modalType", modalType);
+  const setModal = useCallback((modalType: ModalType) => {
     setModalType(modalType);
     setShowModal(true);
-  };
+  }, []);
 
   return (
     <DropdownContainer width={220} top={55} left={10}>

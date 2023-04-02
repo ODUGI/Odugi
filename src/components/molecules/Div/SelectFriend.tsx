@@ -16,7 +16,7 @@ const SelectFriend = ({ check = false, status }: SelectFriendProps) => {
       <SelectFriendContainer>
         <UserState type="s" status={status} />
         <UserNameWrapper>
-          <Text text="name" />
+          <Text>name</Text>
         </UserNameWrapper>
         {check ? <CheckboxOnIcon /> : <CheckboxOffIcon />}
       </SelectFriendContainer>

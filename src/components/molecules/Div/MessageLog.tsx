@@ -2,7 +2,6 @@ import UserLogo from "@components/atoms/Div/UserLogo";
 import MessageText from "@components/atoms/Div/MessageText";
 import { createRef, useEffect, useState } from "react";
 import styled from "styled-components";
-import MessageHoverButtons from "../Button/MessageHoverButtons";
 import MessageUserDate from "./MessageUserDate";
 
 interface MessageLogProps {

@@ -1,9 +1,8 @@
 import FriendDefaultBox from "@components/molecules/Div/FriendDefaultBox";
-import useInput from "@hooks/common/useInput";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 import useMainStore from "@store/useMainStore";
 import { useUserStore } from "@store/useUserStore";
-import { useState } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import DefaultButton from "../atoms/Button/DefaultButton";
 import BigSearchInputBox from "../molecules/Div/BigSearchInputBox";
@@ -12,7 +11,8 @@ import ScrollableBox from "../molecules/Div/scrollableBox";
 import LabelText from "../molecules/Text/LabelText";
 
 const MainTotal = () => {
-  const [num, setNum] = useState(0);
+  const searchRef = useRef<HTMLInputElement>(null);
+
   const { setMainStatus } = useMainStore(({ setMainStatus }) => ({
     setMainStatus,
   }));
@@ -20,9 +20,8 @@ const MainTotal = () => {
     userInfo: { email },
   } = useUserStore();
   const { data, isSuccess } = useGetFriendList(email);
-  const [value, onChangeValue] = useInput();
 
-  if (!isSuccess) return <></>;
+  if (!isSuccess) return null;
   const friendList: FriendType[] = data.filter(
     (friend: FriendType) => friend.friendState === "ACCEPTED"
   );
@@ -31,7 +30,7 @@ const MainTotal = () => {
     <>
       {friendList.length > 0 ? (
         <>
-          <BigSearchInputBox value={value} onChange={onChangeValue} />
+          <BigSearchInputBox ref={searchRef} />
           <LabelText label={"모든 친구"} num={friendList.length} />
           <ScrollableBox>
             {friendList.map(
@@ -44,7 +43,6 @@ const MainTotal = () => {
                 profileImagePath,
               }) => (
                 <FriendDefaultBox
-                  setNum={setNum}
                   src={profileImagePath}
                   key={email}
                   email={email}

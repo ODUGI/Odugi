@@ -1,11 +1,6 @@
 import styled from "styled-components";
-import useInput from "@hooks/common/useInput";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
-import { useUserStore } from "@store/useUserStore";
-import { useState } from "react";
-import communityApi from "@api/community";
+import { useCallback, useRef, useState } from "react";
 import CreateCommunityText from "@components/molecules/Text/CreateCommunityText";
 import BackgroundModal from "../BackgroundModal";
 import ImageUploadButton from "@components/molecules/Button/ImageUploadButton";
@@ -16,28 +11,24 @@ import Text from "@components/atoms/Text/Text";
 import useCreateCommunity from "@hooks/query/useCreateCommunity";
 
 const CreateCommunityModal = () => {
-  const navigate = useNavigate();
-
   let formData = new FormData();
+  const nameRef = useRef<HTMLInputElement>(null);
+  const [img, setImg] = useState<Blob>();
 
   const { setShowModal } = useModalStore();
-
-  const [img, setImg] = useState<Blob | undefined>();
-  const [name, changeName] = useInput();
-
   const { mutate: createCommunity } = useCreateCommunity();
 
-  const MakeCommunity = () => {
-    formData.append("communityName", name);
-    if (!img) return 0;
-    formData.append("file", img);
-    console.log(formData.get("communityName"));
-    createCommunity({ formData });
-  };
+  const MakeCommunity = useCallback(() => {
+    if (!img || !nameRef?.current) return;
 
-  const closeModal = () => {
+    formData.append("communityName", nameRef.current.value);
+    formData.append("file", img);
+    createCommunity({ formData });
+  }, [img, nameRef]);
+
+  const closeModal = useCallback(() => {
     setShowModal(false);
-  };
+  }, []);
 
   return (
     <BackgroundModal width={440} p={0}>
@@ -50,15 +41,17 @@ const CreateCommunityModal = () => {
         </CreateCommunityHeader>
         <CreateCommunityBody>
           <ImageUploadButton setImg={setImg} />
-          <Text text="서버 이름" fontSize="xs" color="white" mb={8} />
-          <DefaultInput value={name} onChange={changeName} type="text" />
+          <Text fontSize="xs" color="white" mb={8}>
+            서버 이름
+          </Text>
+          <DefaultInput ref={nameRef} type="text" />
         </CreateCommunityBody>
         <CreateCommunityFooter>
           <DefaultButton
             width={96}
             height={38}
             text="취소"
-            backgroundColor="transparernt"
+            backgroundColor="transparent"
             hoverBackgroundColor="transparent"
             onClick={closeModal}
           />

@@ -1,5 +1,5 @@
 import Text from "@components/atoms/Text/Text";
-import useInput from "@hooks/common/useInput";
+// import useInput from "@hooks/common/useInput";
 import { useUserStore } from "@store/useUserStore";
 import { flexCenter } from "@styles/flexCenter";
 import styled from "styled-components";
@@ -7,27 +7,23 @@ import SearchInput from "../Input/SearchInput";
 import InviteFriendBox from "./InviteFriendBox";
 import ScrollableBox from "./scrollableBox";
 import useGetFriendList from "@hooks/query/useGetFriendList";
+import { useRef } from "react";
 
 const InviteFriendModalBody = () => {
-  const [search, changeSearch] = useInput();
+  const searchRef = useRef<HTMLInputElement>(null);
   const {
     userInfo: { email },
   } = useUserStore();
   const { data: friendList, isSuccess } = useGetFriendList(email);
 
-  if (!isSuccess) return <></>;
+  if (!isSuccess) return null;
 
   const num = friendList.length;
 
   return (
     <InviteFriendModalBodyContainer>
       <SearchInputWrapper>
-        <SearchInput
-          size="m"
-          value={search}
-          onChange={changeSearch}
-          placeholder="친구 찾기"
-        />
+        <SearchInput size="m" ref={searchRef} placeholder="친구 찾기" />
       </SearchInputWrapper>
       <Divider color="tab1" />
       <FriendListContainer>
@@ -43,12 +39,9 @@ const InviteFriendModalBody = () => {
               ))
             ) : (
               <TextWrapper>
-                <Text
-                  text="검색 결과가 없어요"
-                  color="auth-desc"
-                  center
-                  fontWeight="bold"
-                />
+                <Text color="auth-desc" center fontWeight="bold">
+                  검색 결과가 없어요
+                </Text>
               </TextWrapper>
             )}
           </FriendListContainer>
@@ -64,7 +57,7 @@ const InviteFriendModalBodyContainer = styled.div`
 `;
 
 const SearchInputWrapper = styled.div`
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 `;
 
 const Divider = styled.div<{ color: string }>`

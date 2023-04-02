@@ -32,13 +32,13 @@ const Router = () => {
         "/@me/:channelId",
         "/:communityId",
         "/:communityId/:channelId",
-      ].map((path, idx) => (
+      ].map((path) => (
         <Route
           path={path}
           element={
-            // <ProtectPage>
-            <Common />
-            // </ProtectPage>
+            <ProtectPage>
+              <Common />
+            </ProtectPage>
           }
         />
       ))}

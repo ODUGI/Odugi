@@ -21,18 +21,17 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
 
   let backUrl = process.env.REACT_APP_BASE_URL;
   let uuid = crypto.randomUUID();
-  let shortUrl = uuid;
 
   const onSendInvite = () => {
     sendInvite({
       communityId,
       userId,
-      shortUrl,
+      shortUrl: uuid,
     });
     sendInviteToChat({
       sender: userInfo.name,
       channelId: channelId,
-      linkMessage: `${backUrl}/invite/${shortUrl}/${userId}`,
+      linkMessage: `${backUrl}/invite/${uuid}/${userId}`,
     });
   };
 
@@ -40,8 +39,8 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
     <ButtonWrapper onClick={() => null}>
       <InviteFriendBoxContainer>
         <UserInfoContainer>
-          <UserProfile />
-          <Text text={name} color="white" />
+          <UserProfileWrapper />
+          <Text color="white">{name}</Text>
         </UserInfoContainer>
         <DefaultButton
           text="초대..."
@@ -77,7 +76,7 @@ const UserInfoContainer = styled.div`
   gap: 8px;
 `;
 
-const UserProfile = styled.div`
+const UserProfileWrapper = styled.div`
   width: 32px;
   height: 32px;
   border-radius: 25px;

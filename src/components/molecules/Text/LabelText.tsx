@@ -9,12 +9,9 @@ interface LabelTextProps {
 const LabelText = ({ label = "온라인", num }: LabelTextProps) => {
   return (
     <LabelTextContainer>
-      <Text
-        fontSize="xs"
-        text={`${label} — ${num}명`}
-        color="auth-desc"
-        fontWeight="bold"
-      />
+      <Text fontSize="xs" color="auth-desc" fontWeight="bold">
+        {label} - {num}명
+      </Text>
     </LabelTextContainer>
   );
 };

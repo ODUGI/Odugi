@@ -4,18 +4,20 @@ import styled from "styled-components";
 import DefaultButton from "../atoms/Button/DefaultButton";
 import AuthHeader from "../molecules/Text/AuthHeader";
 import emailImage from "../../assets/images/email.png";
+import { useCallback } from "react";
 
 const RegisterStep3 = () => {
+  const navigate = useNavigate();
   const { resetStep, resetInputs } = useRegisterStore(
     ({ resetStep, resetInputs }) => ({ resetStep, resetInputs })
   );
-  const navigate = useNavigate();
 
-  const goLogin = () => {
+  const goLogin = useCallback(() => {
     resetStep();
     navigate("/login");
     resetInputs();
-  };
+  }, []);
+
   return (
     <>
       <TextContainer>

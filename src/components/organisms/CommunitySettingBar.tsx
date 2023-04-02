@@ -6,13 +6,9 @@ const CommunitySettingBar = () => {
   return (
     <BarContainer>
       <Header>
-        <Text
-          text="개별 서버 방 이름"
-          fontSize="xs"
-          color="msg-hover"
-          mb={6}
-          fontWeight="bold"
-        />
+        <Text fontSize="xs" color="msg-hover" mb={6} fontWeight="bold">
+          개별 서버 방 이름
+        </Text>
       </Header>
       <ul>
         <li>

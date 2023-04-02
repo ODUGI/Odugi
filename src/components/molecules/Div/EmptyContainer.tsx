@@ -22,7 +22,7 @@ const EmptyContainer = ({ text, image }: EmptyContainerProps) => {
   return (
     <Empty>
       <img src={img} alt="" />
-      <Text text={text} color="auth-desc" />
+      <Text color="auth-desc">{text}</Text>
     </Empty>
   );
 };

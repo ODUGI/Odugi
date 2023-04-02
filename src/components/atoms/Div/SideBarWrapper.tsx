@@ -17,13 +17,9 @@ const SideBar = ({ children }: SideBarProps) => {
 
   return (
     <SideBarContainer>
-      <Text
-        text="현재 활동 중"
-        fontSize="xl"
-        color="white"
-        fontWeight="bold"
-        mb={16}
-      />
+      <Text fontSize="xl" color="white" fontWeight="bold" mb={16}>
+        현재 활동 중
+      </Text>
       {data ? <>{children}</> : <NobodyActive />}
     </SideBarContainer>
   );

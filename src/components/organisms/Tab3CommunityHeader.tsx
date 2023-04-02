@@ -1,4 +1,3 @@
-import useInput from "@hooks/common/useInput";
 import useOutsideClick from "@hooks/common/useOutsideClick";
 import { useRef, useState } from "react";
 import styled from "styled-components";
@@ -10,9 +9,9 @@ import SearchInput from "../molecules/Input/SearchInput";
 
 const Tab3CommunityHeader = () => {
   const chatroomName = "test";
-  const [value, onChange] = useInput();
   const [showNotiModal, setShowNotiModal] = useState(false);
-  const dropdownRef = useRef<any>();
+  const searchRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useOutsideClick(dropdownRef, () => setShowNotiModal(false));
 
@@ -20,7 +19,7 @@ const Tab3CommunityHeader = () => {
     <Tab3CommunityHeaderContainer>
       <HeaderLeftWrapper>
         <TagIcon />
-        <Text text={chatroomName} color="white" />
+        <Text color="white">{chatroomName}</Text>
       </HeaderLeftWrapper>
       <HeaderRightWrapper>
         <div ref={dropdownRef}>
@@ -30,7 +29,7 @@ const Tab3CommunityHeader = () => {
           {showNotiModal && <NotificationModal />}
         </div>
         <SearchInputWrapper>
-          <SearchInput size="s" value={value} onChange={onChange} />
+          <SearchInput size="s" ref={searchRef} />
         </SearchInputWrapper>
       </HeaderRightWrapper>
     </Tab3CommunityHeaderContainer>

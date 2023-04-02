@@ -39,7 +39,7 @@ const DirectButton = ({ id, name, userId, src }: DirectButtonProps) => {
     >
       <DirectButtonContainer>
         <UserState type="s" status={status?.data.data} src={src} />
-        <Text text={name} />
+        <Text>{name}</Text>
       </DirectButtonContainer>
     </ButtonWrapper>
   );

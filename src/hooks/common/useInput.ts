@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 
 type InputAndTextAreaType = [
   string,
@@ -8,11 +8,19 @@ type InputAndTextAreaType = [
 
 const useInput = (initial = ""): InputAndTextAreaType => {
   const [value, setValue] = useState(initial);
-  const changeValue = ({
-    target: { value },
-  }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void =>
-    setValue(value);
-  const resetValue = () => setValue("");
+
+  const changeValue = useCallback(
+    ({
+      target: { value },
+    }: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void =>
+      setValue(value),
+    [value]
+  );
+
+  const resetValue = useCallback(() => {
+    setValue("");
+  }, []);
+
   return [value, changeValue, resetValue];
 };
 

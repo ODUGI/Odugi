@@ -17,7 +17,7 @@ const FriendButton = () => {
     >
       <FriendButtonContainer color={isMain ? "white" : "inactive"}>
         <PersonIcon />
-        <Text text="친구" color={isMain ? "white" : "inactive"} />
+        <Text color={isMain ? "white" : "inactive"}>친구</Text>
       </FriendButtonContainer>
     </ButtonWrapper>
   );

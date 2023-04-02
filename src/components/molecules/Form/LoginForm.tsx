@@ -1,35 +1,21 @@
 import SpanText from "@components/atoms/Text/SpanText";
-import { ChangeEvent } from "react";
+import { forwardRef } from "react";
 import DefaultForm from "./DefaultForm";
 
 interface LoginFormProps {
   text: string;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   type?: string;
 }
 
-const LoginForm = ({
-  text,
-  value,
-  onChange,
-  type = "text",
-}: LoginFormProps) => {
-  return (
+const LoginForm = forwardRef<HTMLInputElement, LoginFormProps>(
+  ({ text, type = "text" }, ref) => (
     <>
-      <DefaultForm
-        text={
-          <>
-            {text}
-            <SpanText text=" *" color="red" />
-          </>
-        }
-        type={type}
-        value={value}
-        onChange={onChange}
-      />
+      <DefaultForm ref={ref} type={type}>
+        {text}
+        <SpanText text=" *" color="red" />
+      </DefaultForm>
     </>
-  );
-};
+  )
+);
 
 export default LoginForm;

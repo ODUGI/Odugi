@@ -1,3 +1,4 @@
 import UploadIcon from "@mui/icons-material/Upload";
+import { memo } from "react";
 
-export default () => <UploadIcon />;
+export default memo(() => <UploadIcon />);

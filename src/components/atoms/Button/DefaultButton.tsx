@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import { memo, MouseEventHandler } from "react";
 import styled from "styled-components";
 import { BorderColorType, ColorType, FontSizeType } from "@styles/theme";
 
@@ -20,56 +20,58 @@ interface DefaultButtonProps {
   pv?: number;
 }
 
-const DefaultButton = ({
-  isInviteButton = false,
-  text,
-  onClick,
-  width = null,
-  height = null,
-  fontSize = "base",
-  fontWeight = "normal",
-  color = "white",
-  backgroundColor = "primary",
-  hoverBackgroundColor = "primary",
-  disabled = false,
-  borderColor = "trans",
-  mb = 0,
-  ph = 0,
-  pv = 0,
-}: DefaultButtonProps) => {
-  return (
-    <DefaultButtonContainer
-      width={width}
-      height={height}
-      disabled={disabled}
-      onClick={onClick}
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      color={color}
-      isInviteButton={isInviteButton}
-      backgroundColor={
-        isInviteButton
-          ? disabled
-            ? "rgba(69,73,239,0.6)"
-            : "rgb(69,73,239)"
-          : backgroundColor
-      }
-      borderColor={borderColor}
-      hoverBackgroundColor={
-        isInviteButton
-          ? disabled
-            ? "rgba(69,73,239,0.6)"
-            : "rgb(69,73,239)"
-          : hoverBackgroundColor
-      }
-      mb={mb}
-      ph={ph}
-      pv={pv}
-    >
-      {text}
-    </DefaultButtonContainer>
-  );
-};
+const DefaultButton = memo(
+  ({
+    isInviteButton = false,
+    text,
+    onClick,
+    width = null,
+    height = null,
+    fontSize = "base",
+    fontWeight = "normal",
+    color = "white",
+    backgroundColor = "primary",
+    hoverBackgroundColor = "primary",
+    disabled = false,
+    borderColor = "trans",
+    mb = 0,
+    ph = 0,
+    pv = 0,
+  }: DefaultButtonProps) => {
+    return (
+      <DefaultButtonContainer
+        width={width}
+        height={height}
+        disabled={disabled}
+        onClick={onClick}
+        fontSize={fontSize}
+        fontWeight={fontWeight}
+        color={color}
+        isInviteButton={isInviteButton}
+        backgroundColor={
+          isInviteButton
+            ? disabled
+              ? "rgba(69,73,239,0.6)"
+              : "rgb(69,73,239)"
+            : backgroundColor
+        }
+        borderColor={borderColor}
+        hoverBackgroundColor={
+          isInviteButton
+            ? disabled
+              ? "rgba(69,73,239,0.6)"
+              : "rgb(69,73,239)"
+            : hoverBackgroundColor
+        }
+        mb={mb}
+        ph={ph}
+        pv={pv}
+      >
+        {text}
+      </DefaultButtonContainer>
+    );
+  }
+);
 
 const DefaultButtonContainer = styled.button<
   Omit<DefaultButtonProps, "text" | "onClick">

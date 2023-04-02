@@ -1,3 +1,4 @@
 import MicIcon from "@mui/icons-material/Mic";
+import { memo } from "react";
 
-export default () => <MicIcon fontSize="small" />;
+export default memo(() => <MicIcon fontSize="small" />);

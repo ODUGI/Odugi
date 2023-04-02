@@ -1,4 +1,5 @@
 import AddCommentIcon from "@mui/icons-material/AddComment";
+import { memo } from "react";
 import styled from "styled-components";
 
 const ChatAddIcon = styled(AddCommentIcon)`
@@ -10,4 +11,4 @@ const ChatAddIcon = styled(AddCommentIcon)`
   }
 `;
 
-export default () => <ChatAddIcon />;
+export default memo(() => <ChatAddIcon />);

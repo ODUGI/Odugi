@@ -1,11 +1,11 @@
 import useModalStore from "@store/useModalStore";
 import { flexCenter } from "@styles/flexCenter";
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import styled from "styled-components";
 import ModalContainer from "../atoms/Div/ModalContainer";
 
 interface BackgroundModalProps {
-  children: ReactElement;
+  children: ReactNode;
   width: number;
   p: number;
   onClick?: () => void;

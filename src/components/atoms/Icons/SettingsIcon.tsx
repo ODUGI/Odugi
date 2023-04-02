@@ -1,3 +1,4 @@
 import SettingsIcon from "@mui/icons-material/Settings";
+import { memo } from "react";
 
-export default () => <SettingsIcon fontSize="small" />;
+export default memo(() => <SettingsIcon fontSize="small" />);

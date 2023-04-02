@@ -20,7 +20,9 @@ const ImageUploadButton = ({ setImg }: any) => {
       ) : (
         <UploadWrapper>
           <CameraIcon />
-          <Text text="UPLOAD" color="white" fontWeight="bold" fontSize="xs" />
+          <Text color="white" fontWeight="bold" fontSize="xs">
+            UPLOAD
+          </Text>
           <CommunityAddIcon />
           <input
             type="file"
@@ -33,8 +35,6 @@ const ImageUploadButton = ({ setImg }: any) => {
     </UploadContainer>
   );
 };
-
-export default ImageUploadButton;
 
 const UploadContainer = styled.div`
   display: flex;
@@ -85,3 +85,5 @@ const UploadWrapper = styled.div`
     font-size: 0px;
   }
 `;
+
+export default ImageUploadButton;

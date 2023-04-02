@@ -24,7 +24,7 @@ const UserChannelOnBox = ({ name, src }: UserChannelOnBoxProps) => {
             height={1.5}
             onClick={() => null}
           />
-          <Text text={name || myname} color="white" />
+          <Text color="white">{name || myname}</Text>
         </UserChannelOnBoxContainer>
       </ButtonWrapper>
     </Container>

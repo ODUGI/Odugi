@@ -15,12 +15,14 @@ const UserSettingPasswordModal = () => {
   const [originalPassword, changeOriginalPassword] = useInput();
 
   const { mutate: modifyPassword } = useModifyPassword();
+
   const OnChangePw = () => {
     modifyPassword({
       password,
       originalPassword,
     });
   };
+
   return (
     <BackgroundModal
       width={440}
@@ -31,32 +33,26 @@ const UserSettingPasswordModal = () => {
           <div>
             <TextWrapper>
               <Text
-                text="비밀번호를 바꿔주세요"
                 fontSize="xxl"
                 fontWeight="bold"
                 mb={12}
                 color="white"
                 center
-              />
-              <Text
-                text="현재 비밀번호와 새 비밀번호를 입력하세요."
-                fontSize="base"
-                color="setting-tab"
-                center
-              />
+              >
+                비밀번호를 바꿔주세요
+              </Text>
+              <Text fontSize="base" color="setting-tab" center>
+                현재 비밀번호와 새 비밀번호를 입력하세요.
+              </Text>
             </TextWrapper>
 
             <InputWrapper>
-              <Text
-                text="현재비밀번호"
-                color="setting-tab"
-                fontSize="xs"
-                mb={10}
-                fontWeight="bold"
-              />
+              <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+                현재 비밀번호
+              </Text>
               <DefaultInput
-                value={originalPassword}
-                onChange={changeOriginalPassword}
+                // value={originalPassword}
+                // onChange={changeOriginalPassword}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"
@@ -64,16 +60,12 @@ const UserSettingPasswordModal = () => {
               />
             </InputWrapper>
             <InputWrapper>
-              <Text
-                text="새 비밀번호"
-                color="setting-tab"
-                fontSize="xs"
-                mb={10}
-                fontWeight="bold"
-              />
+              <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+                새 비밀번호
+              </Text>
               <DefaultInput
-                value={password}
-                onChange={changePassword}
+                // value={password}
+                // onChange={changePassword}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"
@@ -81,16 +73,12 @@ const UserSettingPasswordModal = () => {
               />
             </InputWrapper>
             <InputWrapper>
-              <Text
-                text="새 비밀번호 확인"
-                color="setting-tab"
-                fontSize="xs"
-                mb={10}
-                fontWeight="bold"
-              />
+              <Text color="setting-tab" fontSize="xs" mb={10} fontWeight="bold">
+                새 비밀번호 확인
+              </Text>
               <DefaultInput
-                value={passwordConfirm}
-                onChange={changePasswordConfirm}
+                // value={passwordConfirm}
+                // onChange={changePasswordConfirm}
                 backgroundColor="voice-modal"
                 fontSize="base"
                 color="white"

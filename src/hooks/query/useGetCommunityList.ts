@@ -1,33 +1,18 @@
+import { useUserStore } from "@store/useUserStore";
 import communityApi from "@api/community";
 import { useQuery } from "@tanstack/react-query";
-import { useState, useEffect } from "react";
 
 const useGetCommunityList = () => {
-  const { data: res } = useQuery(["communityList"], communityApi.getList);
+  const { userInfo } = useUserStore();
 
-  // useEffect(() => {
-  if (!res?.data?.data) return [];
+  const { data: res } = useQuery(
+    ["communityList", userInfo.id],
+    communityApi.getList
+  );
 
-  // const List = (res as any)?.data.data || [];
-  // if (List[0] === "") {
-  //   return setList([]);
-  // }
+  if (!res) return [];
 
-  // const parsedData: any = [];
-  // if (List.length > 0) {
-  //   for (let i = 0; i < List?.length; i++) {
-  //     if (i !== List.length - 1) {
-  //       parsedData.push(JSON.parse(List[i] + "}"));
-  //     } else {
-  //       parsedData.push(JSON.parse(List[i]));
-  //     }
-  //   }
-  // }
-
-  // setList(parsedData);
-  // setList(res.data.data);
   return res.data.data;
-  // }, [res]);
 };
 
 export default useGetCommunityList;
