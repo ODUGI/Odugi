@@ -33,25 +33,21 @@ const CommonPage = ({ isMainPage }: CommonPageProps) => {
   return (
     <>
       <CommunityList />
-      <Tab2Container>
-        <Suspense fallback={null}>
+
+      <Suspense fallback={null}>
+        <Tab2Container>
           {isMainPage ? <Tab2MainHeader /> : <Tab2CommunityHeader />}
-        </Suspense>
-        <TabDivider />
-        <Suspense fallback={null}>
+          <TabDivider />
           {isMainPage ? <Tab2MainBody /> : <Tab2CommunityBody />}
-        </Suspense>
-        <Tab2Footer />
-      </Tab2Container>
-      <Tab3Container>
-        <Suspense fallback={null}>
+          <Tab2Footer />
+        </Tab2Container>
+
+        <Tab3Container>
           {isMainPage ? <Tab3MainHeader /> : <Tab3CommunityHeader />}
-        </Suspense>
-        <TabDivider />
-        <Suspense fallback={null}>
+          <TabDivider />
           {isMainPage ? <Tab3MainBody /> : <Tab3CommunityBody />}
-        </Suspense>
-      </Tab3Container>
+        </Tab3Container>
+      </Suspense>
     </>
   );
 };
