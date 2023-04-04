@@ -1,5 +1,5 @@
+import BigSearchInputBox from "@components/molecules/Div/BigSearchInputBox";
 import FriendDefaultBox from "@components/molecules/Div/FriendDefaultBox";
-import SearchInput from "@components/molecules/Input/SearchInput";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 import { useRef } from "react";
 import EmptyContainer from "../molecules/Div/EmptyContainer";
@@ -20,7 +20,7 @@ const MainOnline = () => {
     <>
       {friendList.length > 0 ? (
         <>
-          <SearchInput size="m" ref={searchRef} />
+          <BigSearchInputBox ref={searchRef} />
           <LabelText label={"온라인"} num={friendList.length} />
           <ScrollableBox>
             {friendList.map(

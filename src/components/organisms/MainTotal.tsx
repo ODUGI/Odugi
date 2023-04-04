@@ -1,5 +1,5 @@
+import BigSearchInputBox from "@components/molecules/Div/BigSearchInputBox";
 import FriendDefaultBox from "@components/molecules/Div/FriendDefaultBox";
-import SearchInput from "@components/molecules/Input/SearchInput";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 import useMainStore from "@store/useMainStore";
 import { useRef } from "react";
@@ -26,7 +26,7 @@ const MainTotal = () => {
     <>
       {friendList.length > 0 ? (
         <>
-          <SearchInput size="m" ref={searchRef} />
+          <BigSearchInputBox ref={searchRef} />
           <LabelText label={"모든 친구"} num={friendList.length} />
           <ScrollableBox>
             {friendList.map(

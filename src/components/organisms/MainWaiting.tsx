@@ -4,7 +4,7 @@ import FriendWaitingBox from "../molecules/Div/FriendWaitingBox";
 import ScrollableBox from "../molecules/Div/scrollableBox";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 import { useRef } from "react";
-import SearchInput from "@components/molecules/Input/SearchInput";
+import BigSearchInputBox from "@components/molecules/Div/BigSearchInputBox";
 
 interface FriendState {
   receiver: string;
@@ -28,7 +28,7 @@ const MainWaiting = () => {
     <>
       {num > 0 ? (
         <>
-          <SearchInput size="m" ref={searchRef} />
+          <BigSearchInputBox ref={searchRef} />
           <LabelText label={"대기 중"} num={num} />
           <ScrollableBox>
             {friendList.map(
