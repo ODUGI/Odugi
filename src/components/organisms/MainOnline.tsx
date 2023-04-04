@@ -1,8 +1,7 @@
 import FriendDefaultBox from "@components/molecules/Div/FriendDefaultBox";
+import SearchInput from "@components/molecules/Input/SearchInput";
 import useGetFriendList from "@hooks/query/useGetFriendList";
-import { useUserStore } from "@store/useUserStore";
 import { useRef } from "react";
-import BigSearchInputBox from "../molecules/Div/BigSearchInputBox";
 import EmptyContainer from "../molecules/Div/EmptyContainer";
 import ScrollableBox from "../molecules/Div/scrollableBox";
 import LabelText from "../molecules/Text/LabelText";
@@ -10,10 +9,7 @@ import LabelText from "../molecules/Text/LabelText";
 const MainOnline = () => {
   const searchRef = useRef<HTMLInputElement>(null);
 
-  const {
-    userInfo: { email },
-  } = useUserStore();
-  const { data, isSuccess } = useGetFriendList(email);
+  const { data, isSuccess } = useGetFriendList();
 
   if (!isSuccess) return null;
   const friendList: FriendType[] = data.filter(
@@ -24,7 +20,7 @@ const MainOnline = () => {
     <>
       {friendList.length > 0 ? (
         <>
-          <BigSearchInputBox ref={searchRef} />
+          <SearchInput size="m" ref={searchRef} />
           <LabelText label={"온라인"} num={friendList.length} />
           <ScrollableBox>
             {friendList.map(

@@ -1,7 +1,6 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import useGetFriendList from "@hooks/query/useGetFriendList";
-import { useUserStore } from "@store/useUserStore";
 import Text from "../Text/Text";
 import NobodyActive from "./NobodyActive";
 
@@ -10,10 +9,7 @@ interface SideBarProps {
 }
 
 const SideBar = ({ children }: SideBarProps) => {
-  const {
-    userInfo: { email },
-  } = useUserStore();
-  const { data } = useGetFriendList(email);
+  const { data } = useGetFriendList();
 
   return (
     <SideBarContainer>

@@ -5,11 +5,8 @@ interface FriendParams {
 }
 
 const friendApi = {
-  getAll: async ({ queryKey }: any) => {
-    const { email } = queryKey[1];
-    return await clientApi.get(`/user/member/showfriend`, {
-      params: { email },
-    });
+  getAll: async () => {
+    return await clientApi.get(`/user/member/showfriend`);
   },
 
   request: async ({ email }: FriendParams) => {

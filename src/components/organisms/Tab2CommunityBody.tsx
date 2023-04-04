@@ -1,14 +1,12 @@
 import CommunityLabel from "../molecules/Div/CommunityLabel";
 import CommunityRoomButton from "../molecules/Div/CommunityRoomButton";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useGetChannelList from "@hooks/query/useGetChannelList";
 import UserChannelOnBox from "@components/molecules/Div/UserChannelOnBox";
-import { useUserStore } from "@store/useUserStore";
 import UserFriendChannelOnBox from "@components/molecules/Div/UserFriendChannelOnBox";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 import AddIcon from "@components/atoms/Icons/AddIcon";
 import useModalStore from "@store/useModalStore";
-import useGetCommunityList from "@hooks/query/useGetCommunityList";
 import useGetCategoryList from "@hooks/query/useGetCategoryList";
 
 interface ChannelType {
@@ -24,7 +22,6 @@ interface RoomType {
 }
 
 const Tab2CommunityBody = () => {
-  const navigate = useNavigate();
   const { communityId, channelId } = useParams();
   const channelList = useGetChannelList({
     communityId,
@@ -32,8 +29,7 @@ const Tab2CommunityBody = () => {
   const categoryList = useGetCategoryList({
     communityId,
   });
-  const { userInfo } = useUserStore();
-  const { data: friendList } = useGetFriendList(userInfo.email);
+  const { data: friendList } = useGetFriendList();
 
   const { setModalType, setShowModal } = useModalStore();
 
@@ -55,8 +51,6 @@ const Tab2CommunityBody = () => {
     setModalType("deleteCategory");
     setShowModal(true);
   };
-
-  console.log(categoryList);
 
   if (!communityId)
     return (

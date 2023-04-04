@@ -1,11 +1,10 @@
 import FriendDefaultBox from "@components/molecules/Div/FriendDefaultBox";
+import SearchInput from "@components/molecules/Input/SearchInput";
 import useGetFriendList from "@hooks/query/useGetFriendList";
 import useMainStore from "@store/useMainStore";
-import { useUserStore } from "@store/useUserStore";
 import { useRef } from "react";
 import styled from "styled-components";
 import DefaultButton from "../atoms/Button/DefaultButton";
-import BigSearchInputBox from "../molecules/Div/BigSearchInputBox";
 import EmptyContainer from "../molecules/Div/EmptyContainer";
 import ScrollableBox from "../molecules/Div/scrollableBox";
 import LabelText from "../molecules/Text/LabelText";
@@ -16,10 +15,7 @@ const MainTotal = () => {
   const { setMainStatus } = useMainStore(({ setMainStatus }) => ({
     setMainStatus,
   }));
-  const {
-    userInfo: { email },
-  } = useUserStore();
-  const { data, isSuccess } = useGetFriendList(email);
+  const { data, isSuccess } = useGetFriendList();
 
   if (!isSuccess) return null;
   const friendList: FriendType[] = data.filter(
@@ -30,7 +26,7 @@ const MainTotal = () => {
     <>
       {friendList.length > 0 ? (
         <>
-          <BigSearchInputBox ref={searchRef} />
+          <SearchInput size="m" ref={searchRef} />
           <LabelText label={"모든 친구"} num={friendList.length} />
           <ScrollableBox>
             {friendList.map(

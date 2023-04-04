@@ -33,6 +33,9 @@ const SearchInputContainer = styled.label<{ size: SizeType }>`
   padding: 0 0.125rem;
   background-color: ${({ theme }) => theme.backgroundColor.tab1};
 
+  margin-top: ${({ size }) => (size === "m" ? 16 : 0)}px;
+  margin-bottom: ${({ size }) => (size === "m" ? 8 : 0)}px;
+
   display: flex;
   flex-direction: row;
   align-items: center;

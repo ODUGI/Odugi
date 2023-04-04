@@ -1,6 +1,5 @@
 import useInput from "@hooks/common/useInput";
 import useGetFriendList from "@hooks/query/useGetFriendList";
-import { useUserStore } from "@store/useUserStore";
 import styled from "styled-components";
 import ModalContainer from "../atoms/Div/ModalContainer";
 import Text from "../atoms/Text/Text";
@@ -21,10 +20,7 @@ const CreateDirectMessageDropdown = ({
   left = 0,
   right = 0,
 }: CreateDirectMessageDropdownProps) => {
-  const {
-    userInfo: { email },
-  } = useUserStore();
-  const { data: friendList, isSuccess } = useGetFriendList(email);
+  const { data: friendList, isSuccess } = useGetFriendList();
 
   const [search, changeSearch] = useInput();
 

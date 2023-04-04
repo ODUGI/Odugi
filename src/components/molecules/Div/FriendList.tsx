@@ -1,16 +1,11 @@
 import useGetFriendList from "@hooks/query/useGetFriendList";
-import { useUserStore } from "@store/useUserStore";
 import styled from "styled-components";
 import DirectButton from "../Button/DirectButton";
 import DirectMessage from "./DirectMessage";
 import ScrollableBox from "./scrollableBox";
 
 const FriendList = () => {
-  const {
-    userInfo: { email },
-  } = useUserStore();
-
-  const { data, isSuccess } = useGetFriendList(email);
+  const { data, isSuccess } = useGetFriendList();
 
   if (!isSuccess) return null;
 

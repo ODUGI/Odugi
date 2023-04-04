@@ -1,6 +1,4 @@
 import Text from "@components/atoms/Text/Text";
-// import useInput from "@hooks/common/useInput";
-import { useUserStore } from "@store/useUserStore";
 import { flexCenter } from "@styles/flexCenter";
 import styled from "styled-components";
 import SearchInput from "../Input/SearchInput";
@@ -11,10 +9,7 @@ import { useRef } from "react";
 
 const InviteFriendModalBody = () => {
   const searchRef = useRef<HTMLInputElement>(null);
-  const {
-    userInfo: { email },
-  } = useUserStore();
-  const { data: friendList, isSuccess } = useGetFriendList(email);
+  const { data: friendList, isSuccess } = useGetFriendList();
 
   if (!isSuccess) return null;
 
