@@ -9,6 +9,7 @@ interface ProtectAuthProps {
 
 const ProtectPage = ({ children }: ProtectAuthProps) => {
   const isBaseUrl = useMatch("/");
+  const isMain = useMatch("/@me");
   const { communityId, channelId } = useParams();
 
   const cookie = cookies.get(COOKIE_KEY);
@@ -16,7 +17,7 @@ const ProtectPage = ({ children }: ProtectAuthProps) => {
 
   const navigateUrl = () => {
     if (cookie && accessToken) {
-      if (isBaseUrl || (!communityId && channelId)) {
+      if (isBaseUrl || (isMain && !communityId && channelId)) {
         return <Navigate replace to="/@me" />;
       }
       return children;
