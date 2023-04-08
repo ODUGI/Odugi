@@ -71,8 +71,8 @@ const communityApi = {
     return await clientApi.get(`/community/channels/${communityId}`);
   },
 
-  // 커뮤니티 멤버 목록 가져오기
   sendInvite: async ({ communityId, userId, shortUrl }: any) => {
+    console.log(communityId, userId, shortUrl);
     return await clientApi.post(`/invite/member`, {
       communityId,
       userId,

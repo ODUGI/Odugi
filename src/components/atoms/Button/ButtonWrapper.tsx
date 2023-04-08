@@ -19,7 +19,7 @@ const ButtonWrapper = styled.div<ButtonWrapperProps>`
   height: ${({ height }) => (height === "100%" ? "100%" : `${height}px`)};
   color: ${({ theme, color, active }) => theme.color[active ? "white" : color]};
   background-color: ${({ theme, active }) =>
-    theme.backgroundColor[active ? "active" : "trans"]};
+    theme.backgroundColor[active ? "active" : "transparent"]};
   opacity: ${({ blur }) => (blur ? 30 : 100)}%;
   border-radius: 0.25rem;
   padding: 0 ${({ ph }) => ph}px;

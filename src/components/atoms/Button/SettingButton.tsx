@@ -25,7 +25,7 @@ const SettingButton = ({
   };
 
   const getBackgroundColor = (status: SettingBarType) => {
-    return status === settingBarStatus ? "active" : "trans";
+    return status === settingBarStatus ? "active" : "transparent";
   };
 
   const changeUserStatus = (mainStatus: SettingBarType) => {

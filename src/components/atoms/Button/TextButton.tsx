@@ -13,7 +13,7 @@ interface TextButtonProps {
 const TextButton = ({
   text,
   color = "white",
-  backgroundColor = "trans",
+  backgroundColor = "transparent",
   hoverColor = color,
   hoverBackgroundColor = backgroundColor,
   onClick,

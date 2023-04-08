@@ -49,7 +49,7 @@ const InviteInput = () => {
           placeholder="사용자 이메일 입력"
           type="email"
           fontSize="base"
-          backgroundColor="trans"
+          backgroundColor="transparent"
         />
         <DefaultButton
           text="친구 요청 보내기"

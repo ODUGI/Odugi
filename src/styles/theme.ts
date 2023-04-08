@@ -1,5 +1,84 @@
 import { DefaultTheme } from "styled-components";
 
+export const fontSizeType = [
+  "xxs",
+  "xs",
+  "sm",
+  "base",
+  "lg",
+  "xl",
+  "xxl",
+  "xxxl",
+];
+
+export const backgroundColorType = [
+  "transparent",
+  "white",
+  "primary",
+  "blocked",
+  "active",
+  "divider",
+  "setting",
+  "msg-input",
+  "hover",
+  "modal",
+  "tab3",
+  "tab2",
+  "user-tab",
+  "voice-nobody",
+  "voice-icon",
+  "tab1",
+  "voice-modal",
+  "msg-hover",
+  "add-friend",
+  "random-green",
+  "voice-hangup",
+  "alert",
+  "community-input",
+  "community-footer",
+  "community-subtitle",
+  "black",
+];
+
+export const colorType = [
+  "inherit",
+  "white",
+  "primary",
+  "invite",
+  "msg",
+  "icon",
+  "msg-placeholder",
+  "auth-label",
+  "auth-desc",
+  "tab2-placeholder",
+  "msg-timestamp",
+  "tab3-header",
+  "msg-hover",
+  "setting-tab",
+  "inactive",
+  "hangup-log",
+  "setting-header",
+  "tab1-plus",
+  "voice-modal",
+  "red",
+  "blue",
+  "invite-success",
+  "invite-danger",
+  "black",
+  "community-subtitle",
+];
+
+export const borderColorType = [
+  "transparent",
+  "divider",
+  "default",
+  "focus",
+  "success",
+  "danger",
+];
+
+export const statusColorType = ["on", "off", "empty", "mobile", "disturb"];
+
 export type FontSizeType =
   | "xxs"
   | "xs"
@@ -11,7 +90,7 @@ export type FontSizeType =
   | "xxxl";
 
 export type BackgroundColorType =
-  | "trans"
+  | "transparent"
   | "white"
   | "primary"
   | "blocked"
@@ -66,7 +145,7 @@ export type ColorType =
   | "community-subtitle";
 
 export type BorderColorType =
-  | "trans"
+  | "transparent"
   | "divider"
   | "default"
   | "focus"
@@ -87,7 +166,7 @@ const theme: DefaultTheme = {
     xxxl: "2.25rem", // 36px
   },
   backgroundColor: {
-    trans: "transparent",
+    transparent: "transparent",
     white: "#FFFFFF",
     primary: "#5865F2",
     blocked: "#8E9297",
@@ -142,7 +221,7 @@ const theme: DefaultTheme = {
     black: "#000",
   },
   borderColor: {
-    trans: "transparent",
+    transparent: "transparent",
     divider: "#4F545C7A",
     default: "#16181a",
     success: "#3ba55c",

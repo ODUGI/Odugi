@@ -50,7 +50,7 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
           height={32}
           fontSize="sm"
           color="white"
-          backgroundColor="trans"
+          backgroundColor="transparent"
           hoverBackgroundColor="add-friend"
           borderColor="success"
         />

@@ -38,7 +38,7 @@ const Tab2HeaderContainer = styled.div<{ showModal: boolean }>`
   top: 0;
   padding: 0.75rem 1rem;
   background-color: ${({ theme, showModal }) =>
-    theme.backgroundColor[showModal ? "hover" : "trans"]};
+    theme.backgroundColor[showModal ? "hover" : "transparent"]};
 
   display: flex;
   flex-direction: row;

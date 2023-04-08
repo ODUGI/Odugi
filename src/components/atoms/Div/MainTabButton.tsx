@@ -28,14 +28,14 @@ const MainTabButton = ({ status }: MainTabButtonProps) => {
 
   const getBackgroundColor = (status: MainStatusType) => {
     if (status === "친구 추가하기") {
-      return status === mainStatus ? "trans" : "add-friend";
+      return status === mainStatus ? "transparent" : "add-friend";
     }
-    return status === mainStatus ? "active" : "trans";
+    return status === mainStatus ? "active" : "transparent";
   };
 
   const getHoverBackgroundColor = (status: MainStatusType) => {
     if (status === "친구 추가하기") {
-      return status === mainStatus ? "trans" : "add-friend";
+      return status === mainStatus ? "transparent" : "add-friend";
     }
     return "active";
   };
