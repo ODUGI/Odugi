@@ -33,7 +33,7 @@ const UserOnOffButtonContainer = styled.div`
   height: 32px;
   border-radius: 4px;
   color: ${({ theme }) => theme.color.icon};
-  background-color: ${({ theme }) => theme.backgroundColor.trans};
+  background-color: ${({ theme }) => theme.backgroundColor.transparent};
   cursor: pointer;
   &:hover {
     color: ${({ theme }) => theme.color.white};

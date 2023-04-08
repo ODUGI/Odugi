@@ -37,7 +37,7 @@ const FriendList = () => {
 
 const FriendListContainer = styled.div`
   padding: 0 0.25rem;
-  background-color: ${({ theme }) => theme.backgroundColor.trans};
+  background-color: ${({ theme }) => theme.backgroundColor.transparent};
 `;
 
 const FriendListWrapper = styled.div`
