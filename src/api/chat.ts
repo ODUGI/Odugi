@@ -16,6 +16,20 @@ const chatApi = {
       channelId: "220",
     });
   },
+
+  //초대권 눌렀을 때
+  clickInvite: async ({ sender, channelId, LinkMessage }: any) => {
+    return await clientApi.post("/chat/invite", {
+      sender,
+      channelId,
+      LinkMessage,
+    });
+  },
+
+  //초대권 수락하기
+  acceptInvite: async ({ queryKey }: any) => {
+    return await clientApi.get(queryKey[1].url);
+  },
 };
 
 export default chatApi;

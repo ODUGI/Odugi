@@ -133,5 +133,12 @@ const communityApi = {
       role,
     });
   },
+  //초대권 생성
+  createInvitation: async ({ formData }: any) => {
+    // console.log(typeof communityId, typeof `${invitedId}`);
+
+    return await clientApi.post("community/invite", formData);
+  },
+  //
 };
 export default communityApi;
