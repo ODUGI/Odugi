@@ -2,7 +2,7 @@ import Text from "../atoms/Text/Text";
 import AccountCard from "./AccountCard";
 import SettingWrapper from "./SettingWrapper";
 import { Divider } from "@mui/material";
-import FieldButton from "../atoms/Button/fieldButton";
+import FieldButton from "../atoms/Button/FieldButton";
 import styled from "styled-components";
 import useDeleteUser from "@hooks/query/useDeleteUser";
 

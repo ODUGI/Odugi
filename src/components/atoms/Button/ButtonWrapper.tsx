@@ -1,11 +1,12 @@
 import { MouseEventHandler } from "react";
 import styled from "styled-components";
-import { BackgroundColorType } from "@styles/theme";
+import { BackgroundColorType, ColorType } from "@styles/theme";
 
 interface ButtonWrapperProps {
   onClick: MouseEventHandler<HTMLDivElement>;
-  width?: number | string;
-  height?: number | string;
+  width?: number;
+  height?: number;
+  color?: ColorType;
   ph?: number;
   active?: boolean;
   blur?: boolean;
@@ -15,15 +16,18 @@ interface ButtonWrapperProps {
 const ButtonWrapper = styled.div<ButtonWrapperProps>`
   display: flex;
   align-items: center;
-  width: ${({ width }) => (width === "100%" ? "100%" : `${width}px`)};
-  height: ${({ height }) => (height === "100%" ? "100%" : `${height}px`)};
+
+  width: ${({ width }) => (width ? `${width}px` : "100%")};
+  height: ${({ height }) => (height ? `${height}px` : "100%")};
   color: ${({ theme, color, active }) => theme.color[active ? "white" : color]};
   background-color: ${({ theme, active }) =>
     theme.backgroundColor[active ? "active" : "transparent"]};
   opacity: ${({ blur }) => (blur ? 30 : 100)}%;
   border-radius: 0.25rem;
   padding: 0 ${({ ph }) => ph}px;
+
   cursor: pointer;
+
   &:hover {
     opacity: 100%;
     color: ${({ theme }) => theme.color.white};
@@ -34,9 +38,8 @@ const ButtonWrapper = styled.div<ButtonWrapperProps>`
 
 ButtonWrapper.defaultProps = {
   active: false,
-  width: "100%",
-  height: "100%",
   ph: 8,
+  color: "black",
   blur: false,
   hoverBackgroundColor: "hover",
 };

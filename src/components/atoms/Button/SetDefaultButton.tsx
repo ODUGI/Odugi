@@ -17,7 +17,6 @@ const SetDefaultButton = ({
   fontWeight = "normal",
   color = "white",
   backgroundColor = "primary",
-  disabled = false,
 }: SettingButtonProps) => {
   return (
     <SettingButtonContainer

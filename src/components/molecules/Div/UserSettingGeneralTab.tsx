@@ -1,4 +1,4 @@
-import FieldButton from "@components/atoms/Button/fieldButton";
+import FieldButton from "@components/atoms/Button/FieldButton";
 import Text from "@components/atoms/Text/Text";
 import styled from "styled-components";
 import { useUserStore } from "@store/useUserStore";

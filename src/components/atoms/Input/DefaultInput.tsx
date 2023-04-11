@@ -6,8 +6,8 @@ interface DefaultInputProps {
   type: string;
   initValue?: string;
   maxLength?: number;
-  width?: number | string;
-  height?: number | string;
+  width?: number;
+  height?: number;
   placeholder?: string;
   color?: ColorType;
   placeholderColor?: ColorType;
@@ -21,8 +21,8 @@ const DefaultInput = forwardRef<HTMLInputElement, DefaultInputProps>(
       type = "text",
       initValue = "",
       maxLength = 524288,
-      width = "100%",
-      height = "100%",
+      width,
+      height,
       placeholder = "",
       placeholderColor = "tab2-placeholder",
       fontSize = "sm",
@@ -63,8 +63,8 @@ const DefaultInputContainer = styled.input<
     | "backgroundColor"
   >
 >`
-  width: ${({ width }) => (width === "100%" ? "100%" : `${width}px`)};
-  height: ${({ height }) => (height === "100%" ? "100%" : `${height}px`)};
+  width: ${({ width }) => (width ? `${width}px` : "100%")};
+  height: ${({ height }) => (height ? `${height}px` : "100%")};
   padding: 0.625rem;
   border: none;
   border-radius: 4px;

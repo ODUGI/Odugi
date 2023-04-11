@@ -1,6 +1,6 @@
 import Text from "../atoms/Text/Text";
 import SettingWrapper from "./SettingWrapper";
-import FieldButton from "../atoms/Button/fieldButton";
+import FieldButton from "../atoms/Button/FieldButton";
 import styled from "styled-components";
 import ImageUploadButton from "../molecules/Button/ImageUploadButton";
 import { useCallback, useRef, useState } from "react";
@@ -70,7 +70,7 @@ const CommunitySettingDefault = () => {
           </ButtonWrapper>
         </LeftSide>
       </Summary>
-      <DefaultInput ref={nameRef} height="48" type="text" />
+      <DefaultInput ref={nameRef} height={48} type="text" />
       <ButtonWrapper>
         <FieldButton text="서버이름 변경하기" onClick={changeCommunityName} />
       </ButtonWrapper>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import FieldButton from "../../atoms/Button/fieldButton";
+import FieldButton from "../../atoms/Button/FieldButton";
 import Text from "../../atoms/Text/Text";
 import LinkText from "../../atoms/Text/LinkText";
 import useSettingModalStore from "@store/useSettingModalStore";

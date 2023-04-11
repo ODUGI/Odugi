@@ -6,8 +6,8 @@ interface DefaultButtonProps {
   isInviteButton?: boolean;
   text: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  width?: number | null;
-  height?: number | null;
+  width?: number;
+  height?: number;
   fontSize?: FontSizeType;
   fontWeight?: "normal" | "bold";
   color?: ColorType;
@@ -25,8 +25,8 @@ const DefaultButton = memo(
     isInviteButton = false,
     text,
     onClick,
-    width = null,
-    height = null,
+    width,
+    height,
     fontSize = "base",
     fontWeight = "normal",
     color = "white",
@@ -78,8 +78,8 @@ const DefaultButtonContainer = styled.button<
 >`
   border: none;
   border-radius: 4px;
-  width: ${({ width }) => (width === null ? "100%" : `${width}px`)};
-  height: ${({ height }) => (height === null ? "100%" : `${height}px`)};
+  width: ${({ width }) => (width ? `${width}px` : "100%")};
+  height: ${({ height }) => (height ? `${height}px` : "100%")};
   font-size: ${({ theme, fontSize }) => theme.fontSize[fontSize]};
   color: ${({ theme, color }) => theme.color[color]};
   background-color: ${({ theme, isInviteButton, backgroundColor }) =>

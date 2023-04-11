@@ -46,7 +46,9 @@ export const ButtonContainer = styled.button<
     theme.backgroundColor[backgroundColor]};
   font-weight: ${({ fontWeight }) => fontWeight};
   border-radius: 4px;
+
   cursor: pointer;
+
   &:hover {
     opacity: 1;
     color: ${({ theme }) => theme.color["white"]};
