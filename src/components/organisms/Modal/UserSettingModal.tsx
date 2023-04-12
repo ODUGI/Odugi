@@ -20,7 +20,6 @@ const userComponent = {
 };
 
 const UserSettingModal = () => {
-  console.log("되시나요?");
   const { setShowModal } = useModalStore();
   const { settingBarStatus, setSettingBarStatus } = useSettingModalStore();
 

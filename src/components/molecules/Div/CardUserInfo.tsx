@@ -21,7 +21,7 @@ const CardUserInfo = () => {
         </Text>
       </NameWrapper>
       <ButtonWrapper>
-        <SettingButton type="user" text="사용자 프로필 편집" status="프로필" />
+        <SettingButton text="사용자 프로필 편집" status="프로필" />
       </ButtonWrapper>
     </InfoContainer>
   );

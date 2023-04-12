@@ -1,22 +1,22 @@
 import styled from "styled-components";
 import { BackgroundColorType, ColorType } from "@styles/theme";
 import useSettingModalStore from "@store/useSettingModalStore";
+import { UseMutateFunction } from "@tanstack/react-query";
 
 interface SettingButtonProps {
+  onClick?: UseMutateFunction | null;
   text: string;
   fontWeight?: "normal" | "bold";
   color?: ColorType;
-  backgroundColor?: BackgroundColorType;
   disabled?: boolean;
-  status: SettingBarType;
-  type: "user" | "community";
+  status?: SettingBarType;
 }
 
 const SettingButton = ({
+  onClick = null,
   text,
   fontWeight = "normal",
-  status,
-  type,
+  status = null,
 }: SettingButtonProps) => {
   const { settingBarStatus, setSettingBarStatus } = useSettingModalStore();
 
@@ -29,16 +29,17 @@ const SettingButton = ({
   };
 
   const changeUserStatus = (mainStatus: SettingBarType) => {
-    if (type === "community") {
-      setSettingBarStatus(mainStatus);
-    } else {
-      setSettingBarStatus(mainStatus);
-    }
+    setSettingBarStatus(mainStatus);
+  };
+
+  const handleClickButton = () => {
+    if (onClick) return onClick();
+    return changeUserStatus(status);
   };
 
   return (
     <SettingButtonContainer
-      onClick={() => changeUserStatus(status)}
+      onClick={handleClickButton}
       fontWeight={fontWeight}
       color={getColor(status)}
       backgroundColor={getBackgroundColor(status)}
@@ -48,25 +49,31 @@ const SettingButton = ({
   );
 };
 
-export const SettingButtonContainer = styled.button<
-  Pick<SettingButtonProps, "color" | "backgroundColor" | "fontWeight">
->`
-  margin-bottom: 0.25rem;
-  text-align: left;
+interface SettingButtonContainerProps {
+  color: ColorType;
+  backgroundColor: BackgroundColorType;
+  fontWeight: "normal" | "bold";
+}
+
+const SettingButtonContainer = styled.button<SettingButtonContainerProps>`
   border: none;
   width: 100%;
   height: 100%;
   font-size: 1rem;
+  font-weight: ${({ fontWeight }) => fontWeight};
+  text-align: left;
+
   padding: 0.375rem;
-  box-sizing: border-box;
+  margin-bottom: 0.25rem;
+
   color: ${({ theme, color }) => theme.color[color]};
   background-color: ${({ theme, backgroundColor }) =>
     theme.backgroundColor[backgroundColor]};
-  font-weight: ${({ fontWeight }) => fontWeight};
   border-radius: 0.25rem;
+
   cursor: pointer;
+
   &:hover {
-    opacity: 1;
     color: ${({ theme }) => theme.color["white"]};
     background-color: ${({ theme }) => theme.backgroundColor["setting"]};
   }

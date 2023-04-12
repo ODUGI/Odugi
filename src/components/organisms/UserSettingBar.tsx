@@ -2,26 +2,10 @@ import styled from "styled-components";
 import Text from "../atoms/Text/Text";
 import SettingButton from "../atoms/Button/SettingButton";
 import { Divider } from "@mui/material";
-import SetDefaultButton from "../atoms/Button/SetDefaultButton";
-import { useNavigate } from "react-router-dom";
-import { useUserStore } from "@store/useUserStore";
-import { COOKIE_KEY } from "@configs/cookie";
-import { cookies } from "src/App";
 import useLogout from "@hooks/query/useLogout";
 
 const MyAccountSettingBar = () => {
-  const navigate = useNavigate();
-  const { resetUser } = useUserStore();
   const { mutate: logoutUser } = useLogout();
-
-  const logout = async () => {
-    cookies.remove(COOKIE_KEY);
-    localStorage.clear();
-    resetUser();
-
-    logoutUser();
-    navigate("/login");
-  };
 
   return (
     <BarContainer>
@@ -30,33 +14,20 @@ const MyAccountSettingBar = () => {
           사용자 설정
         </Text>
       </Header>
+
       <ul>
         <li>
-          <SettingButton
-            type="user"
-            text="내 계정"
-            status="내 계정"
-            backgroundColor="voice-icon"
-          />
+          <SettingButton text="내 계정" status="내 계정" />
         </li>
         <li>
-          <SettingButton
-            type="user"
-            text="프로필"
-            status="프로필"
-            backgroundColor="voice-icon"
-          />
+          <SettingButton text="프로필" status="프로필" />
         </li>
+
         <Divider
           sx={{ borderColor: "#96989D93", opacity: 0.5, mr: 1, mt: 1, mb: 1 }}
         />
-        <li>
-          <SetDefaultButton
-            text="로그아웃"
-            backgroundColor="voice-icon"
-            onClick={logout}
-          />
-        </li>
+
+        <SettingButton text="로그아웃" onClick={logoutUser} />
       </ul>
     </BarContainer>
   );
@@ -69,12 +40,14 @@ const BarContainer = styled.div`
   height: 67.5rem;
   padding: 60px 6px 60px 20px;
   background-color: ${({ theme }) => theme.backgroundColor["voice-icon"]};
+
   ul {
     padding: 0;
     margin: 0;
     list-style: none;
     width: 100%;
   }
+
   li {
     width: 100%;
     width: 100%;

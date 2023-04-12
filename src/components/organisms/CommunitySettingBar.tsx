@@ -13,26 +13,23 @@ const CommunitySettingBar = () => {
       <ul>
         <li>
           <SettingButton
-            type="community"
             text="일반"
             status="일반"
-            backgroundColor="voice-icon"
+            // backgroundColor="voice-icon"
           />
         </li>
         <li>
           <SettingButton
-            type="community"
             text="멤버"
             status="멤버"
-            backgroundColor="voice-icon"
+            // backgroundColor="voice-icon"
           />
         </li>
         <li>
           <SettingButton
-            type="community"
             text="초대"
             status="초대"
-            backgroundColor="voice-icon"
+            // backgroundColor="voice-icon"
           />
         </li>
       </ul>
