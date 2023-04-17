@@ -32,8 +32,9 @@ const Router = () => {
         "/@me/:channelId",
         "/:communityId",
         "/:communityId/:channelId",
-      ].map((path) => (
+      ].map((path, idx) => (
         <Route
+          key={idx}
           path={path}
           element={
             <ProtectPage>
