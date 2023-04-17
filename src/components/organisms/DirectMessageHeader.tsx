@@ -1,7 +1,7 @@
 import useInput from "@hooks/common/useInput";
 import styled from "styled-components";
 import Status from "../atoms/Div/Status";
-import Tip from "../atoms/Div/Tooltip";
+import ToolTip from "../atoms/Div/ToolTip";
 import AtIcon from "../atoms/Icons/AtIcon";
 import CallWifiIcon from "../atoms/Icons/CallWifiIcon";
 import VideocamIcon from "../atoms/Icons/VideocamIcon";
@@ -27,16 +27,16 @@ const DirectMessageHeader = ({ name, status }: DirectMessageHeaderProps) => {
       </LeftContainer>
 
       <RightContainer>
-        <Tip title="음성 통화 시작하기" place="bottom">
+        <ToolTip title="음성 통화 시작하기" place="bottom">
           <ButtonWrapper>
             <CallWifiIcon />
           </ButtonWrapper>
-        </Tip>
-        <Tip title="영상 통화 시작하기" place="bottom">
+        </ToolTip>
+        <ToolTip title="영상 통화 시작하기" place="bottom">
           <ButtonWrapper>
             <VideocamIcon />
           </ButtonWrapper>
-        </Tip>
+        </ToolTip>
         <ButtonWrapper>
           <SearchInput
             size="s"

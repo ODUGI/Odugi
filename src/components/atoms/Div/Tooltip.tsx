@@ -1,9 +1,8 @@
 // import { Children } from "react";
-import { Tooltip } from "@mui/material";
-import { ReactElement } from "react";
-import styled from "styled-components";
+import { Tooltip as ToolTipComponent } from "@mui/material";
+import { ReactElement, memo } from "react";
 
-interface TipProps {
+interface ToolTipProps {
   children: ReactElement;
   title: String;
   place?:
@@ -22,11 +21,9 @@ interface TipProps {
     | undefined;
 }
 
-// 화살표 추가, 위치 추가
-
-const Tip = ({ children, title, place }: TipProps) => {
+const ToolTip = memo(({ children, title, place }: ToolTipProps) => {
   return (
-    <StyledTip
+    <ToolTipComponent
       componentsProps={{
         tooltip: {
           sx: {
@@ -44,11 +41,8 @@ const Tip = ({ children, title, place }: TipProps) => {
       placement={place}
     >
       {children}
-    </StyledTip>
+    </ToolTipComponent>
   );
-};
+});
 
-// 이거 왜 안되지;;
-export const StyledTip = styled(Tooltip)``;
-
-export default Tip;
+export default ToolTip;

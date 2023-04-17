@@ -1,4 +1,4 @@
-import Tip from "@components/atoms/Div/Tooltip";
+import ToolTip from "@components/atoms/Div/ToolTip";
 import CancelIcon from "@components/atoms/Icons/CancelIcon";
 import ChatIcon from "@components/atoms/Icons/ChatIcon";
 import MoreIcon from "@components/atoms/Icons/MoreIcon";
@@ -60,27 +60,36 @@ const FriendDefaultBox = ({
   };
 
   let Buttons: ReactElement;
+
   if (status === "WAIT") {
     Buttons = (
-      <Tip title="취소" place="top">
-        <RoundButton Icon={<CancelIcon />} onClick={() => null} />
-      </Tip>
+      <ToolTip title="취소" place="top">
+        <RoundButton onClick={() => null}>
+          <CancelIcon />
+        </RoundButton>
+      </ToolTip>
     );
   } else {
     Buttons = (
       <>
-        <Tip title="메시지 보내기" place="top">
-          <RoundButton Icon={<ChatIcon />} onClick={enterDM} />
-        </Tip>
+        <ToolTip title="메시지 보내기" place="top">
+          <RoundButton onClick={enterDM}>
+            <ChatIcon />
+          </RoundButton>
+        </ToolTip>
+
         <EtcContainer ref={dropdownRef}>
-          <Tip title="기타" place="top">
-            <RoundButton Icon={<MoreIcon />} onClick={clickChatIcon} />
-          </Tip>
+          <ToolTip title="기타" place="top">
+            <RoundButton onClick={clickChatIcon}>
+              <MoreIcon />
+            </RoundButton>
+          </ToolTip>
           {showEtcModal && <FriendEtcDropdown />}
         </EtcContainer>
       </>
     );
   }
+
   return (
     <FriendBox
       src={src}

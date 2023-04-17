@@ -1,4 +1,4 @@
-import Tip from "@components/atoms/Div/Tooltip";
+import ToolTip from "@components/atoms/Div/ToolTip";
 import AddIcon from "@components/atoms/Icons/AddIcon";
 import Text from "@components/atoms/Text/Text";
 import CreateDirectMessageModal from "@components/organisms/CreateDirectMessageDropdown";
@@ -17,7 +17,7 @@ const DirectMessage = () => {
       <Text fontSize="xs" fontWeight="bold">
         다이렉트 메시지
       </Text>
-      <Tip title="DM 생성" place="top">
+      <ToolTip title="DM 생성" place="top">
         <PlusButtonContainer
           ref={dropdownRef}
           onClick={() => setShowDMDropdown((prev) => !prev)}
@@ -29,7 +29,7 @@ const DirectMessage = () => {
             </DMModalWrapper>
           )}
         </PlusButtonContainer>
-      </Tip>
+      </ToolTip>
     </DirectMessageContainer>
   );
 };
@@ -39,9 +39,12 @@ const DirectMessageContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
   padding-top: 18px;
   padding-bottom: 4px;
+
   color: ${({ theme }) => theme.color.inactive};
+
   &:hover {
     color: ${({ theme }) => theme.color.white};
   }
@@ -49,7 +52,9 @@ const DirectMessageContainer = styled.div`
 
 const PlusButtonContainer = styled.div`
   color: ${({ theme }) => theme.color.icon};
+
   cursor: pointer;
+
   &:hover {
     color: ${({ theme }) => theme.color.white};
   }

@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 import FriendHeaderLeft from "../atoms/Div/FriendHeaderLeft";
 import MainTabButton from "../atoms/Div/MainTabButton";
-import Tip from "../atoms/Div/Tooltip";
+import ToolTip from "../atoms/Div/ToolTip";
 import ChatAddIcon from "../atoms/Icons/ChatAddIcon";
 import CreateDirectMessageModal from "./CreateDirectMessageDropdown";
 
@@ -24,7 +24,7 @@ const FriendHeader = () => {
           <MainTabButton status={"친구 추가하기"} />
         </LeftContainer>
 
-        <Tip title="새로운 그룹 메시지" place="bottom">
+        <ToolTip title="새로운 그룹 메시지" place="bottom">
           <RightContainer
             ref={dropdownRef}
             onClick={() => setShowDMDropdown((prev) => !prev)}
@@ -36,7 +36,7 @@ const FriendHeader = () => {
               </DMModalWrapper>
             )}
           </RightContainer>
-        </Tip>
+        </ToolTip>
       </FriendHeaderContainer>
     </>
   );

@@ -1,7 +1,7 @@
 import { MouseEventHandler, ReactElement } from "react";
 import styled from "styled-components";
 import { flexCenter } from "@styles/flexCenter";
-import Tip from "@components/atoms/Div/Tooltip";
+import ToolTip from "@components/atoms/Div/ToolTip";
 
 interface MicButtonProps {
   text: string;
@@ -19,11 +19,11 @@ const UserOnOffButton = ({
   onClick,
 }: MicButtonProps) => {
   return (
-    <Tip title={text} place="top">
+    <ToolTip title={text} place="top">
       <UserOnOffButtonContainer onClick={onClick}>
         <IconContainer>{on ? OnIcon : OffIcon}</IconContainer>
       </UserOnOffButtonContainer>
-    </Tip>
+    </ToolTip>
   );
 };
 

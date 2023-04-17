@@ -1,12 +1,12 @@
-import DivTooltip from "./Tooltip";
+import ToolTipDiv from "./ToolTip";
 
 export default {
   title: "atoms/div",
-  component: DivTooltip,
+  component: ToolTipDiv,
 };
 
 export const Tooltip = () => (
-  <DivTooltip place="right" title="test">
+  <ToolTipDiv place="right" title="test">
     <button>hello</button>
-  </DivTooltip>
+  </ToolTipDiv>
 );
