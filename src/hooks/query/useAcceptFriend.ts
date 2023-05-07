@@ -6,20 +6,20 @@ const useAcceptFriend = () => {
   const QUERY_KEY = ["friendList"];
 
   return useMutation(friendApi.accept, {
-    onMutate: async (newFriend: any) => {
-      await queryClient.cancelQueries({ queryKey: QUERY_KEY });
-      const previousFriendList = queryClient.getQueryData(QUERY_KEY);
-      queryClient.setQueryData(QUERY_KEY, [
-        ...(previousFriendList as any),
-        newFriend,
-      ]);
+    // onMutate: async (newFriend: any) => {
+    //   await queryClient.cancelQueries({ queryKey: QUERY_KEY });
+    //   const previousFriendList = queryClient.getQueryData(QUERY_KEY);
+    //   queryClient.setQueryData(QUERY_KEY, [
+    //     ...(previousFriendList as any),
+    //     newFriend,
+    //   ]);
 
-      return { previousFriendList };
-    },
+    //   return { previousFriendList };
+    // },
 
-    onError: (_err: Error, _newFriend: any, context: any) => {
-      queryClient.setQueryData(QUERY_KEY, context.previousFriendList);
-    },
+    // onError: (_err: Error, _newFriend: any, context: any) => {
+    //   queryClient.setQueryData(QUERY_KEY, context.previousFriendList);
+    // },
 
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: QUERY_KEY });
