@@ -36,11 +36,10 @@ const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
           </MessageDate>
         )}
         <MessageContainer>
-          {hasLink && <LinkText text={link} onClick={clickInvitation} />}(
+          {hasLink && <LinkText text={link} onClick={clickInvitation} />}
           <Message ref={ref} color="msg">
             {hasLink ? chat2 : text}
           </Message>
-          )
         </MessageContainer>
       </MessageTextContainer>
     );

@@ -7,5 +7,8 @@ export default {
 };
 
 export const Round = () => (
-  <RoundButton onClick={() => null} Icon={<ChatIcon />} />
+  <RoundButton onClick={() => null}>
+    {/* test */}
+    <ChatIcon />
+  </RoundButton>
 );

@@ -35,23 +35,21 @@ const FriendWaitingBox = ({
   if (status === "WAIT") {
     Buttons = (
       <>
-        <RoundButton
-          Icon={<CheckIcon />}
-          onClick={() => acceptFriend(params)}
-        />
-        <RoundButton
-          Icon={
-            <CancelIconWrapper>
-              <CancelIcon />
-            </CancelIconWrapper>
-          }
-          onClick={() => rejectFriend(params)}
-        />
+        <RoundButton onClick={() => acceptFriend(params)}>
+          <CheckIcon />
+        </RoundButton>
+        <RoundButton onClick={() => rejectFriend(params)}>
+          <CancelIconWrapper>
+            <CancelIcon />
+          </CancelIconWrapper>
+        </RoundButton>
       </>
     );
   } else {
     Buttons = (
-      <RoundButton Icon={<CancelIcon />} onClick={() => rejectFriend(params)} />
+      <RoundButton onClick={() => rejectFriend(params)}>
+        <CancelIcon />
+      </RoundButton>
     );
   }
 

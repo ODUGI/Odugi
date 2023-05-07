@@ -1,9 +1,4 @@
-import {
-  ChangeEventHandler,
-  ForwardedRef,
-  forwardRef,
-  KeyboardEvent,
-} from "react";
+import { ChangeEventHandler, forwardRef, KeyboardEvent } from "react";
 import styled from "styled-components";
 
 interface MessageInputProps {
@@ -14,17 +9,8 @@ interface MessageInputProps {
   rows?: number;
 }
 
-const MessageInput = forwardRef(
-  (
-    {
-      value,
-      onChange,
-      placeholder = "",
-      rows = 1,
-      onKeyPress,
-    }: MessageInputProps,
-    ref: ForwardedRef<HTMLInputElement>
-  ) => {
+const MessageInput = forwardRef<HTMLInputElement, MessageInputProps>(
+  ({ value, onChange, placeholder = "", onKeyPress }, ref) => {
     return (
       <TextArea
         ref={ref}
@@ -49,6 +35,7 @@ const TextArea = styled.input`
   font-size: ${({ theme }) => theme.fontSize.base};
   background-color: ${({ theme }) => theme.backgroundColor.transparent};
   padding: 0.6875rem 0.875rem 0.6875rem 0;
+
   ::placeholder {
     color: ${({ theme }) => theme.color["msg-placeholder"]};
   }
