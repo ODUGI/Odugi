@@ -11,6 +11,7 @@ const userSettingApi = {
 
   // 비밀번호 변경
   modifyPassword: async ({ password, originalPassword }: any) => {
+    console.log(password, originalPassword);
     return await clientApi.patch("/user/member/modify/password", {
       password,
       originalPassword,

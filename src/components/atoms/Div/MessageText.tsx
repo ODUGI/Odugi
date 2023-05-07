@@ -24,15 +24,11 @@ const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
     const hasLink = useMemo(() => validateUrl(text), [text]);
     const words = text.split(" ");
     const link = words[0];
-    console.log(link);
     const { channelId } = useParams();
-    const navigate = useNavigate();
-    words.splice(0, 1);
-    const chat2 = words.join(" ");
+    const chat2 = words.splice(0, 1).join(" ");
     const { userInfo } = useUserStore();
     const clickInvitation = useCallback(() => {
       enterInvitation();
-      // window.location.replace(link);
     }, []);
 
     useAcceptInvite(link, fetchInvite, setFetchInvite);
@@ -41,6 +37,7 @@ const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
       // clickInvite({ sender: userInfo.name, channelId, link });
       setFetchInvite(true);
     };
+
     return (
       <MessageTextContainer>
         {hasDate && (
@@ -51,7 +48,7 @@ const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
           </MessageDate>
         )}
         <MessageContainer>
-          {hasLink && <LinkText text={link} onClick={clickInvitationTest} />}(
+          {hasLink && <LinkText text={link} onClick={clickInvitationTest} />}
           <Message ref={ref} color="msg">
             {hasLink ? chat2 : text}
           </Message>

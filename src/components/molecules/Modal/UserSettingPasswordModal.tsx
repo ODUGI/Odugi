@@ -2,24 +2,24 @@ import DefaultButton from "@components/atoms/Button/DefaultButton";
 import DefaultInput from "@components/atoms/Input/DefaultInput";
 import Text from "@components/atoms/Text/Text";
 import BackgroundModal from "@components/organisms/BackgroundModal";
-import useInput from "@hooks/common/useInput";
 import useModifyPassword from "@hooks/query/useModifyPassword";
 import useSettingModalStore from "@store/useSettingModalStore";
 import { Bottom, InputWrapper, TextWrapper } from "./UserSettingModal";
+import { useRef } from "react";
 
 const UserSettingPasswordModal = () => {
   const { setShowSettingModal } = useSettingModalStore();
 
-  const [passwordConfirm, changePasswordConfirm] = useInput();
-  const [password, changePassword] = useInput();
-  const [originalPassword, changeOriginalPassword] = useInput();
+  const originPasswordRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordConfirmRef = useRef<HTMLInputElement>(null);
 
   const { mutate: modifyPassword } = useModifyPassword();
 
   const OnChangePw = () => {
     modifyPassword({
-      password,
-      originalPassword,
+      password: passwordRef.current?.value,
+      originalPassword: originPasswordRef.current?.value,
     });
   };
 
@@ -51,6 +51,7 @@ const UserSettingPasswordModal = () => {
                 현재 비밀번호
               </Text>
               <DefaultInput
+                ref={originPasswordRef}
                 // value={originalPassword}
                 // onChange={changeOriginalPassword}
                 backgroundColor="voice-modal"
@@ -64,6 +65,7 @@ const UserSettingPasswordModal = () => {
                 새 비밀번호
               </Text>
               <DefaultInput
+                ref={passwordRef}
                 // value={password}
                 // onChange={changePassword}
                 backgroundColor="voice-modal"
@@ -77,6 +79,7 @@ const UserSettingPasswordModal = () => {
                 새 비밀번호 확인
               </Text>
               <DefaultInput
+                ref={passwordConfirmRef}
                 // value={passwordConfirm}
                 // onChange={changePasswordConfirm}
                 backgroundColor="voice-modal"

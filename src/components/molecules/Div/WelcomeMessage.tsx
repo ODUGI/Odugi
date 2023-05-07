@@ -7,7 +7,7 @@ interface WelcomeMessageProps {
 
 const WelcomeMessage = ({ name }: WelcomeMessageProps) => {
   return (
-    <WelcomeMessageProps>
+    <WelcomeMessageContainer>
       <IconWrapper>
         <WelcomeIcon />
       </IconWrapper>
@@ -17,11 +17,11 @@ const WelcomeMessage = ({ name }: WelcomeMessageProps) => {
         text={`${name} 님이 입장하셨어요!`}
         createdAt={new Date()}
       />
-    </WelcomeMessageProps>
+    </WelcomeMessageContainer>
   );
 };
 
-const WelcomeMessageProps = styled.div`
+const WelcomeMessageContainer = styled.div`
   position: relative;
   display: flex;
 `;
