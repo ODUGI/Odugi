@@ -6,6 +6,7 @@ import { useUserStore } from "@store/useUserStore";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import useSendInviteToChat from "@hooks/query/useSentInviteToChat";
+import useCreateInvitation from "@hooks/query/useCreateInvitation";
 
 interface friend {
   name: string;
@@ -18,20 +19,25 @@ const InviteFriendBox = ({ name, userId, channelId }: friend) => {
   const { userInfo } = useUserStore();
   const { communityId } = useParams();
   const { mutate: sendInviteToChat } = useSendInviteToChat();
+  const { mutate: createInvite } = useCreateInvitation({
+    onSuccess: (data: any) => {
+      sendInviteToChat({
+        sender: userInfo.name,
+        channelId: channelId,
+        linkMessage: data.data.data,
+      });
+    },
+  });
 
   let backUrl = process.env.REACT_APP_BASE_URL;
   let uuid = crypto.randomUUID();
 
   const onSendInvite = () => {
-    sendInvite({
-      communityId,
-      userId,
-      shortUrl: uuid,
-    });
-    sendInviteToChat({
-      sender: userInfo.name,
-      channelId: channelId,
-      linkMessage: `${backUrl}/invite/${uuid}/${userId}`,
+    const formData = new FormData();
+    formData.append("communityId", communityId as string);
+    formData.append("invitedId", userId.toString());
+    createInvite({
+      formData,
     });
   };
 

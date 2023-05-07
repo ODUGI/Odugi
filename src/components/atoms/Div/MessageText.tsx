@@ -1,10 +1,14 @@
 import getFormatTime from "@utils/getFormatTime";
-import { forwardRef, useCallback, useMemo } from "react";
+import { forwardRef, useCallback, useMemo, useState } from "react";
 import styled from "styled-components";
 import { ColorType, FontSizeType } from "@styles/theme";
 import LinkText from "../Text/LinkText";
 import useEnterInvitation from "@hooks/query/useEnterInvitation";
 import validateUrl from "@utils/validateUrl";
+import useClickInvite from "@hooks/query/useClickInvite";
+import { useUserStore } from "@store/useUserStore";
+import { useNavigate, useParams } from "react-router-dom";
+import useAcceptInvite from "@hooks/query/useAcceptInvite";
 
 interface MessageTextProps {
   text: string;
@@ -14,18 +18,29 @@ interface MessageTextProps {
 
 const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
   ({ text, hasDate, createdAt }, ref) => {
+    const [fetchInvite, setFetchInvite] = useState(false);
     const { mutate: enterInvitation } = useEnterInvitation();
+    const { mutate: clickInvite } = useClickInvite();
     const hasLink = useMemo(() => validateUrl(text), [text]);
     const words = text.split(" ");
     const link = words[0];
+    console.log(link);
+    const { channelId } = useParams();
+    const navigate = useNavigate();
     words.splice(0, 1);
     const chat2 = words.join(" ");
-
+    const { userInfo } = useUserStore();
     const clickInvitation = useCallback(() => {
       enterInvitation();
-      window.location.replace(link);
+      // window.location.replace(link);
     }, []);
 
+    useAcceptInvite(link, fetchInvite, setFetchInvite);
+
+    const clickInvitationTest = () => {
+      // clickInvite({ sender: userInfo.name, channelId, link });
+      setFetchInvite(true);
+    };
     return (
       <MessageTextContainer>
         {hasDate && (
@@ -36,7 +51,7 @@ const MessageText = forwardRef<HTMLParagraphElement, MessageTextProps>(
           </MessageDate>
         )}
         <MessageContainer>
-          {hasLink && <LinkText text={link} onClick={clickInvitation} />}
+          {hasLink && <LinkText text={link} onClick={clickInvitationTest} />}(
           <Message ref={ref} color="msg">
             {hasLink ? chat2 : text}
           </Message>

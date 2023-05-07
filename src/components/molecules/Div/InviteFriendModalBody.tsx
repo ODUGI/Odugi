@@ -12,7 +12,6 @@ const InviteFriendModalBody = () => {
   const { data: friendList, isSuccess } = useGetFriendList();
 
   if (!isSuccess) return null;
-
   const num = friendList.length;
 
   return (
