@@ -12,7 +12,7 @@ const RegisterStep2 = () => {
       <RegisterStep2Header errorMessage={errorMessage} />
       <RegisterStep2Body ref={emailCodeRef} />
       <RegisterStep2Footer
-        emailCodeCurrent={emailCodeRef.current}
+        emailCodeCurrent={emailCodeRef}
         setErrorMessage={setErrorMessage}
       />
     </>

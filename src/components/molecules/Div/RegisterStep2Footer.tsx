@@ -1,7 +1,6 @@
 import DefaultButton from "@components/atoms/Button/DefaultButton";
 import useSendUserCode from "@hooks/query/useSendUserCode";
 import { useRegisterStore } from "@store/useRegisterStore";
-import { useCallback } from "react";
 import styled from "styled-components";
 
 const RegisterStep2Footer = ({ emailCodeCurrent, setErrorMessage }: any) => {
@@ -16,14 +15,13 @@ const RegisterStep2Footer = ({ emailCodeCurrent, setErrorMessage }: any) => {
     },
   });
 
-  const verifyEmail = useCallback(() => {
-    const emailCode = emailCodeCurrent.value;
-
+  const verifyEmail = () => {
+    const emailCode = emailCodeCurrent.current?.value;
     if (!emailCode) {
       return setErrorMessage("코드를 입력해주세요.");
     }
     sendUserCode(emailCode);
-  }, [emailCodeCurrent]);
+  };
 
   return (
     <Footer>

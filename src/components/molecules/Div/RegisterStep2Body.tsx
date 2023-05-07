@@ -4,7 +4,7 @@ import { useRegisterStore } from "@store/useRegisterStore";
 import { forwardRef, useCallback } from "react";
 import DefaultForm from "../Form/DefaultForm";
 
-const RegisterStep2Body = forwardRef<HTMLInputElement>((props, ref) => {
+const RegisterStep2Body = forwardRef<HTMLInputElement>((_, ref) => {
   const { email, name, password } = useRegisterStore();
 
   const { mutate: sendEmail } = useRegister();
