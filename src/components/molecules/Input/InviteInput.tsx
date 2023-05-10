@@ -40,6 +40,7 @@ const InviteInput = () => {
     }
   };
 
+  console.log(emailRef.current);
   return (
     <>
       <InviteInputContainer borderColor={status}>
@@ -61,8 +62,7 @@ const InviteInput = () => {
       </InviteInputContainer>
       {status === "success" && (
         <Text color="invite-success">
-          {emailRef?.current && emailRef.current.value}에게 성공적으로 친구
-          요청을 보냈어요.
+          {emailRef.current?.value}에게 성공적으로 친구 요청을 보냈어요.
         </Text>
       )}
       {status === "danger" && (
