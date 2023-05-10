@@ -60,14 +60,13 @@ const MessageLog = ({
 const MessageLogContainer = styled.div<{ hasImage: boolean; height: number }>`
   margin-top: ${({ hasImage }) => (hasImage ? 16 : 0)}px;
   padding-top: ${({ hasImage }) => (hasImage ? 12 : 0)}px;
-  padding-bottom: ${({ hasImage }) => (hasImage ? 12 : 0)}px;
   position: relative;
-  /* min-height: 22px; */
-  /* height: ${({ height }) => height}px; */
   display: flex;
   flex-direction: row;
+
   &:hover {
     background-color: ${({ theme }) => theme.backgroundColor["msg-hover"]};
+
     .msg-hover,
     .msg-date {
       visibility: visible;
